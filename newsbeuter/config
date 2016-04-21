@@ -1,0 +1,8 @@
+auto-reload yes
+keep-articles-days 90
+refresh-on-startup yes
+reload-time 30
+save-path "~/Articles"
+always-display-description true
+browser firefox
+
