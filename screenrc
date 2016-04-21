@@ -1,0 +1,12 @@
+term screen-256color
+startup_message off
+hardstatus off
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W} %c %{g}]'
+termcapinfo xterm* ti@:te@
+vbell off
+
+screen -t mutt 1 mutt
+screen -t newsbeuter 2 newsbeuter
+screen -t rainbowstream 3 rainbowstream
+screen -t fish 0 fish

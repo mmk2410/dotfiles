@@ -1,0 +1,49 @@
+set header_cache = "~/.cache/mutt"
+set imap_check_subscribed
+set imap_keepalive = 300
+unset imap_passive
+set mail_check = 60
+set mbox_type=Maildir
+set sort=threads
+set sort_aux=last-date-received
+set sleep_time = 0
+
+
+## Work
+source "~/.mutt/work"
+folder-hook $folder 'source ~/.mutt/work'
+
+## Uni
+source "~/.mutt/uni"
+folder-hook marcel.kapfer@uni-ulm.de 'source ~/.mutt/uni'
+
+## Private
+source "~/.mutt/private"
+folder-hook marcelmichaelkapfer@gmail.com 'source ~/.mutt/private'
+
+
+## Shortcuts
+macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.mutt/private<enter><change-folder>!<enter>'
+
+macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.mutt/work<enter><change-folder>!<enter>'
+
+macro index,pager <f4> '<sync-mailbox><enter-command>source ~/.mutt/uni<enter><change-folder>!<enter>'
+
+## Settings
+
+set send_charset="utf-8"
+
+## Theming
+
+source ~/.mutt/theme
+source /usr/share/doc/mutt/samples/gpg.rc
+
+## HTML mails
+
+set mailcap_path = ~/.mutt/mailcap
+auto_view text/html
+
+## Abook
+set query_command= "abook --mutt-query '%s'"
+macro index,pager a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
+bind editor <Tab> complete-query
