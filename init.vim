@@ -21,6 +21,7 @@ Plug 'vim-latex/vim-latex'
 Plug 'morhetz/gruvbox'
 Plug 'dag/vim-fish'
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'KabbAmine/gulp-vim'
 
 call plug#end()
 
