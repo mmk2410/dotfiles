@@ -1,0 +1,20 @@
+startup_message off
+exec wmname LG3D
+exec xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 -f -D 5 &
+exec nitrogen --restore
+set border 6
+set font Hermit 10
+set wingravity c
+set padding 10 10 10 10
+set fwcolor purple
+set barpadding 10 10
+
+bind c exec xfce4-terminal
+
+hsplit
+focus
+
+execf 1 firefox
+execf 0 xfce4-terminal
+
+echo mmk2410@williams
