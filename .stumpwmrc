@@ -1,0 +1,26 @@
+;; -*-lisp-*-
+;;
+;; StumpWM config
+
+(in-package :stumpwm)
+
+;; browsers
+(define-key *root-map* (kbd "C-f") "exec google-chrome-unstable")
+
+;; xserver
+(run-shell-command "xmodmap ~/.Xmodmap")
+(run-shell-command "xrdb -merge ~/.Xresources")
+
+;; nitrogen
+(run-shell-command "nitrogen --restore")
+
+;; message window font
+(set-font "11Hermit")
+
+;; set the mouse focus
+(setf *mouse-focus-policy* :click)
+
+;; define volume control keys
+(define-key *top-map* (kbd "XF86AudioLowerVolume") "exec amixer set Master 5%-")
+(define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec amixer set Master 5%+")
+(define-key *top-map* (kbd "XF86AudioMute") "exec amixer set Master toggle")
