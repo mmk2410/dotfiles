@@ -24,6 +24,8 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'KabbAmine/gulp-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'kovisoft/slimv'
+Plug 'freeo/vim-kalisi'
+
 
 call plug#end()
 
@@ -77,7 +79,7 @@ set tm=500
 " Color
 
 syntax on
-colorscheme gruvbox
+colorscheme kalisi
 set background=light
 set cursorline
 if has("gui_running")
