@@ -4,10 +4,9 @@ set imap_keepalive = 300
 unset imap_passive
 set mail_check = 60
 set mbox_type=Maildir
-set sort=threads
+set sort = threads
 set sort_aux=last-date-received
 set sleep_time = 0
-
 
 ## Work
 source "~/.mutt/work"
@@ -21,6 +20,7 @@ folder-hook marcel.kapfer@uni-ulm.de 'source ~/.mutt/uni'
 source "~/.mutt/private"
 folder-hook marcelmichaelkapfer@gmail.com 'source ~/.mutt/private'
 
+source /usr/share/doc/mutt/examples/gpg.rc
 
 ## Shortcuts
 macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.mutt/private<enter><change-folder>!<enter>'
@@ -36,7 +36,6 @@ set send_charset="utf-8"
 ## Theming
 
 source ~/.mutt/theme
-source /usr/share/doc/mutt/samples/gpg.rc
 
 ## HTML mails
 
