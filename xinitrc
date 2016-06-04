@@ -74,6 +74,7 @@ case $session in
     xfce|xfce4        ) exec startxfce4;;
     xmonad            ) exec xmonad;;
     ratpoison         ) exec ratpoison;;
+    stumpwm           ) exec stumpwm;;
     # No known session, try to run it as command
     *) exec "$1";;
 esac
