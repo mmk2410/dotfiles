@@ -22,6 +22,8 @@ Plug 'morhetz/gruvbox'
 Plug 'dag/vim-fish'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'KabbAmine/gulp-vim'
+Plug 'derekwyatt/vim-scala'
+Plug 'kovisoft/slimv'
 
 call plug#end()
 
@@ -76,7 +78,7 @@ set tm=500
 
 syntax on
 colorscheme gruvbox
-set background=dark
+set background=light
 set cursorline
 if has("gui_running")
         set guioptions-=T
@@ -123,6 +125,8 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 "
 " " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
+"
+map <leader>W :w
 "
 " " Specify the behavior when switching between buffers
 try
@@ -177,6 +181,8 @@ map <leader>q :e ~/buffer<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+map <C-n> :NERDTreeToggle<CR>
+
 " My Changes
 
 inoremap jk <ESC>
@@ -196,10 +202,14 @@ let g:tex_flavor='latex'
 let g:tex_fold_enabled=1
 let g:Tex_CompileRule_pdf = 'pdflatex --interaction=nonstopmode $*'
 
+" slimv swank server
+let g:slimv_swank_cmd = '! xterm -e sbcl --load /usr/share/common-lisp/source/slime/start-swank.lisp &'
+
 " Filetype specific settings
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype coffee setlocal ts=2 sts=2 sw=2
+autocmd filetype dart setlocal ts=2 sts=2 sw=2
 
 " Syntax highlighting for HtMd (Hypertext Markdown)
 au BufRead,BufNewFile *.htmd set filetype=html
