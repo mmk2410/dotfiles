@@ -1,18 +1,13 @@
-                                     __
-                                    |  |        _______    __     __    __    ________
-                                    |  |       |____   |  |  |   |  |  |  |  |   __   |
-                                    |  | ___        |  |  |  |   |  |  |  |  |  |  |  |
- ______________    ______________   |  |/  /    ____|  |  |  |___|  |  |  |  |  |  |  |
-|   __    __   |  |   __    __   |  |     /    |   ____|  |______   |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |     \    |  |              |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |  |  |  |\  \   |  |____          |  |  |  |  |  |__|  |
-|__|  |__|  |__|  |__|  |__|  |__|  |__| \__\  |_______|         |__|  |__|  |________|
+#!/bin/bash
+figlet $USER @ $HOSTNAME
+echo """
+ Marcel Kapfer (mmk2410)
+ aka Wilson O'Sullivan
 
-Marcel Kapfer (mmk2410)
+ Programmer, Composer, Blogger
 
-Software and web developer and designer
-
-marcel-kapfer.de
-@mmk2410
-/mmk2410
-+MarcelMichaelKapfer
+ marcel-kapfer.de / mmk2410.org
+ Twitter:    @mmk2410
+ GitLab:     /mmk2410
+ Google+:    +MarcelMichaelKapfer
+"""
