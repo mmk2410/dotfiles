@@ -209,7 +209,7 @@ let g:slimv_swank_cmd = '! xterm -e sbcl --load /usr/share/common-lisp/source/sl
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype coffee setlocal ts=2 sts=2 sw=2
-autocmd filetype dart setlocal ts=2 sts=2 sw=2
+autocmd Filetype dart setlocal ts=2 sts=2 sw=2
 
 " Syntax highlighting for HtMd (Hypertext Markdown)
 au BufRead,BufNewFile *.htmd set filetype=html
