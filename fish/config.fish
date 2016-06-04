@@ -1,4 +1,4 @@
-set -x PATH $PATH /home/mmk2410/bin /usr/local/bin /usr/bin /bin /usr/local/games /usr/games /home/mmk/.gem/ruby/2.2.0/bin /usr/local/texlive/2015/bin/x86_64-linux /home/mmk/.gem/ruby/2.3.0/bin /home/mmk/.go/bin /opt/nodejs/bin ~/.bin/
+set -x PATH $PATH /usr/local/bin /usr/bin /bin /usr/local/games /usr/games
 
 set -x ARCHFLAGS -arch_x86_64
 
@@ -34,10 +34,7 @@ alias q=' exit'
 alias Q=' exit'
 alias x=' exit'
 alias cd..='cd ..'
-alias mmk2410='cat /home/mmk/.mmk2410'
-mmk2410
+~/.mmk2410
 
 set -Ux EDITOR nvim
 set -Ux VISUAL nvim
-set -Ux GUIX_LOCPATH $HOME/.guix-profile/lib/locale
-set -Ux GOPATH ~/.go
