@@ -6,7 +6,7 @@ hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u
 termcapinfo xterm* ti@:te@
 vbell off
 
-screen -t mutt 1 mutt
-screen -t newsbeuter 2 newsbeuter
-screen -t rainbowstream 3 rainbowstream
+screen -t newsbeuter 3 newsbeuter
+screen -t mutt 2 mutt
+screen -t fish 1 fish
 screen -t fish 0 fish
