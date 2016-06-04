@@ -177,11 +177,11 @@ client.placeholder         #000000     #0c0c0c     #ffffff  #000000
 popup_during_fullscreen smart
 
 ## custom keybindings
-bindsym $mod+b exec vivaldi-snapshot
+bindsym $mod+b exec firefox-nightly
 bindsym $mod+t exec nautilus
 bindsym $mod+m exec spotify
 bindsym $mod+p exec vlc
 bindsym $mod+x exec i3lock -c 000000
 
-exec ./output.sh
 exec --no-startup-id nitrogen --restore &
+exec xmodmap ~/.Xmodmap
