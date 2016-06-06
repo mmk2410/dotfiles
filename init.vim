@@ -25,7 +25,7 @@ Plug 'KabbAmine/gulp-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'kovisoft/slimv'
 Plug 'freeo/vim-kalisi'
-
+Plug 'vim-scripts/java.vim'
 
 call plug#end()
 
