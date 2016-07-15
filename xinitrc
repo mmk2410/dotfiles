@@ -1,5 +1,5 @@
 #!/bin/sh
-$TERMINAL=terminology
+$TERMINAL=xfce4-terminal
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
@@ -75,6 +75,7 @@ case $session in
     xmonad            ) exec xmonad;;
     ratpoison         ) exec ratpoison;;
     stumpwm           ) exec stumpwm;;
+    lxqt              ) exec startlxqt;;
     # No known session, try to run it as command
     *) exec "$1";;
 esac
