@@ -1,34 +1,44 @@
 " vim-plug plugin manager
-call plug#begin('~/.vim/plugged')
 
-Plug 'benekastah/neomake'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'junegunn/vim-easy-align'
-Plug 'Shougo/deoplete.nvim'
-Plug 'vim-scripts/gitignore.vim'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'StanAngeloff/php.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'majutsushi/tagbar'
-Plug 'vim-scripts/taglist.vim'
-Plug 'bling/vim-airline'
-Plug 'Townk/vim-autoclose'
-Plug 'kchmck/vim-coffee-script'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'vim-latex/vim-latex'
-Plug 'morhetz/gruvbox'
-Plug 'dag/vim-fish'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'KabbAmine/gulp-vim'
-Plug 'derekwyatt/vim-scala'
-Plug 'kovisoft/slimv'
-Plug 'freeo/vim-kalisi'
-Plug 'vim-scripts/java.vim'
-Plug 'vim-php/vim-phpunit'
+if filereadable(expand("~/.vim/autoload/plug.vim")) || filereadable(expand("~/.config/nvim/autoload/plug.vim")) || filereadable(expand("~\vimfiles\autoload\plug.vim"))
 
-call plug#end()
+    call plug#begin('~/.vim/plugged')
+
+    Plug 'benekastah/neomake'
+    Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+    Plug 'junegunn/vim-easy-align'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'vim-scripts/gitignore.vim'
+    Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'StanAngeloff/php.vim'
+    Plug 'rust-lang/rust.vim'
+    Plug 'majutsushi/tagbar'
+    Plug 'vim-scripts/taglist.vim'
+    Plug 'bling/vim-airline'
+    Plug 'Townk/vim-autoclose'
+    Plug 'kchmck/vim-coffee-script'
+    Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'vim-latex/vim-latex'
+    Plug 'morhetz/gruvbox'
+    Plug 'dag/vim-fish'
+    Plug 'dart-lang/dart-vim-plugin'
+    Plug 'KabbAmine/gulp-vim'
+    Plug 'derekwyatt/vim-scala'
+    Plug 'kovisoft/slimv'
+    Plug 'freeo/vim-kalisi'
+    Plug 'vim-scripts/java.vim'
+    Plug 'vim-php/vim-phpunit'
+    Plug 'IN3D/vim-raml'
+    Plug 'zchee/deoplete-clang'
+    Plug 'parkr/vim-jekyll'
+
+    call plug#end()
+
+else
+    echom "Didn't find Plug"
+endif
 
 set nocompatible
 filetype indent plugin on
@@ -92,6 +102,7 @@ if has("gui_running")
             set guifont=Hermit\ 10
         endif
 endif
+set t_Co=256
 set encoding=utf-8
 set ffs=unix,dos,mac
 set textwidth=80
@@ -194,13 +205,19 @@ set list
 set clipboard+=unnamedplus
 
 " Plugin settings
+" airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='gruvbox'
 
+" deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#clang#libclang_path='/usr/lib/llvm-3.6/lib/libclang.so.1'
+let g:deoplete#sources#clang#clang_header='/usr/lib/llvm-3.6/lib/clang/3.6.2/include/'
 
 set grepprg=grep\ -nH\ $*
+
+" latexsuite
 let g:tex_flavor='latex'
 let g:tex_fold_enabled=1
 let g:Tex_CompileRule_pdf = 'pdflatex --interaction=nonstopmode $*'
