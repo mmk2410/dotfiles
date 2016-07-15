@@ -1,0 +1,118 @@
+"*":
+  "Atom-Hack": {}
+  Termrk:
+    defaultHeight: 353
+    fontFamily: "Hermit"
+  _dartlang:
+    _errorsInitialized: true
+    _firstRun: true
+    _version: "0.6.31"
+  _flutterAnalytics:
+    clientId: "5513e60a-abb3-4f83-ac72-3a9c0dd26c5c"
+    optIn: true
+  "atom-beautify":
+    _analyticsUserId: "e351c0a9-48b4-4072-b99f-f3ca93f804c6"
+    general:
+      _analyticsUserId: "49f1b430-b624-4005-bd40-d98ee4223b53"
+  "atom-oss-license":
+    name: "Marcel Kapfer (mmk2410)"
+  "atom-pair": {}
+  "atom-slime":
+    slimePath: "/home/wilson/quicklisp/dists/quicklisp/software/slime-v2.17/"
+  "autocomplete-plus":
+    autoActivationDelay: 500
+    confirmCompletion: "tab"
+  "autocomplete-python":
+    addBracketAfterFunction: true
+  build: {}
+  core:
+    audioBeep: false
+    autoHideMenuBar: true
+    disabledPackages: [
+      "autocomplete-clang"
+      "linter-cpplint"
+      "hidpi"
+      "Atom-Hack"
+      "language-hack"
+    ]
+    followSymlinks: false
+    openEmptyEditorOnStart: false
+    themes: [
+      "one-light-ui"
+      "one-light-syntax"
+    ]
+  dartino:
+    sdkPath: "/opt/dart/bin/"
+  dartlang:
+    sdkLocation: "/opt/dart/"
+    sendUsage: false
+    showOutlineView: false
+  editor:
+    fontFamily: "Hermit"
+    fontSize: 12
+    invisibles: {}
+    scrollPastEnd: true
+    showIndentGuide: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+  "exception-reporting":
+    userId: "89f427c1-00e2-380c-5d66-153f74c4ca10"
+  "gruvbox-plus-syntax":
+    brightness: "Light"
+  "gtk-dark-theme": {}
+  "haskell-ghc-mod": {}
+  hex: {}
+  hidpi: {}
+  "ide-haskell": {}
+  latex:
+    okularPath: "/usr/bin/mupdf"
+    texPath: "/usr/bin/"
+  "latex-plus":
+    texBin: "/usr/local/bin/"
+  latexer: {}
+  linter:
+    displayLinterInfo: false
+    errorPanelHeight: 79
+    showErrorPanel: false
+  "linter-chktex": {}
+  "linter-clang": {}
+  "linter-csslint": {}
+  "linter-dartanalyzer":
+    dartanalyzerExecutablePath: "/opt/dart/bin/dartanalyzer"
+  "linter-htmlhint": {}
+  "linter-phpcs": {}
+  "linter-pylint": {}
+  "lisp-paredit":
+    enabled: false
+    strict: false
+  "markdown-pdf": {}
+  minimap: {}
+  preview: {}
+  "sass-autocompile": {}
+  "todo-show": {}
+  "tree-view":
+    hideVcsIgnoredFiles: true
+  "vim-mode":
+    useClipboardAsDefaultRegister: true
+    useSmartcaseForSearch: true
+  welcome:
+    showOnStartup: false
+".c.source":
+  editor:
+    showInvisibles: false
+".coffee.source":
+  editor:
+    autoIndentOnPaste: true
+    tabLength: 2
+".dart.source":
+  editor:
+    tabLength: 2
+".html.php.text":
+  editor:
+    tabLength: 4
+".lisp-repl.source":
+  editor:
+    tabLength: 4
+".source.yaml-ext":
+  editor:
+    tabLength: 4

@@ -1,0 +1,47 @@
+'.text.html.basic':
+  'nsection':
+    'prefix': 'nsection'
+    'body': """
+      <div class="section">
+          <div class="section-title">$1</div>
+          <div class="content">
+              $2
+          </div>
+      </div>
+    """
+
+  'nsubsection':
+    'prefix': 'nsubsection'
+    'body': """
+      <div class="section-subtitle">$1</div>
+      <div class="content">
+          $2
+      </div>
+    """
+
+  'nintro':
+    'prefix': 'nintro'
+    'body': """
+      <div class="intro">
+          <img class="profile" src="../res/img/$1.png" >
+          <div class="greeting">$2</div>
+          <div class="intro-line">
+              $3
+          </div>
+      </div>
+    """
+
+  'ncsselement':
+    'prefix': 'ncsselement'
+    'body': '<link rel="stylesheet" type="text/css" href="$1../res/css/$2.css">'
+
+'.text.tex.latex':
+  'upkg':
+    'prefix': 'upkg'
+    'body': '\\usepackage[$1]{$2}$3'
+  '__':
+    'prefix': '__'
+    'body': '_{$1}$2'
+  '^^':
+    'prefix': '^^'
+    'body': '^{$1}$2'
