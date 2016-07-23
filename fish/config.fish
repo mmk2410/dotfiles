@@ -1,4 +1,4 @@
-set -x PATH $PATH /usr/local/bin /usr/bin /bin /usr/local/games /usr/games
+set -x PATH $PATH /usr/local/bin /usr/bin /bin /usr/local/games /usr/games ~/.pub/bin
 
 set -x ARCHFLAGS -arch_x86_64
 
