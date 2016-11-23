@@ -35,8 +35,14 @@ alias Q=' exit'
 alias x=' exit'
 alias cd..='cd ..'
 if [ -z $SSH_CLIENT ]
-    ~/.mmk2410
+	~/.mmk2410
 end
 
-set -Ux EDITOR nvim
-set -Ux VISUAL nvim
+if [ -z $EDITOR ]
+	set -Ux EDITOR emacs -nw
+end
+
+if [ -z $VISUAL ]
+	set -Ux VISUAL emacs -nw
+end
+
