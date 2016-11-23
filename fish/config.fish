@@ -39,10 +39,10 @@ if [ -z $SSH_CLIENT ]
 end
 
 if [ -z $EDITOR ]
-	set -Ux EDITOR emacs -nw
+	set -Ux EDITOR nvim
 end
 
 if [ -z $VISUAL ]
-	set -Ux VISUAL emacs -nw
+	set -Ux VISUAL nvim
 end
 
