@@ -1,5 +1,8 @@
+
 (setq user-full-name "Marcel Kapfer (mmk2410")
 (setq user-mail-address "marcelmichaelkapfer@gmail.com")
+
+(setq load-path (append (list (expand-file-name "/usr/local/lilypond/usr/share/emacs/site-lisp")) load-path))
 
 (load "package")
 (package-initialize)
@@ -63,7 +66,11 @@
  '(custom-safe-themes
    (quote
     ("1160f5fc215738551fce39a67b2bcf312ed07ef3568d15d53c87baa4fd1f4d4e" default)))
- '(send-mail-function (quote smtpmail-send-it)))
+ '(send-mail-function (quote smtpmail-send-it))
+ '(inhibit-startup-screen t)
+ '(package-selected-packages
+   (quote
+    (mediawiki ## edit-server muttrc-mode flymake-yaml flymake-vala flymake-shell flymake-sass flymake-rust flymake-ruby flymake-phpcs flymake-php flymake-lua flymake-jslint flymake-jshint flymake-css flymake-coffee dart-mode auto-complete-auctex auctex atom-one-dark-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -97,4 +104,3 @@
 (require 'fill-column-indicator)
 (setq fci-rule-width 5) ;;; set rule width to 5px
 (add-hook 'after-change-major-mode-hook 'fci-mode) ;; enable fci on every file
-
