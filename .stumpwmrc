@@ -4,18 +4,69 @@
 
 (in-package :stumpwm)
 
-;; browsers
-(define-key *root-map* (kbd "C-f") "exec google-chrome-unstable")
+(defparameter *key-layout* "en_US" "Stores the current key layout")
+
+;; creating groups
+(gnewbg "2")
+(gnewbg "3")
+(gnewbg "4")
+(gnewbg "5")
+(gnewbg "6")
+(gnewbg "7")
+(gnewbg "8")
+(gnewbg "9")
+
+;; border width
+(setf *maxsize-border-width* 5)
+(setf *transient-border-width* 5)
+(setf *normal-border-width* 5)
+
+;; border style
+(setf *window-border-style* :tight)
+(set-focus-color "#b00045")
+(set-win-bg-color "black")
+(set-unfocus-color "black")
+(set-float-focus-color "#b00045")
+(set-float-unfocus-color "black")
+
+;; window gravity
+(set-normal-gravity :center)
+(set-maxsize-gravity :center)
+(set-transient-gravity :center)
+(gravity :center)
+
+;; root keybindings
+
+;;; browser
+(define-key *root-map* (kbd "C-c") "exec google-chrome-unstable")
+
+;;; terminal
+(define-key *root-map* (kbd "c") "exec urxvt")
+
+;;; groups to rpws keys
+(define-key *root-map* (kbd "C-1") "gselect 1")
+(define-key *root-map* (kbd "C-2") "gselect 2")
+(define-key *root-map* (kbd "C-3") "gselect 3")
+(define-key *root-map* (kbd "C-4") "gselect 4")
+(define-key *root-map* (kbd "C-5") "gselect 5")
+(define-key *root-map* (kbd "C-6") "gselect 6")
+(define-key *root-map* (kbd "C-7") "gselect 7")
+(define-key *root-map* (kbd "C-8") "gselect 8")
+(define-key *root-map* (kbd "C-9") "gselect 9")
 
 ;; xserver
 (run-shell-command "xmodmap ~/.Xmodmap")
 (run-shell-command "xrdb -merge ~/.Xresources")
 
-;; nitrogen
+;; dunst notify server
+(run-shell-command "dunst")
+
+;; nitrogen (wallpaper)
 (run-shell-command "nitrogen --restore")
 
 ;; message window font
 (set-font "11Hermit")
+;;(setf *max-
 
 ;; set the mouse focus
 (setf *mouse-focus-policy* :click)
@@ -24,3 +75,55 @@
 (define-key *top-map* (kbd "XF86AudioLowerVolume") "exec amixer set Master 5%-")
 (define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec amixer set Master 5%+")
 (define-key *top-map* (kbd "XF86AudioMute") "exec amixer set Master toggle")
+(define-key *top-map* (kbd "XF86AudioMicMute") "exec amixer set Capture toggle")
+(define-key *top-map* (kbd "XF86Launch1") "exec i3lock")
+
+;; battery status
+(define-key *root-map* (kbd "b") "exec ~/scripts/rat/bat.sh")
+
+;; set backlight
+(defcommand set-backlight (value)
+  ((:string "Backlight in %: "))
+  "Setting a new value for the backlight"
+  (run-shell-command (concatenate 'string "xbacklight -set " value))
+  (echo (concatenate 'string "Backlight set to " value)))
+
+(define-key *root-map* (kbd "B") "set-backlight")
+
+;; tweet
+(defcommand tweet (tweet)
+  ((:string "Tweet: "))
+  "Tweet"
+  (run-shell-command (concatenate 'string "cd ~/programs/dart/learning/twitter && dart main.dart -t \"" tweet "\""))
+  (echo (concatenate 'string "Tweeted: " tweet)))
+
+(define-key *root-map* (kbd "T") "tweet")
+
+;; switch key layout
+(defun switch-layout-to (new-lang)
+  "Switch the key layout to the given one"
+  (setq *key-layout* new-lang)
+  (run-shell-command (concatenate 'string "setxkbmap -layout " new-lang " && xmodmap ~/.Xmodmap"))
+  (echo (concatenate 'string "Set keyboard layout to " new-lang)))
+
+;; switch key leyout to german
+(defcommand layout-de ()
+  ()
+  "Set the keyboard layout to de (german)"
+  (switch-layout-to "de"))
+
+;; switch key leyout to american english
+(defcommand layout-en ()
+  ()
+  "Set the keyboard layout to en_US (american english)"
+  (switch-layout-to "en_US"))
+
+;; switch key layout automatically
+(defcommand switch-layout ()
+  ()
+  "Switch the layout"
+  (if (string= "en_US" *key-layout*)
+      (switch-layout-to "de")
+      (switch-layout-to "en_US")))
+
+(define-key *top-map* (kbd "s-SPC" ) "switch-layout")
