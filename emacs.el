@@ -64,12 +64,12 @@
  '(custom-enabled-themes (quote (atom-one-dark)))
  '(custom-safe-themes
    (quote
-    ("1160f5fc215738551fce39a67b2bcf312ed07ef3568d15d53c87baa4fd1f4d4e" default)))
- '(send-mail-function (quote smtpmail-send-it))
+    ("6254372d3ffe543979f21c4a4179cd819b808e5dd0f1787e2a2a647f5759c1d1" "1160f5fc215738551fce39a67b2bcf312ed07ef3568d15d53c87baa4fd1f4d4e" default)))
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme dart-mode coffee-mode auto-complete atom-one-dark-theme atom-dark-theme))))
+    (stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme dart-mode coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
+ '(send-mail-function (quote smtpmail-send-it)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
