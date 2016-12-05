@@ -1,4 +1,3 @@
-
 (setq user-full-name "Marcel Kapfer (mmk2410")
 (setq user-mail-address "marcelmichaelkapfer@gmail.com")
 
@@ -70,13 +69,13 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (mediawiki ## edit-server muttrc-mode flymake-yaml flymake-vala flymake-shell flymake-sass flymake-rust flymake-ruby flymake-phpcs flymake-php flymake-lua flymake-jslint flymake-jshint flymake-css flymake-coffee dart-mode auto-complete-auctex auctex atom-one-dark-theme))))
+    (stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme dart-mode coffee-mode auto-complete atom-one-dark-theme atom-dark-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "Hermit" :foundry "PfEd" :slant normal :weight normal :height 113 :width normal)))))
 
 
 ;; edit-server
@@ -96,6 +95,17 @@
 ;;; set default column width
 (setq-default fill-column 80)
 
+;;; settings for bells
+(setq visible-bell 1)
+
+;;; hide tool bar and menu bar
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+
+;;; slime
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(setq inferior-lisp-program "/usr/bin/sbcl")
+(setq slime-contribs '(slime-fancy))
 
 ;; packages
 
@@ -104,3 +114,6 @@
 (require 'fill-column-indicator)
 (setq fci-rule-width 5) ;;; set rule width to 5px
 (add-hook 'after-change-major-mode-hook 'fci-mode) ;; enable fci on every file
+
+;;; diff-hl
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
