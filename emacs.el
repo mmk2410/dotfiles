@@ -101,6 +101,7 @@
 ;;; hide tool bar and menu bar
 (menu-bar-mode 0)
 (tool-bar-mode 0)
+(scroll-bar-mode 0)
 
 ;;; slime
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
