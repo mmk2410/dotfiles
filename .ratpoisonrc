@@ -1,20 +1,31 @@
-startup_message off
+estartup_message off
 exec wmname LG3D
-exec xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 -f -D 5 &
 exec nitrogen --restore
-set border 6
+set border 5
 set font Hermit 10
 set wingravity c
-set padding 10 10 10 10
+set padding 0 0 0 0
 set fwcolor purple
 set barpadding 10 10
 
 bind c exec xfce4-terminal
+bind e exec emacs
+bind C-c exec google-chrome-unstable
 
-hsplit
-focus
+bind b exec ~/scripts/rat/bat.sh
+bind C-b exec ~/scripts/rat/backlight.sh
+bind T exec ~/scripts/rat/tweet.sh
 
-execf 1 firefox
-execf 0 xfce4-terminal
+# rpws: ratpoison workspaces
+exec /usr/bin/rpws init 9 -k
+bind C-1 exec rpws 1
+bind C-2 exec rpws 2
+bind C-3 exec rpws 3
+bind C-4 exec rpws 4
+bind C-5 exec rpws 5
+bind C-6 exec rpws 6
+bind C-7 exec rpws 7
+bind C-8 exec rpws 8
+bind C-9 exec rpws 9
 
-echo mmk2410@williams
+exec ~/scripts/rat/welcome.sh
