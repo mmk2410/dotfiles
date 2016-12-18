@@ -34,6 +34,8 @@ alias q=' exit'
 alias Q=' exit'
 alias x=' exit'
 alias cd..='cd ..'
+alias mmk2410='~/.mmk2410'
+
 if [ -z $SSH_CLIENT ]
 	~/.mmk2410
 end
@@ -44,5 +46,9 @@ end
 
 if [ -z $VISUAL ]
 	set -Ux VISUAL nvim
+end
+
+if [ -z $GOPATH ]
+	set -Ux GOPATH ~/.go
 end
 
