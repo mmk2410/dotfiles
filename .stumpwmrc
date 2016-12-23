@@ -44,15 +44,15 @@
 (define-key *root-map* (kbd "c") "exec urxvt")
 
 ;;; groups to rpws keys
-(define-key *root-map* (kbd "C-1") "gselect 1")
-(define-key *root-map* (kbd "C-2") "gselect 2")
-(define-key *root-map* (kbd "C-3") "gselect 3")
-(define-key *root-map* (kbd "C-4") "gselect 4")
-(define-key *root-map* (kbd "C-5") "gselect 5")
-(define-key *root-map* (kbd "C-6") "gselect 6")
-(define-key *root-map* (kbd "C-7") "gselect 7")
-(define-key *root-map* (kbd "C-8") "gselect 8")
-(define-key *root-map* (kbd "C-9") "gselect 9")
+(define-key *root-map* (kbd "C-1") "change-workspace 1")
+(define-key *root-map* (kbd "C-2") "change-workspace 2")
+(define-key *root-map* (kbd "C-3") "change-workspace 3")
+(define-key *root-map* (kbd "C-4") "change-workspace 4")
+(define-key *root-map* (kbd "C-5") "change-workspace 5")
+(define-key *root-map* (kbd "C-6") "change-workspace 6")
+(define-key *root-map* (kbd "C-7") "change-workspace 7")
+(define-key *root-map* (kbd "C-8") "change-workspace 8")
+(define-key *root-map* (kbd "C-9") "change-workspace 9")
 
 ;; xserver
 (run-shell-command "xmodmap ~/.Xmodmap")
@@ -127,3 +127,10 @@
       (switch-layout-to "en_US")))
 
 (define-key *top-map* (kbd "s-SPC" ) "switch-layout")
+
+;; switch workspace with a message
+(defcommand change-workspace (n)
+  ((:string n))
+  "Switch workspace"
+  (run-commands (concatenate 'string "gselect " n))
+  (echo (concatenate 'string "Switched to " n)))
