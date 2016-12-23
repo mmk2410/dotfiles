@@ -119,3 +119,14 @@
 ;;; diff-hl
 (global-diff-hl-mode t)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+
+;; stumpwm: working with emacsclient
+(add-hook 'after-init-hook 'server-start)
+(setq server-raise-frame t)
+
+(if window-system
+    (add-hook 'server-done-hook
+	      (lambda ()
+		(shell-command
+		 "stumpish 'eval (stumpwm::return-es-called-win stumpwm::*es-win*)'"))))
+

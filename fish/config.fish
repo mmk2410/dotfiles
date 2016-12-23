@@ -41,11 +41,11 @@ if [ -z $SSH_CLIENT ]
 end
 
 if [ -z $EDITOR ]
-	set -Ux EDITOR nvim
+	set -Ux EDITOR es
 end
 
 if [ -z $VISUAL ]
-	set -Ux VISUAL nvim
+	set -Ux VISUAL es
 end
 
 if [ -z $GOPATH ]

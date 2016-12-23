@@ -43,6 +43,10 @@
 ;;; terminal
 (define-key *root-map* (kbd "c") "exec urxvt")
 
+
+;;; es as emacs
+(define-key *root-map* (kbd "e") "exec es")
+
 ;;; groups to rpws keys
 (define-key *root-map* (kbd "C-1") "change-workspace 1")
 (define-key *root-map* (kbd "C-2") "change-workspace 2")
@@ -134,3 +138,19 @@
   "Switch workspace"
   (run-commands (concatenate 'string "gselect " n))
   (echo (concatenate 'string "Switched to " n)))
+
+
+;; working with emacsclient
+(defvar *es-win* nil
+  "to hold the window called emacsclient")
+(defun save-es-called-win ()
+  (setf *es-win* (current-window)))
+
+(defun return-es-called-window (win)
+  (let* ((group (window-group win))
+	 (frame (window-frame win))
+	 (old-frame (tile-group-current-frame group)))
+    (frame-raise-window group frame win)
+    (focus-all win)
+    (unless (eq frame old-frame)
+      (show-frame-indicator group))))
