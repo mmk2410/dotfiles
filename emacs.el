@@ -68,7 +68,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme dart-mode coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
+    (gruvbox-theme ac-math fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme dart-mode coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
  '(send-mail-function (quote smtpmail-send-it)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -129,4 +129,14 @@
 	      (lambda ()
 		(shell-command
 		 "stumpish 'eval (stumpwm::return-es-called-win stumpwm::*es-win*)'"))))
+;; ac-math
+
+(add-to-list 'ac-modes 'latex-mode)
+
+(defun ac-latex-mode-setup ()
+  (setq ac-sources
+	(append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
+		ac-sources)))
+
+(add-hook 'TeX-mode-hook 'ac-latex-mode-setup)
 
