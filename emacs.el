@@ -61,14 +61,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(csv-separators (quote (";")))
  '(custom-enabled-themes (quote (atom-one-dark)))
  '(custom-safe-themes
    (quote
-    ("6254372d3ffe543979f21c4a4179cd819b808e5dd0f1787e2a2a647f5759c1d1" "1160f5fc215738551fce39a67b2bcf312ed07ef3568d15d53c87baa4fd1f4d4e" default)))
+    ("08b8807d23c290c840bbb14614a83878529359eaba1805618b3be7d61b0b0a32" "43bc55af3857f9e2dc14c4413739f36d758e4d75bcd9b67e9b7dc6d9fcc1db68" "6254372d3ffe543979f21c4a4179cd819b808e5dd0f1787e2a2a647f5759c1d1" "1160f5fc215738551fce39a67b2bcf312ed07ef3568d15d53c87baa4fd1f4d4e" default)))
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (gruvbox-theme ac-math fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme dart-mode coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
+    (bash-completion awk-it auto-complete-auctex moinmoin-mode tracwiki-mode mediawiki phabricator remark-mode csv-mode gruvbox-theme ac-math fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme dart-mode coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
  '(send-mail-function (quote smtpmail-send-it)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -140,3 +141,19 @@
 
 (add-hook 'TeX-mode-hook 'ac-latex-mode-setup)
 
+;; auto-fill-mode
+;; (add-hook 'text-mode-hook 'turn-on-auto-fill-mode)
+(global-set-key (kbd "C-c q") 'auto-fill-mode)
+
+;; predictive mode
+(add-to-list 'load-path "~/.emacs.d/pkg/predictive/")
+(add-to-list 'load-path "~/.emacs.d/pkg/predictive/latex/")
+(add-to-list 'load-path "~/.emacs.d/pkg/predictive/texinfo/")
+(add-to-list 'load-path "~/.emacs.d/pkg/predictive/html/")
+(autoload 'predictive-mode "predictive" "predictive" t)
+(set-default 'predictive-auto-add-to-dict t)
+(setq predictive-main-dict 'rpg-dictionary
+      predictive-auto-learn t
+      predictive-add-to-dict-ask nil
+      predictive-use-auto-learn-cache nil
+      predictive-which-dict t)
