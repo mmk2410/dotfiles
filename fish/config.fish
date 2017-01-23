@@ -27,8 +27,8 @@ alias chgrp='chgrp --preserve-root'
 alias cls=' echo -ne "\033c"'
 alias ps='ps aux k%cpu'
 alias new='touch'
-alias re='reboot'
-alias off='poweroff'
+alias re='/sbin/reboot'
+alias off='/sbin/poweroff'
 alias vol='alsamixer'
 alias q=' exit'
 alias Q=' exit'
@@ -46,6 +46,10 @@ end
 
 if [ -z $VISUAL ]
 	set -Ux VISUAL es
+end
+
+if [ -z $GIT_EDITOR ]
+	set -Ux GIT_EDITOR es
 end
 
 if [ -z $GOPATH ]
