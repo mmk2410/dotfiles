@@ -46,3 +46,37 @@ auto_view text/html
 set query_command= "abook --mutt-query '%s'"
 macro index,pager a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
 bind editor <Tab> complete-query
+
+## Sidebar
+## Variables
+set sidebar_visible = no
+set sidebar_short_path = no
+set sidebar_delim_chars = "/."
+set sidebar_folder_indent = no
+set sidebar_indent_string = "  "
+set sidebar_new_mail_only = no
+set sidebar_next_new_wrap = no
+set sidebar_on_right = no
+set sidebar_divider_char = '|'
+set mail_check_stats
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_sort_method = "unsorted"
+## Functions
+bind index,pager \Cp sidebar-prev
+bind index,pager \Cn sidebar-next
+macro index,pager \Co "<sidebar-open><sidebar-toggle-visible>"
+bind index,pager <F5> sidebar-page-up
+bind index,pager <F6> sidebar-page-down
+bind index,pager \C[ sidebar-prev-new
+bind index,pager \C] sidebar-next-new
+bind index,pager B sidebar-toggle-visible
+## Colors
+color sidebar_highlight black cyan
+color sidebar_divider color8 black
+color sidebar_flagged red black
+color sidebar_new green black
+color sidebar_ordinary color2 default
+
+# Local Variables:
+# mode: muttrc
+# End:
