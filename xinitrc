@@ -49,7 +49,7 @@ fi
 #exec xterm -geometry 80x66+0+0 -name login
 
 # Here Xfce is kept as default
-session=${1:-ratpoison}
+session=${1:-stumpwm}
 
 case $session in
     awesome           ) exec awesome;;
