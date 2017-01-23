@@ -85,3 +85,7 @@ color markers brightcyan black
 mono bold bold
 mono underline underline
 mono indicator reverse
+
+# Local Variables:
+# mode: muttrc
+# End:
