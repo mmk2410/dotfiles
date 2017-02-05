@@ -61,6 +61,9 @@
 ;; xserver
 (run-shell-command "xmodmap ~/.Xmodmap")
 (run-shell-command "xrdb -merge ~/.Xresources")
+;;; HiDPI stuff.
+;;; TODO: Only run if required
+(run-shell-command "xrdb -merge ~/.Xresources-hidpi")
 
 ;; dunst notify server
 (run-shell-command "dunst")
