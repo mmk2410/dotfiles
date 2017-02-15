@@ -8,6 +8,8 @@ set sort = threads
 set sort_aux=last-date-received
 set sleep_time = 0
 
+set editor = "es"
+
 ## Work
 source "~/.mutt/work"
 folder-hook $folder 'source ~/.mutt/work'
