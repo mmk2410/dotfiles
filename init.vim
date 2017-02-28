@@ -27,7 +27,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim")) || filereadable(expand("~/.c
     Plug 'KabbAmine/gulp-vim'
     Plug 'derekwyatt/vim-scala'
     Plug 'kovisoft/slimv'
-    Plug 'freeo/vim-kalisi'
     Plug 'vim-scripts/java.vim'
     Plug 'vim-php/vim-phpunit'
     Plug 'IN3D/vim-raml'
@@ -90,8 +89,9 @@ set tm=500
 " Color
 
 syntax on
-colorscheme kalisi
-set background=light
+colorscheme gruvbox
+
+set background=dark
 set cursorline
 if has("gui_running")
         set guioptions-=T
