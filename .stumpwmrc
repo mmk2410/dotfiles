@@ -38,11 +38,10 @@
 ;; root keybindings
 
 ;;; browser
-(define-key *root-map* (kbd "C-c") "exec google-chrome-unstable")
+(define-key *root-map* (kbd "C-c") "exec /opt/firefox/firefox")
 
 ;;; terminal
 (define-key *root-map* (kbd "c") "exec urxvt")
-
 
 ;;; es as emacs
 (define-key *root-map* (kbd "e") "exec es")
@@ -63,7 +62,7 @@
 (run-shell-command "xrdb -merge ~/.Xresources")
 ;;; HiDPI stuff.
 ;;; TODO: Only run if required
-(run-shell-command "xrdb -merge ~/.Xresources-hidpi")
+;; (run-shell-command "xrdb -merge ~/.Xresources-hidpi")
 
 ;; dunst notify server
 (run-shell-command "dunst")
@@ -73,10 +72,12 @@
 
 ;; message window font
 (set-font "11Hermit")
-;;(setf *max-
 
 ;; set the mouse focus
 (setf *mouse-focus-policy* :click)
+
+;; set DESKTOP_SESSION variable
+(setf (getenv "DESKTOP_SESSION") "stumpwm")
 
 ;; define volume control keys
 (define-key *top-map* (kbd "XF86AudioLowerVolume") "exec amixer set Master 5%-")
