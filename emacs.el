@@ -1,14 +1,12 @@
-(setq user-full-name "Marcel Kapfer (mmk2410")
+(setq user-full-name "Marcel Kapfer")
 (setq user-mail-address "marcelmichaelkapfer@gmail.com")
-
-(setq load-path (append (list (expand-file-name "/usr/local/lilypond/usr/share/emacs/site-lisp")) load-path))
 
 (load "package")
 (package-initialize)
 (add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/"))
+	     '("marmalade" . "https://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/"))
+	     '("melpa" . "https://melpa.milkbox.net/packages/"))
 (setq package-archive-enable-alist '(("melpa" deft magit)))
 
 (setq tab-width 2)
