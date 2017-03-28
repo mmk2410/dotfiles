@@ -37,8 +37,8 @@ xscreensaver.passwd.thermometer.width:       8
 
 ! urxvt -------------------------------------------
 
-URxvt*font: xft:Hermit:medium:size=12:antialiasing=true
-URxvt*boldFont: xft:Hermit:bold:size=12:antialiasing=true:style=medium
+URxvt*font: xft:Hermit:medium:size=10:antialiasing=true
+URxvt*boldFont: xft:Hermit:bold:size=10:antialiasing=true:style=medium
 URxvt.letterSpace: 0
 ! Add fallback fonts as laid out in `man 1 urxvt` under "font:" in the RESOURCES section
 

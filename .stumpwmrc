@@ -70,6 +70,9 @@
 ;; nitrogen (wallpaper)
 (run-shell-command "nitrogen --restore")
 
+;; keepassxc
+(run-shell-command "keepassxc ~/ownCloud/2016-10.kdbx")
+
 ;; message window font
 (set-font "11Hermit")
 
@@ -158,3 +161,4 @@
     (focus-all win)
     (unless (eq frame old-frame)
       (show-frame-indicator group))))
+
