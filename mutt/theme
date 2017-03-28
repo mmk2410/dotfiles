@@ -1,91 +1,95 @@
-## Theme kindly inspired from                                                                                                                                             
-## http://nongeekshandbook.blogspot.ie/2009/03/mutt-color-configuration.html                                                                                              
+# Mutt color file
+# Maintainer: Jon Häggblad <jon@haeggblad.com>
+# URL: http://www.haeggblad.com
+# Last Change: 2013 May 17
+# Version: 0.1
+#
+# Mutt colorscheme loosely inspired by vim colorscheme wombat.vim.
+#
+# Changelog: 
+#   0.1 - Initial version
 
-## Colours for items in the index                                                                                                                                         
-color index brightcyan black ~N
-color index brightred black ~O
-color index brightyellow black ~F
-color index black green ~T
-color index brightred black ~D
-mono index bold ~N
-mono index bold ~F
-mono index bold ~T
-mono index bold ~D
 
-## Highlights inside the body of a message.                                                                                                                               
+# --- vombatidae text colors ---
+#  color normal		color230      color234
+#  color message      	color230      color234 
 
-## URLs                                                                                                                                                                    
-color body brightgreen black "(http|ftp|news|telnet|finger)://[^ \"\t\r\n]*"
-color body brightgreen black "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
-mono body bold "(http|ftp|news|telnet|finger)://[^ \"\t\r\n]*"
-mono body bold "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+# --- slightly less yellow text colors ---
+color normal		color253	color234 # mod
+# color normal		color253	color233 # mod
+#  color normal		color253	default # mod
+color indicator    	color230     	color238
+color status       	color101     	color16
+#  color tree         	color113      	color234 
+#  color tree         	color173      	color234 
+color tree         	color208      	color234 
+color signature    	color102      	color234 
+color message      	color253      	color234 
+color attachment	color117      	color234 
+color error        	color30      	color234 
+color tilde        	color130     	color235 
 
-## Email addresses.                                                                                                                                                       
-color body brightgreen black "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+color search       color100     default 
+color markers      color138     default 
 
-## Header                                                                                                                                                                 
-color header green black "^from:"
-color header green black "^to:"
-color header green black "^cc:"
-color header green black "^date:"
-color header yellow black "^newsgroups:"
-color header yellow black "^reply-to:"
-color header brightcyan black "^subject:"
-color header red black "^x-spam-rule:"
-color header green black "^x-mailer:"
-color header yellow black "^message-id:"
-color header yellow black "^Organization:"
-color header yellow black "^Organisation:"
-color header yellow black "^User-Agent:"
-color header yellow black "^message-id: .*pine"
-color header yellow black "^X-Fnord:"
-color header yellow black "^X-WebTV-Stationery:"
+#  mono bold          reverse
+#  color bold         color173 color191
+#  mono underline     reverse
+#  color underline    color48  color191
 
-color header red black "^x-spam-rule:"
-color header green black "^x-mailer:"
-color header yellow black "^message-id:"
-color header yellow black "^Organization:"
-color header yellow black "^Organisation:"
-color header yellow black "^User-Agent:"
-color header yellow black "^message-id: .*pine"
-color header yellow black "^X-Fnord:"
-color header yellow black "^X-WebTV-Stationery:"
-color header yellow black "^X-Message-Flag:"
-color header yellow black "^X-Spam-Status:"
-color header yellow black "^X-SpamProbe:"
-color header red black "^X-SpamProbe: SPAM"
+color quoted        color107     color234             # quoted text
+color quoted1       color66      color234
+color quoted2       color32      color234
+color quoted3       color30      color234
+color quoted4       color99      color234
+color quoted5       color36      color234
+color quoted6       color114     color234
+color quoted7       color109     color234
+color quoted8       color41      color234
+color quoted9       color138     color234
 
-## Coloring quoted text - coloring the first 7 levels:                                                                                                                    
-color quoted cyan black
-color quoted1 yellow black
-color quoted2 red black
-color quoted3 green black
-color quoted4 cyan black
-color quoted5 yellow black
-color quoted6 red black
-color quoted7 green black
+# color body          cyan  default  "((ftp|http|https)://|news:)[^ >)\"\t]+"
+# color body          cyan  default  "[-a-z_0-9.+]+@[-a-z_0-9.]+"
+# color body          red   default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
+# color body          green default  "(^| )_[-a-z0-9_]+_[,.?]?[\n]"
+# color body          red   default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
+# color body          green default  "(^| )_[-a-z0-9_]+_[,.?]?[ \n]"
+color index		color202	color234  ~F         # Flagged
+color index         	color39     	color234  ~N          # New
+color index         	color39     	color234  ~O         
+color index         	color229     	color22  ~T         # Tagged
+color index         	color240     	color234  ~D         # Deleted
 
-## Default color definitions                                                                                                                                              
-#color hdrdefault white green                                                                                                                                             
-color signature brightmagenta black
-color indicator black cyan
-color attachment black green
-color error red black
-color message white black
-color search brightwhite magenta
-color status brightyellow blue
-color tree brightblue black
-color normal white black
-color tilde green black
-color bold brightyellow black
-#color underline magenta black                                                                                                                                            
-color markers brightcyan black
+# ---
 
-## Colour definitions when on a mono screen                                                                                                                               
-mono bold bold
-mono underline underline
-mono indicator reverse
+#mono body	reverse		'^(subject):.*'
+#color body	brightwhite magenta	'^(subject):.*'
+#mono body	reverse		'[[:alpha:]][[:alnum:]-]+:'
+#color body	black cyan	'[[:alpha:]][[:alnum:]-]+:'
 
-# Local Variables:
-# mode: muttrc
-# End:
+# --- header ---
+
+color hdrdefault 	color30    	color233 
+color header		color132    	color233    '^date:'
+color header		color153    	color233    '^(to|cc|bcc):'
+color header		color120    	color233    '^from:'
+color header		color178    	color233    '^subject:'
+color header    	color31     	color233    '^user-agent:'
+color header		color29     	color233    '^reply-to:'
+
+#color header	magenta default '^(status|lines|date|received|sender|references):'
+#color header	magenta default '^(pr|mime|x-|user|return|content-)[^:]*:'
+#color header	brightyellow default '^content-type:'
+#color header	magenta default '^content-type: *text/plain'
+# color header	brightgreen default '^list-[^:]*:'
+#mono  header    bold	            '^(subject):.*$'
+#color header	brightcyan default	'^(disposition)'
+#color header	green default	'^(mail-)?followup'
+#color header	white default	'^reply'
+#color header	brightwhite default	'^(resent)'
+# color header	brightwhite default	'^from:'
+
+#mono index	bold '~h "^content-type: *(multipart/(mixed|signed|encrypted)|application/)"'
+#color index	green black '~h "^content-type: *multipart/(signed|encrypted)"'
+
+#color sidebar_new color39 color234 
