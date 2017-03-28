@@ -74,7 +74,7 @@
  '(jdee-server-dir "/opt/jdee-emacs-server/")
  '(package-selected-packages
    (quote
-    (focus web-mode bash-completion awk-it auto-complete-auctex moinmoin-mode tracwiki-mode mediawiki phabricator remark-mode csv-mode gruvbox-theme ac-math fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme dart-mode coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
+    (arduino-mode json-mode gruvbox-theme focus literate-coffee-mode jdee javadoc-lookup pkgbuild-mode vala-snippets vala-mode phpunit ac-php php-completion php+-mode fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme dart-mode coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
  '(send-mail-function (quote smtpmail-send-it)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -109,6 +109,19 @@
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
+;;; window / frame size
+(setq initial-frame-alist
+      '(
+	(width . 102)
+	(height . 44)
+	))
+
+(setq default-frame-alist
+      '(
+	(width . 100)
+	(height . 42)
+	))
+
 ;;; slime
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 (setq inferior-lisp-program "/usr/bin/sbcl")
@@ -135,8 +148,11 @@
 	      (lambda ()
 		(shell-command
 		 "stumpish 'eval (stumpwm::return-es-called-win stumpwm::*es-win*)'"))))
-;; ac-math
 
+;; auctex
+(setq-default TeX-master nil)
+
+;; ac-math
 (add-to-list 'ac-modes 'latex-mode)
 
 (defun ac-latex-mode-setup ()
@@ -147,7 +163,9 @@
 (add-hook 'TeX-mode-hook 'ac-latex-mode-setup)
 
 ;; auto-fill-mode
-;; (add-hook 'text-mode-hook 'turn-on-auto-fill-mode)
+(add-hook 'mail-mode-hook 'auto-fill-mode)
+(add-hook 'TeX-mode-hook 'auto-fill-mode)
+(add-hook 'mail-mode-hook (lambda () (setq fill-column 72)))
 (global-set-key (kbd "C-c q") 'auto-fill-mode)
 
 ;; predictive mode
