@@ -4,7 +4,7 @@
 
 (in-package :stumpwm)
 
-(defparameter *key-layout* "en_US" "Stores the current key layout")
+(defparameter *key-layout* "us -variant altgr-intl" "Stores the current key layout")
 
 ;; creating groups
 (gnewbg "2")
@@ -126,16 +126,16 @@
 ;; switch key leyout to american english
 (defcommand layout-en ()
   ()
-  "Set the keyboard layout to en_US (american english)"
-  (switch-layout-to "en_US"))
+  "Set the keyboard layout to US International AltGr"
+  (switch-layout-to "us -variant altgr-intl"))
 
 ;; switch key layout automatically
 (defcommand switch-layout ()
   ()
   "Switch the layout"
-  (if (string= "en_US" *key-layout*)
+  (if (string= "us -variant altgr-intl" *key-layout*)
       (switch-layout-to "de")
-      (switch-layout-to "en_US")))
+      (switch-layout-to "us -variant altgr-intl")))
 
 (define-key *top-map* (kbd "s-SPC" ) "switch-layout")
 

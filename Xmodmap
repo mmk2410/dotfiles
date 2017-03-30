@@ -3,3 +3,6 @@ clear Lock
 add Control = Control_L
 keycode 118 = Caps_Lock
 add Lock = Caps_Lock
+keycode  55 = v V v V doublelowquotemark singlelowquotemark doublelowquotemark
+keycode  56 = b B b B leftdoublequotemark leftsinglequotemark leftdoublequotemark
+keycode  57 = n N n N rightdoublequotemark rightsinglequotemark rightdoublequotemark
