@@ -70,6 +70,11 @@ URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: /usr/bin/google-chrome-unstable
 URxvt.matcher.button: 3
 
+! Scrolling behavior
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: false
+URxvt*scrollTtyKeypress: true
+
 ! special
 *.foreground:   #5c6370
 *.background:   #1e2127
