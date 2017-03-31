@@ -2,7 +2,7 @@ set header_cache = "~/.cache/mutt"
 set imap_check_subscribed
 set imap_keepalive = 300
 unset imap_passive
-set mail_check = 60
+set mail_check = 30
 set mbox_type=Maildir
 set sort = threads
 set sort_aux=last-date-received
@@ -78,6 +78,13 @@ color sidebar_divider color8 black
 color sidebar_flagged red black
 color sidebar_new green black
 color sidebar_ordinary color2 default
+
+# Attachment support
+set abort_noattach = ask-yes
+set attach_keyword = "\\<(Anhang|angehängt|beigefügt|attach(|ed|ments?)?)\\>"
+
+# New mail notification
+set new_mail_command="notify-send 'New Email in %f' '%n new messages, %u unread.' &"
 
 # Local Variables:
 # mode: muttrc
