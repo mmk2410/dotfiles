@@ -1,6 +1,6 @@
 " vim-plug plugin manager
 
-if filereadable(expand("~/.vim/autoload/plug.vim")) || filereadable(expand("~/.config/nvim/autoload/plug.vim")) || filereadable(expand("~\vimfiles\autoload\plug.vim"))
+if filereadable(expand("~/.vim/autoload/plug.vim")) || filereadable(expand("~/.config/nvim/autoload/plug.vim")) || filereadable(expand("~\vimfiles\autoload\plug.vim")) || filereadable(expand("~/.local/share/nvim/site/plugin/plug.vim"))
 
     call plug#begin('~/.vim/plugged')
 
