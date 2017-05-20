@@ -9,8 +9,6 @@
 	     '("melpa" . "https://melpa.milkbox.net/packages/"))
 (setq package-archive-enable-alist '(("melpa" deft magit)))
 
-(setq tab-width 2)
-
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Org mode settings
@@ -77,6 +75,9 @@
    (quote
     (arduino-mode json-mode gruvbox-theme focus literate-coffee-mode jdee javadoc-lookup pkgbuild-mode vala-snippets vala-mode phpunit ac-php php-completion php+-mode fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme dart-mode coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
  '(send-mail-function (quote smtpmail-send-it)))
+ '(standard-indent 2)
+ '(web-mode-code-indent-offset 2)
+ '(web-mode-indent-style 2))
  '(send-mail-function (quote smtpmail-send-it))
  '(tool-bar-mode nil)
 (custom-set-faces
@@ -124,6 +125,11 @@
 	(width . 100)
 	(height . 42)
 	))
+
+;;; indention
+
+(setq-default indent-tabs-mode nil)
+(setq tab-width 2)
 
 ;;; slime
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
