@@ -71,6 +71,7 @@
  '(inhibit-startup-screen t)
  '(jdee-global-classpath (quote ("/home/wilson/jdee-libs/")))
  '(jdee-server-dir "/opt/jdee-emacs-server/")
+ '(org-agenda-files (quote ("~/ownCloud/todo.org")))
  '(package-selected-packages
    (quote
  '(send-mail-function (quote smtpmail-send-it)))
