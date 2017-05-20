@@ -35,6 +35,7 @@ alias q=' exit'
 alias Q=' exit'
 alias x=' exit'
 alias cd..='cd ..'
+alias sbcl='rlwrap sbcl'
 alias mmk2410='~/.mmk2410'
 
 if [ -z $SSH_CLIENT ]
