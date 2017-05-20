@@ -74,8 +74,9 @@
  '(org-agenda-files (quote ("~/ownCloud/todo.org")))
  '(package-selected-packages
    (quote
- '(send-mail-function (quote smtpmail-send-it)))
     (web-mode fixme-mode ob-dart ac-python ac-slime ant auctex-lua auto-compile auto-complete-auctex csv-mode csv ac-haskell-process ghc haskell-mode arduino-mode json-mode gruvbox-theme focus literate-coffee-mode jdee javadoc-lookup pkgbuild-mode vala-snippets vala-mode phpunit ac-php php-completion php+-mode fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
+ '(safe-local-variable-values (quote ((TeX-Engine . luatex))))
+ '(send-mail-function (quote smtpmail-send-it))
  '(standard-indent 2)
  '(tool-bar-mode nil)
  '(web-mode-code-indent-offset 2)
