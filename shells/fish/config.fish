@@ -1,6 +1,7 @@
 set -x PATH $PATH /usr/local/bin /usr/bin /bin /usr/local/games /usr/games ~/.pub-cache/bin ~/.gem/ruby/2.4.0/bin
 
 set -x ARCHFLAGS -arch_x86_64
+set -Ux GPG_TTY (tty)
 
 eval (thefuck --alias | tr '\n' ';')
 alias l="ls"
