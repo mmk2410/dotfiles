@@ -76,6 +76,7 @@
     (arduino-mode json-mode gruvbox-theme focus literate-coffee-mode jdee javadoc-lookup pkgbuild-mode vala-snippets vala-mode phpunit ac-php php-completion php+-mode fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme dart-mode coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
  '(send-mail-function (quote smtpmail-send-it)))
  '(standard-indent 2)
+ '(tool-bar-mode nil)
  '(web-mode-code-indent-offset 2)
  '(web-mode-indent-style 2))
  '(send-mail-function (quote smtpmail-send-it))
