@@ -161,6 +161,10 @@
 ;; auctex
 (setq-default TeX-master nil)
 
+;; reftex
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-auctex t)
+
 ;; ac-math
 (add-to-list 'ac-modes 'latex-mode)
 
