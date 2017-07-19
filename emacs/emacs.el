@@ -65,7 +65,7 @@
  '(custom-enabled-themes (quote (atom-one-dark)))
  '(custom-safe-themes
    (quote
-    ("d29231b2550e0d30b7d0d7fc54a7fb2aa7f47d1b110ee625c1a56b30fea3be0f" "c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" "eb0a314ac9f75a2bf6ed53563b5d28b563eeba938f8433f6d1db781a47da1366" "a1289424bbc0e9f9877aa2c9a03c7dfd2835ea51d8781a0bf9e2415101f70a7e" "10e231624707d46f7b2059cc9280c332f7c7a530ebc17dba7e506df34c5332c4" "08b8807d23c290c840bbb14614a83878529359eaba1805618b3be7d61b0b0a32" "43bc55af3857f9e2dc14c4413739f36d758e4d75bcd9b67e9b7dc6d9fcc1db68" "6254372d3ffe543979f21c4a4179cd819b808e5dd0f1787e2a2a647f5759c1d1" "1160f5fc215738551fce39a67b2bcf312ed07ef3568d15d53c87baa4fd1f4d4e" default)))
+    ("e9460a84d876da407d9e6accf9ceba453e2f86f8b86076f37c08ad155de8223c" "d29231b2550e0d30b7d0d7fc54a7fb2aa7f47d1b110ee625c1a56b30fea3be0f" "c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" "eb0a314ac9f75a2bf6ed53563b5d28b563eeba938f8433f6d1db781a47da1366" "a1289424bbc0e9f9877aa2c9a03c7dfd2835ea51d8781a0bf9e2415101f70a7e" "10e231624707d46f7b2059cc9280c332f7c7a530ebc17dba7e506df34c5332c4" "08b8807d23c290c840bbb14614a83878529359eaba1805618b3be7d61b0b0a32" "43bc55af3857f9e2dc14c4413739f36d758e4d75bcd9b67e9b7dc6d9fcc1db68" "6254372d3ffe543979f21c4a4179cd819b808e5dd0f1787e2a2a647f5759c1d1" "1160f5fc215738551fce39a67b2bcf312ed07ef3568d15d53c87baa4fd1f4d4e" default)))
  '(ecb-options-version "2.50")
  '(fci-rule-color "#3E4451")
  '(inhibit-startup-screen t)
@@ -74,7 +74,7 @@
  '(org-agenda-files (quote ("~/ownCloud/todo.org")))
  '(package-selected-packages
    (quote
-    (web-mode fixme-mode ob-dart ac-python ac-slime ant auctex-lua auto-compile auto-complete-auctex csv-mode csv ac-haskell-process ghc haskell-mode arduino-mode json-mode gruvbox-theme focus literate-coffee-mode jdee javadoc-lookup pkgbuild-mode vala-snippets vala-mode phpunit ac-php php-completion php+-mode fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
+    (prolog web-mode fixme-mode ob-dart ac-python ac-slime ant auctex-lua auto-compile csv-mode csv ac-haskell-process ghc haskell-mode arduino-mode json-mode gruvbox-theme focus literate-coffee-mode jdee pkgbuild-mode vala-snippets vala-mode phpunit ac-php php-completion php+-mode fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
  '(safe-local-variable-values (quote ((TeX-Engine . luatex))))
  '(send-mail-function (quote smtpmail-send-it))
  '(standard-indent 2)
@@ -197,3 +197,23 @@
       predictive-add-to-dict-ask nil
       predictive-use-auto-learn-cache nil
       predictive-which-dict t)
+
+;; org mode
+
+(unless (boundp 'org-latex-classes)
+  (setq org-latex-classes nil))
+
+;;; latex scrartcl as documentclass
+
+(add-to-list 'org-latex-classes
+             '("scrartcl"
+               "\\documentclass{scrartcl}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+;;; syntax highlighting
+
+(setq org-src-fontify-natively t)
