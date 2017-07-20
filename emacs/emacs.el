@@ -18,7 +18,7 @@
 (global-font-lock-mode 1)
 
 ;; Always show line numbers
-(global-linum-mode t)
+(global-nlinum-mode t)
 
 ;; Highlight current line
 (global-hl-line-mode t)
