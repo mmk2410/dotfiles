@@ -184,6 +184,8 @@
 ;; neotree toggle
 (global-set-key [f8] 'neotree-toggle)
 
+;; magit status key
+(global-set-key [f5] 'magit-status)
 
 
 
