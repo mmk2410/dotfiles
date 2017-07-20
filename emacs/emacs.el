@@ -265,3 +265,18 @@
 
 ;;; hook for rainbox delimiters mode
 (add-hook 'TeX-mode-hook #'rainbow-delimiters-mode)
+
+; themes
+
+;; enable bold and italic
+(setq doom-themes-enable-bold t
+      doom-themes-enable-italic t)
+
+;;; enable doom one theme
+(load-theme 'doom-one t)
+
+;;; enable flashing mode-line on errors
+(doom-themes-visual-bell-config)
+
+;;; enable neotree theme
+(doom-themes-neotree-config)
