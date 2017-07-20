@@ -187,6 +187,8 @@
 ;; magit status key
 (global-set-key [f5] 'magit-status)
 
+;; enable rainbow delimiters mode in programming modes
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 
 
@@ -260,3 +262,5 @@
 ;;; hook for latex math mode
 (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 
+;;; hook for rainbox delimiters mode
+(add-hook 'TeX-mode-hook #'rainbow-delimiters-mode)
