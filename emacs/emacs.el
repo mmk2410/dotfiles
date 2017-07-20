@@ -190,7 +190,8 @@
 ;; enable rainbow delimiters mode in programming modes
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
-
+;; enable powerline modeline
+(powerline-center-theme)
 
 
 ; ((Lua)La)TeX configuration using auctex
