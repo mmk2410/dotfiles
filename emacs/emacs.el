@@ -36,24 +36,6 @@
 ;; Mutt support.
 (setq auto-mode-alist (append '(("/tmp/mutt.*" . mail-mode)) auto-mode-alist))
 
-;; auctex
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq TeX-save-query nil)
-(setq TeX-PDF-mode t)
-
-;; outline mode
-
-(defun turn-on-outline-minor-mode ()
-  (outline-minor-mode 1))
-
-(add-hook 'LaTeX-mode-hook 'turn-on-outline-minor-mode)
-(add-hook 'latex-mode-hook 'turn-on-outline-minor-mode)
-(setq outline-minor-mode-prefix "\C-c \C-o") ; Or something else
-
-;; flymake for latex
-(defun flymake-get-tex-args (file-name)
-  (list "chktex" (list "-q" "-v0" file-name)))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -145,7 +127,6 @@
 
 (require 'fill-column-indicator)
 (setq fci-rule-width 5) ;;; set rule width to 5px
-(add-hook 'after-change-major-mode-hook 'fci-mode) ;; enable fci on every file
 
 ;;; diff-hl
 (global-diff-hl-mode t)
@@ -161,26 +142,8 @@
 		(shell-command
 		 "stumpish 'eval (stumpwm::return-es-called-win stumpwm::*es-win*)'"))))
 
-;; auctex
-(setq-default TeX-master nil)
-
-;; reftex
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-(setq reftex-plug-into-auctex t)
-
-;; ac-math
-(add-to-list 'ac-modes 'latex-mode)
-
-(defun ac-latex-mode-setup ()
-  (setq ac-sources
-	(append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
-		ac-sources)))
-
-(add-hook 'TeX-mode-hook 'ac-latex-mode-setup)
-
 ;; auto-fill-mode
 (add-hook 'mail-mode-hook 'auto-fill-mode)
-(add-hook 'TeX-mode-hook 'auto-fill-mode)
 (add-hook 'mail-mode-hook (lambda () (setq fill-column 72)))
 (global-set-key (kbd "C-c q") 'auto-fill-mode)
 
@@ -217,3 +180,79 @@
 ;;; syntax highlighting
 
 (setq org-src-fontify-natively t)
+
+
+
+
+
+
+
+; ((Lua)La)TeX configuration using auctex
+
+;; variables
+
+;;; Automatically save style information when saving the buffer. 
+(setq TeX-auto-save t)
+
+;;; Parse file after loading it if no style hook is found for it. 
+(setq TeX-parse-self t)
+
+;;; Don't ask the user when saving a file for each file.
+(setq TeX-save-query nil)
+
+;;; Use luatex as default TeX engine.
+(setq TeX-engine (quote luatex))
+
+;;; Outline mode keyboard shortcut.
+(setq outline-minor-mode-prefix "\C-c \C-o")
+
+;;; set default master file to nil so auctex asks for it. 
+(setq-default TeX-master nil)
+
+;;; enable reftex auctex interaction.
+(setq reftex-plug-into-auctex t)
+
+;;; add the latex mode to the autocomplete modes.
+(add-to-list 'ac-modes 'latex-mode)
+
+;;; enable synctex correlation.
+(setq TeX-source-correlate-mode t
+      TeX-source-correlate-start-server t)
+
+;; functions
+
+;;; function for enabling outline mode
+(defun turn-on-outline-minor-mode ()
+  (outline-minor-mode 1))
+
+;;; autocompletion for latex
+;;;; does this really work?
+(defun ac-latex-mode-setup ()
+  (setq ac-sources
+	(append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
+		ac-sources)))
+
+(eval-after-load "tex"
+                 '(setcar (cdr (assoc 'output-pdf TeX-view-program-selection)) "Okular"))
+
+;; hooks
+
+;;; hooks for outline mode
+(add-hook 'LaTeX-mode-hook 'turn-on-outline-minor-mode)
+(add-hook 'latex-mode-hook 'turn-on-outline-minor-mode)
+
+;;; hook for fci-mode
+(add-hook 'LaTeX-mode-hook 'fci-mode)
+
+;;; hook for reftex
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+
+;;; hook for autocomplete.
+(add-hook 'TeX-mode-hook 'ac-latex-mode-setup)
+
+;;; hook for auto fill mode
+(add-hook 'TeX-mode-hook 'auto-fill-mode)
+
+;;; hook for latex math mode
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+
