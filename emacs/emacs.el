@@ -74,7 +74,7 @@
  '(org-agenda-files (quote ("~/ownCloud/todo.org")))
  '(package-selected-packages
    (quote
-    (prolog web-mode fixme-mode ob-dart ac-python ac-slime ant auctex-lua auto-compile csv-mode csv ac-haskell-process ghc haskell-mode arduino-mode json-mode gruvbox-theme focus literate-coffee-mode jdee pkgbuild-mode vala-snippets vala-mode phpunit ac-php php-completion php+-mode fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
+    (fic-mode markdown-preview-mode web-mode ob-dart ac-python ac-slime ant auctex-lua auto-compile auto-complete-auctex csv-mode csv ac-haskell-process ghc haskell-mode arduino-mode json-mode gruvbox-theme focus literate-coffee-mode jdee javadoc-lookup pkgbuild-mode vala-snippets vala-mode phpunit ac-php php-completion php+-mode fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
  '(safe-local-variable-values (quote ((TeX-Engine . luatex))))
  '(send-mail-function (quote smtpmail-send-it))
  '(standard-indent 2)
@@ -88,7 +88,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Hermit" :foundry "unknown" :slant normal :weight normal :height 90 :width normal)))))
+ '(default ((t (:family "Hermit" :foundry "unknown" :slant normal :weight normal :height 90 :width normal))))
+ '(cursor ((t (:background "light gray")))))
 
 
 ;; edit-server
@@ -217,3 +218,6 @@
 ;;; syntax highlighting
 
 (setq org-src-fontify-natively t)
+
+;; WIP: set cursor coloer
+(set-cursor-color "#ebdbb2")
