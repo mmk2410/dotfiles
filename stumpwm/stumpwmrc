@@ -4,6 +4,9 @@
 
 (in-package :stumpwm)
 
+(setf *debug-level* 10)
+(redirect-all-output "/tmp/stumpwm-debug.log")
+
 (defparameter *key-layout* "us -variant altgr-intl" "Stores the current key layout")
 
 ;; creating groups
@@ -36,9 +39,9 @@
 (gravity :center)
 
 ;; root keybindings
-
-;;; browser
-(define-key *root-map* (kbd "C-c") "exec /opt/firefox/firefox")
+;
+;; browser
+(define-key *root-map* (kbd "C-c") "exec /opt/google/chrome-unstable/google-chrome-unstable --password-store=gnome")
 
 ;;; terminal
 (define-key *root-map* (kbd "c") "exec urxvt")
@@ -57,8 +60,11 @@
 (define-key *root-map* (kbd "C-8") "change-workspace 8")
 (define-key *root-map* (kbd "C-9") "change-workspace 9")
 
+;;; mode-line key
+(define-key *root-map* (kbd "Menu") "mode-line")
+
 ;; xserver
-(run-shell-command "xmodmap ~/.Xmodmap")
+
 (run-shell-command "xrdb -merge ~/.Xresources")
 ;;; HiDPI stuff.
 ;;; TODO: Only run if required
@@ -162,3 +168,8 @@
     (unless (eq frame old-frame)
       (show-frame-indicator group))))
 
+(load-module "stumptray")
+
+(switch-layout-to *key-layout*)
+
+(run-shell-command "xmodmap $HOME/.Xmodmap" t)

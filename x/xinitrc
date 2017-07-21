@@ -22,8 +22,14 @@ if [ -f "$userresources" ]; then
 fi
 
 if [ -f "$usermodmap" ]; then
+    echo "Found a user modmap at $usermodpad"
     xmodmap "$usermodmap"
 fi
+
+# start gnome keyring daemon
+dbus-update-activation-environment --systemd DISPLAY
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
 
 # start some nice programs
 
@@ -65,5 +71,3 @@ case $session in
     # No known session, try to run it as command
     *) exec "$1";;
 esac
-
-export PATH="${PATH}:/usr/local/texlive/2015/bin/x86_64-linux"
