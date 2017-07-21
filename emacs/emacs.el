@@ -177,6 +177,49 @@
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
+;;; add latex packages and configurations
+(setq org-latex-packages-alist
+      '(
+        ("" "booktabs" t)
+        ("" "listings" t)
+        ("" "xcolor" t)
+        ("" "polyglossia" t)
+        ("utf8" "luainputenc" t)
+        ("" "fontspec" t)
+        ("hidelinks" "hyperref" t)
+        ("" "libertineotf" t)
+        ("scale=0.9" "AnonymousPro" t)
+        "\\setmainfont{Linux Libertine O}"
+        "\\setsansfont{Linux Biolinum O}"
+        "\\setmonofont{AnonymousPro}"
+        "\\addtokomafont{disposition}{\\fontspec{LinBiolinum_RB}}"
+        "\\setdefaultlanguage{german}"))
+
+;;; enable latex listings
+(setq org-latex-listings 'listings)
+
+;;; latex listings options
+(setq org-latex-listings-options
+      '(
+        ("frame" "single")
+        ("rulesep" "6pt")
+        ("backgroundcolor" "\\color{gray!20}")
+        ("basicstyle" "\\footnotesize\\ttfamily")
+        ("breaklines" "true")
+        ))
+
+;;; remove unused default packages
+(unless (boundp 'org-latex-default-packages-alist)
+  (setq org-latex-default-packages-alist nil))
+(setq org-latex-default-packages-alist
+      (remove '("AUTO" "inputenc" t) org-latex-default-packages-alist))
+(setq org-latex-default-packages-alist
+      (remove '("" "fixltx2e" nil) org-latex-default-packages-alist))
+(setq org-latex-default-packages-alist
+      (remove '("" "hyperref" nil) org-latex-default-packages-alist))
+(setq org-latex-default-packages-alist
+      (remove '"\\tolerance=1000" org-latex-default-packages-alist))
+
 ;;; syntax highlighting
 
 (setq org-src-fontify-natively t)
