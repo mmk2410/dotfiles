@@ -39,7 +39,7 @@
 ;; root keybindings
 ;
 ;; browser
-(define-key *root-map* (kbd "C-c") "exec /opt/google/chrome-unstable/google-chrome-unstable --password-store=gnome")
+(define-key *root-map* (kbd "W") "exec x-www-browser")
 
 ;;; terminal
 (define-key *root-map* (kbd "c") "exec urxvt")
