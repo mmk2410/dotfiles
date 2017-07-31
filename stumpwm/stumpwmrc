@@ -150,7 +150,6 @@
   (run-commands (concatenate 'string "gselect " n))
   (echo (concatenate 'string "Switched to " n)))
 
-
 ;; working with emacsclient
 (defvar *es-win* nil
   "to hold the window called emacsclient")
@@ -167,6 +166,10 @@
       (show-frame-indicator group))))
 
 (load-module "stumptray")
+
+;; font configuration
+(load-module "ttf-fonts")
+(set-font (make-instance 'xft:font :family "Hack" :subfamily "Regular" :size 30))
 
 (switch-layout-to *key-layout*)
 
