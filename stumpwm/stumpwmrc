@@ -4,8 +4,6 @@
 
 (in-package :stumpwm)
 
-(setf *debug-level* 10)
-(redirect-all-output "/tmp/stumpwm-debug.log")
 
 (defparameter *key-layout* "us -variant altgr-intl" "Stores the current key layout")
 
