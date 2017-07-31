@@ -9,7 +9,5 @@ shell "fish"
 attrcolor b ".I"
 defbce "on"
 
-screen -t newsbeuter 1 newsbeuter
-screen -t mutt 2 mutt
-screen -t fish 3 fish
-screen -t fish 4 fish
+screen -t fish 1 fish
+screen -t fish 2 fish
