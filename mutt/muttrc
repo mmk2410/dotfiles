@@ -36,7 +36,6 @@ set send_charset="utf-8"
 
 source ~/.mutt/theme
 
-## HTML mails
 # message list
 set index_format = "%4C %Z %{%b %d %R} %-15.15L (%6l) %s"
 
@@ -58,6 +57,8 @@ bind index "G" sync-mailbox
 bind pager "{" previous-thread
 bind pager "}" next-thread
 
+
+# custom headers
 ## Sidebar
 ## Variables
 set sidebar_visible = yes
@@ -94,6 +95,9 @@ set attach_keyword = "\\<(Anhang|angehängt|beigefügt|attach(|ed|ments?)?)\\>"
 
 # New mail notification
 set new_mail_command="notify-send 'New Email in %f' '%n new messages, %u unread.' &"
+
+# compatibility with some use cases
+set abort_unmodified = no
 
 # Local Variables:
 # mode: muttrc
