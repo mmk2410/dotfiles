@@ -19,3 +19,8 @@ screen -t Mailbox 7  mutt -e "source ~/.mutt/mailbox"
 screen -t Uni     8  mutt -e "source ~/.mutt/uni-ulm"
 screen -t Gmail   9  mutt -e "source ~/.mutt/gmail"
 screen -t RSS     10 newsbeuter
+
+select 0
+bind c screen 1
+bind 0 select 10
+
