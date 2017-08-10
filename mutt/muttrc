@@ -51,6 +51,12 @@ bind editor <Tab> complete-query
 bind editor ^T complete
 macro index,pager a "<pipe-message>khard add-email<return>" "Add this sender to khard"
 
+# binds
+bind index "{" previous-thread
+bind index "}" next-thread
+bind index "G" sync-mailbox
+bind pager "{" previous-thread
+bind pager "}" next-thread
 
 ## Sidebar
 ## Variables
