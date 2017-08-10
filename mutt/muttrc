@@ -1,14 +1,25 @@
 set header_cache = "~/.cache/mutt/headers"
 set message_cachedir = "~/.cache/mutt/messages"
+set tmpdir = "/tmp"
 set imap_check_subscribed
+set timeout = 60
+set mail_check = 120
 set imap_keepalive = 300
 unset imap_passive
-set mail_check = 30
 set mbox_type=Maildir
 set sort = threads
 set sort_aux=last-date-received
 set sleep_time = 0
 set beep = no
+set smart_wrap
+set pager_index_lines=8
+set confirmappend = no
+set include=yes
+set hdrs
+set edit_hdrs
+set nomarkers
+set reply_to=ask-yes
+set envelope_from
 
 set editor = "es"
 
