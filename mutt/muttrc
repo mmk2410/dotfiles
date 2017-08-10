@@ -54,10 +54,10 @@ macro index,pager a "<pipe-message>khard add-email<return>" "Add this sender to 
 
 ## Sidebar
 ## Variables
-set sidebar_visible = no
-set sidebar_short_path = no
+set sidebar_visible = yes
+set sidebar_short_path = yes
 set sidebar_delim_chars = "/."
-set sidebar_folder_indent = no
+set sidebar_folder_indent = yes
 set sidebar_indent_string = "  "
 set sidebar_new_mail_only = no
 set sidebar_next_new_wrap = no
@@ -65,11 +65,11 @@ set sidebar_on_right = no
 set sidebar_divider_char = '|'
 set mail_check_stats
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
-set sidebar_sort_method = "unsorted"
+set sidebar_sort_method = "path"
 ## Functions
 bind index,pager \Cp sidebar-prev
 bind index,pager \Cn sidebar-next
-macro index,pager \Co "<sidebar-open><sidebar-toggle-visible>"
+bind index,pager \Co sidebar-open
 bind index,pager <F5> sidebar-page-up
 bind index,pager <F6> sidebar-page-down
 bind index,pager \C[ sidebar-prev-new
