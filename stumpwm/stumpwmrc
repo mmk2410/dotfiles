@@ -78,7 +78,7 @@
 (run-shell-command "nitrogen --restore")
 
 ;; keepassxc
-(run-shell-command "keepassxc ~/ownCloud/2016-10.kdbx")
+(run-shell-command "gpg --textmode -d ~/.config/keepassxc/password.gpg | keepassxc --pw-stdin ~/ownCloud/keys/2017-04.kdbx")
 
 ;; set the mouse focus
 (setf *mouse-focus-policy* :click)
