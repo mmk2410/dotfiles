@@ -171,7 +171,7 @@
 
 ;; font configuration
 (load-module "ttf-fonts")
-(set-font (make-instance 'xft:font :family "Hack" :subfamily "Regular" :size 30))
+(set-font (make-instance 'xft:font :family "Hack" :subfamily "Regular" :size 10))
 
 (switch-layout-to *key-layout*)
 
