@@ -23,6 +23,8 @@ set envelope_from
 
 set editor = "es"
 
+## Passwords file
+source "gpg --textmode -d ~/.mutt/passwords.gpg |"
 
 source /usr/share/doc/mutt/examples/gpg.rc
 
