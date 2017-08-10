@@ -1,4 +1,5 @@
-set header_cache = "~/.cache/mutt"
+set header_cache = "~/.cache/mutt/headers"
+set message_cachedir = "~/.cache/mutt/messages"
 set imap_check_subscribed
 set imap_keepalive = 300
 unset imap_passive
