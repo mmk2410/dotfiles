@@ -36,9 +36,9 @@ alias sbcl='rlwrap sbcl'
 alias o='xdg-open'
 alias mmk2410='~/.mmk2410'
 
-if [ -z $SSH_CLIENT ]
-	~/.mmk2410
-end
+# if [ -z $SSH_CLIENT ]
+#   ~/.mmk2410
+# end
 
 if [ -z $EDITOR ]
 	set -Ux EDITOR es
