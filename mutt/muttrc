@@ -23,17 +23,6 @@ set envelope_from
 
 set editor = "es"
 
-## Work
-source "~/.mutt/work"
-folder-hook $folder 'source ~/.mutt/work'
-
-## Uni
-source "~/.mutt/uni"
-folder-hook marcel.kapfer@uni-ulm.de 'source ~/.mutt/uni'
-
-## Private
-source "~/.mutt/private"
-folder-hook marcelmichaelkapfer@gmail.com 'source ~/.mutt/private'
 
 source /usr/share/doc/mutt/examples/gpg.rc
 
