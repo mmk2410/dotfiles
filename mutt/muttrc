@@ -40,7 +40,9 @@ source ~/.mutt/theme
 # message list
 set index_format = "%4C %Z %{%b %d %R} %-15.15L (%6l) %s"
 
+## HTML mails
 set mailcap_path = ~/.mutt/mailcap
+alternative_order text/plain text/html
 auto_view text/html
 
 ## Abook
