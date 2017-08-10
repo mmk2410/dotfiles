@@ -91,7 +91,9 @@
 (define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec amixer set Master 5%+")
 (define-key *top-map* (kbd "XF86AudioMute") "exec amixer set Master toggle")
 (define-key *top-map* (kbd "XF86AudioMicMute") "exec amixer set Capture toggle")
-(define-key *top-map* (kbd "XF86Launch1") "exec blurlock")
+
+;; lockscreen
+(define-key *root-map* (kbd "M-l") "exec blurlock")
 
 ;; battery status
 (define-key *root-map* (kbd "b") "exec ~/scripts/rat/bat.sh")
