@@ -80,9 +80,6 @@
 ;; keepassxc
 (run-shell-command "keepassxc ~/ownCloud/2016-10.kdbx")
 
-;; message window font
-(set-font "11Hermit")
-
 ;; set the mouse focus
 (setf *mouse-focus-policy* :click)
 
