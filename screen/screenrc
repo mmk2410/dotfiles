@@ -24,3 +24,10 @@ select 0
 bind c screen 1
 bind 0 select 10
 
+bind s split
+
+defutf8 on
+utf8 on
+
+vbell off
+shell "fish"
