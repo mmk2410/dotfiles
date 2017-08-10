@@ -55,3 +55,14 @@ end
 if [ -z $GOPATH ]
 	set -Ux GOPATH ~/.go
 end
+
+# Attach the autoscreen screen session  if StumpWM is running
+# and it's not already in use.
+if test $DESKTOP_SESSION = "stumpwm"
+        if screen -list | grep -q "No Sockets"
+                screen -dmS autoscreen
+                exec screen -r
+        else if screen -list | grep -Eq "\.autoscreen.*Detached"
+                exec screen -r
+        end
+end
