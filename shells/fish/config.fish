@@ -58,7 +58,7 @@ end
 
 # Attach the autoscreen screen session  if StumpWM is running
 # and it's not already in use.
-if test $DESKTOP_SESSION = "stumpwm"
+if test \( -n $DESKTOP_SESSION \) -a \( $DESKTOP_SESSION = "stumpwm" \)
         if screen -list | grep -q "No Sockets"
                 screen -dmS autoscreen
                 exec screen -r
