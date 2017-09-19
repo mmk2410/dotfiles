@@ -4,31 +4,28 @@
 
 (in-package :stumpwm)
 
-
 (defparameter *key-layout* "us -variant altgr-intl" "Stores the current key layout")
 
-;; creating groups
-(gnewbg "2")
-(gnewbg "3")
-(gnewbg "4")
-(gnewbg "5")
-(gnewbg "6")
-(gnewbg "7")
-(gnewbg "8")
-(gnewbg "9")
+;; creating or rename groups
+(setf (group-name (first (screen-groups (current-screen)))) "term")
+(gnewbg "web")
+(gnewbg "emacs")
+(gnewbg "work")
+(gnewbg "music")
+(gnewbg "stuff")
 
 ;; border width
-(setf *maxsize-border-width* 5)
-(setf *transient-border-width* 5)
-(setf *normal-border-width* 5)
+(setf *maxsize-border-width* 3)
+(setf *transient-border-width* 3)
+(setf *normal-border-width* 3)
 
 ;; border style
 (setf *window-border-style* :tight)
 (set-focus-color "#b00045")
-(set-win-bg-color "black")
-(set-unfocus-color "black")
+(set-win-bg-color "#b00045")
+(set-unfocus-color "#333333")
 (set-float-focus-color "#b00045")
-(set-float-unfocus-color "black")
+(set-float-unfocus-color "#333333")
 
 ;; window gravity
 (set-normal-gravity :center)
@@ -36,33 +33,100 @@
 (set-transient-gravity :center)
 (gravity :center)
 
+;; input bar position
+(setf *input-window-gravity* :center)
+
+;; message bar position
+(setf *message-window-gravity* :center)
+
+;; message timeout
+(setf *timeout-wait* 3)
+
+;; set the mouse focus
+(setf *mouse-focus-policy* :sloppy)
+
+;; set DESKTOP_SESSION variable
+(setf (getenv "DESKTOP_SESSION") "stumpwm")
+
+;; style message windows
+(set-bg-color "#333333")
+(set-border-color "#b00045")
+
+;; loading modeline modules
+(load-module "battery-portable")
+(load-module "hostname")
+
+;; mode-line style
+(setf *mode-line-background-color* "#333333"
+      *mode-line-foreground-color* "#cccccc"
+      *mode-line-border-color* "#b00045"
+      *mode-line-timeout* 5
+      *mode-line-border-width* 3
+      *mode-line-pad-x* 3
+      *mode-line-pad-y* 3
+      *screen-mode-line-format* (list "[" '(:eval (RUN-SHELL-COMMAND "date '+%F %H:%M'|tr -d [:cntrl:]" T)) "] [%n]  %W ^> [%B] [marcel@%h]  "))
+
+;; customize texts
+(setf *window-format* "^B %n ^b %20t "
+      *group-format* "%t")
+
+;; program runners
+
+;;; emacs
+(defcommand emacs () ()
+            "run emacs"
+            (run-or-raise "es" '(:class "Emacs")))
+
 ;; root keybindings
 ;
 ;; browser
 (define-key *root-map* (kbd "W") "exec x-www-browser")
+(define-key *root-map* (kbd "P") "exec firefox-nightly --private-window")
 
 ;;; terminal
 (define-key *root-map* (kbd "c") "exec urxvt")
 
 ;;; es as emacs
-(define-key *root-map* (kbd "e") "exec es")
+(define-key *root-map* (kbd "e") "emacs")
 
 ;;; ranger
 (define-key *root-map* (kbd "C-c") "exec urxvt -e ranger")
 
 ;;; groups to rpws keys
-(define-key *root-map* (kbd "C-1") "change-workspace 1")
-(define-key *root-map* (kbd "C-2") "change-workspace 2")
-(define-key *root-map* (kbd "C-3") "change-workspace 3")
-(define-key *root-map* (kbd "C-4") "change-workspace 4")
-(define-key *root-map* (kbd "C-5") "change-workspace 5")
-(define-key *root-map* (kbd "C-6") "change-workspace 6")
-(define-key *root-map* (kbd "C-7") "change-workspace 7")
-(define-key *root-map* (kbd "C-8") "change-workspace 8")
-(define-key *root-map* (kbd "C-9") "change-workspace 9")
+(define-key *root-map* (kbd "C-1") "change-workspace term")
+(define-key *root-map* (kbd "C-2") "change-workspace web")
+(define-key *root-map* (kbd "C-3") "change-workspace emacs")
+(define-key *root-map* (kbd "C-4") "change-workspace work")
+(define-key *root-map* (kbd "C-5") "change-workspace music")
+(define-key *root-map* (kbd "C-s") "change-workspace stuff")
 
 ;;; mode-line key
 (define-key *root-map* (kbd "Menu") "mode-line")
+
+;; define volume control keys
+(define-key *top-map* (kbd "XF86AudioLowerVolume") "exec amixer set Master 5%-")
+(define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec amixer set Master 5%+")
+(define-key *top-map* (kbd "XF86AudioMute") "exec amixer set Master toggle")
+(define-key *top-map* (kbd "XF86AudioMicMute") "exec amixer set Capture toggle")
+
+;; webjump keys
+(defvar *webjump-frame-bindings*
+  (let  ((m (make-sparse-keymap)))
+    (define-key m (kbd "g") "google")
+    (define-key m (kbd "G") "googlede")
+    (define-key m (kbd "d") "duckduckgo")
+    (define-key m (kbd "D") "packages")
+    (define-key m (kbd "w") "wikipedia")
+    (define-key m (kbd "W") "wikipediade")
+    m))
+
+(define-key *root-map* (kbd "j") '*webjump-frame-bindings*)
+
+;; lockscreen
+(define-key *top-map* (kbd "M-l") "exec blurlock")
+
+;; battery status
+(define-key *root-map* (kbd "b") "exec ~/scripts/rat/bat.sh")
 
 ;; xserver
 
@@ -77,26 +141,9 @@
 ;; nitrogen (wallpaper)
 (run-shell-command "nitrogen --restore")
 
-;; keepassxc
-(run-shell-command "gpg --textmode -d ~/.config/keepassxc/password.gpg | keepassxc --pw-stdin ~/ownCloud/keys/2017-04.kdbx")
-
-;; set the mouse focus
-(setf *mouse-focus-policy* :click)
-
-;; set DESKTOP_SESSION variable
-(setf (getenv "DESKTOP_SESSION") "stumpwm")
-
-;; define volume control keys
-(define-key *top-map* (kbd "XF86AudioLowerVolume") "exec amixer set Master 5%-")
-(define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec amixer set Master 5%+")
-(define-key *top-map* (kbd "XF86AudioMute") "exec amixer set Master toggle")
-(define-key *top-map* (kbd "XF86AudioMicMute") "exec amixer set Capture toggle")
-
-;; lockscreen
-(define-key *root-map* (kbd "M-l") "exec blurlock")
-
-;; battery status
-(define-key *root-map* (kbd "b") "exec ~/scripts/rat/bat.sh")
+;; start mode line
+(if (not (head-mode-line (current-head)))
+     (toggle-mode-line (current-screen) (current-head)))
 
 ;; set backlight
 (defcommand set-backlight (value)
@@ -167,11 +214,59 @@
     (unless (eq frame old-frame)
       (show-frame-indicator group))))
 
-(load-module "stumptray")
+;; webjumps
+(defmacro make-web-jump (name prefix)
+  `(defcommand ,(intern name) (search) ((:rest ,(concatenate 'string name " search: ")))
+    (substitute #\+ #\Space search)
+    (run-shell-command (concatenate 'string ,prefix search))))
+
+(make-web-jump "google" "firefox-nightly http://www.google.com/search?q=")
+(make-web-jump "googlede" "firefox-nightly  http://www.google.de/search?q=")
+(make-web-jump "duckduckgo" "firefox-nightly https://duckduckgo.com/?q=")
+(make-web-jump "packages" "firefox-nightly https://packages.debian.org/search?suite=sid&searchon=names&keywords=")
+(make-web-jump "wikipedia" "firefox-nightly https://en.wikipedia.org/w/index.php?search=")
+(make-web-jump "wikipediade" "firefox-nightly https://de.wikipedia.org/w/index.php?search=")
 
 ;; font configuration
 (load-module "ttf-fonts")
 (set-font (make-instance 'xft:font :family "Hack" :subfamily "Regular" :size 10))
+
+;; window placement rules
+(define-frame-preference "stuff"
+  (0 nil t :class "keepassxc")
+  (0 nil t :class "ownCloud")
+  (0 nil t :title "bwSyncAndShare"))
+
+(define-frame-preference "web"
+  (0 nil t :class "Firefox"))
+
+(define-frame-preference "emacs"
+  (0 nil t :class "Emacs"))
+
+(define-frame-preference "music"
+  (0 nil t :class "Google Play Music Desktop Player"))
+
+;; autostart programs
+
+;; keepassxc
+(run-shell-command "gpg --textmode -d ~/.config/keepassxc/password.gpg | keepassxc --pw-stdin ~/ownCloud/keys/2017-04.kdbx")
+
+;; owncloud
+(run-shell-command "owncloud")
+
+;; bwSyncAndShare
+(run-shell-command "bwsyncandshare")
+
+;; firefox
+(run-shell-command "firefox-nightly")
+
+;; term
+(run-shell-command "urxvt")
+
+;; emacs
+(run-commands "emacs")
+
+;; last settings
 
 (switch-layout-to *key-layout*)
 
