@@ -1,3 +1,5 @@
+bind generic,pager,editor,index <Esc> noop
+
 set header_cache = "~/.cache/mutt/headers"
 set message_cachedir = "~/.cache/mutt/messages"
 set tmpdir = "/tmp"
