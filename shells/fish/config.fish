@@ -66,3 +66,12 @@ if test \( -n $DESKTOP_SESSION \) -a \( $DESKTOP_SESSION = "stumpwm" \)
                 exec screen -r
         end
 end
+
+# Automatically start X at login
+# source: https://wiki.archlinux.org/index.php/Fish#Start_X_at_login
+if status --is-login
+    if test -z "$DISPLAY" -a $XDG_VTNR = 1
+        exec startx -- -keeptty
+    end
+end
+
