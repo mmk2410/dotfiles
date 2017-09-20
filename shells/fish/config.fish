@@ -1,5 +1,7 @@
 set -x ARCHFLAGS -arch_x86_64
-set -x GPG_TTY (tty)
+
+set -e GPG_TTY
+set -Ux GPG_TTY (tty)
 
 eval (thefuck --alias | tr '\n' ';')
 alias l="ls"
@@ -67,8 +69,21 @@ if test \( -n $DESKTOP_SESSION \) -a \( $DESKTOP_SESSION = "stumpwm" \)
         end
 end
 
+# gpg-agent as SSH agent
+set -e SSH_AGENT_PID
+set -e SSH_AUTH_SOCK
+if test -z $gnupg_SSH_AUTH_SOCK_by
+    set gnupg_SSH_AUTH_SOCK_by 0
+end
+if test $gnupg_SSH_AUTH_SOCK_by -ne %self
+    set UID (id -u)
+    set -Ux SSH_AUTH_SOCK "/run/user/$UID/gnupg/S.gpg-agent.ssh"
+end
+gpg-connect-agent updatestartuptty /bye > /dev/null
+
 # Automatically start X at login
 # source: https://wiki.archlinux.org/index.php/Fish#Start_X_at_login
+# This must be at the bottom of this file
 if status --is-login
     if test -z "$DISPLAY" -a $XDG_VTNR = 1
         exec startx -- -keeptty
