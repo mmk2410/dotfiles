@@ -235,7 +235,7 @@
 (define-frame-preference "stuff"
   (0 nil t :class "keepassxc")
   (0 nil t :class "ownCloud")
-  (0 nil t :title "bwSyncAndShare"))
+  (0 nil t :class "de-dal33t-Start")) ;; bwSyncAndShare
 
 (define-frame-preference "web"
   (0 nil t :class "Firefox"))
