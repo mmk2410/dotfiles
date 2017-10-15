@@ -14,8 +14,6 @@ term rxvt-unicode-256color
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 defbce "on"
 
-altscreen on
-
 mousetrack on
 screen -t fish    1  fish
 screen -t fish    2  fish
@@ -32,6 +30,8 @@ bind s split
 
 defutf8 on
 utf8 on
+
+altscreen on
 
 vbell off
 shell "fish"
