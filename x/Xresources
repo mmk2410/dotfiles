@@ -69,7 +69,7 @@ URxvt.depth: 32
 URxvt.perl-ext-common: default,matcher,keyboard-select
 
 ! URLs
-URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.url-launcher: /usr/local/bin/firefox-nightly
 URxvt.matcher.button: 3
 URxvt.keysym.M-u: matcher:select
 

@@ -7,7 +7,7 @@ defscrollback 65000
 
 startup_message off
 
-term screen-256color
+# term screen-256color
 # termcapinfo xterm* ti@:te@
 attrcolor b ".I"
 term rxvt-unicode-256color
@@ -35,3 +35,5 @@ altscreen on
 
 vbell off
 shell "fish"
+
+altscreen on
