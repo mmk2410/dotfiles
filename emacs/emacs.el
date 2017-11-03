@@ -329,16 +329,16 @@
 ;;; enable neotree theme
 (doom-themes-neotree-config)
 
-
-;; experimental stuff
-
 ;;; ivy default configuration
 
+;;; always enable ivy
 (ivy-mode 1)
 
+;;; ivy configuration
 (setq ivy-use-virtual-buffers t)
 (setq ivy-count-format "(%d/%d) ")
 
+;;; ivy keys
 (global-set-key (kbd "C-s") 'swiper)
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
