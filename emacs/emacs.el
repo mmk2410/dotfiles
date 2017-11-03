@@ -355,3 +355,7 @@
 (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
 
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
+
+;; global indent mode
+
+(indent-guide-global-mode)
