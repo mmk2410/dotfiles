@@ -287,8 +287,34 @@
 	(append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
 		ac-sources)))
 
-(eval-after-load "tex"
-                 '(setcar (cdr (assoc 'output-pdf TeX-view-program-selection)) "Okular"))
+
+;; helper for a new (La)TeX style guide concept.
+(defun TeX-insert-comment-line ()
+  "Insert a linebreak followed by a '%' and another line break"
+  (interactive)
+  (newline-and-indent)
+  (insert "%")
+  (newline-and-indent))
+
+;; Key binding for TeX-insert-comment-line
+(defun my-latex-mode-keys ()
+  "Key bindings for latex-mode"
+  (local-set-key (kbd "<C-return>") 'TeX-insert-comment-line))
+
+;; Enable own latex-mode keybindings
+(add-hook 'latex-mode 'my-latex-mode-keys)
+
+;; use okular over synctex with auctex
+;; (eval-after-load "tex"
+;;                  '(setcar (cdr (assoc 'output-pdf TeX-view-program-selection)) "Okular"))
+
+;; use pdf-tools over synctex with auctex
+(setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+      TeX-source-correlate-start-server t)
+
+;; Update PDF buffers after successful LaTeX runs
+(add-hook 'TeX-after-TeX-LaTeX-command-finished-hook
+           #'TeX-revert-document-buffer)
 
 ;; hooks
 
