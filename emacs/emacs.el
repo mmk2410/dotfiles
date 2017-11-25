@@ -276,7 +276,7 @@
 ;; non-whitespace character
 (use-package hungry-delete
   :config
-  (hungry-delete-mode))
+  (global-hungry-delete-mode t))
 
 ;; expand-region
 ;; Increase selected region by semantic units.
