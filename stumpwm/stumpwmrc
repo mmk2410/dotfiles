@@ -128,7 +128,7 @@
 (define-key *root-map* (kbd "j") '*webjump-frame-bindings*)
 
 ;; lockscreen
-(define-key *top-map* (kbd "M-l") "exec blurlock")
+(define-key *root-map* (kbd "M-l") "exec blurlock")
 
 ;; battery status
 (define-key *root-map* (kbd "b") "exec ~/scripts/rat/bat.sh")
