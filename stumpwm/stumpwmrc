@@ -54,6 +54,9 @@
 ;; loading modeline modules
 (load-module "battery-portable")
 (load-module "hostname")
+(load-module "stumptray")
+
+(stumptray:stumptray)
 
 ;; mode-line style
 (setf *mode-line-background-color* "#333333"
@@ -63,7 +66,7 @@
       *mode-line-border-width* 3
       *mode-line-pad-x* 3
       *mode-line-pad-y* 3
-      *screen-mode-line-format* (list "[" '(:eval (RUN-SHELL-COMMAND "date '+%F %H:%M'|tr -d [:cntrl:]" T)) "] [%n]  %W ^> [%B] [marcel@%h]  "))
+      *screen-mode-line-format* (list "[" '(:eval (RUN-SHELL-COMMAND "date '+%F %H:%M'|tr -d [:cntrl:]" T)) "] [%n]  %w ^> [" '(:eval (RUN-SHELL-COMMAND "hostname -I |tr -d [:cntrl:]" T)) "][%B] [marcel@%h] %T"))
 
 ;; customize texts
 (setf *window-format* "^B %n ^b %20t "
