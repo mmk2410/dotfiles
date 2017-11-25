@@ -42,7 +42,7 @@
 (setf *timeout-wait* 3)
 
 ;; set the mouse focus
-(setf *mouse-focus-policy* :sloppy)
+(setf *mouse-focus-policy* :click)
 
 ;; set DESKTOP_SESSION variable
 (setf (getenv "DESKTOP_SESSION") "stumpwm")
