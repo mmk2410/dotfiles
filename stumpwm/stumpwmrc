@@ -263,11 +263,14 @@
 ;; firefox
 (run-shell-command "firefox-nightly")
 
-;; term
-(run-shell-command "urxvt")
+;; telegram
+(run-shell-command "telegram-desktop")
 
 ;; emacs
 (run-commands "emacs")
+
+;; redshift
+(run-shell-command "redshift")
 
 ;; last settings
 
