@@ -7,12 +7,11 @@
 (defparameter *key-layout* "us -variant altgr-intl" "Stores the current key layout")
 
 ;; creating or rename groups
-(setf (group-name (first (screen-groups (current-screen)))) "term")
-(gnewbg "web")
-(gnewbg "emacs")
+(setf (group-name (first (screen-groups (current-screen)))) "web")
 (gnewbg "work")
+(gnewbg "misc")
 (gnewbg "music")
-(gnewbg "stuff")
+(gnewbg "winkel")
 
 ;; border width
 (setf *maxsize-border-width* 3)
@@ -92,13 +91,19 @@
 ;;; ranger
 (define-key *root-map* (kbd "C-c") "exec urxvt -e ranger")
 
-;;; groups to rpws keys
-(define-key *root-map* (kbd "C-1") "change-workspace term")
-(define-key *root-map* (kbd "C-2") "change-workspace web")
-(define-key *root-map* (kbd "C-3") "change-workspace emacs")
-(define-key *root-map* (kbd "C-4") "change-workspace work")
-(define-key *root-map* (kbd "C-5") "change-workspace music")
-(define-key *root-map* (kbd "C-s") "change-workspace stuff")
+;;; bind keys for changing workspace
+(define-key *root-map* (kbd "C-1") "change-workspace web")
+(define-key *root-map* (kbd "C-2") "change-workspace work")
+(define-key *root-map* (kbd "C-3") "change-workspace misc")
+(define-key *root-map* (kbd "C-4") "change-workspace music")
+(define-key *root-map* (kbd "C-s") "change-workspace winkel")
+
+;; bind keys for moving the current window to another workspace
+(define-key *root-map* (kbd "M-1") "gmove web")
+(define-key *root-map* (kbd "M-2") "gmove work")
+(define-key *root-map* (kbd "M-3") "gmove misc")
+(define-key *root-map* (kbd "M-4") "gmove music")
+(define-key *root-map* (kbd "M-s") "gmove winkel")
 
 ;;; mode-line key
 (define-key *root-map* (kbd "Menu") "mode-line")
@@ -232,24 +237,22 @@
 (set-font (make-instance 'xft:font :family "Hack" :subfamily "Regular" :size 10))
 
 ;; window placement rules
-(define-frame-preference "stuff"
+(define-frame-preference "winkel"
   (0 nil t :class "keepassxc")
   (0 nil t :class "ownCloud")
-  (0 nil t :class "de-dal33t-Start")) ;; bwSyncAndShare
+  (0 nil t :class "de-dal33t-Start")
+  (0 nil t :class "TelegramDesktop")) ;; bwSyncAndShare
 
 (define-frame-preference "web"
-  (0 nil t :class "Firefox"))
-
-(define-frame-preference "emacs"
-  (0 nil t :class "Emacs"))
+  (0 nil t :class "Nightly"))
 
 (define-frame-preference "music"
-  (0 nil t :class "Google Play Music Desktop Player"))
+  (0 nil t :class "Spotify"))
 
 ;; autostart programs
 
 ;; keepassxc
-(run-shell-command "gpg --textmode -d ~/.config/keepassxc/password.gpg | keepassxc --pw-stdin ~/ownCloud/keys/2017-04.kdbx")
+(run-shell-command "gpg --textmode -d ~/.config/keepassxc/password.gpg | keepassxc --pw-stdin ~/ownCloud/keys/2017-10.kdbx")
 
 ;; owncloud
 (run-shell-command "owncloud")
