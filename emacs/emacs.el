@@ -690,6 +690,12 @@
         :map html-mode-map ("C-c b" . web-beautify-html)
         :map css-mode-map ("C-c b" . web-beautify-css)))
 
+;; company
+;; Modular text completion framework
+(use-package company
+  :config
+  (global-company-mode t))
+
 ;; company-math
 ;; Completion backends for unicode math symbols and latex tags
 (use-package company-math
