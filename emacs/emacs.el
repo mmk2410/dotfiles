@@ -43,6 +43,7 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#1B2229" "#ff6c6b" "#98be65" "#ECBE7B" "#51afef" "#c678dd" "#46D9FF" "#DFDFDF"])
+ '(browse-url-browser-function (quote browse-url-firefox))
  '(csv-separators (quote (";")))
  '(custom-enabled-themes (quote (atom-one-dark)))
  '(custom-safe-themes
@@ -385,3 +386,8 @@
 ;; global indent mode
 
 (indent-guide-global-mode)
+
+;; set default web browser
+(setq browse-url-generic-program
+      (substring (shell-command-to-string "gconftool-2 -g /desktop/gnome/url-handlers/https/command") 0 -4)
+      browse-url-browser-function 'browse-url-generic)
