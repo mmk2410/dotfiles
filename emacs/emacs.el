@@ -61,6 +61,10 @@
  '(package-selected-packages
    (quote
     (avandu org company company-math counsel ivy beginend doom-themes neotree rainbow-delimiters projectile nlinum powerline airline-themes fic-mode markdown-preview-mode web-mode ob-dart ac-python ac-slime ant auctex-lua auto-compile auto-complete-auctex csv-mode csv ac-haskell-process ghc haskell-mode arduino-mode json-mode gruvbox-theme focus literate-coffee-mode jdee javadoc-lookup pkgbuild-mode vala-snippets vala-mode phpunit ac-php php-completion php+-mode fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
+ '(pdf-latex-command "lualatex")
+ '(pdf-view-incompatible-modes
+   (quote
+    (linum-mode linum-relative-mode helm-linum-relative-mode nlinum-hl-mode nlinum-relative-mode yalinum-mode)))
  '(safe-local-variable-values (quote ((TeX-engine . pdftex) (TeX-Engine . luatex))))
  '(send-mail-function (quote smtpmail-send-it))
  '(standard-indent 2)
@@ -391,3 +395,9 @@
 (setq browse-url-generic-program
       (substring (shell-command-to-string "gconftool-2 -g /desktop/gnome/url-handlers/https/command") 0 -4)
       browse-url-browser-function 'browse-url-generic)
+;; enable pdf-tools
+(pdf-tools-install)
+
+;; reload pdf document after compliation
+(add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+
