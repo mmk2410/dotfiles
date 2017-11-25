@@ -31,6 +31,12 @@
 ;;
 ;; The code in this block should be package independend.
 
+;; Keep emacs Custom-settings in separate file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (not (file-exists-p custom-file))
+  (with-temp-buffer (write-file custom-file)))
+(load custom-file)
+
 ;; set name and password
 (setq user-full-name "Marcel Kapfer")
 (setq user-mail-address "me@mmk2410.org")
