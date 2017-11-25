@@ -60,14 +60,14 @@ end
 
 # Attach the autoscreen screen session  if StumpWM is running
 # and it's not already in use.
-if test \( -n $DESKTOP_SESSION \) -a \( $DESKTOP_SESSION = "stumpwm" \)
-        if screen -list | grep -q "No Sockets"
-                screen -dmS autoscreen
-                exec screen -r
-        else if screen -list | grep -Eq "\.autoscreen.*Detached"
-                exec screen -r
-        end
-end
+# if test \( -n $DESKTOP_SESSION \) -a \( $DESKTOP_SESSION = "stumpwm" \)
+#         if screen -list | grep -q "No Sockets"
+#                 screen -dmS autoscreen
+#                 exec screen -r
+#         else if screen -list | grep -Eq "\.autoscreen.*Detached"
+#                 exec screen -r
+#         end
+# end
 
 # gpg-agent as SSH agent
 set -e SSH_AGENT_PID
@@ -89,4 +89,3 @@ if status --is-login
         exec startx -- -keeptty
     end
 end
-
