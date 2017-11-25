@@ -1,96 +1,126 @@
+;; Emacs configuration
+;; Marcel Kapfer (C) 2016 - 207
+;; MIT License
+
+;; -----------------------------------------------------------------------------
+
+;; Package configuration
+;;
+;; This configuration uses use-package, so we're first ensuring, that it is
+;; installed using the emacs package system an MELPA.
+
+(package-initialize)
+
+(require 'package)
+(setq package-enable-on-startup nil)
+
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.milkbox.net/packages/"))
+
+;; intall use-package if not already installed
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;; tell use-package to always ensure
+(setq use-package-always-ensure t)
+
+;; -----------------------------------------------------------------------------
+
+;; Basic configuration
+;;
+;; The code in this block should be package independend.
+
+;; set name and password
 (setq user-full-name "Marcel Kapfer")
 (setq user-mail-address "me@mmk2410.org")
 
-(load "package")
-(package-initialize)
-(add-to-list 'package-archives
-	     '("marmalade" . "https://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-	     '("melpa" . "https://melpa.milkbox.net/packages/"))
-(setq package-archive-enable-alist '(("melpa" deft magit)))
-
+;; y/n instead of yes/no for confirm questions
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; Org mode settings
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-font-lock-mode 1)
+;; Save backup files in ~/.emacs-autosaves/
+(defvar user-temporary-file-directory "~/.emacs-autosaves")
+(make-directory user-temporary-file-directory t)
+(setq backup-by-copying t)
+(setq backup-directory-alist `(("." . ,user-temporary-file-directory)
+                               (tramp-file-name-regexp nil)))
+(setq auto-save-list-file-prefix (concat user-temporary-file-directory ".auto-saves-"))
+(setq auto-save-file-name-transforms `((".*" ,user-temporary-file-directory t)))
 
-;; Always show line numbers
-(global-nlinum-mode t)
+;; set default input encoding
+(set-language-environment "UTF-8")
 
-;; Highlight current line
+;; disable startup screen
+(setq inhibit-startup-screen t)
+
+;; visual bell instead of BEEP
+(setq visible-bell 1)
+
+;; set text in scratch to nil
+(setq initial-scratch-message nil)
+
+;; Don't truncate lines
+(setq truncate-lines nil)
+
+;; Set default connection method for TRAMP
+(setq tramp-default-method "ssh")
+
+;; Maximize threshold for garbage collection to 10MB for less gc
+(setq gc-cons-treshold (* 10 1024 1024))
+
+;; confirm before closing emacs
+(setq confirm-kill-emacs #'y-or-n-p)
+
+;; activate winner mode
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
+
+;; Highlight the current line
 (global-hl-line-mode t)
 
-;; Autocomplete
-(require 'auto-complete)
-(global-auto-complete-mode t)
+;; replace selected text by typing
+(delete-selection-mode t)
 
-;; Save backup files in temporary directory
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+;; ibuffer configuration
+(setq ibuffer-saved-filter-groups
+      (quote (("default"
+               ("dired" (mode . dired-mode))
+               ("org" (name . "^.*org$"))
+               ("shell" (or (mode . eshell-mode) (mode . term-mode)))
+               ;; ("mu4e" (or
+               ;;          (mode . mu4e-compose-mode)
+               ;;          (name . "\*mu4e\*")
+               ;;          ))
+               ("programming" (or
+                               (mode . python-mode)
+                               (mode . sh-mode)
+                               (mode . web-mode)
+                               (mode . emacs-lisp-mode)
+                               (mode . lisp-mode)
+                               (mode . dart-mode)))
+               ("emacs" (or
+                         (name . "^\\*scratch\\*$")
+                         (name . "^\\*Messages\\*$")))
+               ))))
+(add-hook 'ibuffer-mode-hook
+          (lambda ()
+            (ibuffer-auto-mode 1)
+            (ibuffer-switch-to-saved-filter-groups "default")))
 
-;; Mutt support.
-(setq auto-mode-alist (append '(("/tmp/mutt.*" . mail-mode)) auto-mode-alist))
+;; Don't show filter groups if there are no buffers in that group
+(setq ibuffer-show-empty-filter-groups nil)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#1B2229" "#ff6c6b" "#98be65" "#ECBE7B" "#51afef" "#c678dd" "#46D9FF" "#DFDFDF"])
- '(browse-url-browser-function (quote browse-url-firefox))
- '(csv-separators (quote (";")))
- '(custom-enabled-themes (quote (atom-one-dark)))
- '(custom-safe-themes
-   (quote
-    ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "a4c9e536d86666d4494ef7f43c84807162d9bd29b0dfd39bdf2c3d845dcc7b2e" "e9460a84d876da407d9e6accf9ceba453e2f86f8b86076f37c08ad155de8223c" "d29231b2550e0d30b7d0d7fc54a7fb2aa7f47d1b110ee625c1a56b30fea3be0f" "c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" "eb0a314ac9f75a2bf6ed53563b5d28b563eeba938f8433f6d1db781a47da1366" "a1289424bbc0e9f9877aa2c9a03c7dfd2835ea51d8781a0bf9e2415101f70a7e" "10e231624707d46f7b2059cc9280c332f7c7a530ebc17dba7e506df34c5332c4" "08b8807d23c290c840bbb14614a83878529359eaba1805618b3be7d61b0b0a32" "43bc55af3857f9e2dc14c4413739f36d758e4d75bcd9b67e9b7dc6d9fcc1db68" "6254372d3ffe543979f21c4a4179cd819b808e5dd0f1787e2a2a647f5759c1d1" "1160f5fc215738551fce39a67b2bcf312ed07ef3568d15d53c87baa4fd1f4d4e" default)))
- '(ecb-options-version "2.50")
- '(fci-rule-color "#5B6268")
- '(flycheck-python-pylint-executable "pylint3")
- '(inhibit-startup-screen t)
- '(jdee-global-classpath (quote ("/home/wilson/jdee-libs/")))
- '(jdee-server-dir "/opt/jdee-emacs-server/")
- '(org-agenda-files
-   (quote
-    ("~/Documents/uni/uulm-2017-2/priv/organisatorisches.org" "~/ownCloud/todo.org")))
- '(package-selected-packages
-   (quote
-    (avandu org company company-math counsel ivy beginend doom-themes neotree rainbow-delimiters projectile nlinum powerline airline-themes fic-mode markdown-preview-mode web-mode ob-dart ac-python ac-slime ant auctex-lua auto-compile auto-complete-auctex csv-mode csv ac-haskell-process ghc haskell-mode arduino-mode json-mode gruvbox-theme focus literate-coffee-mode jdee javadoc-lookup pkgbuild-mode vala-snippets vala-mode phpunit ac-php php-completion php+-mode fish-mode hugo mips-mode stumpwm-mode slime muttrc-mode diff-hl magit wanderlust ## auctex yaml-mode typescript sass-mode php-mode outlined-elisp-mode monokai-theme markdown-mode fill-column-indicator edit-server dracula-theme coffee-mode auto-complete atom-one-dark-theme atom-dark-theme)))
- '(pdf-latex-command "lualatex")
- '(pdf-view-incompatible-modes
-   (quote
-    (linum-mode linum-relative-mode helm-linum-relative-mode nlinum-hl-mode nlinum-relative-mode yalinum-mode)))
- '(safe-local-variable-values (quote ((TeX-engine . pdftex) (TeX-Engine . luatex))))
- '(send-mail-function (quote smtpmail-send-it))
- '(standard-indent 2)
- '(tool-bar-mode nil)
- '(web-mode-code-indent-offset 2)
- '(web-mode-indent-style 2))
- '(send-mail-function (quote smtpmail-send-it))
- '(tool-bar-mode nil)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#21242b" :foreground "#bbc2cf" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 80 :width normal :family "Fira Code")))))
+;; Don't ask for confirmation to delete marked buffers
+(setq ibuffer-expert t)
 
+;; put a new line at the end of every file
+(setq require-final-newline t)
 
-;; edit-server
+;; delete trailing whitespaces on save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(require 'edit-server)
-(edit-server-start)
-
-
-
-; mmk2410 emacs configuration
-
-;; variabels
+;; use german directory in ispell
+(setq ispell-dictionary "german-new8")
 
 ;;; always follow symlinks to git repos
 (setq vc-follow-symlinks t)
@@ -98,200 +128,95 @@
 ;;; set default column width
 (setq-default fill-column 80)
 
-;;; settings for bells
-(setq visible-bell 1)
-
-;;; hide tool bar and menu bar
+;;; hide tool bar, menu bar and scroll bar
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
-;;; delete selection mode
-(delete-selection-mode 1)
+;;; indent using spaces, not tabs
+(setq indent-tabs-mode nil)
 
-;;; window / frame size
-(setq initial-frame-alist
-      '(
-	(width . 102)
-	(height . 44)
-	))
-
-(setq default-frame-alist
-      '(
-	(width . 100)
-	(height . 42)
-	))
-
-;;; indention
-(setq-default indent-tabs-mode nil)
+;; tab width
 (setq tab-width 2)
 
-;;; slime
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
-(setq inferior-lisp-program "/usr/bin/sbcl")
-(setq slime-contribs '(slime-fancy))
-
-;; packages
-
-;;; fill-column indicator
-
-(require 'fill-column-indicator)
-(setq fci-rule-width 5) ;;; set rule width to 5px
-
-;;; diff-hl
-(global-diff-hl-mode t)
-(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-
-;; stumpwm: working with emacsclient
+;; Connecting StumpWM with emacsclient
 (add-hook 'after-init-hook 'server-start)
 (setq server-raise-frame t)
-
 (if window-system
     (add-hook 'server-done-hook
 	      (lambda ()
 		(shell-command
 		 "stumpish 'eval (stumpwm::return-es-called-win stumpwm::*es-win*)'"))))
 
-;; auto-fill-mode
+;; auto-fill mode
 (add-hook 'mail-mode-hook 'auto-fill-mode)
 (add-hook 'mail-mode-hook (lambda () (setq fill-column 72)))
+
+;; set default web browser
+(setq browse-url-generic-program
+      (substring (shell-command-to-string "gconftool-2 -g /desktop/gnome/url-handlers/https/command") 0 -4)
+      browse-url-browser-function 'browse-url-generic)
+
+;; set font
+(set-frame-font "Fira Code 8" nil t)
+
+;; -----------------------------------------------------------------------------
+
+;; Custom keybindings
+;;
+;; here are custom keybindings for emacs or package functions configured. Custom
+;; bindings for own functions are set directly after the function declaration.
+
+;; global keys
+
+;; Emacs Shell
+(global-set-key (kbd "C-c e") 'eshell)
+
+;; Async shell command
+(global-set-key (kbd "C-c a") 'async-shell-command)
+
+;; Open link under cursor
+(global-set-key (kbd "C-c b") 'browse-url-at-point)
+
+;; start ansi-term with fish shell
+(global-set-key (kbd "C-c s") (lambda () (interactive) (ansi-term "/usr/bin/fish")))
+
+;; eval region
+(global-set-key (kbd "C-C x") 'eval-region)
+
+;; revert buffer (reload file from disk)
+(global-set-key (kbd "<f5>" ) 'revert-buffer)
+
+;; use ibuffer as default
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+;; toggle auto-fill-mode
 (global-set-key (kbd "C-c q") 'auto-fill-mode)
 
-;; predictive mode
-(add-to-list 'load-path "~/.emacs.d/pkg/predictive/")
-(add-to-list 'load-path "~/.emacs.d/pkg/predictive/latex/")
-(add-to-list 'load-path "~/.emacs.d/pkg/predictive/texinfo/")
-(add-to-list 'load-path "~/.emacs.d/pkg/predictive/html/")
-(add-to-list 'load-path "~/.emacs.d/pkg/predictive/misc/")
-(autoload 'predictive-mode "predictive" "predictive" t)
-(set-default 'predictive-auto-add-to-dict t)
-(setq predictive-main-dict 'rpg-dictionary
-      predictive-auto-learn t
-      predictive-add-to-dict-ask nil
-      predictive-use-auto-learn-cache nil
-      predictive-which-dict t)
+;; package and mode specific keys
 
-;; org mode
+;; paste in term using C-x C-y
+(eval-after-load "term" '(define-key term-raw-map (kbd "C-x C-y") 'term-paste))
 
-(unless (boundp 'org-latex-classes)
-  (setq org-latex-classes nil))
+;; -----------------------------------------------------------------------------
 
-;;; latex scrartcl as documentclass
+;; Custom functions
+;;
+;; custom functions are defined here, sorted by use-case (if possible)
 
-(add-to-list 'org-latex-classes
-             '("scrartcl"
-               "\\documentclass{scrartcl}"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+;; general
 
-;;; add latex packages and configurations
-(setq org-latex-packages-alist
-      '(
-        ("" "booktabs" t)
-        ("" "listings" t)
-        ("" "xcolor" t)
-        ("" "polyglossia" t)
-        ("utf8" "luainputenc" t)
-        ("" "fontspec" t)
-        ("hidelinks" "hyperref" t)
-        ("" "libertineotf" t)
-        ("scale=0.9" "AnonymousPro" t)
-        "\\setmainfont{Linux Libertine O}"
-        "\\setsansfont{Linux Biolinum O}"
-        "\\setmonofont{AnonymousPro}"
-        "\\addtokomafont{disposition}{\\fontspec{LinBiolinum_RB}}"
-        "\\setdefaultlanguage{german}"))
+;; function for closing all buffers
+(defun close-all-buffers ()
+  "Close all buffers"
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
 
-;;; enable latex listings
-(setq org-latex-listings 'listings)
-
-;;; latex listings options
-(setq org-latex-listings-options
-      '(
-        ("frame" "single")
-        ("rulesep" "6pt")
-        ("backgroundcolor" "\\color{gray!20}")
-        ("basicstyle" "\\footnotesize\\ttfamily")
-        ("breaklines" "true")
-        ))
-
-;;; remove unused default packages
-(unless (boundp 'org-latex-default-packages-alist)
-  (setq org-latex-default-packages-alist nil))
-(setq org-latex-default-packages-alist
-      (remove '("AUTO" "inputenc" t) org-latex-default-packages-alist))
-(setq org-latex-default-packages-alist
-      (remove '("" "fixltx2e" nil) org-latex-default-packages-alist))
-(setq org-latex-default-packages-alist
-      (remove '("" "hyperref" nil) org-latex-default-packages-alist))
-(setq org-latex-default-packages-alist
-      (remove '"\\tolerance=1000" org-latex-default-packages-alist))
-
-;;; syntax highlighting
-
-(setq org-src-fontify-natively t)
-
-;; neotree toggle
-(global-set-key [f8] 'neotree-toggle)
-
-;; magit status key
-(global-set-key [f5] 'magit-status)
-
-;; enable rainbow delimiters mode in programming modes
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-
-;; enable powerline modeline
-(powerline-center-theme)
+;; shortcut for close-all-buffers
+(global-set-key (kbd "C-c c") 'close-all-buffers)
 
 
-; ((Lua)La)TeX configuration using auctex
-
-;; variables
-
-;;; Automatically save style information when saving the buffer. 
-(setq TeX-auto-save t)
-
-;;; Parse file after loading it if no style hook is found for it. 
-(setq TeX-parse-self t)
-
-;;; Don't ask the user when saving a file for each file.
-(setq TeX-save-query nil)
-
-;;; Use luatex as default TeX engine.
-(setq TeX-engine (quote luatex))
-
-;;; Outline mode keyboard shortcut.
-(setq outline-minor-mode-prefix "\C-c \C-o")
-
-;;; set default master file to nil so auctex asks for it. 
-(setq-default TeX-master nil)
-
-;;; enable reftex auctex interaction.
-(setq reftex-plug-into-auctex t)
-
-;;; add the latex mode to the autocomplete modes.
-(add-to-list 'ac-modes 'latex-mode)
-
-;;; enable synctex correlation.
-(setq TeX-source-correlate-mode t
-      TeX-source-correlate-start-server t)
-
-;; functions
-
-;;; function for enabling outline mode
-(defun turn-on-outline-minor-mode ()
-  (outline-minor-mode 1))
-
-;;; autocompletion for latex
-;;;; does this really work?
-(defun ac-latex-mode-setup ()
-  (setq ac-sources
-	(append '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands)
-		ac-sources)))
-
+;; LaTeX
 
 ;; helper for a new (La)TeX style guide concept.
 (defun TeX-insert-comment-line ()
@@ -307,97 +232,585 @@
   (local-set-key (kbd "<C-return>") 'TeX-insert-comment-line))
 
 ;; Enable own latex-mode keybindings
-(add-hook 'latex-mode 'my-latex-mode-keys)
+(add-hook 'TeX-mode-book 'my-latex-mode-keys)
 
-;; use okular over synctex with auctex
-;; (eval-after-load "tex"
-;;                  '(setcar (cdr (assoc 'output-pdf TeX-view-program-selection)) "Okular"))
+;; -----------------------------------------------------------------------------
 
-;; use pdf-tools over synctex with auctex
-(setq TeX-view-program-selection '((output-pdf "PDF Tools"))
-      TeX-source-correlate-start-server t)
+;; Packages and package configuration
+;;
+;; all packages should be loaded with use-package
 
-;; Update PDF buffers after successful LaTeX runs
-(add-hook 'TeX-after-TeX-LaTeX-command-finished-hook
-           #'TeX-revert-document-buffer)
+;; which-key
+;; Display available keybindings in popup
 
-;; hooks
+(use-package which-key
+  :config
+  (which-key-mode))
 
-;;; hooks for outline mode
-(add-hook 'LaTeX-mode-hook 'turn-on-outline-minor-mode)
-(add-hook 'latex-mode-hook 'turn-on-outline-minor-mode)
+;; org-bullets
+;; Show bullets in org-mode as UTF-8 characters
+(use-package org-bullets
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-;;; hook for fci-mode
-(add-hook 'LaTeX-mode-hook 'fci-mode)
+;; undo-tree
+;; Treat undo history as a tree
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode))
 
-;;; hook for reftex
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+;; beacon
+;; Highlight the cursor whenever the window scrolls
+(use-package beacon
+  :config
+  (beacon-mode))
 
-;;; hook for autocomplete.
-(add-hook 'TeX-mode-hook 'ac-latex-mode-setup)
+;; hungry-delete
+;; Delete a whitespace character will delete all whitespace until the next
+;; non-whitespace character
+(use-package hungry-delete
+  :config
+  (hungry-delete-mode))
 
-;;; hook for auto fill mode
-(add-hook 'TeX-mode-hook 'auto-fill-mode)
+;; expand-region
+;; Increase selected region by semantic units.
+(use-package expand-region
+  :config
+  (global-set-key (kbd "C-=") 'er/expand-region))
 
-;;; hook for latex math mode
-(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+;; dired+
+;; Extensions to Dired
+(use-package dired+
+  :config
+  (require 'dired+))
 
-;;; hook for rainbox delimiters mode
-(add-hook 'TeX-mode-hook #'rainbow-delimiters-mode)
+;; projectile
+;; Manage and navigate projects in Emacs easily
+(use-package projectile
+  :config
+  (projectile-global-mode)
+  (setq projectile-completion-system 'ivy))
 
-; themes
+;; smartparens
+;; Automatic insertion, wrapping and paredit-like navigation with user defined
+;; pairs.
+(use-package smartparens
+  :config
+  (require 'smartparens-config)
+  (smartparens-global-mode t)
+  (show-smartparens-global-mode t))
 
-;; enable bold and italic
-(setq doom-themes-enable-bold t
-      doom-themes-enable-italic t)
+;; dumb-jump
+;; jump to definition for multiple languages without configuration.
+(use-package dumb-jump
+  :config
+  (dumb-jump-mode t))
 
-;;; enable doom one theme
-(load-theme 'doom-one t)
+;; origami
+;; Flexible text folding
+(use-package origami)
 
-;;; enable flashing mode-line on errors
-(doom-themes-visual-bell-config)
+;; multiple-cursors
+;; Multiple cursors for Emacs
+(use-package multiple-cursors
+  :bind
+  (("C->" . mc/mark-next-like-this)
+   ("C-<" . mc/mark-previous-like-this)
+   ("C-*" . mc/mark-all-like-this)
+   ("C-;" . mc/edit-lines)))
 
-;;; enable neotree theme
-(doom-themes-neotree-config)
+;; pcre2el
+;; regexp syntax converter
+(use-package pcre2el
+  :config
+  (pcre-mode t))
 
-;;; ivy default configuration
+;; visual-regexp
+;; A regexp/replace command for Emacs with interactive visual feedback
+(use-package visual-regexp
+  :bind
+  (("C-c r" . vr/replace)
+   ("C-c q" . vr/query-replace)
+   ("C-c m" . vr/mc-mark)))
 
-;;; always enable ivy
-(ivy-mode 1)
+;; mu4e-maildirs-extension
+;; Show mu4e maildirs summary in mu4e-main-view
+(use-package mu4e-maildirs-extension)
 
-;;; ivy configuration
-(setq ivy-use-virtual-buffers t)
-(setq ivy-count-format "(%d/%d) ")
+;; mu4e-alert
+;; Desktop notification for mu4e
+(use-package mu4e-alert
+  :config
+  (mu4e-alert-set-default-style 'libnotify)
+  (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
+  (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display))
 
-;;; ivy keys
-(global-set-key (kbd "C-s") 'swiper)
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-(global-set-key (kbd "<f1> l") 'counsel-find-library)
-(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+;; indent-guide
+;; show vertical lines to guide indentation
+(use-package indent-guide
+  :config
+  (indent-guide-global-mode))
 
-(global-set-key (kbd "C-c g") 'counsel-git)
-(global-set-key (kbd "C-c j") 'counsel-git-grep)
-(global-set-key (kbd "C-c k") 'counsel-ag)
-(global-set-key (kbd "C-x l") 'counsel-locate)
-(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+;; nlinum
+;; Show line numbers in the margin
+(use-package nlinum
+  :config
+  (global-nlinum-mode t))
 
-(global-set-key (kbd "C-c C-r") 'ivy-resume)
+;; auctex
+;; Integrated environment for TeX
+(use-package auctex
+  :defer t
+  :config
+  ;; enable flyspell mode
+  (add-hook `latex-mode-hook `flyspell-mode)
+  (add-hook `tex-mode-hook `flyspell-mode)
+  (add-hook `bibtex-mode-hook `flyspell-mode)
 
-;; global indent mode
+  ;; Automatically save style information when saving the buffer.
+  (setq TeX-auto-save t)
 
-(indent-guide-global-mode)
+  ;; Parse file after loading it if no style hook is found for it.
+  (setq TeX-parse-self t)
 
-;; set default web browser
-(setq browse-url-generic-program
-      (substring (shell-command-to-string "gconftool-2 -g /desktop/gnome/url-handlers/https/command") 0 -4)
-      browse-url-browser-function 'browse-url-generic)
-;; enable pdf-tools
-(pdf-tools-install)
+  ;; Don't ask the user when saving a file for each file.
+  (setq TeX-save-query nil)
 
-;; reload pdf document after compliation
-(add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+  ;; Use luatex as default TeX engine.
+  (setq TeX-engine (quote luatex))
 
+  ;; Outline mode keyboard shortcut.
+  (setq outline-minor-mode-prefix "\C-c \C-o")
+
+  ;; set default master file to nil so auctex asks for it.
+  (setq-default TeX-master nil)
+
+  ;; enable reftex auctex interaction.
+  (setq reftex-plug-into-auctex t)
+
+  ;; add the latex mode to the autocomplete modes.
+  (add-to-list 'ac-modes 'latex-mode)
+
+  ;; enable synctex correlation.
+  (setq TeX-source-correlate-mode t
+        TeX-source-correlate-start-server t)
+
+  ;; use pdf-tools over synctex with auctex
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+        TeX-source-correlate-start-server t)
+
+  ;; Update PDF buffers after successful LaTeX runs
+  (add-hook 'TeX-after-TeX-LaTeX-command-finished-hook
+            #'TeX-revert-document-buffer)
+
+  ;; hooks for outline mode
+  (add-hook 'LaTeX-mode-hook 'outline-minor-mode)
+  (add-hook 'latex-mode-hook 'outline-minor-mode)
+
+  ;; hook for fci-mode
+  (add-hook 'LaTeX-mode-hook 'fci-mode)
+
+  ;; hook for reftex
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+
+  ;; hook for autocomplete.
+  (add-hook 'TeX-mode-hook 'ac-latex-mode-setup)
+
+  ;; hook for auto fill mode
+  (add-hook 'TeX-mode-hook 'auto-fill-mode)
+
+  ;; hook for latex math mode
+  (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+
+  ;; hook for rainbox delimiters mode
+  (add-hook 'TeX-mode-hook #'rainbow-delimiters-mode)
+
+  ;; reload pdf document after compliation
+  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+
+  ;; set LaTeX command
+  (setq pdf-latex-command "lualatex"))
+
+;; org
+;; Outline-based notes management and organizer
+(use-package org
+  :config
+  ;; enable org mod efor all org files
+  (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+
+  ;; add scrartcl LaTeX class to org
+  (with-eval-after-load 'ox-latex
+    (add-to-list 'org-latex-classes
+		 '("scrartcl"
+		   "\\documentclass{scrartcl}"
+		   ("\\section{%s}" . "\\section*{%s}")
+		   ("\\subsection{%s}" . "\\subsection*{%s}")
+		   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+		   ("\\paragraph{%s}" . "\\paragraph*{%s}")
+		   ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+  ;; add latex packages and configurations
+  (setq org-latex-packages-alist
+        '(
+          ("" "booktabs" t)
+          ("" "listings" t)
+          ("" "xcolor" t)
+          ("" "polyglossia" t)
+          ("utf8" "luainputenc" t)
+          ("" "fontspec" t)
+          ("hidelinks" "hyperref" t)
+          ("" "libertineotf" t)
+          ("scale=0.9" "AnonymousPro" t)
+          "\\setmainfont{Linux Libertine O}"
+          "\\setsansfont{Linux Biolinum O}"
+          "\\setmonofont{AnonymousPro}"
+          "\\addtokomafont{disposition}{\\fontspec{LinBiolinum_RB}}"
+          "\\setdefaultlanguage{german}"))
+
+  ;; enable latex listings
+  (setq org-latex-listings 'listings)
+
+  ;; latex listings options
+  (setq org-latex-listings-options
+        '(
+          ("frame" "single")
+          ("rulesep" "6pt")
+          ("backgroundcolor" "\\color{gray!20}")
+          ("basicstyle" "\\footnotesize\\ttfamily")
+          ("breaklines" "true")
+          ))
+
+  ;; remove unused default packages
+  (unless (boundp 'org-latex-default-packages-alist)
+    (setq org-latex-default-packages-alist nil))
+  (setq org-latex-default-packages-alist
+        (remove '("AUTO" "inputenc" t) org-latex-default-packages-alist))
+  (setq org-latex-default-packages-alist
+        (remove '("" "fixltx2e" nil) org-latex-default-packages-alist))
+  (setq org-latex-default-packages-alist
+        (remove '("" "hyperref" nil) org-latex-default-packages-alist))
+  (setq org-latex-default-packages-alist
+        (remove '"\\tolerance=1000" org-latex-default-packages-alist))
+
+  ;; syntax highlighting
+  (setq org-src-fontify-natively t)
+  :bind
+  (("C-c l" . org-store-link)
+   ("C-c a" . org-agenda)))
+
+;; fill-column-indicator
+;; Graphically indicate the fill column
+(use-package fill-column-indicator
+  :config
+  ;; set rule width to 5px
+  (setq fci-rule-width 5)
+  (setq fci-rule-color "#5B6268"))
+
+;; diff-hl
+;; Highlight uncommitted changes using VC
+(use-package diff-hl
+  :config
+  (global-diff-hl-mode t)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+
+;; treemacs
+;; A tree style file explorer package
+(use-package treemacs
+  :defer t
+  :init
+  (define-prefix-command 'treemacs-map)
+  (global-set-key (kbd "M-m") 'treemacs-map)
+  :config
+  (setq treemacs-follow-after-init          t
+        treemacs-width                      35
+        treemacs-indentation                2
+        treemacs-git-integration            t
+        treemacs-collapse-dirs              (if (executable-find "python") 3 0)
+        treemacs-silent-refresh             nil
+        treemacs-change-root-without-asking nil
+        treemacs-sorting                    'alphabetic-desc
+        treemacs-show-hidden-files          t
+        treemacs-never-persist              nil
+        treemacs-is-never-other-window      nil
+        treemacs-goto-tag-strategy          'refetch-index)
+  (treemacs-follow-mode t)
+  (treemacs-filewatch-mode t)
+  :bind
+  (:map global-map
+        ("<f9>"         . treemacs-toggle)
+        ("M-0"        . treemacs-select-window)
+        ("C-c 1"      . treemacs-delete-other-windows)
+        ("M-m ft"     . treemacs-toggle)
+        ("M-m fT"     . treemacs)
+        ("M-m fB"     . treemacs-bookmark)
+        ("M-m f C-t"  . treemacs-find-file)
+        ("M-m f M-t" . treemacs-find-tag)))
+
+;; treemacs-projectile
+;; Projectile integration for treemacs
+(use-package treemacs-projectile
+  :defer t
+  :config
+  (setq treemacs-header-function #'treemacs-projectile-create-header)
+  :bind
+  (:map global-map
+        ("M-m fP" . treemacs-projectile)
+        ("M-m fp" . treemacs-projectile-toggle)))
+
+;; magit
+;; A Git porcelain inside Emacs
+(use-package magit
+  :bind
+  ("C-x g" . magit-status))
+
+;; rainbox-delimiters
+;; Highlight brackets according to their depth
+(use-package rainbow-delimiters
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+;; powerline
+;; Rewrite of Powerlinen
+(use-package powerline
+  :config
+  (powerline-center-theme))
+
+;; doom-themes
+;; an opinionated pack of modern color-themes
+(use-package doom-themes
+  :defer t
+  :config
+  ;; enable bold and italic
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+
+  ;; enable doom one theme
+  (add-hook 'after-init-hook (lambda () (load-theme 'doom-one t)))
+
+  ;; enable flashing mode-line on errors
+  (doom-themes-visual-bell-config))
+
+;; pdf-tools
+;; Support library for PDF documents.
+(use-package pdf-tools
+  :config
+  (pdf-tools-install)
+  ;; nlinum makes no problems for me
+  ;; so disabling the warning
+  (setq pdf-view-incompatible-modes
+   (quote
+    (linum-mode linum-relative-mode helm-linum-relative-mode nlinum-hl-mode nlinum-relative-mode yalinum-mode))))
+
+;; counsel
+;; Various completion functions using Ivy
+(use-package counsel
+  :bind
+  (("M-x" . counsel-M-x)
+   ("C-x C-f" . counsel-find-file)
+   ("<f1> f" . counsel-describe-function)
+   ("<f1> v" . counsel-describe-variable)
+   ("<f1> l" . counsel-find-library)
+   ("<f2> i" . counsel-info-lookup-symbol)
+   ("<f2> u" . counsel-unicode-char)
+   ("C-c g" . counsel-git)
+   ("C-c j" . counsel-git-grep)
+   ("C-c k" . counsel-ag)
+   ("C-x l" . counsel-locate)
+   ("C-S-o" . counsel-rhythmbox)))
+
+;; ivy
+;; Incremental Vertical completYon
+(use-package ivy
+  :diminish (ivy-mode)
+  :config
+  (ivy-mode t)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  (setq ivy-display-style 'fancy)
+  (setq ivy-extra-directories nil)
+  :bind
+  (("C-c C-r" . ivy-resume)))
+
+;; swiper
+;; Isearch with an overview. Oh, man!
+(use-package swiper
+  :config
+  (progn
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-display-style 'fancy)
+    (setq ivy-extra-directories nil)
+    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))
+  :bind
+  (("C-s" . swiper)
+   ("C-r" . swiper)))
+
+;; counsel-projectile
+;; Ivy UI for Projectile
+(use-package counsel-projectile
+  :config
+  (counsel-projectile-on))
+
+;; avy
+;; Jump to arbitrary positions in visible text and select text quickly.
+(use-package avy
+  :bind
+  (("s-s" . avy-goto-char)))
+
+;; smooth-scrolling
+;; Make emacs scroll smoothly
+(use-package smooth-scrolling
+  :config
+  (smooth-scrolling-mode t)
+  (setq smooth-scroll-margin 5))
+
+;; ox-pandoc
+;; org exporter for pandoc
+(use-package ox-pandoc
+  :config
+  (setq org-pandoc-options-for-latex-pdf '((latex-engine . "lualatex")))
+  (setq org-pandoc-options-for-beamer-pdf '((latex-engine . "lualatex"))))
+
+;; org-trello
+;; Minor mode to synchronize org-mode buffer and trello board
+(use-package org-trello)
+
+;; web-beautify
+;; Format HTML, CSS and JavaScript/JSON
+(use-package web-beautify
+  :bind
+  (:map js2-mode-map ("C-c b" . web-beautify-js)
+        :map json-mode-map ("C-c b" . web-beautify-js)
+        :map html-mode-map ("C-c b" . web-beautify-html)
+        :map css-mode-map ("C-c b" . web-beautify-css)))
+
+;; company-math
+;; Completion backends for unicode math symbols and latex tags
+(use-package company-math
+  :config
+  (add-hook 'TeX-mode-hook (lambda ()
+                             (setq-local company-backends
+                                         (append '((company-math-symbols-latex company-latex-commands))
+                                                 company-backends)))))
+
+;; beginend
+;; Redefine M-< and M-> for some modes
+(use-package beginend
+  :config
+  (beginend-global-mode t))
+
+;; markdown-mode
+;; Major mode for Markdown-formatted text
+(use-package markdown-mode
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . markdown-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
+;; markdown-preview-mode
+;; markdown realtime preview minor mode
+(use-package markdown-preview-mode
+  :config
+  (add-to-list 'markdown-preview-javascript "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"))
+
+;; web-mode
+;; major mode for editing web templates
+(use-package web-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-enable-css-colorization t)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-indent-style 2))
+
+;; dart-mode
+;; Major mode for editing Dart files
+(use-package dart-mode)
+
+;; csv-mode
+;; Major mode for editing comma/char separated values
+(use-package csv-mode
+  :config
+  (setq csv-separators '(";")))
+
+;; json-mode
+;; Major mode for editing JSON files
+(use-package json-mode)
+
+;; focus
+;; Dim the font color of text in surrounding sections
+(use-package focus)
+
+;; phpunit
+;; Launch PHP unit tests using phpunit
+(use-package phpunit
+  :bind
+  (:map web-mode-map
+        ("C-x t" . phpunit-current-test)
+        ("C-x c" . phpunit-current-class)
+        ("C-x p" . phpunit-current-project)))
+
+;; php-mode
+;; Major mode for editing PHP files
+(use-package php-mode)
+
+;; fish-mode
+;; Major mode for fish shell scripts
+(use-package fish-mode)
+
+;; easy-hugo
+;; Write blogs made with hugo by markdown or org-mode
+(use-package easy-hugo)
+
+;; stumpwm-mode
+;; special lisp mode for evaluating code into running stumpwm
+(use-package stumpwm-mode)
+
+;; slime
+;; Superior Lisp Interaction Mode for Emacs
+(use-package slime
+  :config
+  (load (expand-file-name "~/quicklisp/slime-helper.el"))
+  (setq inferior-lisp-program "/usr/bin/sbcl"))
+
+;; slime-company
+;; slime completion backend for company mode
+(use-package slime-company
+  :config
+  (setq slime-contribs '(slime-fancy slime-company)))
+
+;; yaml-mode
+;; Major mode for editing YAML files
+(use-package yaml-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
+
+;; sass-mode
+;; Major mode for editing Sass files
+(use-package sass-mode)
+
+;; coffee-mode
+;; Major mode for CoffeeScript code
+(use-package coffee-mode
+  :config
+  (setq whitespace-action '(auto-cleanup))
+  (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
+  (setq coffee-tab-width 2)
+  (add-hook 'coffee-mode-hook 'whitespace-mode))
+
+;; python
+;; Python's flying circus support for Emacs
+(use-package python
+  :config
+  (setq flycheck-python-pylint-executable "pylint3"))
