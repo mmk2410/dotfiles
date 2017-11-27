@@ -28,6 +28,9 @@
 ;; don't load outdated packages
 (setq load-prefer-newer t)
 
+;; disable cursor blinking
+(blink-cursor-mode -1)
+
 ;; -----------------------------------------------------------------------------
 
 ;; Basic configuration
