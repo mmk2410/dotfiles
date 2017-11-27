@@ -702,8 +702,10 @@
 ;; company
 ;; Modular text completion framework
 (use-package company
+  :init
+  (global-company-mode t)
   :config
-  (global-company-mode t))
+  (setq company-show-numbers t))
 
 ;; company-math
 ;; Completion backends for unicode math symbols and latex tags
