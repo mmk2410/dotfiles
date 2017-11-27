@@ -850,3 +850,8 @@
   :config
   (defun elfeed-search-format-date (date)
     (format-time-string "%Y-%m-%d %H:%M" (seconds-to-time date))))
+
+
+;; bug-hunter
+;; Hunt down errors by bisecting elisp files
+(use-package bug-hunter)
