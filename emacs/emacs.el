@@ -889,3 +889,28 @@
   :config
   (setq company-quickhelp-delay 0.5))
 
+;; term / ansi-term
+;; terminal in emacs
+(use-package term
+  :defer t
+  :init (defalias 'sh 'ansi-term)
+  :config
+  ;; set default shell
+  ;; from https://ogbe.net/emacsconfig.html
+  (defvar my-term-shell "/usr/bin/fish")
+  (defadvice ansi-term (before force-bash)
+    (interactive (list my-term-shell)))
+  (ad-activate 'ansi-term)
+
+  ;; close ansi-term, when shell session exists
+  ;; from https://ogbe.net/emacsconfig.html
+  (defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
+    (if (memq (process-status proc) '(signal exit))
+	(let ((buffer (process-buffer proc)))
+	  ad-do-it
+	  (kill-buffer buffer))
+      ad-do-it))
+  (ad-activate 'term-sentinel)
+
+  ;; disable nlinum in shell
+  (add-hook 'term-mode-hook (lambda () (nlinum-mode -1))))
