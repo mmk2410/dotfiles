@@ -842,3 +842,11 @@
 ;; Same frame speedbar
 (use-package sr-speedbar
   :bind (("s-b" . sr-speedbar-toggle)))
+;; elfeed
+;; emacs feed reader
+(use-package elfeed
+  :bind
+  (("C-x w" . elfeed))
+  :config
+  (defun elfeed-search-format-date (date)
+    (format-time-string "%Y-%m-%d %H:%M" (seconds-to-time date))))
