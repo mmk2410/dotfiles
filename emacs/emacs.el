@@ -769,6 +769,162 @@
 ;; Same frame speedbar
 (use-package sr-speedbar
   :bind (("s-b" . sr-speedbar-toggle)))
+
+;; mu4e
+;; emacs mail client
+(use-package mu4e
+  :load-path "/usr/share/emacs25/site-lisp/mu4e/"
+  :ensure nil
+  :pin manual
+  :config
+  ;; get mail
+  (setq
+   mu4e-get-mail-command "offlineimap"
+   mu4e-update-interval 300)
+
+  ;; faster reindexing
+  (setq
+   mu4e-maildir-index-cleanup nil
+   mu4e-index-lazy-check t)
+
+  ;; smtpmail settings
+  (setq  message-send-mail-function 'smtpmail-send-it
+	 send-mail-function 'smtpmail-send-it)
+
+  ;; don't save sent messages to "Sent" folder
+  (setq mu4e-sent-messages-behavior 'delete)
+
+  ;; use mu4e as default emacs mailer
+  (setq mail-user-agent 'mu4e-user-agent)
+
+  ;; don't keep message buffers around
+  (setq message-kill-buffer-on-exit t)
+
+  ;; complete date format
+  (setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
+
+  ;; show full addresses
+  (setq mu4e-view-show-addresses 't)
+
+  ;; attachment directory
+  (setq mu4e-attachment-dir  "/tmp")
+
+  ;; maildir
+  (setq mu4e-maildir "~/.mail")
+
+  ;; don't reply to myself
+  (setq mu4e-compose-dont-reply-to-self t)
+
+  ;; list of email addresses
+  (setq mu4e-user-mail-address-list '("marcel.kapfer@uni-ulm.de"
+				      "marcel@marcel-kapfer.de"
+				      "tex@mmk2410.org"
+				      "me@mmk2410.org"
+				      "debian@mmk2410.org"
+				      "hugo@marcel-kapfer.de"
+				      "info@marcel-kapfer.de"
+				      "contact@marcel-kapfer.de"
+				      "kontakt@marcel-kapfer.de"
+				      "opensource@mmk2410.org"))
+
+  ;; customize mu4e list view
+  (setq mu4e-headers-fields '((:human-date . 20)
+			      (:flags . 6)
+			      (:mailing-list . 10)
+			      (:from-or-to . 22)
+			      (:subject . nil)))
+
+  ;; convenience function for starting the whole mu4e in its own frame
+  ;; posted by the author of mu4e on the mailing list
+  (defun mu4e-in-new-frame ()
+    "Start mu4e in new frame."
+    (interactive)
+    (select-frame (make-frame))
+    (mu4e))
+
+  ;; spell checking
+  (add-hook 'mu4e-compose-mode-hook 'flyspell-mode)
+
+  ;; use correct account context when sending mail based from headers
+  (setq message-sendmail-envelope-from 'header)
+
+  ;; set citation line
+  (setq message-citation-line-format "%f on %Y-%m-%d %H:%M %Z:\n")
+  (setq message-citation-line-function 'message-insert-citation-line)
+
+  ;; mu4e contexts / mail identities
+  (setq mu4e-contexts
+	`( ,(make-mu4e-context
+	     :name "University"
+	     :enter-func (lambda () (mu4e-message "University Context"))
+	     :match-func (lambda (msg)
+			   (when msg
+			     (string-prefix-p "/university" (mu4e-message-field msg :maildir))))
+	     :vars '((user-mail-address . "marcel.kapfer@uni-ulm.de")
+		     (user-full-name . "Marcel Kapfer")
+		     (message-signature-file . "~/dotfiles/mutt/sig-uni")
+		     ;; smtp
+		     (smtpmail-stream-type . starttls)
+		     (smtpmail-default-smtp-server . "smtp.uni-ulm.de")
+		     (smtpmail-smtp-server . "smtp.uni-ulm.de")
+		     (smtpmail-smtp-user . "ftu15")
+		     (smtpmail-smtp-service . 587)
+		     ;; folders
+		     (mu4e-sent-folder . "/university/Sent")
+		     (mu4e-drafts-folder . "/university/Drafts")
+		     (mu4e-trash-folder . "/university/Trash")
+		     (mu4e-refile-folder . "/university/Archives")))
+	   ,(make-mu4e-context
+	     :name "Mailbox"
+	     :enter-func (lambda () (mu4e-message "Mailbox Context"))
+	     :match-func (lambda (msg)
+			   (when msg
+			     (string-prefix-p "/mailbox" (mu4e-message-field msg :maildir))))
+	     :vars '((user-mail-address . "marcel.kapfer@mailbox.org")
+		     (user-full-name . "Marcel Kapfer")
+		     (message-signature-file . "~/dotfiles/mutt/sig")
+		     ;; smtp
+		     (smtpmail-stream-type . ssl)
+		     (smtpmail-smtp-server . "smtp.mailbox.org")
+		     (smtpmail-smtp-user . "marcel.kapfer@mailbox.org")
+		     (smtpmail-smtp-service . 465)
+		     ;; folders
+		     (mu4e-sent-folder . "/mailbox/Sent")
+		     (mu4e-drafts-folder . "/mailbox/Drafts")
+		     (mu4e-trash-folder . "/mailbox/Trash")
+		     (mu4e-refile-folder . "/mailbox/Archives")))))
+
+  ;; custom bookmarks
+  (setq mu4e-bookmarks (delete '("flag:unread AND NOT flag:trashed" "Unread messages" 117) mu4e-bookmarks))
+
+  (add-to-list 'mu4e-bookmarks
+	       (make-mu4e-bookmark
+		:name "Unread Messages"
+		:query "maildir:/university* flag:unread AND NOT flag:trashed OR maildir:/mailbox/inbox flag:unread AND NOT  flag:trashed"
+		:key ?u))
+  (add-to-list 'mu4e-bookmarks
+	       (make-mu4e-bookmark
+		:name "Flagged messages"
+		:query "flag:flagged"
+		:key ?f))
+
+  ;; custom shortcuts
+  (setq mu4e-maildir-shortcuts
+	'(("/university/inbox" . ?u)
+	  ("/university/fin.fin" . ?f)
+	  ("/university/fin.intern" . ?i)
+	  ("/mailbox/inbox" . ?m)
+	  ("/mailbox/debian.devel-changes" . ?c)
+	  ("/mailbox/debian.user" . ?d)))
+
+  ;; always add myself as BCC
+  (add-hook 'mu4e-compose-mode-hook
+	    (lambda ()
+	      "Add a BCC header"
+	      (save-excursion (message-add-header (concat "Bcc: " user-mail-address "\n")))
+	      ;; sign message
+	      (mml-secure-message-sign-pgpmime))))
+
 ;; elfeed
 ;; emacs feed reader
 (use-package elfeed
