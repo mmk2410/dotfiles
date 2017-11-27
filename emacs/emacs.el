@@ -60,6 +60,7 @@
 (setq auto-save-file-name-transforms `((".*" ,user-temporary-file-directory t)))
 
 ;; set default input encoding
+(prefer-coding-system 'utf-8-unix)
 (set-language-environment "UTF-8")
 
 ;; disable startup screen
