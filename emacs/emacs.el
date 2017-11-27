@@ -837,3 +837,8 @@
 (use-package python
   :config
   (setq flycheck-python-pylint-executable "pylint3"))
+
+;; sr-speedbar
+;; Same frame speedbar
+(use-package sr-speedbar
+  :bind (("s-b" . sr-speedbar-toggle)))
