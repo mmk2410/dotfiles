@@ -372,79 +372,6 @@
   :config
   (global-nlinum-mode t))
 
-;; auctex
-;; Integrated environment for TeX
-(use-package auctex
-  :defer t
-  :config
-  ;; enable flyspell mode
-  (add-hook `latex-mode-hook `flyspell-mode)
-  (add-hook `tex-mode-hook `flyspell-mode)
-  (add-hook `bibtex-mode-hook `flyspell-mode)
-
-  ;; Automatically save style information when saving the buffer.
-  (setq TeX-auto-save t)
-
-  ;; Parse file after loading it if no style hook is found for it.
-  (setq TeX-parse-self t)
-
-  ;; Don't ask the user when saving a file for each file.
-  (setq TeX-save-query nil)
-
-  ;; Use luatex as default TeX engine.
-  (setq TeX-engine (quote luatex))
-
-  ;; Outline mode keyboard shortcut.
-  (setq outline-minor-mode-prefix "\C-c \C-o")
-
-  ;; set default master file to nil so auctex asks for it.
-  (setq-default TeX-master nil)
-
-  ;; enable reftex auctex interaction.
-  (setq reftex-plug-into-auctex t)
-
-  ;; add the latex mode to the autocomplete modes.
-  (add-to-list 'ac-modes 'latex-mode)
-
-  ;; enable synctex correlation.
-  (setq TeX-source-correlate-mode t
-        TeX-source-correlate-start-server t)
-
-  ;; use pdf-tools over synctex with auctex
-  (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
-        TeX-source-correlate-start-server t)
-
-  ;; Update PDF buffers after successful LaTeX runs
-  (add-hook 'TeX-after-TeX-LaTeX-command-finished-hook
-            #'TeX-revert-document-buffer)
-
-  ;; hooks for outline mode
-  (add-hook 'LaTeX-mode-hook 'outline-minor-mode)
-  (add-hook 'latex-mode-hook 'outline-minor-mode)
-
-  ;; hook for fci-mode
-  (add-hook 'LaTeX-mode-hook 'fci-mode)
-
-  ;; hook for reftex
-  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-
-  ;; hook for autocomplete.
-  (add-hook 'TeX-mode-hook 'ac-latex-mode-setup)
-
-  ;; hook for auto fill mode
-  (add-hook 'TeX-mode-hook 'auto-fill-mode)
-
-  ;; hook for latex math mode
-  (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-
-  ;; hook for rainbox delimiters mode
-  (add-hook 'TeX-mode-hook #'rainbow-delimiters-mode)
-
-  ;; reload pdf document after compliation
-  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
-
-  ;; set LaTeX command
-  (setq pdf-latex-command "lualatex"))
 
 ;; org
 ;; Outline-based notes management and organizer
@@ -888,6 +815,119 @@
   (company-quickhelp-mode 1)
   :config
   (setq company-quickhelp-delay 0.5))
+
+;; LaTeX with AUCTeX
+;; Integrated environment for TeX
+(use-package tex-site
+  ;; AUCTeX initialization
+  :ensure auctex)
+
+;; LaTeX with AUCTeX
+;; Integrated environment for TeX
+(use-package tex
+  :ensure auctex
+  :defer t
+  :config
+  (setq
+   ;; Parse file after loading it if no style hook is found for it.
+   TeX-parse-self t
+   ;; Automatically save style information when saving the buffer.
+   TeX-auto-save t
+   ;; Automatically interst braces after sub- and superscript in math mode
+   TeX-electric-sub-and-superscript t
+   ;; Don't ask the user when saving a file for each file.
+   TeX-save-query nil
+   ;; enable synctex correlation.
+   TeX-source-correlate-mode t
+   TeX-source-correlate-start-server t
+   ;; use pdf-tools with synctex
+   TeX-view-program-selection '((output-pdf "PDF Tools"))
+   TeX-source-correlate-start-server t
+   )
+  (setq-default TeX-master nil
+		TeX-engine 'luatex))
+
+;; LaTeX with AUCTeX
+;; Integrated environment for TeX
+(use-package tex-buf
+  :ensure auctex
+  :defer t
+  ;; Don't ask for confirmation when saving before processing
+  :config (setq TeX-save-query nil))
+
+;; LaTeX with AUCTeX
+;; Integrated environment for TeX
+(use-package tex-style
+  :ensure auctex
+  :defer t
+  :config
+  ;; Enable support for csquotes
+  (setq LaTeX-csquotes-close-quote "}"
+	LaTeX-csquotes-open-quote "\\enquote{"))
+
+;; LaTeX with AUCTeX
+;; Integrated environment for TeX
+(use-package tex-fold
+  :ensure auctex
+  :defer t
+  :init (add-hook 'TeX-mode-hook #'TeX-fold-mode))
+
+;; LaTeX with AUCTeX
+;; Integrated environment for TeX
+(use-package tex-mode
+  :ensure auctex
+  :defer t)
+
+;; LaTeX with AUCTeX
+;; Integrated environment for TeX
+(use-package latex
+  :ensure auctex
+  :defer t
+  :config
+  ;; No language-specific hyphens please
+  (setq LaTeX-babel-hyphen nil)
+  ;; Easy math input
+  (add-hook 'TeX-mode-hook #'LaTeX-math-mode)
+  ;; Start flyspell
+  (add-hook 'TeX-mode-hook #'flyspell-mode)
+  ;; Update PDF buffers after successful LaTeX runs
+  (add-hook 'TeX-after-TeX-LaTeX-command-finished-hook
+            #'TeX-revert-document-buffer)
+  ;; hooks for outline mode
+  (add-hook 'TeX-mode-hook #'outline-minor-mode)
+  ;; reload pdf document after compliation
+  (add-hook 'TeX-after-compilation-finished-functions
+	    #'TeX-revert-document-buffer)
+  ;; hook for rainbox delimiters mode
+  (add-hook 'TeX-mode-hook #'rainbow-delimiters-mode)
+  ;; start fci-mode
+  (add-hook 'TeX-mode-hook #'fci-mode)
+  ;; start auto-fill mode
+  (add-hook 'TeX-mode-hook #'auto-fill-mode))
+
+;; bibtex
+;; BibTeX editing
+(use-package bibtex
+  :defer t
+  :config
+  ;; Run prog mode hooks for bibtex
+  (add-hook 'bibtex-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
+
+  ;; Use a modern BibTeX dialect
+  (bibtex-set-dialect 'biblatex))
+
+;; reftex
+;; TeX cross-reference management
+(use-package reftex
+  :defer t
+  :diminish reftex-mode
+  :init (add-hook 'LaTeX-mode-hook #'reftex-mode)
+  :config
+  (setq
+   ;; Plug into AUCTeX
+   reftex-plug-into-AUCTeX t
+   ;; Automatically derive labels, and prompt for confirmation
+   reftex-insert-label-flags '(t t)))
 
 ;; term / ansi-term
 ;; terminal in emacs
