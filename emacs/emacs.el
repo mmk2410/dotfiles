@@ -876,3 +876,8 @@
   :defer t
   :init (global-hl-todo-mode))
 
+;; yasnippets
+;; Yet another snippet extension for Emacs.
+(use-package yasnippet
+  :defer t)
+
