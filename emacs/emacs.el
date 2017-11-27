@@ -25,6 +25,9 @@
 ;; tell use-package to always ensure
 (setq use-package-always-ensure t)
 
+;; don't load outdated packages
+(setq load-prefer-newer t)
+
 ;; -----------------------------------------------------------------------------
 
 ;; Basic configuration
