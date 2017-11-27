@@ -881,3 +881,11 @@
 (use-package yasnippet
   :defer t)
 
+;; company-quickhelp
+;; Documentation popup for Company
+(use-package company-quickhelp
+  :init
+  (company-quickhelp-mode 1)
+  :config
+  (setq company-quickhelp-delay 0.5))
+
