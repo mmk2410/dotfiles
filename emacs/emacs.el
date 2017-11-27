@@ -593,17 +593,17 @@
 ;; doom-themes
 ;; an opinionated pack of modern color-themes
 (use-package doom-themes
-  :defer t
   :config
-  ;; enable bold and italic
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t)
+  (progn
+    ;; enable bold and italic
+    (setq doom-themes-enable-bold t
+	  doom-themes-enable-italic t)
 
-  ;; enable doom one theme
-  (add-hook 'after-init-hook (lambda () (load-theme 'doom-one t)))
+    ;; enable doom one theme
+    (load-theme 'doom-one :no-confirm)
 
-  ;; enable flashing mode-line on errors
-  (doom-themes-visual-bell-config))
+    ;; enable flashing mode-line on errors
+    (doom-themes-visual-bell-config)))
 
 ;; pdf-tools
 ;; Support library for PDF documents.
