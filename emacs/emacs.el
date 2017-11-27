@@ -209,7 +209,7 @@
 ;; package and mode specific keys
 
 ;; paste in term using C-x C-y
-(eval-after-load "term" '(define-key term-raw-map (kbd "C-x C-y") 'term-paste))
+(eval-after-load "term" '(define-key term-raw-map (kbd "C-y") 'term-paste))
 
 ;; -----------------------------------------------------------------------------
 
