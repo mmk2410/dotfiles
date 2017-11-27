@@ -870,3 +870,9 @@
     (add-to-list 'desktop-modes-not-to-save mode))
   (add-to-list 'desktop-files-not-to-save (rx bos "COMMIT_EDITMSG")))
 
+;; hl-todo
+;; highlight TODOs and similar keywords
+(use-package hl-todo
+  :defer t
+  :init (global-hl-todo-mode))
+
