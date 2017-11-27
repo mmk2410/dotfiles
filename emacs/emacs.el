@@ -348,7 +348,9 @@
 
 ;; mu4e-maildirs-extension
 ;; Show mu4e maildirs summary in mu4e-main-view
-(use-package mu4e-maildirs-extension)
+(use-package mu4e-maildirs-extension
+  :config
+  (mu4e-maildirs-extension))
 
 ;; mu4e-alert
 ;; Desktop notification for mu4e
