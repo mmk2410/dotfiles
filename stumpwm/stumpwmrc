@@ -56,8 +56,6 @@
 (load-module "hostname")
 (load-module "stumptray")
 
-(stumptray:stumptray)
-
 ;; mode-line style
 (setf *mode-line-background-color* "#333333"
       *mode-line-foreground-color* "#cccccc"
@@ -276,6 +274,7 @@
 (run-shell-command "redshift")
 
 ;; last settings
+(stumptray:stumptray)
 
 (switch-layout-to *key-layout*)
 
