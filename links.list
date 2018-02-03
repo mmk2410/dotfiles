@@ -7,7 +7,7 @@ dotdotfiles/vdirsyncer/config .vdirsyncer/config
 dotdotfiles/vdirsyncer/password.gpg .vdirsyncer/password.gpg
 emacs/emacs.el .emacs.d/init.el
 neovim/init.vim .config/nvim/init.vim
-redshift/redshift .config/redshift/redshift.conf
+redshift/redshift .config/redshift.conf
 screen/screenrc .screenrc
 shells/bashrc .bashrc
 shells/zshrc .zshrc
