@@ -37,6 +37,7 @@ alias cd..='cd ..'
 alias sbcl='rlwrap sbcl'
 alias o='xdg-open'
 alias nemo='nemo --no-desktop'
+alias dquilt="quilt --quiltrc=$HOME/.quiltrc-dpkg"
 alias mmk2410='~/.mmk2410'
 
 # if [ -z $SSH_CLIENT ]
