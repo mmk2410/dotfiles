@@ -249,6 +249,39 @@
 (make-web-jump "packages" "firefox-nightly https://packages.debian.org/search?suite=sid&searchon=names&keywords=")
 (make-web-jump "wikipedia" "firefox-nightly https://en.wikipedia.org/w/index.php?search=")
 (make-web-jump "wikipediade" "firefox-nightly https://de.wikipedia.org/w/index.php?search=")
+(defun list-screen-layouts ()
+  "Return an alist of possible screen layouts. Those are the layouts saved in
+~/.screenlayout.sh. First is the name of the layout and second the path to the
+script."
+  (loop
+     for file
+     in (mapcar 'namestring
+		(directory "~/.screenlayout/*.sh"))
+     collect `(,(subseq file
+			(+ 1 (search "/" file :from-end t))
+			(- (length file) 3))
+		,file)))
+
+(defcommand switch-screen-layout ()
+  ()
+  "Menu to switch the screen layout. Possible options are the scripts saved in
+  ~/.screenlayout/"
+  (labels
+      ((pick (options)
+	 (let ((selection
+		(select-from-menu
+		 (current-screen)
+		 options
+		 nil
+		 0)))
+	   (cond
+	     ((null selection)
+	      nil)
+	     (t (stringp (second selection))
+		(run-shell-command (second selection)))))))
+    (pick (list-screen-layouts))))
+
+(define-key *root-map* (kbd "l") "switch-screen-layout")
 
 ;; font configuration
 (load-module "ttf-fonts")
