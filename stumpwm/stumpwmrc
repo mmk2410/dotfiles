@@ -151,8 +151,8 @@
 (run-shell-command "nitrogen --restore")
 
 ;; start mode line
-(if (not (head-mode-line (current-head)))
-     (toggle-mode-line (current-screen) (current-head)))
+;; (if (not (head-mode-line (current-head)))
+;;     (toggle-mode-line (current-screen) (current-head)))
 
 ;; set backlight
 (defcommand set-backlight (value)
