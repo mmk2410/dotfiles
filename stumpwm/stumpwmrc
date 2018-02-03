@@ -290,9 +290,9 @@ script."
 ;; window placement rules
 (define-frame-preference "winkel"
   (0 nil t :class "keepassxc")
-  (0 nil t :class "ownCloud")
-  (0 nil t :class "de-dal33t-Start")
-  (0 nil t :class "TelegramDesktop")) ;; bwSyncAndShare
+  (0 nil t :class "Nextcloud")
+  (0 nil t :class "de-dal33t-Start") ;; bwSyncAndShare
+  (0 nil t :class "TelegramDesktop"))
 
 (define-frame-preference "web"
   (0 nil t :class "Nightly"))
@@ -306,7 +306,7 @@ script."
 (run-shell-command "gpg --textmode -d ~/.config/keepassxc/password.gpg | keepassxc --pw-stdin ~/ownCloud/keys/2017-10.kdbx")
 
 ;; owncloud
-(run-shell-command "owncloud")
+(run-shell-command "nextcloud")
 
 ;; bwSyncAndShare
 (run-shell-command "bwsyncandshare")
