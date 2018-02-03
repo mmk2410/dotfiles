@@ -60,6 +60,14 @@ if [ -z $GOPATH ]
 	set -Ux GOPATH ~/.go
 end
 
+if test -z $DEBFULLNAME
+	set -Ux DEBFULLNAME "Marcel Kapfer"
+end
+
+if test -z $DEBEMAIL
+	set -Ux DEBEMAIL "opensource@mmk2410.org"
+end
+
 # Attach the autoscreen screen session  if StumpWM is running
 # and it's not already in use.
 # if test \( -n $DESKTOP_SESSION \) -a \( $DESKTOP_SESSION = "stumpwm" \)
