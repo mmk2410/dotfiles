@@ -92,6 +92,8 @@
 ;;; ranger
 (define-key *root-map* (kbd "C-c") "exec nemo --no-desktop")
 
+;;; spotify
+(define-key *root-map* (kbd "m") "exec spotify")
 
 ;;; bind keys for changing workspace
 (define-key *root-map* (kbd "C-1") "change-workspace web")
