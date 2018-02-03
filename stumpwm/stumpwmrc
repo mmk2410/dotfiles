@@ -329,3 +329,7 @@ script."
 (switch-layout-to *key-layout*)
 
 (run-shell-command "xmodmap $HOME/.Xmodmap" t)
+
+;; Local Variables:
+;; mode: stumpwm
+;; End:
