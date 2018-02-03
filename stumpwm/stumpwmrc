@@ -90,7 +90,8 @@
 (define-key *root-map* (kbd "e") "emacs")
 
 ;;; ranger
-(define-key *root-map* (kbd "C-c") "exec urxvt -e ranger")
+(define-key *root-map* (kbd "C-c") "exec nemo --no-desktop")
+
 
 ;;; bind keys for changing workspace
 (define-key *root-map* (kbd "C-1") "change-workspace web")
