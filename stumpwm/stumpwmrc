@@ -208,6 +208,16 @@
   (run-commands (concatenate 'string "gselect " n))
   (echo (concatenate 'string "Switched to " n)))
 
+;; toggle window floating
+(defcommand toggle-float ()
+  ()
+  "Toggle weather window is floating or not"
+  (if (typep (current-window) 'STUMPWM::FLOAT-WINDOW)
+      (unfloat-this)
+      (float-this)))
+
+;; and the key for it
+(define-key *root-map* (kbd "C-f") "toggle-float")
 ;; working with emacsclient
 (defvar *es-win* nil
   "to hold the window called emacsclient")
