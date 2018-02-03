@@ -36,6 +36,7 @@ alias x=' exit'
 alias cd..='cd ..'
 alias sbcl='rlwrap sbcl'
 alias o='xdg-open'
+alias nemo='nemo --no-desktop'
 alias mmk2410='~/.mmk2410'
 
 # if [ -z $SSH_CLIENT ]
