@@ -95,7 +95,10 @@ gpg-connect-agent updatestartuptty /bye > /dev/null
 # source: https://wiki.archlinux.org/index.php/Fish#Start_X_at_login
 # This must be at the bottom of this file
 if status --is-login
-    if test -z "$DISPLAY" -a $XDG_VTNR = 1
-        exec startx -- -keeptty
-    end
+	if test -z "$DISPLAY" -a $XDG_VTNR = 1
+		# Unlock GPG keyring befor starting X.
+		# This makes some things easier.
+		echo "gpg unlock" | gpg -se -r me@mmk2410.org > /dev/null
+		exec startx -- -keeptty
+	end
 end
