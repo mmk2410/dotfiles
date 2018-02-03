@@ -324,7 +324,7 @@ script."
 (run-shell-command "redshift")
 
 ;; last settings
-(stumptray:stumptray)
+;; (stumptray:stumptray)
 
 (switch-layout-to *key-layout*)
 
