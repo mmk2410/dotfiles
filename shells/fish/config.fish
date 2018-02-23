@@ -95,6 +95,12 @@ if test $gnupg_SSH_AUTH_SOCK_by -ne %self
 end
 gpg-connect-agent updatestartuptty /bye > /dev/null
 
+# Source the Nix profile, if it exists.
+set -l NIX_PROFILE $HOME/.nix-profile/etc/profile.d/nix.fish
+if test -e $NIX_PROFILE
+	source $NIX_PROFILE
+end
+
 # Automatically start X at login
 # source: https://wiki.archlinux.org/index.php/Fish#Start_X_at_login
 # This must be at the bottom of this file
