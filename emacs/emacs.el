@@ -22,14 +22,11 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; tell use-package to always ensure
-(setq use-package-always-ensure t)
-
-;; don't load outdated packages
-(setq load-prefer-newer t)
-
-;; disable cursor blinking
-(blink-cursor-mode -1)
+(setq
+ ;; tell use-package to always ensure
+ use-package-always-ensure t
+ ;; don't load outdated packages
+ load-prefer-newer t)
 
 ;; -----------------------------------------------------------------------------
 
