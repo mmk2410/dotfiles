@@ -1058,7 +1058,10 @@
   ;; start fci-mode
   (add-hook 'TeX-mode-hook #'fci-mode)
   ;; start auto-fill mode
-  (add-hook 'TeX-mode-hook #'auto-fill-mode))
+  (add-hook 'TeX-mode-hook #'auto-fill-mode)
+
+  :bind (:map latex-mode-map
+	      ("<C-return>" . TeX-insert-comment-line)))
 
 ;; bibtex
 ;; BibTeX editing
