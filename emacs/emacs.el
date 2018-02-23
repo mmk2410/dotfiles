@@ -917,13 +917,12 @@
 	  ("/mailbox/debian/devel-changes" . ?c)
 	  ("/mailbox/debian/user" . ?d)))
 
-  ;; always add myself as BCC
-  (add-hook 'mu4e-compose-mode-hook
-	    (lambda ()
-	      "Add a BCC header"
-	      (save-excursion (message-add-header (concat "Bcc: " user-mail-address "\n")))
-	      ;; sign message
-	      (mml-secure-message-sign-pgpmime))))
+  ;; enable spell checking
+  (add-hook 'mu4e-compose-mode-hook #'flyspell-mode)
+  ;; always BCC myself
+  (add-hook 'mu4e-compose-mode-hook (lambda () (save-excursion (message-add-header (concat "Bcc: " user-mail-address "\n")))))
+  ;; sign message
+  (add-hook 'mu4e-compose-mode-hook (lambda () (mml-secure-message-sign-pgpmime))))
 
 ;; elfeed
 ;; emacs feed reader
