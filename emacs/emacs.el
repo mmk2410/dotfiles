@@ -894,13 +894,18 @@
 
   (add-to-list 'mu4e-bookmarks
 	       (make-mu4e-bookmark
-		:name "Unread Messages"
-		:query "maildir:/university* flag:unread AND NOT flag:trashed OR maildir:/mailbox/inbox flag:unread AND NOT  flag:trashed"
+		:name "Important Unread Messages"
+		:query "(m:/university* OR m:/mailbox/inbox) AND flag:unread AND NOT  flag:trashed"
+		:key ?i))
+  (add-to-list 'mu4e-bookmarks
+	       (make-mu4e-bookmark
+		:name "Open Messages"
+		:query "(flag:unread AND NOT flag:trashed ANT NOT m:/mailbox/debian/devel-changes AND NOT m:/university/fin/service/open) OR m:/mailbox/inbox OR m:/university/inbox"
 		:key ?u))
   (add-to-list 'mu4e-bookmarks
 	       (make-mu4e-bookmark
 		:name "Flagged messages"
-		:query "flag:flagged"
+		:query "flag:flagged AND NOT flag:trashed"
 		:key ?f))
 
   ;; custom shortcuts
