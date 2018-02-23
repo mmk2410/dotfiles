@@ -257,14 +257,11 @@
 ;; expand-region
 ;; Increase selected region by semantic units.
 (use-package expand-region
-  :config
-  (global-set-key (kbd "C-=") 'er/expand-region))
+  :bind (("C-=" . er/expand-region)))
 
 ;; dired+
 ;; Extensions to Dired
-(use-package dired+
-  :config
-  (require 'dired+))
+(use-package dired+)
 
 ;; projectile
 ;; Manage and navigate projects in Emacs easily
@@ -324,6 +321,7 @@
 ;; mu4e-alert
 ;; Desktop notification for mu4e
 (use-package mu4e-alert
+  :after (mu4e)
   :config
   (mu4e-alert-set-default-style 'libnotify)
   :hook
@@ -421,14 +419,13 @@
 ;; diff-hl
 ;; Highlight uncommitted changes using VC
 (use-package diff-hl
-  :config
-  (global-diff-hl-mode t)
+  :defer nil
+  :config (global-diff-hl-mode t)
   :hook (magit-post-refresh-hook . diff-hl-magit-post-refresh))
 
 ;; treemacs
 ;; A tree style file explorer package
 (use-package treemacs
-  :defer t
   :init
   (define-prefix-command 'treemacs-map)
   (global-set-key (kbd "M-m") 'treemacs-map)
@@ -461,7 +458,7 @@
 ;; treemacs-projectile
 ;; Projectile integration for treemacs
 (use-package treemacs-projectile
-  :defer t
+  :after treemacs
   :config
   (setq treemacs-header-function #'treemacs-projectile-create-header)
   :bind
@@ -560,8 +557,9 @@
 ;; counsel-projectile
 ;; Ivy UI for Projectile
 (use-package counsel-projectile
+  :after (projectile)
   :config
-  (counsel-projectile-on))
+  (counsel-projectile-mode))
 
 ;; avy
 ;; Jump to arbitrary positions in visible text and select text quickly.
@@ -613,6 +611,8 @@
 				       (append '((company-math-symbols-latex company-latex-commands))
 					       company-backends)))))
 
+(use-package company-shell
+  :after (company shell-mode))
 
 ;; beginend
 ;; Redefine M-< and M-> for some modes
@@ -671,7 +671,8 @@
 
 ;; focus
 ;; Dim the font color of text in surrounding sections
-(use-package focus)
+(use-package focus
+  :defer t)
 
 ;; phpunit
 ;; Launch PHP unit tests using phpunit
@@ -692,7 +693,8 @@
 
 ;; easy-hugo
 ;; Write blogs made with hugo by markdown or org-mode
-(use-package easy-hugo)
+(use-package easy-hugo
+  :defer t)
 
 ;; stumpwm-mode
 ;; special lisp mode for evaluating code into running stumpwm
@@ -908,7 +910,6 @@
 
 ;; bug-hunter
 ;; Hunt down errors by bisecting elisp files
-(use-package bug-hunter)
 
 ;; desktop
 ;; Save buffers, windows and frames
@@ -923,21 +924,22 @@
   (dolist (mode '(magit-mode magit-log-mode))
     (add-to-list 'desktop-modes-not-to-save mode))
   (add-to-list 'desktop-files-not-to-save (rx bos "COMMIT_EDITMSG")))
+(use-package bug-hunter
+  :defer t)
 
 ;; hl-todo
 ;; highlight TODOs and similar keywords
 (use-package hl-todo
-  :defer t
   :init (global-hl-todo-mode))
 
 ;; yasnippets
 ;; Yet another snippet extension for Emacs.
-(use-package yasnippet
-  :defer t)
+(use-package yasnippet)
 
 ;; company-quickhelp
 ;; Documentation popup for Company
 (use-package company-quickhelp
+  :after (company)
   :init
   (company-quickhelp-mode 1)
   :config
@@ -953,7 +955,6 @@
 ;; Integrated environment for TeX
 (use-package tex
   :ensure auctex
-  :defer t
   :config
   (setq
    ;; Parse file after loading it if no style hook is found for it.
@@ -978,7 +979,6 @@
 ;; Integrated environment for TeX
 (use-package tex-buf
   :ensure auctex
-  :defer t
   ;; Don't ask for confirmation when saving before processing
   :config (setq TeX-save-query nil))
 
@@ -986,7 +986,6 @@
 ;; Integrated environment for TeX
 (use-package tex-style
   :ensure auctex
-  :defer t
   :config
   ;; Enable support for csquotes
   (setq LaTeX-csquotes-close-quote "}"
@@ -996,20 +995,18 @@
 ;; Integrated environment for TeX
 (use-package tex-fold
   :ensure auctex
-  :defer t
   :init (add-hook 'TeX-mode-hook #'TeX-fold-mode))
 
 ;; LaTeX with AUCTeX
 ;; Integrated environment for TeX
 (use-package tex-mode
-  :ensure auctex
-  :defer t)
+  :ensure auctex)
 
 ;; LaTeX with AUCTeX
 ;; Integrated environment for TeX
 (use-package latex
   :ensure auctex
-  :defer t
+  :defer nil
   :config
   ;; No language-specific hyphens please
   (setq LaTeX-babel-hyphen nil)
@@ -1035,7 +1032,6 @@
 ;; bibtex
 ;; BibTeX editing
 (use-package bibtex
-  :defer t
   :config
   ;; Run prog mode hooks for bibtex
 
@@ -1047,7 +1043,6 @@
 ;; reftex
 ;; TeX cross-reference management
 (use-package reftex
-  :defer t
   :diminish reftex-mode
   :init (add-hook 'LaTeX-mode-hook #'reftex-mode)
   :config
@@ -1060,7 +1055,6 @@
 ;; term / ansi-term
 ;; terminal in emacs
 (use-package term
-  :defer t
   :init (defalias 'sh 'ansi-term)
   :config
   ;; set default shell
