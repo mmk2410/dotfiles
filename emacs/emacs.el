@@ -254,13 +254,6 @@
   :config
   (beacon-mode))
 
-;; hungry-delete
-;; Delete a whitespace character will delete all whitespace until the next
-;; non-whitespace character
-(use-package hungry-delete
-  :config
-  (global-hungry-delete-mode t))
-
 ;; expand-region
 ;; Increase selected region by semantic units.
 (use-package expand-region
