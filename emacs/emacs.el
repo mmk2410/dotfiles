@@ -35,9 +35,14 @@
 ;; The code in this block should be package independend.
 
 ;; Keep emacs Custom-settings in separate file
+;; set the file path
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+
+;; create the file if not existent
 (when (not (file-exists-p custom-file))
   (with-temp-buffer (write-file custom-file)))
+
+;; finally load it
 (load custom-file)
 
 ;; set name and password
