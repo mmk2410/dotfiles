@@ -342,48 +342,43 @@
 		   ("\\paragraph{%s}" . "\\paragraph*{%s}")
 		   ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
-  ;; add latex packages and configurations
-  (setq org-latex-packages-alist
-        '(
-          ("" "booktabs" t)
-          ("" "listings" t)
-          ("" "xcolor" t)
-          ("" "polyglossia" t)
-          ("utf8" "luainputenc" t)
-          ("" "fontspec" t)
-          ("hidelinks" "hyperref" t)
-          ("" "libertineotf" t)
-          ("scale=0.9" "AnonymousPro" t)
-          "\\setmainfont{Linux Libertine O}"
-          "\\setsansfont{Linux Biolinum O}"
-          "\\setmonofont{AnonymousPro}"
-          "\\addtokomafont{disposition}{\\fontspec{LinBiolinum_RB}}"
-          "\\setdefaultlanguage{german}"))
 
-  ;; enable latex listings
-  (setq org-latex-listings 'listings)
-
-  ;; latex listings options
-  (setq org-latex-listings-options
-        '(
-          ("frame" "single")
-          ("rulesep" "6pt")
-          ("backgroundcolor" "\\color{gray!20}")
-          ("basicstyle" "\\footnotesize\\ttfamily")
-          ("breaklines" "true")
-          ))
+  ;; latex related option (mainly support for lualatex)
+  (setq
+   ;; add latex packages and configurations
+   org-latex-packages-alist
+   '(
+     ("" "booktabs" t)
+     ("" "listings" t)
+     ("" "xcolor" t)
+     ("" "polyglossia" t)
+     ("utf8" "luainputenc" t)
+     ("" "fontspec" t)
+     ("hidelinks" "hyperref" t)
+     ("scale=0.9" "AnonymousPro" t)
+     "\\setmainfont{Linux Libertine O}"
+     "\\setsansfont{Linux Biolinum O}"
+     "\\setmonofont{AnonymousPro}"
+     "\\setdefaultlanguage{german}")
+   ;; enable latex listings
+   org-latex-listings 'listings
+   ;; latex listings options
+   org-latex-listings-options
+   '(
+     ("frame" "single")
+     ("rulesep" "6pt")
+     ("backgroundcolor" "\\color{gray!20}")
+     ("basicstyle" "\\footnotesize\\ttfamily")
+     ("breaklines" "true")))
 
   ;; remove unused default packages
   (unless (boundp 'org-latex-default-packages-alist)
     (setq org-latex-default-packages-alist nil))
-  (setq org-latex-default-packages-alist
-        (remove '("AUTO" "inputenc" t) org-latex-default-packages-alist))
-  (setq org-latex-default-packages-alist
-        (remove '("" "fixltx2e" nil) org-latex-default-packages-alist))
-  (setq org-latex-default-packages-alist
-        (remove '("" "hyperref" nil) org-latex-default-packages-alist))
-  (setq org-latex-default-packages-alist
-        (remove '"\\tolerance=1000" org-latex-default-packages-alist))
+  (setq
+   org-latex-default-packages-alist (remove '("AUTO" "inputenc" t) org-latex-default-packages-alist)
+   org-latex-default-packages-alist (remove '("" "fixltx2e" nil) org-latex-default-packages-alist)
+   org-latex-default-packages-alist (remove '("" "hyperref" nil) org-latex-default-packages-alist)
+   org-latex-default-packages-alist (remove '"\\tolerance=1000" org-latex-default-packages-alist))
 
   ;; syntax highlighting
   (setq org-src-fontify-natively t)
@@ -395,9 +390,11 @@
 ;; Graphically indicate the fill column
 (use-package fill-column-indicator
   :config
-  ;; set rule width to 5px
-  (setq fci-rule-width 5)
-  (setq fci-rule-color "#5B6268"))
+  (setq
+   ;; set rule width to 5px
+   fci-rule-width 5
+   ;; set rule color
+   fci-rule-color "#5B6268"))
 
 ;; diff-hl
 ;; Highlight uncommitted changes using VC
@@ -527,12 +524,10 @@
 ;; Isearch with an overview. Oh, man!
 (use-package swiper
   :config
-  (progn
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
-    (setq ivy-display-style 'fancy)
-    (setq ivy-extra-directories nil)
-    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t
+        ivy-display-style 'fancy
+        ivy-extra-directories nil)
   :bind
   (("C-s" . swiper)
    ("C-r" . swiper)))
@@ -562,8 +557,9 @@
 (use-package ox-pandoc
   :mode ("\\.org$" . org-mode)
   :config
-  (setq org-pandoc-options-for-latex-pdf '((latex-engine . "lualatex")))
-  (setq org-pandoc-options-for-beamer-pdf '((latex-engine . "lualatex"))))
+  ;; use lualatex instead of pdflatex
+  (setq org-pandoc-options-for-latex-pdf '((latex-engine . "lualatex"))
+        org-pandoc-options-for-beamer-pdf '((latex-engine . "lualatex"))))
 
 ;; org-trello
 ;; Minor mode to synchronize org-mode buffer and trello board
@@ -634,11 +630,11 @@
   (("\\.html?\\'" . web-mode))
   (("\\.css?\\'" . web-mode))
   :config
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-enable-css-colorization t)
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-indent-style 2))
+  (setq web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-enable-css-colorization t
+        web-mode-code-indent-offset 2
+        web-mode-indent-style 2))
 
 ;; dart-mode
 ;; Major mode for editing Dart files
@@ -721,19 +717,17 @@
 ;; coffee-mode
 ;; Major mode for CoffeeScript code
 (use-package coffee-mode
-  :config
-  (setq whitespace-action '(auto-cleanup))
-  (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
-  (setq coffee-tab-width 2)
   :mode (("\\.coffee\\'" . coffee-mode))
+  :config (setq whitespace-action '(auto-cleanup)
+		whitespace-style '(trailing space-before-tab indentation empty space-after-tab)
+		coffee-tab-width 2)
   :hook (coffee-mode-hook whitespace-mode))
 
 ;; python
 ;; Python's flying circus support for Emacs
 (use-package python
-  :config
-  (setq flycheck-python-pylint-executable "pylint3"))
   :mode (("\\.py\\'" . python-mode))
+  :config (setq flycheck-python-pylint-executable "pylint3"))
 
 ;; sr-speedbar
 ;; Same frame speedbar
@@ -753,56 +747,54 @@
    mu4e-update-interval 300)
 
   ;; faster reindexing
-  (setq
-   mu4e-maildir-index-cleanup nil
-   mu4e-index-lazy-check t)
+  (setq mu4e-maildir-index-cleanup nil
+        mu4e-index-lazy-check t)
 
   ;; smtpmail settings
   (setq  message-send-mail-function 'smtpmail-send-it
-	 send-mail-function 'smtpmail-send-it)
+         send-mail-function 'smtpmail-send-it)
 
-  ;; don't save sent messages to "Sent" folder
-  (setq mu4e-sent-messages-behavior 'delete)
-
-  ;; use mu4e as default emacs mailer
-  (setq mail-user-agent 'mu4e-user-agent)
-
-  ;; don't keep message buffers around
-  (setq message-kill-buffer-on-exit t)
-
-  ;; complete date format
-  (setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
-
-  ;; show full addresses
-  (setq mu4e-view-show-addresses 't)
-
-  ;; attachment directory
-  (setq mu4e-attachment-dir  "/tmp")
-
-  ;; maildir
-  (setq mu4e-maildir "~/.mail")
-
-  ;; don't reply to myself
-  (setq mu4e-compose-dont-reply-to-self t)
+  ;; general mu4e options
+  (setq
+   ;; use mu4e as default emacs mailer
+   mail-user-agent 'mu4e-user-agent
+   ;; don't keep message buffers around
+   message-kill-buffer-on-exit t
+   ;; don't save sent messages to "Sent" folder
+   mu4e-sent-messages-behavior 'delete
+   ;; complete date format
+   mu4e-headers-date-format "%Y-%m-%d %H:%M"
+   ;; show full addresses
+   mu4e-view-show-addresses 't
+   ;; attachment directory
+   mu4e-attachment-dir  "/tmp"
+   ;; don't reply to myself
+   mu4e-compose-dont-reply-to-self t
+   ;; maildir
+   mu4e-maildir "~/.mail"
+   ;; use correct account context when sending mail based from headers
+   message-sendmail-envelope-from 'header)
 
   ;; list of email addresses
-  (setq mu4e-user-mail-address-list '("marcel.kapfer@uni-ulm.de"
-				      "marcel@marcel-kapfer.de"
-				      "tex@mmk2410.org"
-				      "me@mmk2410.org"
-				      "debian@mmk2410.org"
-				      "hugo@marcel-kapfer.de"
-				      "info@marcel-kapfer.de"
-				      "contact@marcel-kapfer.de"
-				      "kontakt@marcel-kapfer.de"
-				      "opensource@mmk2410.org"))
+  (setq mu4e-user-mail-address-list
+        '("marcel.kapfer@uni-ulm.de"
+          "marcel@marcel-kapfer.de"
+          "tex@mmk2410.org"
+          "me@mmk2410.org"
+          "debian@mmk2410.org"
+          "hugo@marcel-kapfer.de"
+          "info@marcel-kapfer.de"
+          "contact@marcel-kapfer.de"
+          "kontakt@marcel-kapfer.de"
+          "opensource@mmk2410.org"))
 
   ;; customize mu4e list view
-  (setq mu4e-headers-fields '((:human-date . 20)
-			      (:flags . 6)
-			      (:mailing-list . 10)
-			      (:from-or-to . 22)
-			      (:subject . nil)))
+  (setq mu4e-headers-fields
+        '((:human-date . 20)
+          (:flags . 6)
+          (:mailing-list . 10)
+          (:from-or-to . 22)
+          (:subject . nil)))
 
   ;; convenience function for starting the whole mu4e in its own frame
   ;; posted by the author of mu4e on the mailing list
@@ -811,12 +803,6 @@
     (interactive)
     (select-frame (make-frame))
     (mu4e))
-
-  ;; spell checking
-  (add-hook 'mu4e-compose-mode-hook 'flyspell-mode)
-
-  ;; use correct account context when sending mail based from headers
-  (setq message-sendmail-envelope-from 'header)
 
   ;; set citation line
   (setq message-citation-line-format "%f on %Y-%m-%d %H:%M %Z:\n")
@@ -881,11 +867,11 @@
   ;; custom shortcuts
   (setq mu4e-maildir-shortcuts
 	'(("/university/inbox" . ?u)
-	  ("/university/fin.fin" . ?f)
-	  ("/university/fin.intern" . ?i)
+	  ("/university/fin/fin" . ?f)
+	  ("/university/fin/intern" . ?i)
 	  ("/mailbox/inbox" . ?m)
-	  ("/mailbox/debian.devel-changes" . ?c)
-	  ("/mailbox/debian.user" . ?d)))
+	  ("/mailbox/debian/devel-changes" . ?c)
+	  ("/mailbox/debian/user" . ?d)))
 
   ;; always add myself as BCC
   (add-hook 'mu4e-compose-mode-hook
@@ -967,10 +953,13 @@
    TeX-source-correlate-start-server t
    ;; use pdf-tools with synctex
    TeX-view-program-selection '((output-pdf "PDF Tools"))
-   TeX-source-correlate-start-server t
-   )
-  (setq-default TeX-master nil
-		TeX-engine 'luatex))
+   TeX-source-correlate-start-server t)
+
+  (setq-default
+   ;; set to nil, so AUCTeX always asks for the master file
+   TeX-master nil
+   ;; use a decent, modern TeX engine
+   TeX-engine 'luatex))
 
 ;; LaTeX with AUCTeX
 ;; Integrated environment for TeX
