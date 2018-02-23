@@ -239,8 +239,8 @@
 ;; org-bullets
 ;; Show bullets in org-mode as UTF-8 characters
 (use-package org-bullets
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  :hook
+  (org-mode-hook . (lambda () (org-bullets-mode 1))))
 
 ;; undo-tree
 ;; Treat undo history as a tree
@@ -333,8 +333,9 @@
 (use-package mu4e-alert
   :config
   (mu4e-alert-set-default-style 'libnotify)
-  (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
-  (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display))
+  :hook
+  ((after-init-hook . mu4e-alert-enable-notifications)
+   (after-init-hook . mu4e-alert-enable-mode-line-display)))
 
 ;; indent-guide
 ;; show vertical lines to guide indentation
@@ -429,7 +430,7 @@
 (use-package diff-hl
   :config
   (global-diff-hl-mode t)
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+  :hook (magit-post-refresh-hook . diff-hl-magit-post-refresh))
 
 ;; treemacs
 ;; A tree style file explorer package
@@ -613,11 +614,12 @@
 ;; company-math
 ;; Completion backends for unicode math symbols and latex tags
 (use-package company-math
-  :config
-  (add-hook 'TeX-mode-hook (lambda ()
-                             (setq-local company-backends
-                                         (append '((company-math-symbols-latex company-latex-commands))
-                                                 company-backends)))))
+  :after (company tex)
+  :hook (TeX-mode-hook . (lambda ()
+			   (setq-local company-backends
+				       (append '((company-math-symbols-latex company-latex-commands))
+					       company-backends)))))
+
 
 ;; beginend
 ;; Redefine M-< and M-> for some modes
@@ -733,7 +735,7 @@
   (setq whitespace-action '(auto-cleanup))
   (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
   (setq coffee-tab-width 2)
-  (add-hook 'coffee-mode-hook 'whitespace-mode))
+  :hook (coffee-mode-hook whitespace-mode))
 
 ;; python
 ;; Python's flying circus support for Emacs
@@ -1043,10 +1045,11 @@
   :defer t
   :config
   ;; Run prog mode hooks for bibtex
-  (add-hook 'bibtex-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
 
   ;; Use a modern BibTeX dialect
   (bibtex-set-dialect 'biblatex))
+  ;; Run prog mode hooks for bibtex
+  :hook (bibtex-mode-hook . (lambda () (run-hooks 'prog-mode-hook))))
 
 ;; reftex
 ;; TeX cross-reference management
@@ -1085,4 +1088,5 @@
   (ad-activate 'term-sentinel)
 
   ;; disable nlinum in shell
-  (add-hook 'term-mode-hook (lambda () (nlinum-mode -1))))
+  :hook (term-mode-hook . (lambda () (nlinum-mode -1)))
+
