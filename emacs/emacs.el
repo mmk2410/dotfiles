@@ -108,11 +108,12 @@
       (quote (("default"
                ("dired" (mode . dired-mode))
                ("org" (name . "^.*org$"))
-               ("shell" (or (mode . eshell-mode) (mode . term-mode)))
-               ;; ("mu4e" (or
-               ;;          (mode . mu4e-compose-mode)
-               ;;          (name . "\*mu4e\*")
-               ;;          ))
+               ("shell" (or
+			 (mode . eshell-mode)
+			 (mode . term-mode)))
+               ("mu4e" (or
+                         (mode . mu4e-compose-mode)
+                         (name . "\*mu4e\*")))
                ("programming" (or
                                (mode . python-mode)
                                (mode . sh-mode)
