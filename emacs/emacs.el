@@ -515,12 +515,7 @@
 ;; Support library for PDF documents.
 (use-package pdf-tools
   :config
-  (pdf-tools-install)
-  ;; nlinum makes no problems for me
-  ;; so disabling the warning
-  (setq pdf-view-incompatible-modes
-   (quote
-    (linum-mode linum-relative-mode helm-linum-relative-mode nlinum-hl-mode nlinum-relative-mode yalinum-mode))))
+  (pdf-tools-install))
 
 ;; counsel
 ;; Various completion functions using Ivy
