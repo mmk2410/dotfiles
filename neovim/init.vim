@@ -90,8 +90,8 @@ set tm=500
 
 syntax on
 colorscheme gruvbox
-
-set background=dark
+set background=light
+" set termguicolors
 set cursorline
 if has("gui_running")
         set guioptions-=T
