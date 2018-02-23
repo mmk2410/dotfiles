@@ -270,14 +270,6 @@
   (projectile-global-mode)
   (setq projectile-completion-system 'ivy))
 
-;; smartparens
-;; Automatic insertion, wrapping and paredit-like navigation with user defined
-;; pairs.
-(use-package smartparens
-  :config
-  (require 'smartparens-config)
-  (smartparens-global-mode t)
-  (show-smartparens-global-mode t))
 
 ;; dumb-jump
 ;; jump to definition for multiple languages without configuration.
