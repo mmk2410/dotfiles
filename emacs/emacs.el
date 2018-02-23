@@ -326,14 +326,11 @@
   :config
   (global-nlinum-mode t))
 
-
 ;; org
 ;; Outline-based notes management and organizer
 (use-package org
+  :mode "\\.org$"
   :config
-  ;; enable org mod efor all org files
-  (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-
   ;; add scrartcl LaTeX class to org
   (with-eval-after-load 'ox-latex
     (add-to-list 'org-latex-classes
@@ -563,13 +560,15 @@
 ;; ox-pandoc
 ;; org exporter for pandoc
 (use-package ox-pandoc
+  :mode ("\\.org$" . org-mode)
   :config
   (setq org-pandoc-options-for-latex-pdf '((latex-engine . "lualatex")))
   (setq org-pandoc-options-for-beamer-pdf '((latex-engine . "lualatex"))))
 
 ;; org-trello
 ;; Minor mode to synchronize org-mode buffer and trello board
-(use-package org-trello)
+(use-package org-trello
+  :mode ("\\.org$" . org-mode))
 
 ;; web-beautify
 ;; Format HTML, CSS and JavaScript/JSON
@@ -618,23 +617,23 @@
 ;; markdown-preview-mode
 ;; markdown realtime preview minor mode
 (use-package markdown-preview-mode
+  :after (markdown-mode)
   :config
   (add-to-list 'markdown-preview-javascript "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"))
 
 ;; web-mode
 ;; major mode for editing web templates
 (use-package web-mode
+  :mode
+  (("\\.phtml\\'" . web-mode))
+  (("\\.tpl\\.php\\'" . web-mode))
+  (("\\.[agj]sp\\'" . web-mode))
+  (("\\.erb\\'" . web-mode))
+  (("\\.mustache\\'" . web-mode))
+  (("\\.djhtml\\'" . web-mode))
+  (("\\.html?\\'" . web-mode))
+  (("\\.css?\\'" . web-mode))
   :config
-  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-enable-css-colorization t)
@@ -643,17 +642,19 @@
 
 ;; dart-mode
 ;; Major mode for editing Dart files
-(use-package dart-mode)
+(use-package dart-mode
+  :mode (("\\.dart\\'" . dart-mode)))
 
 ;; csv-mode
 ;; Major mode for editing comma/char separated values
 (use-package csv-mode
-  :config
-  (setq csv-separators '(";")))
+  :mode (("\\.csv\\'" . csv-mode))
+  :config (setq csv-separators '(";")))
 
 ;; json-mode
 ;; Major mode for editing JSON files
-(use-package json-mode)
+(use-package json-mode
+  :mode (("\\.json\\'" . json-mode)))
 
 ;; focus
 ;; Dim the font color of text in surrounding sections
@@ -671,11 +672,13 @@
 
 ;; php-mode
 ;; Major mode for editing PHP files
-(use-package php-mode)
+(use-package php-mode
+  :mode (("\\.php\\'" . php-mode)))
 
 ;; fish-mode
 ;; Major mode for fish shell scripts
-(use-package fish-mode)
+(use-package fish-mode
+  :mode (("\\.fish\\'" . fish-mode)))
 
 ;; easy-hugo
 ;; Write blogs made with hugo by markdown or org-mode
@@ -684,11 +687,14 @@
 
 ;; stumpwm-mode
 ;; special lisp mode for evaluating code into running stumpwm
-(use-package stumpwm-mode)
+(use-package stumpwm-mode
+  :mode (("stumpwmrc" . stumpwm-mode)))
 
 ;; slime
 ;; Superior Lisp Interaction Mode for Emacs
 (use-package slime
+  :mode (("\\.lisp\\'" . slime)
+	 ("stumpwmrc" . slime))
   :config
   (load (expand-file-name "~/quicklisp/slime-helper.el"))
   (setq inferior-lisp-program "/usr/bin/sbcl"))
@@ -696,6 +702,7 @@
 ;; slime-company
 ;; slime completion backend for company mode
 (use-package slime-company
+  :after (slime company)
   :config
   (setq slime-contribs '(slime-fancy slime-company)))
 
@@ -707,7 +714,9 @@
 
 ;; sass-mode
 ;; Major mode for editing Sass files
-(use-package sass-mode)
+(use-package sass-mode
+  :mode (("\\.scss\\'" . scss-mode)
+	 ("\\.sass\\'" . sass-mode)))
 
 ;; coffee-mode
 ;; Major mode for CoffeeScript code
@@ -716,6 +725,7 @@
   (setq whitespace-action '(auto-cleanup))
   (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
   (setq coffee-tab-width 2)
+  :mode (("\\.coffee\\'" . coffee-mode))
   :hook (coffee-mode-hook whitespace-mode))
 
 ;; python
@@ -723,6 +733,7 @@
 (use-package python
   :config
   (setq flycheck-python-pylint-executable "pylint3"))
+  :mode (("\\.py\\'" . python-mode))
 
 ;; sr-speedbar
 ;; Same frame speedbar
