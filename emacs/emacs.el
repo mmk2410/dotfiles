@@ -777,9 +777,8 @@
 ;; mu4e
 ;; emacs mail client
 (use-package mu4e
-  :load-path "/usr/share/emacs25/site-lisp/mu4e/"
-  :ensure nil
-  :pin manual
+  :load-path "/usr/share/emacs/25.1/site-lisp/mu4e/"
+  :commands mu4e
   :config
   ;; get mail
   (setq
