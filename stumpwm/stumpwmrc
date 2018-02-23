@@ -317,7 +317,7 @@ script."
 ;; autostart programs
 
 ;; keepassxc
-(run-shell-command "gpg --textmode -d ~/.config/keepassxc/password.gpg | keepassxc --pw-stdin ~/ownCloud/keys/2017-10.kdbx")
+(run-shell-command "gpg --textmode -d ~/dotfiles/dotdotfiles/keepassxc/password.gpg | keepassxc --pw-stdin ~/cloud/keys/2017-10.kdbx")
 
 ;; owncloud
 (run-shell-command "nextcloud")
