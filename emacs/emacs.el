@@ -1075,13 +1075,13 @@
 ;; TeX cross-reference management
 (use-package reftex
   :diminish reftex-mode
-  :init (add-hook 'LaTeX-mode-hook #'reftex-mode)
   :config
   (setq
    ;; Plug into AUCTeX
    reftex-plug-into-AUCTeX t
    ;; Automatically derive labels, and prompt for confirmation
-   reftex-insert-label-flags '(t t)))
+   reftex-insert-label-flags '(t t))
+  :hook (LaTeX-mode-hook . reftex-mode))
 
 ;; term / ansi-term
 ;; terminal in emacs
