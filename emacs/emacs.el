@@ -45,9 +45,9 @@
 ;; finally load it
 (load custom-file)
 
-;; set name and password
-(setq user-full-name "Marcel Kapfer")
-(setq user-mail-address "me@mmk2410.org")
+;; set name and e-mail
+(setq user-full-name "Marcel Kapfer"
+      user-mail-address "opensource@mmk2410.org")
 
 ;; y/n instead of yes/no for confirm questions
 (defalias 'yes-or-no-p 'y-or-n-p)
