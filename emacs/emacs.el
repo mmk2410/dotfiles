@@ -184,11 +184,11 @@
 ;; Open link under cursor
 (global-set-key (kbd "C-c b") 'browse-url-at-point)
 
-;; start ansi-term with fish shell
-(global-set-key (kbd "C-c s") (lambda () (interactive) (ansi-term "/usr/bin/fish")))
+;; Open link under cursor
+(global-set-key (kbd "C-x e") 'mu4e-in-new-frame)
 
 ;; eval region
-(global-set-key (kbd "C-C x") 'eval-region)
+(global-set-key (kbd "C-c x") 'eval-region)
 
 ;; revert buffer (reload file from disk)
 (global-set-key (kbd "<f5>" ) 'revert-buffer)
@@ -198,11 +198,6 @@
 
 ;; toggle auto-fill-mode
 (global-set-key (kbd "C-c q") 'auto-fill-mode)
-
-;; package and mode specific keys
-
-;; paste in term using C-x C-y
-(eval-after-load "term" '(define-key term-raw-map (kbd "C-y") 'term-paste))
 
 ;; -----------------------------------------------------------------------------
 
@@ -217,28 +212,6 @@
   "Close all buffers"
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
-
-;; shortcut for close-all-buffers
-(global-set-key (kbd "C-c c") 'close-all-buffers)
-
-
-;; LaTeX
-
-;; helper for a new (La)TeX style guide concept.
-(defun TeX-insert-comment-line ()
-  "Insert a linebreak followed by a '%' and another line break"
-  (interactive)
-  (newline-and-indent)
-  (insert "%")
-  (newline-and-indent))
-
-;; Key binding for TeX-insert-comment-line
-(defun my-latex-mode-keys ()
-  "Key bindings for latex-mode"
-  (local-set-key (kbd "<C-return>") 'TeX-insert-comment-line))
-
-;; Enable own latex-mode keybindings
-(add-hook 'TeX-mode-book 'my-latex-mode-keys)
 
 ;; -----------------------------------------------------------------------------
 
