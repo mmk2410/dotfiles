@@ -1117,3 +1117,9 @@
 (use-package saveplace
   :init (save-place-mode t))
 
+;; tramp
+;; do stuff over ssh at al.
+(use-package tramp
+  :init
+  ;; Set default connection method for TRAMP
+  (setq tramp-default-method "ssh"))
