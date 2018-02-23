@@ -1032,6 +1032,15 @@
   :config
   ;; No language-specific hyphens please
   (setq LaTeX-babel-hyphen nil)
+
+  ;; helper for a new (La)TeX style guide concept.
+  ;; inserts a line break, a empty comment line and another line break
+  (defun TeX-insert-comment-line ()
+    "Insert a linebreak followed by a '%' and another line break"
+    (interactive)
+    (newline-and-indent)
+    (insert "%")
+    (newline-and-indent))
   ;; Easy math input
   (add-hook 'TeX-mode-hook #'LaTeX-math-mode)
   ;; Start flyspell
