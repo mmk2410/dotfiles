@@ -981,7 +981,7 @@
    ;; Automatically save style information when saving the buffer.
    TeX-auto-save t
    ;; Automatically interst braces after sub- and superscript in math mode
-   TeX-electric-sub-and-superscript t
+   ;; TeX-electric-sub-and-superscript t
    ;; Don't ask the user when saving a file for each file.
    TeX-save-query nil
    ;; enable synctex correlation.
