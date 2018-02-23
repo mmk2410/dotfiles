@@ -1,5 +1,5 @@
 ;; Emacs configuration
-;; Marcel Kapfer (C) 2016 - 207
+;; Marcel Kapfer (C) 2016 - 2018
 ;; MIT License
 
 ;; -----------------------------------------------------------------------------
