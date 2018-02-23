@@ -134,6 +134,17 @@
 
 (define-key *root-map* (kbd "j") '*webjump-frame-bindings*)
 
+;; computer power state keys
+(defvar *powerstate-frame-bindings*
+  (let ((m (make-sparse-keymap)))
+    (define-key m (kbd "M-s") "system-suspend")
+    (define-key m (kbd "M-p") "system-poweroff")
+    (define-key m (kbd "M-r") "system-restart")
+    (define-key m (kbd "M-h") "system-hibernate")
+    m))
+
+(define-key *root-map* (kbd "XF86Launch1") *powerstate-frame-bindings*)
+
 ;; lockscreen
 (define-key *root-map* (kbd "M-l") "exec blurlock")
 
