@@ -768,6 +768,12 @@
 (use-package sr-speedbar
   :bind (("s-b" . sr-speedbar-toggle)))
 
+;; moinmoin
+;; Major mode for editing MoinMoin wiki entries
+(use-package moinmoin
+  :load-path "moinmoin/"
+  :mode (("\\.wiki\\'" . moinmoin-mode)))
+
 ;; mu4e
 ;; emacs mail client
 (use-package mu4e
