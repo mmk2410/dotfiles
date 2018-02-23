@@ -123,8 +123,8 @@
                                (mode . dart-mode)))
                ("emacs" (or
                          (name . "^\\*scratch\\*$")
-                         (name . "^\\*Messages\\*$")))
-               ))))
+                         (name . "^\\*Messages\\*$")))))))
+
 (add-hook 'ibuffer-mode-hook
           (lambda ()
             (ibuffer-auto-mode 1)
