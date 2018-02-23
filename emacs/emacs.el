@@ -665,6 +665,11 @@
         web-mode-code-indent-offset 2
         web-mode-indent-style 2))
 
+;; js2-mode
+;; Major mode for editing JavaScript files
+(use-package js2-mode
+  :mode (("\\.js\\'" . js2-mode)))
+
 ;; dart-mode
 ;; Major mode for editing Dart files
 (use-package dart-mode
