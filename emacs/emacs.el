@@ -933,6 +933,13 @@
   (defun elfeed-search-format-date (date)
     (format-time-string "%Y-%m-%d %H:%M" (seconds-to-time date))))
 
+;; elfeed-org
+;; use an org-file to organize feeds
+(use-package elfeed-org
+  :after (elfeed)
+  :config
+  (elfeed-org)
+  (setq rmh-elfeed-org-files (list "~/ownCloud/feeds.org")))
 
 ;; bug-hunter
 ;; Hunt down errors by bisecting elisp files
