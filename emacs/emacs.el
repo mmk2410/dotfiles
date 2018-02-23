@@ -637,7 +637,7 @@
   :mode (("README\\.md\\'" . markdown-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "kramdown"))
 
 ;; markdown-preview-mode
 ;; markdown realtime preview minor mode
