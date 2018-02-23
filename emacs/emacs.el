@@ -65,26 +65,33 @@
 (prefer-coding-system 'utf-8-unix)
 (set-language-environment "UTF-8")
 
-;; disable startup screen
-(setq inhibit-startup-screen t)
+;; general options
+(setq
+ ;; disable startup screen
+ inhibit-startup-screen t
+ ;; visual bell instead of BEEP
+ visible-bell 1
+ ;; set text in scratch to nil
+ initial-scratch-message nil
+ ;; Don't truncate lines
+ truncate-lines nil
+ ;; Maximize threshold for garbage collection to 10MB for less gc
+ gc-cons-treshold (* 10 1024 1024)
+ ;; confirm before closing emacs
+ confirm-kill-emacs #'y-or-n-p
+ ;; put a new line at the end of every file
+ require-final-newline t
+ ;; use german directory in ispell
+ ispell-dictionary "german"
+;;; always follow symlinks to git repos
+ vc-follow-symlinks t
+ ;;; indent using spaces, not tabs
+ indent-tabs-mode nil
+ ;; tab width
+ tab-width 2)
 
-;; visual bell instead of BEEP
-(setq visible-bell 1)
-
-;; set text in scratch to nil
-(setq initial-scratch-message nil)
-
-;; Don't truncate lines
-(setq truncate-lines nil)
-
-;; Set default connection method for TRAMP
-(setq tramp-default-method "ssh")
-
-;; Maximize threshold for garbage collection to 10MB for less gc
-(setq gc-cons-treshold (* 10 1024 1024))
-
-;; confirm before closing emacs
-(setq confirm-kill-emacs #'y-or-n-p)
+;; disable cursor blinking
+(blink-cursor-mode -1)
 
 ;; activate winner mode
 (when (fboundp 'winner-mode)
