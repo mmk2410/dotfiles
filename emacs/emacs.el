@@ -17,7 +17,7 @@
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.milkbox.net/packages/"))
 
-;; intall use-package if not already installed
+;; install use-package if not already installed
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
