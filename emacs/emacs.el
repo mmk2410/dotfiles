@@ -125,28 +125,21 @@
                          (name . "^\\*scratch\\*$")
                          (name . "^\\*Messages\\*$")))))))
 
+;; activiate the above ibuffer configuration
 (add-hook 'ibuffer-mode-hook
           (lambda ()
             (ibuffer-auto-mode 1)
             (ibuffer-switch-to-saved-filter-groups "default")))
 
-;; Don't show filter groups if there are no buffers in that group
-(setq ibuffer-show-empty-filter-groups nil)
-
-;; Don't ask for confirmation to delete marked buffers
-(setq ibuffer-expert t)
-
-;; put a new line at the end of every file
-(setq require-final-newline t)
+;; ibuffer options
+(setq
+ ;; Don't show filter groups if there are no buffers in that group
+ ibuffer-show-empty-filter-groups nil
+ ;; Don't ask for confirmation to delete marked buffers
+ ibuffer-expert t)
 
 ;; delete trailing whitespaces on save
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; use german directory in ispell
-(setq ispell-dictionary "german-new8")
-
-;;; always follow symlinks to git repos
-(setq vc-follow-symlinks t)
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 ;;; set default column width
 (setq-default fill-column 80)
@@ -155,21 +148,6 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
-
-;;; indent using spaces, not tabs
-(setq indent-tabs-mode nil)
-
-;; tab width
-(setq tab-width 2)
-
-;; Connecting StumpWM with emacsclient
-(add-hook 'after-init-hook 'server-start)
-(setq server-raise-frame t)
-(if window-system
-    (add-hook 'server-done-hook
-	      (lambda ()
-		(shell-command
-		 "stumpish 'eval (stumpwm::return-es-called-win stumpwm::*es-win*)'"))))
 
 ;; auto-fill mode
 (add-hook 'mail-mode-hook 'auto-fill-mode)
