@@ -1011,7 +1011,7 @@
   :config
   ;; Enable support for csquotes
   (setq LaTeX-csquotes-close-quote "}"
-	LaTeX-csquotes-open-quote "\\enquote{"))
+        LaTeX-csquotes-open-quote "\\enquote{"))
 
 ;; LaTeX with AUCTeX
 ;; Integrated environment for TeX
