@@ -844,8 +844,8 @@
     (mu4e))
 
   ;; set citation line
-  (setq message-citation-line-format "%f on %Y-%m-%d %H:%M %Z:\n")
-  (setq message-citation-line-function 'message-insert-citation-line)
+  (setq message-citation-line-format "%f @ %Y-%m-%d %H:%M:%S %Z:\n")
+  (setq message-citation-line-function 'message-insert-formatted-citation-line)
 
   ;; mu4e contexts / mail identities
   (setq mu4e-contexts
