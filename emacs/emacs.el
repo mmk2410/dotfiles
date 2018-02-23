@@ -540,10 +540,10 @@
   :diminish (ivy-mode)
   :config
   (ivy-mode t)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
-  (setq ivy-display-style 'fancy)
-  (setq ivy-extra-directories nil)
+  (setq ivy-use-virtual-buffers t
+        ivy-count-format "(%d/%d) "
+        ivy-display-style 'fancy
+        ivy-extra-directories nil)
   :bind
   (("C-c C-r" . ivy-resume)))
 
@@ -557,7 +557,9 @@
         ivy-extra-directories nil)
   :bind
   (("C-s" . swiper)
-   ("C-r" . swiper)))
+   ("C-r" . swiper)
+   :map read-expression-map
+   ("C-r" . counsel-expression-history)))
 
 ;; counsel-projectile
 ;; Ivy UI for Projectile
