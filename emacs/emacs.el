@@ -943,20 +943,6 @@
 
 ;; bug-hunter
 ;; Hunt down errors by bisecting elisp files
-
-;; desktop
-;; Save buffers, windows and frames
-(use-package desktop
-  :disabled t
-  :init (desktop-save-mode)
-  :config
-  ;; Save desktops a minute after Emacs was idle.
-  (setq desktop-auto-save-timeout 60)
-
-  ;; Don't save Magit and Git related buffers
-  (dolist (mode '(magit-mode magit-log-mode))
-    (add-to-list 'desktop-modes-not-to-save mode))
-  (add-to-list 'desktop-files-not-to-save (rx bos "COMMIT_EDITMSG")))
 (use-package bug-hunter
   :defer t)
 
