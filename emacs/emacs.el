@@ -505,7 +505,7 @@
   :bind
   ("C-x g" . magit-status))
 
-;; rainbox-delimiters
+;; rainbow-delimiters
 ;; Highlight brackets according to their depth
 (use-package rainbow-delimiters
   :config
