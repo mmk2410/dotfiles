@@ -219,9 +219,19 @@
 ;;
 ;; all packages should be loaded with use-package
 
+;; server
+(use-package server
+  :if window-system
+  :hook
+  ((after-init-hook . server-start)
+   ;; StumpWM interaction
+   (server-done-hook . (lambda ()
+			 (shell-command
+			  "stumpish 'eval (stumpwm::return-es-called-win stumpwm::*es-win*)'"))))
+  :init (setq server-raise-frame t))
+
 ;; which-key
 ;; Display available keybindings in popup
-
 (use-package which-key
   :config
   (which-key-mode))
