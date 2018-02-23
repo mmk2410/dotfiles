@@ -1108,3 +1108,7 @@
   ;; disable nlinum in shell
   :hook (term-mode-hook . (lambda () (nlinum-mode -1)))
 
+  :bind (("C-c s" . ansi-term)
+	 :map term-raw-map
+	 ("C-y" . term-paste)))
+
