@@ -511,21 +511,6 @@
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
-;; doom-themes
-;; an opinionated pack of modern color-themes
-(use-package doom-themes
-  :config
-  (progn
-    ;; enable bold and italic
-    (setq doom-themes-enable-bold t
-	  doom-themes-enable-italic t)
-
-    ;; enable doom one theme
-    (load-theme 'doom-one :no-confirm)
-
-    ;; enable flashing mode-line on errors
-    (doom-themes-visual-bell-config)))
-
 ;; pdf-tools
 ;; Support library for PDF documents.
 (use-package pdf-tools
