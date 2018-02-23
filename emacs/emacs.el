@@ -1066,11 +1066,8 @@
 ;; bibtex
 ;; BibTeX editing
 (use-package bibtex
-  :config
-  ;; Run prog mode hooks for bibtex
-
   ;; Use a modern BibTeX dialect
-  (bibtex-set-dialect 'biblatex))
+  :config (bibtex-set-dialect 'biblatex)
   ;; Run prog mode hooks for bibtex
   :hook (bibtex-mode-hook . (lambda () (run-hooks 'prog-mode-hook))))
 
