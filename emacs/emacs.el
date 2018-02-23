@@ -511,12 +511,6 @@
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
-;; powerline
-;; Rewrite of Powerlinen
-(use-package powerline
-  :config
-  (powerline-center-theme))
-
 ;; doom-themes
 ;; an opinionated pack of modern color-themes
 (use-package doom-themes
