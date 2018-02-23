@@ -68,6 +68,10 @@ if test -z $DEBEMAIL
 	set -Ux DEBEMAIL "opensource@mmk2410.org"
 end
 
+if test -z $XDG_CURRENT_DESKTOP
+    set -Ux XDG_CURRENT_DESKTOP GNOME
+end
+
 # Attach the autoscreen screen session  if StumpWM is running
 # and it's not already in use.
 # if test \( -n $DESKTOP_SESSION \) -a \( $DESKTOP_SESSION = "stumpwm" \)
