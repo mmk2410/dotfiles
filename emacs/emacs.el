@@ -1112,3 +1112,8 @@
 	 :map term-raw-map
 	 ("C-y" . term-paste)))
 
+;; saveplace
+;; save the last cursor position in a file
+(use-package saveplace
+  :init (save-place-mode t))
+
