@@ -83,8 +83,8 @@
 ;; root keybindings
 ;
 ;; browser
-(define-key *root-map* (kbd "W") "exec x-www-browser")
-(define-key *root-map* (kbd "P") "exec firefox-nightly --private-window")
+(define-key *root-map* (kbd "W") "exec firefox")
+(define-key *root-map* (kbd "P") "exec firefox --private-window")
 
 ;;; terminal
 (define-key *root-map* (kbd "c") "exec urxvt")
@@ -309,7 +309,7 @@ script."
   (0 nil t :class "TelegramDesktop"))
 
 (define-frame-preference "web"
-  (0 nil t :class "Nightly"))
+  (0 nil t :class "Firefox"))
 
 (define-frame-preference "music"
   (0 nil t :class "Spotify"))
@@ -326,13 +326,13 @@ script."
 (run-shell-command "bwsyncandshare")
 
 ;; firefox
-(run-shell-command "firefox-nightly")
+(run-shell-command "firefox")
 
 ;; telegram
 (run-shell-command "telegram-desktop")
 
 ;; emacs
-(run-commands "emacs")
+(run-commands "es")
 
 ;; redshift
 (run-shell-command "redshift")
