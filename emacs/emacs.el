@@ -230,9 +230,16 @@
 			  "stumpish 'eval (stumpwm::return-es-called-win stumpwm::*es-win*)'"))))
   :init (setq server-raise-frame t))
 
+;; diminish
+;; Diminished modes are minor modes with no modeline display
+(use-package diminish
+  :init
+  (diminish 'abbrev-mode))
+
 ;; which-key
 ;; Display available keybindings in popup
 (use-package which-key
+  :diminish which-key-mode
   :config
   (which-key-mode))
 
@@ -245,12 +252,14 @@
 ;; undo-tree
 ;; Treat undo history as a tree
 (use-package undo-tree
+  :diminish undo-tree-mode
   :config
   (global-undo-tree-mode))
 
 ;; beacon
 ;; Highlight the cursor whenever the window scrolls
 (use-package beacon
+  :diminish beacon-mode
   :config
   (beacon-mode))
 
@@ -266,6 +275,7 @@
 ;; projectile
 ;; Manage and navigate projects in Emacs easily
 (use-package projectile
+  :diminish projectile-mode
   :config
   (projectile-global-mode)
   (setq projectile-completion-system 'ivy))
@@ -293,6 +303,7 @@
 ;; pcre2el
 ;; regexp syntax converter
 (use-package pcre2el
+  :diminish pcre-mode
   :config
   (pcre-mode t))
 
@@ -317,6 +328,7 @@
 ;; indent-guide
 ;; show vertical lines to guide indentation
 (use-package indent-guide
+  :diminish indent-guide-mode
   :config
   (indent-guide-global-mode))
 
@@ -607,6 +619,7 @@
 ;; company
 ;; Modular text completion framework
 (use-package company
+  :diminish company-mode
   :init
   (global-company-mode t)
   :config
@@ -627,6 +640,9 @@
 ;; beginend
 ;; Redefine M-< and M-> for some modes
 (use-package beginend
+  :diminish (beginend-global-mode
+	     beginend-prog-mode
+	     beginend-magit-status-mode)
   :config
   (beginend-global-mode t))
 
