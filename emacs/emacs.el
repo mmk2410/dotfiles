@@ -847,7 +847,7 @@
   (setq mu4e-headers-fields
         '((:human-date . 20)
           (:flags . 6)
-          (:mailing-list . 10)
+          (:mailing-list . 15)
           (:from-or-to . 22)
           (:subject . nil)))
 
