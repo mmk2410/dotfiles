@@ -45,27 +45,27 @@ alias mmk2410='~/.mmk2410'
 # end
 
 if [ -z $EDITOR ]
-	set -Ux EDITOR es
+    set -Ux EDITOR es
 end
 
 if [ -z $VISUAL ]
-	set -Ux VISUAL es
+    set -Ux VISUAL es
 end
 
 if [ -z $GIT_EDITOR ]
-	set -Ux GIT_EDITOR es
+    set -Ux GIT_EDITOR es
 end
 
 if [ -z $GOPATH ]
-	set -Ux GOPATH ~/.go
+    set -Ux GOPATH ~/.go
 end
 
 if test -z $DEBFULLNAME
-	set -Ux DEBFULLNAME "Marcel Kapfer"
+    set -Ux DEBFULLNAME "Marcel Kapfer"
 end
 
 if test -z $DEBEMAIL
-	set -Ux DEBEMAIL "opensource@mmk2410.org"
+    set -Ux DEBEMAIL "opensource@mmk2410.org"
 end
 
 if test -z $XDG_CURRENT_DESKTOP
@@ -102,17 +102,17 @@ gpg-connect-agent updatestartuptty /bye > /dev/null
 # Source the Nix profile, if it exists.
 set -l NIX_PROFILE $HOME/.nix-profile/etc/profile.d/nix.fish
 if test -e $NIX_PROFILE
-	source $NIX_PROFILE
+    source $NIX_PROFILE
 end
 
 # Automatically start X at login
 # source: https://wiki.archlinux.org/index.php/Fish#Start_X_at_login
 # This must be at the bottom of this file
 if status --is-login
-	if test -z "$DISPLAY" -a $XDG_VTNR = 1
-		# Unlock GPG keyring befor starting X.
-		# This makes some things easier.
-		echo "gpg unlock" | gpg -se -r me@mmk2410.org > /dev/null
-		exec startx -- -keeptty
-	end
+    if test -z "$DISPLAY" -a $XDG_VTNR = 1
+	# Unlock GPG keyring befor starting X.
+	# This makes some things easier.
+	echo "gpg unlock" | gpg -se -r me@mmk2410.org > /dev/null
+	exec startx -- -keeptty
+    end
 end
