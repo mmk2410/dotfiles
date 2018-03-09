@@ -73,6 +73,15 @@ alias pkgremove='sudo pacman -R'
 alias pkginfo='sudo pacman -Si'
 alias pkgclean='sudo pacman -Sc'
 
+# debian packaging
+# quilt
+alias dquilt="quilt --quiltrc={$HOME}/.quiltrc-dpkg"
+complete -F _quilt_completion $_quilt_complete_opt dquilt
+# Variables
+DEBUILD_DPKG_BUILDPACKAGE_OPTS="-i -I -us -uc"
+DEBUILD_LINTIAN_OPTS="-i -I --show-overrides"
+DEBSIGN_KEYID="9FE01C39F74551D434116394CADE6F0C09F21B09"
+
 # make neovim the default
 alias vim='nvim'
 
