@@ -878,10 +878,24 @@
           "kontakt@marcel-kapfer.de"
           "opensource@mmk2410.org"))
 
+  ;; custom header field for maildir
+  (add-to-list 'mu4e-header-info-custom
+	       '(:mdir . (:name "Maildir"
+				:shortname "Maildir"
+				:help "Maildir of current message"
+				:function (lambda (msg)
+					    (or
+					     (replace-regexp-in-string
+					      "^/\\(.\\)[A-Za-z0-9]*"
+					      "\\1"
+					      (mu4e-message-field msg :maildir))
+					     "")))))
+
   ;; customize mu4e list view
   (setq mu4e-headers-fields
         '((:human-date . 20)
           (:flags . 6)
+	  (:mdir . 15)
           (:mailing-list . 15)
           (:from-or-to . 22)
           (:subject . nil)))
