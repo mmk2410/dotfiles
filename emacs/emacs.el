@@ -397,11 +397,36 @@
    org-latex-default-packages-alist (remove '("" "hyperref" nil) org-latex-default-packages-alist)
    org-latex-default-packages-alist (remove '"\\tolerance=1000" org-latex-default-packages-alist))
 
-  ;; syntax highlighting
-  (setq org-src-fontify-natively t)
+  ;; add comment to easy templates
+  ;; Credits: http://acidwords.com/posts/2018-03-02-extending-org-mode-easy-templates.html
+  (add-to-list 'org-structure-template-alist
+	       '("C" "#+BEGIN_COMMENT\n?\n#+END_COMMENT" ""))
+
+  ;; org todo keywords
+  ;; Creadits: https://changelog.complete.org/archives/9877-emacs-3-more-on-org-mode
+  (setq org-todo-keywords '((sequence
+			     "TODO(t!)" "NEXT(n!)" "STARTED(a!)" "WAIT(w@/!)" "OTHERS(o!)"
+			     "|" "DONE(d)" "CANCELLED(c)")))
+
+  (setq
+   ;; syntax highlighting
+   org-src-fontify-natively t
+   ;; Don't break line on M-RET
+   org-M-RET-may-split-line nil
+   ;; Log done time
+   org-log-done 'time
+   ;; only show last star
+   org-hide-leading-stars t
+   ;; show something instead of ...
+   org-ellipsis "⤵")
 
   ;; set default agenda file
-  (setq org-agenda-files (quote ("/home/marcel/cloud/todo.org")))
+  (setq org-agenda-files (list "~/cloud/org/todo.org"
+			       "~/cloud/org/notes.org"
+			       "~/cloud/org/projects.org")
+	org-agenda-text-search-extra-files (list "~/cloud/org/finance.org"
+						 "~/cloud/org/emacs-magic.org"
+						 "~/cloud/org/wiki.org"))
 
   ;; set priority range from A to C with A being the highest
   (setq org-priority-faces '((?A . (:foreground "#F0DFAF" :weight bold))
@@ -412,14 +437,19 @@
   (setq org-agenda-window-setup (quote current-window))
 
   ;; bind capture templates
-  (define-key global-map (kbd "C-c c") 'org-capture)
   (setq org-capture-templates
-	'(("t" "todo" entry (file+headline "/home/marcel/cloud/todo.org" "Tasks")
-	   "* TODO [#A] %?")
-	  ("s" "scheduled todo" entry (file+headline "/home/marcel/cloud/todo.org" "Tasks")
-	   "* TODO [#A] %? \nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")
-	  ("m" "scheduled mail" entry (file+headline "/home/marcel/cloud/todo.org" "Tasks")
-	   "* TODO [#A] %? \nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n%a\n")))
+	'(("t" "todo" entry (file+headline "~/cloud/org/todo.org" "Tasks")
+	   "* TODO [#A] %? \n  %u")
+	  ("s" "scheduled todo" entry (file+headline "~/cloud/org/todo.org" "Tasks")
+	   "* TODO [#A] %? \n  SCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n  %u\n")
+	  ("m" "scheduled mail" entry (file+headline "~/cloud/org/todo.org" "Tasks")
+	   "* TODO [#A] %? \n  SCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n  %u\n  %a\n")
+	  ("n" "Note" entry (file+headline "~/cloud/org/notes.org" "Notes")
+	   "* %? \n  %i\n  %u\n  %a\n")
+	  ("p" "Project Idea" entry (file+headline "~/cloud/org/projects.org" "INBOX")
+	   "* %? \n  %i\n  %u\n  %a\n")
+	  ("w" "Wiki Entry" entry (file+headline "~/cloud/org/wiki.org" "INBOX")
+	   "* %? \n  %u\n  %i\n")))
 
   ;; warn of deadlines in the next seven days
   (setq org-deadline-warning-days 7)
@@ -433,10 +463,6 @@
   ;; don't give awarning colour to tasks with impending deadlines
   ;; if they are scheduled to be done
   (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
-
-  ;; don't show tasks that are scheduled or have deadlines in the normal todo list
-  (setq org-agenda-todo-ignore-deadlines (quote all))
-  (setq org-agenda-todo-ignore-scheduled (quote all))
 
   ;; sort tasks in order of when they are due and then by priority
   (setq org-agenda-sorting-strategy
@@ -454,7 +480,11 @@
 
   :bind
   (("C-c l" . org-store-link)
-   ("C-c a" . org-agenda)))
+   ("C-c c" . org-capture)
+   ("C-c o" . org-iswitchb)
+   ("C-c a" . org-agenda))
+
+  :hook (org-mode-hook . flyspell-mode))
 
 ;; fill-column-indicator
 ;; Graphically indicate the fill column
