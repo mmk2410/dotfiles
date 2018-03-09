@@ -17,3 +17,6 @@ stumpwm/stumpwmrc .stumpwmrc
 x/xinitrc .xinitrc
 x/Xmodmap .Xmodmap
 x/Xresources .Xresources
+debian/dquilt .quiltrc-dpkg
+debian/pbuilder .pbuilderrc
+debian/git-buildpackage.conf .gbp.conf

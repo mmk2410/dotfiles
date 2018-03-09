@@ -1,0 +1,20 @@
+AUTO_DEBSIGN="${AUTO_DEBSIGN:-no}"
+PDEBUILD_PBUILDER=cowbuilder
+HOOKDIR="/var/cache/pbuilder/hooks"
+MIRRORSITE="http://deb.debian.org/debian/"
+#APTCACHE=/var/cache/pbuilder/aptcache
+APTCACHE=/var/cache/apt/archives
+#BUILDRESULT=/var/cache/pbuilder/result/
+BUILDRESULT=../
+EXTRAPACKAGES="ccache lintian libeatmydata1"
+
+# enable to use libeatmydata1 for pbuilder
+#export LD_PRELOAD=${LD_PRELOAD+$LD_PRELOAD:}libeatmydata.so
+
+# enable ccache for pbuilder
+export PATH="/usr/lib/ccache${PATH+:$PATH}"
+export CCACHE_DIR="/var/cache/pbuilder/ccache"
+BINDMOUNTS="${CCACHE_DIR}"
+
+# parallel make
+DEBBUILDOPTS=-j4
