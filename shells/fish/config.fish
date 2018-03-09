@@ -37,8 +37,18 @@ alias cd..='cd ..'
 alias sbcl='rlwrap sbcl'
 alias o='xdg-open'
 alias nemo='nemo --no-desktop'
-alias dquilt="quilt --quiltrc=$HOME/.quiltrc-dpkg"
+
 alias mmk2410='~/.mmk2410'
+
+# Debian Packaging
+
+# quilt
+alias dquilt="quilt --quiltrc=$HOME/.quiltrc-dpkg"
+
+# Variables
+set -x DEBUILD_DPKG_BUILDPACKAGE_OPTS "-i -I -us -uc"
+set -x DEBUILD_LINTIAN_OPTS "-i -I --show-overrides"
+set -x DEBSIGN_KEYID "9FE01C39F74551D434116394CADE6F0C09F21B09"
 
 # if [ -z $SSH_CLIENT ]
 #   ~/.mmk2410
