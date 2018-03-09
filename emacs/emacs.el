@@ -88,7 +88,9 @@
  ;;; indent using spaces, not tabs
  indent-tabs-mode nil
  ;; tab width
- tab-width 2)
+ tab-width 2
+ ;; https://www.reddit.com/r/emacs/comments/819v0h/how_to_speed_up_cursor_movement_by_10x/
+ auto-window-vscroll nil)
 
 ;; disable cursor blinking
 (blink-cursor-mode -1)
