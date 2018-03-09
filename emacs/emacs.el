@@ -965,7 +965,7 @@
   (add-to-list 'mu4e-bookmarks
 	       (make-mu4e-bookmark
 		:name "Open Messages"
-		:query "(flag:unread AND NOT flag:trashed ANT NOT m:/mailbox/debian/devel-changes AND NOT m:/university/fin/service/open) OR m:/mailbox/inbox OR m:/university/inbox"
+		:query "(flag:unread AND NOT flag:trashed AND NOT m:/university/fin/service/open) OR m:/mailbox/inbox OR m:/university/inbox"
 		:key ?u))
   (add-to-list 'mu4e-bookmarks
 	       (make-mu4e-bookmark
