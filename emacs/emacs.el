@@ -1203,3 +1203,8 @@
 (use-package edit-server
   :init (edit-server-start))
 
+;; org-moinmoin
+;; moinmoin export in org-mode
+(use-package ox-moinmoin
+  :load-path "org-moinmoin/")
+
