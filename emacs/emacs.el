@@ -1004,7 +1004,7 @@
   :after (elfeed)
   :config
   (elfeed-org)
-  (setq rmh-elfeed-org-files (list "~/ownCloud/feeds.org")))
+  (setq rmh-elfeed-org-files (list "~/cloud/org/feeds.org")))
 
 ;; bug-hunter
 ;; Hunt down errors by bisecting elisp files
