@@ -72,6 +72,10 @@ if test -z $XDG_CURRENT_DESKTOP
     set -Ux XDG_CURRENT_DESKTOP GNOME
 end
 
+if test -z $QT_STYLE_OVERRIDE
+    set -Ux QT_STYLE_OVERRIDE adwaita
+end
+
 # Attach the autoscreen screen session  if StumpWM is running
 # and it's not already in use.
 # if test \( -n $DESKTOP_SESSION \) -a \( $DESKTOP_SESSION = "stumpwm" \)
