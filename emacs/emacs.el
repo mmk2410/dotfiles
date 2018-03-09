@@ -1214,3 +1214,7 @@
 (use-package centered-window
   :config (centered-window-mode t))
 
+;; centered-cursor-mode
+;; An emacs minor mode for smooth scrolling
+;; https://github.com/andre-r/centered-cursor-mode.el
+(use-package centered-cursor-mode)
