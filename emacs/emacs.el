@@ -1198,3 +1198,8 @@
 	telephone-line-primary-right-separator 'telephone-line-cubed-right
 	telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-right)
   (telephone-line-mode 1))
+
+;; edit-server
+(use-package edit-server
+  :init (edit-server-start))
+
