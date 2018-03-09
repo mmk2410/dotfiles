@@ -105,6 +105,9 @@
 ;; replace selected text by typing
 (delete-selection-mode t)
 
+;; break lines better
+(visual-line-mode t)
+
 ;; ibuffer configuration
 (setq ibuffer-saved-filter-groups
       (quote (("default"
