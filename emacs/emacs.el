@@ -1208,3 +1208,9 @@
 (use-package ox-moinmoin
   :load-path "org-moinmoin/")
 
+;; centered-window-mode
+;; Keep your text centered when there's only one window.
+;; https://github.com/anler/centered-window-mode
+(use-package centered-window
+  :config (centered-window-mode t))
+
