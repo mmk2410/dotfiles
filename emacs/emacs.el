@@ -251,8 +251,8 @@
 ;; org-bullets
 ;; Show bullets in org-mode as UTF-8 characters
 (use-package org-bullets
-  :hook
-  (org-mode-hook . (lambda () (org-bullets-mode 1))))
+  :after org
+  :config (add-hook 'org-mode-hook #'org-bullets-mode))
 
 ;; undo-tree
 ;; Treat undo history as a tree
