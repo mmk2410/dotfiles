@@ -362,6 +362,8 @@
 
   ;; latex related option (mainly support for lualatex)
   (setq
+   ;; scrartcl as default class
+   org-latex-default-class "scrartcl"
    ;; add latex packages and configurations
    org-latex-packages-alist
    '(
