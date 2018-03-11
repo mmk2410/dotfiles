@@ -364,6 +364,8 @@
   (setq
    ;; scrartcl as default class
    org-latex-default-class "scrartcl"
+   ;; lualatex as default compiler
+   org-latex-compiler "lualatex"
    ;; add latex packages and configurations
    org-latex-packages-alist
    '(
