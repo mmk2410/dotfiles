@@ -164,12 +164,12 @@
       browse-url-browser-function 'browse-url-generic)
 
 ;; set font
-(set-frame-font "Fira Code 8" nil t)
+(set-frame-font "Hermit 8" nil t)
 
 ;; set the default font after the frame is created.
 ;; needed because of some issue with emacsclient.
 (add-hook 'after-make-frame-functions
-	  (lambda (frame) (set-frame-font "Fira Code 8" nil t)))
+	  (lambda (frame) (set-frame-font "Hermit 8" nil t)))
 
 ;; -----------------------------------------------------------------------------
 
