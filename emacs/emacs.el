@@ -608,7 +608,8 @@
   (setq ivy-use-virtual-buffers t
         ivy-count-format "(%d/%d) "
         ivy-display-style 'fancy
-        ivy-extra-directories nil)
+        ivy-extra-directories nil
+	ivy-initial-inputs-alist nil)
   :bind
   (("C-c C-r" . ivy-resume)))
 
