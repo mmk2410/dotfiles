@@ -59,7 +59,15 @@
       backup-directory-alist `(("." . ,user-temporary-file-directory)
                                (tramp-file-name-regexp nil))
       auto-save-list-file-prefix (concat user-temporary-file-directory ".auto-saves-")
-      auto-save-file-name-transforms `((".*" ,user-temporary-file-directory t)))
+      auto-save-file-name-transforms `((".*" ,user-temporary-file-directory t))
+      ;; version numbers for backup files
+      version-control t
+      ;; delete excess backup versions
+      delete-old-versions t
+      ;; amount of new versions to keep
+      kept-new-versions 20
+      ;; amount of old versions to keep
+      kept-old-versions 5)
 
 ;; set default input encoding
 (prefer-coding-system 'utf-8-unix)
