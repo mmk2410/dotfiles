@@ -638,7 +638,8 @@
 ;; Jump to arbitrary positions in visible text and select text quickly.
 (use-package avy
   :bind
-  (("s-s" . avy-goto-char)))
+  (("s-s" . avy-goto-char-2)
+   ("s-l" . avy-goto-line)))
 
 ;; smooth-scrolling
 ;; Make emacs scroll smoothly
