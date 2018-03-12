@@ -249,6 +249,12 @@
   :init
   (diminish 'abbrev-mode))
 
+;; curx
+;; A Collection of Ridiculously Useful eXtensions for Emacs
+(use-package crux
+  :bind
+  (("C-a" . crux-move-beginning-of-line)))
+
 ;; which-key
 ;; Display available keybindings in popup
 (use-package which-key
