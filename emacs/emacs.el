@@ -157,6 +157,9 @@
 ;;; set default column width
 (setq-default fill-column 80)
 
+;; set cursor style to a vertical bar
+(setq-default cursor-type 'bar)
+
 ;;; hide tool bar, menu bar and scroll bar
 (menu-bar-mode 0)
 (tool-bar-mode 0)
