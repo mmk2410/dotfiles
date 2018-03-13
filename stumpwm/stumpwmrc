@@ -169,7 +169,7 @@
 (run-shell-command "nitrogen --restore")
 
 ;; start compton (compositor)
-(run-shell-command "compton --config ~/.config/compton.conf -b")
+(run-shell-command "compton --config ~/.config/compton.conf")
 
 ;; start mode line
 ;; (if (not (head-mode-line (current-head)))
