@@ -1210,7 +1210,9 @@
 (use-package tramp
   :init
   ;; Set default connection method for TRAMP
-  (setq tramp-default-method "ssh"))
+  (setq tramp-default-method "ssh")
+  (require 'em-tramp)
+  (setq password-cache-expiry 3600))
 
 ;; telephone-line
 ;; A new implementation of Powerline for Emacs
