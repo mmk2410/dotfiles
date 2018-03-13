@@ -168,6 +168,9 @@
 ;; nitrogen (wallpaper)
 (run-shell-command "nitrogen --restore")
 
+;; start compton (compositor)
+(run-shell-command "compton --config ~/.config/compton.conf -b")
+
 ;; start mode line
 ;; (if (not (head-mode-line (current-head)))
 ;;     (toggle-mode-line (current-screen) (current-head)))
