@@ -1,6 +1,10 @@
 ;; -*-lisp-*-
 ;;
-;; StumpWM config
+;; StumpWM configuration file
+;; <https://stumpwm.github.io/>
+;;
+;; 2016 - 2018 (c) Marcel Kapfer <opensource@mmk2410.org>
+;; MIT License
 
 (in-package :stumpwm)
 
@@ -263,6 +267,7 @@
 (make-web-jump "packages" "firefox-nightly https://packages.debian.org/search?suite=sid&searchon=names&keywords=")
 (make-web-jump "wikipedia" "firefox-nightly https://en.wikipedia.org/w/index.php?search=")
 (make-web-jump "wikipediade" "firefox-nightly https://de.wikipedia.org/w/index.php?search=")
+
 (defun list-screen-layouts ()
   "Return an alist of possible screen layouts. Those are the layouts saved in
 ~/.screenlayout.sh. First is the name of the layout and second the path to the
