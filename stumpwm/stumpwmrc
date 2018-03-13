@@ -241,7 +241,7 @@
 (define-key *root-map* (kbd "C-f") "toggle-float")
 
 ;; key for keeping window always on top
-(define-key *root-map* (kbd "^") "toggle-always-on-top")
+(define-key *root-map* (kbd "C-T") "toggle-always-on-top")
 
 ;; working with emacsclient
 (defvar *es-win* nil
