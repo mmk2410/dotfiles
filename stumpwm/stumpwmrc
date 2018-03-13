@@ -90,7 +90,7 @@
 (define-key *root-map* (kbd "c") "exec urxvt")
 
 ;;; es as emacs
-(define-key *root-map* (kbd "e") "emacs")
+(define-key *root-map* (kbd "e") "exec es")
 
 ;;; ranger
 (define-key *root-map* (kbd "C-c") "exec nemo --no-desktop")
@@ -332,7 +332,7 @@ script."
 (run-shell-command "telegram-desktop")
 
 ;; emacs
-(run-commands "es")
+(run-commands "emacs")
 
 ;; redshift
 (run-shell-command "redshift")
