@@ -660,11 +660,6 @@
   (setq org-pandoc-options-for-latex-pdf '((latex-engine . "lualatex"))
         org-pandoc-options-for-beamer-pdf '((latex-engine . "lualatex"))))
 
-;; org-trello
-;; Minor mode to synchronize org-mode buffer and trello board
-(use-package org-trello
-  :mode ("\\.org$" . org-mode))
-
 ;; web-beautify
 ;; Format HTML, CSS and JavaScript/JSON
 (use-package web-beautify
