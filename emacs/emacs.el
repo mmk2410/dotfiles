@@ -1250,8 +1250,7 @@
 ;; centered-window-mode
 ;; Keep your text centered when there's only one window.
 ;; https://github.com/anler/centered-window-mode
-(use-package centered-window
-  :config (centered-window-mode t))
+(use-package centered-window)
 
 ;; centered-cursor-mode
 ;; An emacs minor mode for smooth scrolling
