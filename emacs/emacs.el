@@ -393,10 +393,9 @@
      ("utf8" "luainputenc" t)
      ("" "fontspec" t)
      ("hidelinks" "hyperref" t)
-     ("scale=0.9" "AnonymousPro" t)
      "\\setmainfont{Linux Libertine O}"
      "\\setsansfont{Linux Biolinum O}"
-     "\\setmonofont{AnonymousPro}"
+     "\\setmonofont[Scale=0.9]{AnonymousPro}"
      "\\setdefaultlanguage{german}")
    ;; enable latex listings
    org-latex-listings 'listings
