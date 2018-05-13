@@ -1204,8 +1204,11 @@
       ad-do-it))
   (ad-activate 'term-sentinel)
 
-  ;; disable nlinum in shell
-  :hook (term-mode-hook . (lambda () (nlinum-mode -1)))
+  (add-hook 'term-mode-hook (lambda ()
+			      ;; disable nlinum in shell
+			      (nlinum-mode -1)
+			      ;; enable visual line mode
+			      (visual-line-mode 1)))
 
   :bind (("C-c s" . ansi-term)
 	 :map term-raw-map
