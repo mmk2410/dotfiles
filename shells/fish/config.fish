@@ -123,6 +123,7 @@ if status --is-login
 	# Unlock GPG keyring befor starting X.
 	# This makes some things easier.
 	echo "gpg unlock" | gpg -se -r me@mmk2410.org > /dev/null
+    pulseaudio -D
 	exec startx -- -keeptty
     end
 end
