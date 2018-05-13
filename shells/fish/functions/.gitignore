@@ -19,4 +19,6 @@ segment.fish
 segment_close.fish
 segment_right.fish
 set_color_custom.fish
+vcs.name.fish
+vcs.present.fish
 fisher.fish
