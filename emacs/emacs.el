@@ -1001,6 +1001,7 @@
 	'(("/university/inbox" . ?u)
 	  ("/university/fin/fin" . ?f)
 	  ("/university/fin/intern" . ?i)
+	  ("/university/fin/service/open" . ?s)
 	  ("/mailbox/inbox" . ?m)
 	  ("/mailbox/debian/devel-changes" . ?c)
 	  ("/mailbox/debian/user" . ?d)))
