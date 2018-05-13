@@ -98,16 +98,16 @@ end
 # end
 
 # gpg-agent as SSH agent
-set -e SSH_AGENT_PID
-set -e SSH_AUTH_SOCK
-if test -z $gnupg_SSH_AUTH_SOCK_by
-    set gnupg_SSH_AUTH_SOCK_by 0
-end
-if test $gnupg_SSH_AUTH_SOCK_by -ne %self
-    set UID (id -u)
-    set -Ux SSH_AUTH_SOCK "/run/user/$UID/gnupg/S.gpg-agent.ssh"
-end
-gpg-connect-agent updatestartuptty /bye > /dev/null
+# set -e SSH_AGENT_PID
+# set -e SSH_AUTH_SOCK
+# if test -z $gnupg_SSH_AUTH_SOCK_by
+#     set gnupg_SSH_AUTH_SOCK_by 0
+# end
+# if test $gnupg_SSH_AUTH_SOCK_by -ne %self
+#     set UID (id -u)
+#     set -Ux SSH_AUTH_SOCK "/run/user/$UID/gnupg/S.gpg-agent.ssh"
+# end
+# gpg-connect-agent updatestartuptty /bye > /dev/null
 
 # Source the Nix profile, if it exists.
 set -l NIX_PROFILE $HOME/.nix-profile/etc/profile.d/nix.fish
