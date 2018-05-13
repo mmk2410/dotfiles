@@ -20,4 +20,5 @@ x/Xresources .Xresources
 debian/dquilt .quiltrc-dpkg
 debian/pbuilder .pbuilderrc
 debian/git-buildpackage.conf .gbp.conf
+debian/sbuild .sbuildrc
 compton/compton.conf .config/compton.conf
