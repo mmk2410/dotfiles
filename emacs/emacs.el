@@ -1247,6 +1247,11 @@
 (use-package ox-moinmoin
   :load-path "org-moinmoin/")
 
+;; ox-reveal
+;; Exports Org-mode contents to Reveal.js HTML presentation.
+(use-package ox-reveal
+  :after (org))
+
 ;; centered-window-mode
 ;; Keep your text centered when there's only one window.
 ;; https://github.com/anler/centered-window-mode
