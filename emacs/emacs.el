@@ -1022,8 +1022,23 @@
   (defun elfeed-search-format-date (date)
     (format-time-string "%Y-%m-%d %H:%M" (seconds-to-time date))))
 
+;; elfeed-protocol
+;; use Nextcloud as RSS server
+(use-package elfeed-protocol
   :after (elfeed)
   :config
+  (setq elfeed-use-curl t)
+  (elfeed-set-timeout 36000)
+  (setq elfeed-feeds (list
+		      (list "owncloud+https://mmk2410@cloud.mmk2410.org"
+			    :password (funcall
+				       (plist-get
+					(nth 0
+					     (auth-source-search
+					      :host "cloud.mmk2410.org"
+					      :user "mmk2410"))
+					:secret)))))
+  (elfeed-protocol-enable))
 
 ;; bug-hunter
 ;; Hunt down errors by bisecting elisp files
