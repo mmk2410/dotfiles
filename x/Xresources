@@ -37,8 +37,8 @@ xscreensaver.passwd.thermometer.width:       8
 
 ! urxvt -------------------------------------------
 
-URxvt*font: xft:FiraCode:medium:size=8:antialiasing=true
-URxvt*boldFont: xft:FiraCode:bold:size=8:antialiasing=true:style=medium
+URxvt*font: xft:Fira Mono:medium:size=8:antialiasing=true
+URxvt*boldFont: xft:Fira Mono:bold:size=8:antialiasing=true:style=medium
 URxvt.letterSpace: 0
 ! Add fallback fonts as laid out in `man 1 urxvt` under "font:" in the RESOURCES section
 
@@ -131,7 +131,6 @@ URxvt*scrollTtyKeypress: true
 ! ! LightGrey + White
 ! *color7:  #a89984
 ! *color15: #ebdbb2
-
 
 ! Gruvbox Light Medium
 ! hard contrast: *background: #f9f5d7
