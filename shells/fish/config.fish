@@ -83,7 +83,7 @@ if test -z $XDG_CURRENT_DESKTOP
 end
 
 if test -z $QT_STYLE_OVERRIDE
-    set -Ux QT_STYLE_OVERRIDE adwaita
+    set -Ux QT_STYLE_OVERRIDE kvantum
 end
 
 # Attach the autoscreen screen session  if StumpWM is running
