@@ -1,1 +1,1 @@
-/home/marcel/.local/share/omf/themes/sushi/fish_prompt.fish
+/home/marcel/.config/fisherman/eco/functions/fish_prompt.fish
