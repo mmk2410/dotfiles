@@ -325,6 +325,9 @@ script."
 
 ;; autostart programs
 
+;; emacs
+(run-commands "emacs")
+
 ;; keepassxc
 (run-shell-command "gpg --textmode -d ~/dotfiles/dotdotfiles/keepassxc/password.gpg | keepassxc --pw-stdin ~/cloud/keys/2017-10.kdbx")
 
@@ -339,9 +342,6 @@ script."
 
 ;; telegram
 (run-shell-command "telegram-desktop")
-
-;; emacs
-(run-commands "emacs")
 
 ;; redshift
 (run-shell-command "redshift")
