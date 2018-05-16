@@ -977,14 +977,19 @@
 
   (add-to-list 'mu4e-bookmarks
 	       (make-mu4e-bookmark
-		:name "Important Unread Messages"
-		:query "(m:/university* OR m:/mailbox/inbox) AND flag:unread AND NOT  flag:trashed"
-		:key ?i))
+		:name "Open Messages"
+		:query "(flag:unread AND NOT flag:trashed AND NOT m:/university/fin/service/open) OR m:/university/inbox OR m:/mailbox/inbox"
+		:key ?o))
   (add-to-list 'mu4e-bookmarks
 	       (make-mu4e-bookmark
-		:name "Open Messages"
-		:query "(flag:unread AND NOT flag:trashed AND NOT m:/university/fin/service/open) OR m:/mailbox/inbox OR m:/university/inbox"
+		:name "Open University Messages"
+		:query "(flag:unread AND NOT flag:trashed AND m:/university/* AND NOT m:/university/fin/service/open) OR m:/university/inbox"
 		:key ?u))
+  (add-to-list 'mu4e-bookmarks
+	       (make-mu4e-bookmark
+		:name "Open Private Messages"
+		:query "(flag:unread AND NOT flag:trashed AND m:/mailbox/*) OR m:/mailbox/inbox"
+		:key ?m))
   (add-to-list 'mu4e-bookmarks
 	       (make-mu4e-bookmark
 		:name "Flagged messages"
