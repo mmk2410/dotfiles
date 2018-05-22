@@ -928,29 +928,39 @@
   (setq message-citation-line-format "%f @ %Y-%m-%d %H:%M:%S %Z:\n")
   (setq message-citation-line-function 'message-insert-formatted-citation-line)
 
+  ;; macro for creating university mu4e contexts
+  (defmacro mu4e-add-university-context (context-name match-func mail-address full-name signature-file)
+    "Add a university context to `mu4e-contexts.
+context-name is the name of the context.
+match-func a function when the context should be selected.
+full-name is the full name of the sender.
+mail-address is the mail address of the sender.
+signature-file is the path to the file which contains the signature."
+    `(add-to-list
+      'mu4e-contexts
+      (make-mu4e-context
+       :name ,context-name
+       :enter-func (lambda () (mu4e-message ,(concat context-name " Context")))
+       :match-func ,match-func
+       :vars '((user-mail-address . ,mail-address)
+	       (user-full-name . ,full-name)
+	       (message-signature-file . ,signature-file)
+	       ;; smtp
+	       (smtpmail-stream-type . starttls)
+	       (smtpmail-default-smtp-server . "smtp.uni-ulm.de")
+	       (smtpmail-smtp-server . "smtp.uni-ulm.de")
+	       (smtpmail-smtp-user . "ftu15")
+	       (smtpmail-smtp-service . 587)
+	       ;; folders
+	       (mu4e-sent-folder . "/university/Sent")
+	       (mu4e-drafts-folder . "/university/Drafts")
+	       (mu4e-trash-folder . "/university/Trash")
+	       (mu4e-refile-folder . "/university/Archives")))
+      t))
+
   ;; mu4e contexts / mail identities
   (setq mu4e-contexts
 	`( ,(make-mu4e-context
-	     :name "University"
-	     :enter-func (lambda () (mu4e-message "University Context"))
-	     :match-func (lambda (msg)
-			   (when msg
-			     (string-prefix-p "/university" (mu4e-message-field msg :maildir))))
-	     :vars '((user-mail-address . "marcel.kapfer@uni-ulm.de")
-		     (user-full-name . "Marcel Kapfer")
-		     (message-signature-file . "~/dotfiles/mutt/sig-uni")
-		     ;; smtp
-		     (smtpmail-stream-type . starttls)
-		     (smtpmail-default-smtp-server . "smtp.uni-ulm.de")
-		     (smtpmail-smtp-server . "smtp.uni-ulm.de")
-		     (smtpmail-smtp-user . "ftu15")
-		     (smtpmail-smtp-service . 587)
-		     ;; folders
-		     (mu4e-sent-folder . "/university/Sent")
-		     (mu4e-drafts-folder . "/university/Drafts")
-		     (mu4e-trash-folder . "/university/Trash")
-		     (mu4e-refile-folder . "/university/Archives")))
-	   ,(make-mu4e-context
 	     :name "Mailbox"
 	     :enter-func (lambda () (mu4e-message "Mailbox Context"))
 	     :match-func (lambda (msg)
@@ -969,6 +979,51 @@
 		     (mu4e-drafts-folder . "/mailbox/Drafts")
 		     (mu4e-trash-folder . "/mailbox/Trash")
 		     (mu4e-refile-folder . "/mailbox/Archives")))))
+
+  ;; university contexts
+  (mu4e-add-university-context
+   "A University"
+   (lambda (msg)
+     (when msg
+       (string-prefix-p "/university" (mu4e-message-field msg :maildir))))
+   "marcel.kapfer@uni-ulm.de"
+   "Marcel Kapfer"
+   "~/dotfiles/dotdotfiles/sig/university")
+
+  (mu4e-add-university-context
+   "B StuVe Oeff-Ref"
+   nil
+   "stuve.oeffentlichkeit@uni-ulm.de"
+   "StuVe Öffentlichkeitsreferat"
+   "~/dotfiles/dotdotfiles/sig/stuve-oeffentlichkeit")
+
+  (mu4e-add-university-context
+   "C BECI-Fest"
+   nil
+   "becifest.kontakt@uni-ulm.de"
+   "BECI-Fest"
+   "~/dotfiles/dotdotfiles/sig/becifest")
+
+  (mu4e-add-university-context
+   "D SoNaFe"
+   nil
+   "kontakt@sonafe.de"
+   "SoNaFe"
+   "~/dotfiles/dotdotfiles/sig/sonafe-kontakt")
+
+  (mu4e-add-university-context
+   "E FIN Vorstand"
+   nil
+   "vorstand.fin@uni-ulm.de"
+   "FIN Vorstand"
+   "~/dotfiles/dotdotfiles/sig/fin-vorstand")
+
+  (mu4e-add-university-context
+   "F FIN Oeff-Team"
+   nil
+   "oeffentlichkeit.fin@uni-ulm.de"
+   "FIN Öffentlichkeits-Team"
+   "~/dotfiles/dotdotfiles/sig/fin-oeffentlichkeit")
 
   ;; custom bookmarks
   (setq mu4e-bookmarks (delete '("flag:unread AND NOT flag:trashed" "Unread messages" 117) mu4e-bookmarks))
