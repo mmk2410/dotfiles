@@ -357,9 +357,7 @@
 
 ;; nlinum
 ;; Show line numbers in the margin
-(use-package nlinum
-  :config
-  (global-nlinum-mode t))
+(use-package nlinum)
 
 ;; org
 ;; Outline-based notes management and organizer
