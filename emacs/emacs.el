@@ -1064,7 +1064,8 @@ signature-file is the path to the file which contains the signature."
   ;; always BCC myself
   (add-hook 'mu4e-compose-mode-hook (lambda () (save-excursion (message-add-header (concat "Bcc: " user-mail-address "\n")))))
   ;; sign message
-  (add-hook 'mu4e-compose-mode-hook (lambda () (mml-secure-message-sign-pgpmime))))
+  ;; (add-hook 'mu4e-compose-mode-hook (lambda () (mml-secure-message-sign-pgpmime))))
+  )
 
 ;; elfeed
 ;; emacs feed reader
