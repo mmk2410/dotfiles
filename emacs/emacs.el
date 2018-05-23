@@ -983,9 +983,7 @@ signature-file is the path to the file which contains the signature."
   ;; university contexts
   (mu4e-add-university-context
    "A University"
-   (lambda (msg)
-     (when msg
-       (string-prefix-p "/university" (mu4e-message-field msg :maildir))))
+   nil
    "marcel.kapfer@uni-ulm.de"
    "Marcel Kapfer"
    "~/dotfiles/dotdotfiles/sig/university")
