@@ -100,6 +100,9 @@
  ;; https://www.reddit.com/r/emacs/comments/819v0h/how_to_speed_up_cursor_movement_by_10x/
  auto-window-vscroll nil)
 
+;; set timezone
+(setenv "TZ" "/etc/localtime")
+
 ;; disable cursor blinking
 (blink-cursor-mode -1)
 
@@ -925,8 +928,11 @@
     (mu4e))
 
   ;; set citation line
-  (setq message-citation-line-format "%f @ %Y-%m-%d %H:%M:%S %Z:\n")
-  (setq message-citation-line-function 'message-insert-formatted-citation-line)
+  (setq message-citation-line-format "%f @ %Y-%m-%d %T %Z:\n")
+  (setq message-citation-line-function
+	(lambda ()
+	  (message-insert-formatted-citation-line
+	   nil nil (car (current-time-zone)))))
 
   ;; macro for creating university mu4e contexts
   (defmacro mu4e-add-university-context (context-name match-func mail-address full-name signature-file)
