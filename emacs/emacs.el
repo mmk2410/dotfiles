@@ -1290,6 +1290,7 @@ signature-file is the path to the file which contains the signature."
 ;; A new implementation of Powerline for Emacs
 (use-package telephone-line
   :init
+  (setq telephone-line-height 20)
   (setq telephone-line-primary-left-separator 'telephone-line-cubed-left
 	telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-left
 	telephone-line-primary-right-separator 'telephone-line-cubed-right
