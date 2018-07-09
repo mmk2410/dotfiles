@@ -1325,6 +1325,16 @@ signature-file is the path to the file which contains the signature."
 (use-package ox-reveal
   :after (org))
 
+;; org-tree-slide
+(use-package org-tree-slide
+  :after (org)
+  :bind (:map org-tree-slide-mode-map
+	      ("<f9>" . org-tree-slide-move-previous-tree)
+	      ("<f10>" . org-tree-slide-move-next-tree)
+	      :map org-mode-map
+	      ("<f8>" . org-tree-slide-mode)
+	      ("S-<f8>" . org-tree-slide-skip-done-toggle)))
+
 ;; centered-window-mode
 ;; Keep your text centered when there's only one window.
 ;; https://github.com/anler/centered-window-mode
