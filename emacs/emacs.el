@@ -1342,3 +1342,6 @@ signature-file is the path to the file which contains the signature."
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
   (exec-path-from-shell-copy-env "SSH_AGENT_PID"))
+
+;; rust-mode
+(use-package rust-mode)
