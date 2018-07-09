@@ -503,6 +503,25 @@
 
   :hook (org-mode-hook . flyspell-mode))
 
+;; org-super-agenda
+;; Supercharge your Org daily/weekly agenda by grouping items
+(use-package org-super-agenda
+  :after org
+  :init (org-super-agenda-mode 1)
+  :config (let ((org-super-agenda-groups
+		 '(
+		   (:name "Today"
+			  :time-grid t
+			  :scheduled today)
+		   (:name "Important from the past"
+			  :and (:priority "A" :scheduled past))
+		   (:name "Important"
+			  :and (:priority "A" :scheduled futu))
+		   (:name "Scheduled earlier"
+			  :scheduled past)
+		   (:priority<= "B"))))
+	    (org-agenda-list)))
+
 ;; fill-column-indicator
 ;; Graphically indicate the fill column
 (use-package fill-column-indicator
