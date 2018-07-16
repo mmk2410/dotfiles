@@ -1049,12 +1049,12 @@ signature-file is the path to the file which contains the signature."
   (add-to-list 'mu4e-bookmarks
 	       (make-mu4e-bookmark
 		:name "Open Messages"
-		:query "(flag:unread AND NOT flag:trashed AND NOT m:/university/fin/service/open) OR m:/university/inbox OR m:/mailbox/inbox"
+		:query "(flag:unread AND NOT flag:trashed AND NOT m:/university/fin/service/open) OR m:/university/inbox OR m:/mailbox/inbox OR m:/university/oeffref/inbox"
 		:key ?o))
   (add-to-list 'mu4e-bookmarks
 	       (make-mu4e-bookmark
 		:name "Open University Messages"
-		:query "(flag:unread AND NOT flag:trashed AND m:/university/* AND NOT m:/university/fin/service/open) OR m:/university/inbox"
+		:query "(flag:unread AND NOT flag:trashed AND m:/university/* AND NOT m:/university/fin/service/open) OR m:/university/inbox OR m:/university/oeffref/inbox"
 		:key ?u))
   (add-to-list 'mu4e-bookmarks
 	       (make-mu4e-bookmark
