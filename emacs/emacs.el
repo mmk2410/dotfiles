@@ -866,8 +866,9 @@
   :config
   ;; get mail
   (setq
-   mu4e-get-mail-command "offlineimap"
-   mu4e-update-interval 300)
+   mu4e-get-mail-command "mbsync -a"
+   mu4e-update-interval 300
+   mu4e-change-filenames-when-moving t)
 
   ;; faster reindexing
   (setq mu4e-maildir-index-cleanup nil
@@ -894,7 +895,7 @@
    ;; don't reply to myself
    mu4e-compose-dont-reply-to-self t
    ;; maildir
-   mu4e-maildir "~/.mail"
+   mu4e-maildir "~/.mbsync"
    ;; use correct account context when sending mail based from headers
    message-sendmail-envelope-from 'header)
 
