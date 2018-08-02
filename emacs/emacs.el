@@ -351,16 +351,14 @@
   ((after-init-hook . mu4e-alert-enable-notifications)
    (after-init-hook . mu4e-alert-enable-mode-line-display)))
 
-;; indent-guide
+;; highlight-indent-guides
 ;; show vertical lines to guide indentation
-(use-package indent-guide
-  :diminish indent-guide-mode
+(use-package highlight-indent-guides
+  :diminish highlight-indent-guides-mode
   :config
-  (indent-guide-global-mode))
-
-;; nlinum
-;; Show line numbers in the margin
-(use-package nlinum)
+  (setq highlight-indent-guides-method 'character)
+  :hook
+  (prog-mode . highlight-indent-guides-mode))
 
 ;; org
 ;; Outline-based notes management and organizer
