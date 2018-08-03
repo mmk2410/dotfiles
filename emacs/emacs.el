@@ -98,7 +98,9 @@
  ;; tab width
  tab-width 2
  ;; https://www.reddit.com/r/emacs/comments/819v0h/how_to_speed_up_cursor_movement_by_10x/
- auto-window-vscroll nil)
+ auto-window-vscroll nil
+ ;; Tell imenu to rescan tags
+ imenu-auto-rescan t)
 
 ;; set timezone
 (setenv "TZ" "/etc/localtime")
