@@ -1354,3 +1354,17 @@ signature-file is the path to the file which contains the signature."
 
 ;; rust-mode
 (use-package rust-mode)
+
+;; all-the-icons
+;; A utility package to collect various Icon Fonts and propertized them within Emacs
+(use-package all-the-icons)
+
+;; spaceline
+;; Powerline theme from Spacemacs
+(use-package spaceline)
+
+;; spaceline-all-the-icons
+;; A Spaceline Mode Line theme using All The Icons
+(use-package spaceline-all-the-icons
+  :after spaceline
+  :config (spaceline-all-the-icons-theme))
