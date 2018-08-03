@@ -1087,8 +1087,6 @@ signature-file is the path to the file which contains the signature."
 ;; elfeed
 ;; emacs feed reader
 (use-package elfeed
-  :bind
-  (("C-x w" . elfeed))
   :config
   (defun elfeed-search-format-date (date)
     (format-time-string "%Y-%m-%d %H:%M" (seconds-to-time date))))
