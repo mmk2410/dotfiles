@@ -848,6 +848,11 @@
   :load-path "moinmoin/"
   :mode (("\\.wiki\\'" . moinmoin-mode)))
 
+;; typoscript-mode
+;; A mode for TYPO3 typoscript
+(use-package typoscript-mode
+  :mode (("\\.typoscript\\'" . typoscript-mode)))
+
 ;; mu4e
 ;; emacs mail client
 (use-package mu4e
