@@ -539,6 +539,11 @@
   :config (global-diff-hl-mode t)
   :hook (magit-post-refresh-hook . diff-hl-magit-post-refresh))
 
+;; winum
+;; Navigate windows and frames using numbers
+(use-package winum
+  :config (winum-mode))
+
 ;; treemacs
 ;; A tree style file explorer package
 (use-package treemacs
