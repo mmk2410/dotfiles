@@ -1022,7 +1022,7 @@ signature-file is the path to the file which contains the signature."
    "D SoNaFe"
    nil
    "kontakt@sonafe.de"
-   "SoNaFe"
+   "Sommernachtsfest (SoNaFe)"
    "~/dotfiles/dotdotfiles/sig/sonafe-kontakt")
 
   (mu4e-add-university-context
