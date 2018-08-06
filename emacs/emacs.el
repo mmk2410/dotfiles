@@ -1002,7 +1002,7 @@ signature-file is the path to the file which contains the signature."
    nil
    "marcel.kapfer@uni-ulm.de"
    "Marcel Kapfer"
-   "~/dotfiles/dotdotfiles/sig/university")
+   nil)
 
   (mu4e-add-university-context
    "B StuVe Oeff-Ref"
