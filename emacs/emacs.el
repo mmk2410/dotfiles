@@ -749,6 +749,21 @@
 (use-package dart-mode
   :mode (("\\.dart\\'" . dart-mode)))
 
+;; ruby
+;; Support for the ruby language
+(use-package enh-ruby-mode
+  :after (robe inf-ruby)
+  :mode (("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
+  :hook (('enh-ruby-mode-hook 'robe-mode)
+	 ('enh-ruby-mode-hook 'inf-ruby-minor-mode)))
+
+(use-package robe
+  :after (company-mode)
+  :config (push 'company-robe company-backends))
+
+(use-package inf-ruby
+  :defer t)
+
 ;; csv-mode
 ;; Major mode for editing comma/char separated values
 (use-package csv-mode
