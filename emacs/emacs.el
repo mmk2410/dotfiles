@@ -1367,3 +1367,11 @@ signature-file is the path to the file which contains the signature."
 (use-package spaceline-all-the-icons
   :after spaceline
   :config (spaceline-all-the-icons-theme))
+
+;; org-wiki
+;; A personal wiki system for Emacs
+;; Using the verison ofYouhei Sasaki which uses ido instead of helm
+(use-package org-wiki
+  :load-path "org-wiki/"
+  :config
+  (setq org-wiki-location "~/wiki"))
