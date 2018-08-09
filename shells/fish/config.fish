@@ -115,6 +115,12 @@ if test -e $NIX_PROFILE
     source $NIX_PROFILE
 end
 
+# Run zsh when using emacs
+# Current problem with fish seems to be the theme
+if test $TERM = "eterm-color"
+    exec zsh
+end
+
 # Automatically start X at login
 # source: https://wiki.archlinux.org/index.php/Fish#Start_X_at_login
 # This must be at the bottom of this file
