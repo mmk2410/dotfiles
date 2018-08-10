@@ -1117,7 +1117,8 @@ signature-file is the path to the file which contains the signature."
 					(nth 0
 					     (auth-source-search
 					      :host "cloud.mmk2410.org"
-					      :user "mmk2410"))
+					      :user "mmk2410"
+					      :require '(:secret)))
 					:secret)))))
   (elfeed-protocol-enable))
 
