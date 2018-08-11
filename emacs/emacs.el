@@ -175,9 +175,7 @@
 (add-hook 'mail-mode-hook (lambda () (setq fill-column 72)))
 
 ;; set default web browser
-(setq browse-url-generic-program
-      (substring (shell-command-to-string "gconftool-2 -g /desktop/gnome/url-handlers/https/command") 0 -4)
-      browse-url-browser-function 'browse-url-generic)
+(setq browse-url-generic-program "x-www-browser)"
 
 ;; set font
 (set-frame-font "Hermit 8" nil t)
