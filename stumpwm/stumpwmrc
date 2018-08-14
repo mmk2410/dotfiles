@@ -329,7 +329,7 @@ script."
 (run-commands "emacs")
 
 ;; keepassxc
-(run-shell-command "gpg --textmode -d ~/dotfiles/dotdotfiles/keepassxc/password.gpg | keepassxc --pw-stdin ~/cloud/keys/2017-10.kdbx")
+(run-shell-command "keepassxc-wrapper")
 
 ;; owncloud
 (run-shell-command "nextcloud")
