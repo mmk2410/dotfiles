@@ -175,7 +175,7 @@
 (add-hook 'mail-mode-hook (lambda () (setq fill-column 72)))
 
 ;; set default web browser
-(setq browse-url-generic-program "x-www-browser)"
+(setq browse-url-generic-program "x-www-browser")
 
 ;; set font
 (set-frame-font "Hermit 8" nil t)
