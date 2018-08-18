@@ -730,6 +730,10 @@
         web-mode-code-indent-offset 2
         web-mode-indent-style 2))
 
+;; LESS style sheet support
+(use-package less-css-mode
+  :mode (("\\.less\\'" . less-css-mode)))
+
 ;; js2-mode
 ;; Major mode for editing JavaScript files
 (use-package js2-mode
