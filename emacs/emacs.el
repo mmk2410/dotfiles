@@ -91,9 +91,9 @@
  require-final-newline t
  ;; use german directory in ispell
  ispell-dictionary "german"
-;;; always follow symlinks to git repos
+ ;; always follow symlinks to git repos
  vc-follow-symlinks t
- ;;; indent using spaces, not tabs
+ ;; indent using spaces, not tabs
  indent-tabs-mode nil
  ;; tab width
  tab-width 2
@@ -159,13 +159,13 @@
 ;; delete trailing whitespaces on save
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
-;;; set default column width
+;; set default column width
 (setq-default fill-column 80)
 
 ;; set cursor style to a vertical bar
 (setq-default cursor-type 'bar)
 
-;;; hide tool bar, menu bar and scroll bar
+;; hide tool bar, menu bar and scroll bar
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
