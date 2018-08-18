@@ -847,11 +847,6 @@
   :mode (("\\.py\\'" . python-mode))
   :config (setq flycheck-python-pylint-executable "pylint3"))
 
-;; sr-speedbar
-;; Same frame speedbar
-(use-package sr-speedbar
-  :bind (("s-b" . sr-speedbar-toggle)))
-
 ;; moinmoin
 ;; Major mode for editing MoinMoin wiki entries
 (use-package moinmoin
