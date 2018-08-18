@@ -302,6 +302,7 @@
 ;; Manage and navigate projects in Emacs easily
 (use-package projectile
   :diminish projectile-mode
+  :defer t
   :config
   (projectile-global-mode)
   (setq projectile-completion-system 'ivy))
@@ -315,7 +316,8 @@
 
 ;; origami
 ;; Flexible text folding
-(use-package origami)
+(use-package origami
+  :defer t)
 
 ;; multiple-cursors
 ;; Multiple cursors for Emacs
@@ -585,6 +587,7 @@
 ;; pdf-tools
 ;; Support library for PDF documents.
 (use-package pdf-tools
+  :defer t
   :config
   (pdf-tools-install))
 
@@ -1097,6 +1100,7 @@ signature-file is the path to the file which contains the signature."
 ;; elfeed
 ;; emacs feed reader
 (use-package elfeed
+  :defer t
   :config
   (defun elfeed-search-format-date (date)
     (format-time-string "%Y-%m-%d %H:%M" (seconds-to-time date))))
@@ -1180,6 +1184,7 @@ signature-file is the path to the file which contains the signature."
 ;; Integrated environment for TeX
 (use-package tex-buf
   :ensure auctex
+  :defer t
   ;; Don't ask for confirmation when saving before processing
   :config (setq TeX-save-query nil))
 
@@ -1187,6 +1192,7 @@ signature-file is the path to the file which contains the signature."
 ;; Integrated environment for TeX
 (use-package tex-style
   :ensure auctex
+  :defer t
   :config
   ;; Enable support for csquotes
   (setq LaTeX-csquotes-close-quote "}"
@@ -1196,18 +1202,20 @@ signature-file is the path to the file which contains the signature."
 ;; Integrated environment for TeX
 (use-package tex-fold
   :ensure auctex
+  :defer t
   :init (add-hook 'TeX-mode-hook #'TeX-fold-mode))
 
 ;; LaTeX with AUCTeX
 ;; Integrated environment for TeX
 (use-package tex-mode
-  :ensure auctex)
+  :ensure auctex
+  :defer t)
 
 ;; LaTeX with AUCTeX
 ;; Integrated environment for TeX
 (use-package latex
   :ensure auctex
-  :defer nil
+  :defer t
   :config
   ;; No language-specific hyphens please
   (setq LaTeX-babel-hyphen nil)
@@ -1245,6 +1253,7 @@ signature-file is the path to the file which contains the signature."
 ;; bibtex
 ;; BibTeX editing
 (use-package bibtex
+  :after (latex)
   ;; Use a modern BibTeX dialect
   :config (bibtex-set-dialect 'biblatex)
   ;; Run prog mode hooks for bibtex
@@ -1253,6 +1262,7 @@ signature-file is the path to the file which contains the signature."
 ;; reftex
 ;; TeX cross-reference management
 (use-package reftex
+  :after (latex)
   :diminish reftex-mode
   :config
   (setq
@@ -1265,6 +1275,7 @@ signature-file is the path to the file which contains the signature."
 ;; term / ansi-term
 ;; terminal in emacs
 (use-package term
+  :defer t
   :init (defalias 'sh 'ansi-term)
   :config
   ;; set default shell
@@ -1302,6 +1313,7 @@ signature-file is the path to the file which contains the signature."
 ;; tramp
 ;; do stuff over ssh at al.
 (use-package tramp
+  :defer t
   :init
   ;; Set default connection method for TRAMP
   (setq tramp-default-method "ssh")
@@ -1315,6 +1327,7 @@ signature-file is the path to the file which contains the signature."
 ;; org-moinmoin
 ;; moinmoin export in org-mode
 (use-package ox-moinmoin
+  :after (org)
   :load-path "org-moinmoin/")
 
 ;; ox-reveal
@@ -1351,7 +1364,8 @@ signature-file is the path to the file which contains the signature."
   (exec-path-from-shell-copy-env "SSH_AGENT_PID"))
 
 ;; rust-mode
-(use-package rust-mode)
+(use-package rust-mode
+  :mode (("\\.rs\\'" . rust-mode)))
 
 ;; all-the-icons
 ;; A utility package to collect various Icon Fonts and propertized them within Emacs
