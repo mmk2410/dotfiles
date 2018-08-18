@@ -343,16 +343,6 @@
    ("C-c q" . vr/query-replace)
    ("C-c m" . vr/mc-mark)))
 
-;; mu4e-alert
-;; Desktop notification for mu4e
-(use-package mu4e-alert
-  :after (mu4e)
-  :config
-  (mu4e-alert-set-default-style 'libnotify)
-  :hook
-  ((after-init-hook . mu4e-alert-enable-notifications)
-   (after-init-hook . mu4e-alert-enable-mode-line-display)))
-
 ;; highlight-indent-guides
 ;; show vertical lines to guide indentation
 (use-package highlight-indent-guides
