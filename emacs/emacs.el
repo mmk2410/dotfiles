@@ -1334,11 +1334,6 @@ signature-file is the path to the file which contains the signature."
 	      ("<f8>" . org-tree-slide-mode)
 	      ("S-<f8>" . org-tree-slide-skip-done-toggle)))
 
-;; centered-cursor-mode
-;; An emacs minor mode for smooth scrolling
-;; https://github.com/andre-r/centered-cursor-mode.el
-(use-package centered-cursor-mode)
-
 ;; exec-path-from-shell
 ;; get environmet variables
 (use-package exec-path-from-shell
