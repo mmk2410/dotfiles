@@ -9,7 +9,6 @@
 (in-package :stumpwm)
 
 (defparameter *key-layout* "us -variant altgr-intl" "Stores the current key layout")
-(defconstant browser "firefox" "Constant holding the default browser.")
 
 ;; creating or rename groups
 (setf (group-name (first (screen-groups (current-screen)))) "web")
@@ -88,8 +87,8 @@
 ;; root keybindings
 ;
 ;; browser
-(define-key *root-map* (kbd "W") (concatenate 'string "exec" " " browser))
-(define-key *root-map* (kbd "P") (concatenate 'string "exec" " " browser " " "--private-window"))
+(define-key *root-map* (kbd "W") "exec x-www-browser")
+(define-key *root-map* (kbd "P") "exec x-www-browser --private-window")
 
 ;;; terminal
 (define-key *root-map* (kbd "c") "exec urxvt")
@@ -265,12 +264,12 @@
     (substitute #\+ #\Space search)
     (run-shell-command (concatenate 'string ,prefix search))))
 
-(make-web-jump "google" (concatenate 'string browser " " "http://www.google.com/search?q="))
-(make-web-jump "googlede" (concatenate 'string browser " " "http://www.google.de/search?q="))
-(make-web-jump "duckduckgo" (concatenate 'string browser " " "https://duckduckgo.com/?q="))
-(make-web-jump "packages" (concatenate 'string browser " " "https://packages.debian.org/"))
-(make-web-jump "wikipedia" (concatenate 'string browser " " "https://en.wikipedia.org/w/index.php?search="))
-(make-web-jump "wikipediade" (concatenate 'string browser " " "https://de.wikipedia.org/w/index.php?search="))
+(make-web-jump "google" "x-www-browser http://www.google.com/search?q=")
+(make-web-jump "googlede" "x-www-browser http://www.google.de/search?q=")
+(make-web-jump "duckduckgo" "x-www-browser https://duckduckgo.com/?q=")
+(make-web-jump "packages" "x-www-browser https://packages.debian.org/")
+(make-web-jump "wikipedia" "x-www-browser https://en.wikipedia.org/w/index.php?search=")
+(make-web-jump "wikipediade" "x-www-browser https://de.wikipedia.org/w/index.php?search=")
 
 (defun list-screen-layouts ()
   "Return an alist of possible screen layouts. Those are the layouts saved in
@@ -338,7 +337,7 @@ script."
 (run-shell-command "bwsyncandshare")
 
 ;; firefox
-(run-shell-command browser)
+(run-shell-command "x-www-browser")
 
 ;; telegram
 (run-shell-command "telegram-desktop")
