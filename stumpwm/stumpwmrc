@@ -91,7 +91,7 @@
 (define-key *root-map* (kbd "P") "exec x-www-browser --private-window")
 
 ;;; terminal
-(define-key *root-map* (kbd "c") "exec urxvt")
+(define-key *root-map* (kbd "c") "exec x-terminal-emulator")
 
 ;;; es as emacs
 (define-key *root-map* (kbd "e") "exec es")
