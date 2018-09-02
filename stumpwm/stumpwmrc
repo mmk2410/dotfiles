@@ -175,14 +175,33 @@
 ;; (if (not (head-mode-line (current-head)))
 ;;     (toggle-mode-line (current-screen) (current-head)))
 
-;; set backlight
-(defcommand set-backlight (value)
-  ((:string "Backlight in %: "))
-  "Setting a new value for the backlight"
-  (run-shell-command (concatenate 'string "xbacklight -set " value))
-  (echo (concatenate 'string "Backlight set to " value)))
+(defparameter *backlight-sysfs* "/sys/class/backlight/intel_backlight/")
 
-(define-key *root-map* (kbd "B") "set-backlight")
+(defun get-max-backlight ()
+  "Retrieve maximal backlight brightness from sysfs"
+  (let ((max-backlight-file (concatenate 'string *backlight-sysfs* "max_brightness")))
+    (if (probe-file max-backlight-file)
+	(with-open-file (in max-backlight-file)
+	  (read-line in))
+	nil)))
+
+(defun set-backlight (value)
+  "Set backlight to given value"
+  (let ((backlight-file (concatenate 'string *backlight-sysfs* "brightness")))
+    (if (probe-file backlight-file)
+	(with-open-file (out backlight-file
+			     :direction :output
+			     :if-exists :overwrite)
+	  (format out "~D" (truncate value))))))
+
+;; set backlight
+(defcommand change-backlight (value)
+  ((:number "Backlight in %: "))
+  "Setting a new backlight value"
+  (let ((max-backlight (get-max-backlight)))
+    (if max-backlight
+	(set-backlight (* 0.01 value (parse-integer max-backlight)))
+	(echo "Can't set backlight"))))
 
 ;; tweet
 (defcommand tweet (tweet)
