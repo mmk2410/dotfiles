@@ -182,26 +182,58 @@
   (let ((max-backlight-file (concatenate 'string *backlight-sysfs* "max_brightness")))
     (if (probe-file max-backlight-file)
 	(with-open-file (in max-backlight-file)
-	  (read-line in))
-	nil)))
+	  (parse-integer (read-line in))))))
 
-(defun set-backlight (value)
-  "Set backlight to given value"
+(defun get-backlight ()
+  "Retrieve current backlight brightness from sysfs"
   (let ((backlight-file (concatenate 'string *backlight-sysfs* "brightness")))
     (if (probe-file backlight-file)
-	(with-open-file (out backlight-file
-			     :direction :output
-			     :if-exists :overwrite)
-	  (format out "~D" (truncate value))))))
+	(with-open-file (in backlight-file)
+	  (parse-integer (read-line in))))))
 
-;; set backlight
+(defun get-backlight-rel ()
+  "Retrieve current backlight brightness relative to maximum"
+  (round (* 100
+	    (float (/ (get-backlight)
+		      (get-max-backlight))))))
+
+(defun set-backlight (value)
+  "Set backlight brightness to given value using sysfs"
+  (let ((backlight-file (concatenate 'string *backlight-sysfs* "brightness")))
+    (if (probe-file backlight-file)
+	(progn (with-open-file (out backlight-file
+				    :direction :output
+				    :if-exists :overwrite)
+		 (format out "~D" (truncate value)))
+	       value))))
+
+(defun set-backlight-rel (value)
+  "Set backlight brightness relative to maximum"
+  (let ((max-backlight (get-max-backlight)))
+    (if max-backlight
+	(set-backlight (* 0.01 value max-backlight)))))
+
 (defcommand change-backlight (value)
   ((:number "Backlight in %: "))
   "Setting a new backlight value"
-  (let ((max-backlight (get-max-backlight)))
-    (if max-backlight
-	(set-backlight (* 0.01 value (parse-integer max-backlight)))
-	(echo "Can't set backlight"))))
+  (unless (set-backlight-rel value)
+    (echo "Can't set backlight")))
+
+(defcommand increase-backlight ()
+  ()
+  "Increase backlight by 5%"
+  (let ((current (get-backlight-rel)))
+    (if (> current 95)
+	(set-backlight-rel 100)
+	(set-backlight-rel (+ current 5)))))
+
+(defcommand decrease-backlight ()
+  ()
+  "Decrease backlight by 5%"
+  (let ((current (get-backlight-rel)))
+    (if (< current 6)
+	(set-backlight-rel 1)
+	(set-backlight-rel (- current 5)))))
 
 ;; tweet
 (defcommand tweet (tweet)
@@ -211,6 +243,10 @@
   (echo (concatenate 'string "Tweeted: " tweet)))
 
 (define-key *root-map* (kbd "T") "tweet")
+(define-key *root-map* (kbd "B") "change-backlight")
+
+(define-key *top-map* (kbd "XF86MonBrightnessUp") "increase-backlight")
+(define-key *top-map* (kbd "XF86MonBrightnessDown") "decrease-backlight")
 
 ;; switch key layout
 (defun switch-layout-to (new-lang)
