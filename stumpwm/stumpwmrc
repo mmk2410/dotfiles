@@ -235,14 +235,6 @@
 	(set-backlight-rel 1)
 	(set-backlight-rel (- current 5)))))
 
-;; tweet
-(defcommand tweet (tweet)
-  ((:string "Tweet: "))
-  "Tweet"
-  (run-shell-command (concatenate 'string "cd ~/programs/dart/learning/twitter && dart main.dart -t \"" tweet "\""))
-  (echo (concatenate 'string "Tweeted: " tweet)))
-
-(define-key *root-map* (kbd "T") "tweet")
 (define-key *root-map* (kbd "B") "change-backlight")
 
 (define-key *top-map* (kbd "XF86MonBrightnessUp") "increase-backlight")
