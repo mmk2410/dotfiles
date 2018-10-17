@@ -464,7 +464,7 @@
 	   "* %? \n  %u\n  %i\n")))
 
   ;; set org refile targets
-  (setq org-refile-targets '(("~/cloud/org/projects.org")))
+  (setq org-refile-targets '(("~/cloud/org/projects.org" :maxlevel . 3)))
 
   ;; warn of deadlines in the next seven days
   (setq org-deadline-warning-days 7)
