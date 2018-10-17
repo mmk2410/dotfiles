@@ -459,7 +459,7 @@
 	  ("n" "Note" entry (file+headline "~/cloud/org/notes.org" "Notes")
 	   "* %? \n  %i\n  %u\n  %a\n")
 	  ("p" "Project Idea" entry (file+headline "~/cloud/org/projects.org" "INBOX")
-	   "* %? %^G\n  %i\n  %u\n")
+	   "* TODO %? %^G\n  %i\n  %u\n")
 	  ("w" "Wiki Entry" entry (file+headline "~/cloud/org/wiki.org" "INBOX")
 	   "* %? \n  %u\n  %i\n")))
 
