@@ -451,17 +451,20 @@
   ;; bind capture templates
   (setq org-capture-templates
 	'(("t" "todo" entry (file+headline "~/cloud/org/todo.org" "Tasks")
-	   "* TODO [#A] %? \n  %u")
+	   "* TODO [#A] %? %^G\n  %u")
 	  ("s" "scheduled todo" entry (file+headline "~/cloud/org/todo.org" "Tasks")
-	   "* TODO [#A] %? \n  SCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n  %u\n")
+	   "* TODO [#A] %? %^G\n  SCHEDULED: %^T\n  %u\n")
 	  ("m" "scheduled mail" entry (file+headline "~/cloud/org/todo.org" "Tasks")
-	   "* TODO [#A] %? \n  SCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n  %u\n  %a\n")
+	   "* TODO [#A] %? %^G\n  SCHEDULED: %^T\n  %u\n  %a\n")
 	  ("n" "Note" entry (file+headline "~/cloud/org/notes.org" "Notes")
 	   "* %? \n  %i\n  %u\n  %a\n")
 	  ("p" "Project Idea" entry (file+headline "~/cloud/org/projects.org" "INBOX")
-	   "* %? \n  %i\n  %u\n  %a\n")
+	   "* %? %^G\n  %i\n  %u\n")
 	  ("w" "Wiki Entry" entry (file+headline "~/cloud/org/wiki.org" "INBOX")
 	   "* %? \n  %u\n  %i\n")))
+
+  ;; set org refile targets
+  (setq org-refile-targets '(("~/cloud/org/projects.org" :maxlevel 3)))
 
   ;; warn of deadlines in the next seven days
   (setq org-deadline-warning-days 7)
@@ -498,19 +501,20 @@
 (use-package org-super-agenda
   :after org
   :init (org-super-agenda-mode 1)
-  :config (let ((org-super-agenda-groups
-		 '(
-		   (:name "Today"
-			  :time-grid t
-			  :scheduled today)
-		   (:name "Important from the past"
-			  :and (:priority "A" :scheduled past))
-		   (:name "Important"
-			  :and (:priority "A" :scheduled futu))
-		   (:name "Scheduled earlier"
-			  :scheduled past)
-		   (:priority<= "B"))))
-	    (org-agenda-list)))
+  :config (setq org-super-agenda-groups
+		'(
+		  (:name "Today"
+			 :time-grid t
+			 :scheduled today)
+		  (:name "Important from the past"
+			 :and (:priority "A" :scheduled past))
+		  (:name "Waiting..."
+			 :todo "WAIT")
+		  (:name "Scheduled earlier"
+			 :scheduled past)
+		  (:name "Not scheduled"
+			 :scheduled nil)
+		  (:priority<= "B"))))
 
 ;; fill-column-indicator
 ;; Graphically indicate the fill column
