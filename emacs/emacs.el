@@ -1056,6 +1056,13 @@ signature-file is the path to the file which contains the signature."
    "FIN Öffentlichkeits-Team"
    "~/dotfiles/dotdotfiles/sig/fin-oeffentlichkeit")
 
+  (mu4e-add-university-context
+   "G StuPa Sitzungsleitung"
+   nil
+   "stuve.sitzungsleitung@uni-ulm.de"
+   "StuPa Sitzungsleitung"
+   "~/dotfiles/dotdotfiles/sig/stupa-sitzungsleitung")
+
   ;; custom bookmarks
   (setq mu4e-bookmarks (delete '("flag:unread AND NOT flag:trashed" "Unread messages" 117) mu4e-bookmarks))
 
