@@ -433,6 +433,9 @@
    org-log-redeadline 'time
    ;; only show last star
    org-hide-leading-stars t
+   ;; Forbid closing of todos with open subtasks
+   org-enforce-todo-dependencies t
+   org-enforce-todo-checkbox-dependencies t
    ;; show something instead of ...
    org-ellipsis "⤵")
 
