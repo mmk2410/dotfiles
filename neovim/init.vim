@@ -21,7 +21,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim")) || filereadable(expand("~/.c
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
     Plug 'vim-latex/vim-latex'
-    Plug 'morhetz/gruvbox'
+    " Plug 'morhetz/gruvbox'
     Plug 'dag/vim-fish'
     Plug 'dart-lang/dart-vim-plugin'
     Plug 'KabbAmine/gulp-vim'
@@ -32,7 +32,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim")) || filereadable(expand("~/.c
     Plug 'IN3D/vim-raml'
     Plug 'zchee/deoplete-clang'
     Plug 'parkr/vim-jekyll'
-
+    " Plug 'dracula/vim', {'as': 'dracula'}
+    Plug 'arcticicestudio/nord-vim'
     call plug#end()
 
 else
@@ -89,8 +90,9 @@ set tm=500
 " Color
 
 syntax on
-colorscheme gruvbox
-set background=light
+" color dracula
+colorscheme nord
+" set background=light
 " set termguicolors
 set cursorline
 if has("gui_running")
@@ -208,7 +210,7 @@ set clipboard+=unnamedplus
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='gruvbox'
+let g:airline_theme='base16_nord'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
