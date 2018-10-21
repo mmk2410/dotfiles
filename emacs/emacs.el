@@ -697,6 +697,7 @@
 ;; beginend
 ;; Redefine M-< and M-> for some modes
 (use-package beginend
+  :load-path "beginend/"
   :diminish (beginend-global-mode
 	     beginend-prog-mode
 	     beginend-magit-status-mode)
