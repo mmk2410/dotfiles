@@ -427,6 +427,10 @@
    org-M-RET-may-split-line nil
    ;; Log done time
    org-log-done 'time
+   ;; Log time when resheduled
+   org-log-reschedule 'time
+   ;; Log time when redeadlined
+   org-log-redeadline 'time
    ;; only show last star
    org-hide-leading-stars t
    ;; show something instead of ...
@@ -451,17 +455,17 @@
   ;; bind capture templates
   (setq org-capture-templates
 	'(("t" "todo" entry (file+headline "~/cloud/org/todo.org" "Tasks")
-	   "* TODO [#A] %? %^G\n  %u")
+	   "* TODO [#A] %? %^G\n  CREATED: %u")
 	  ("s" "scheduled todo" entry (file+headline "~/cloud/org/todo.org" "Tasks")
-	   "* TODO [#A] %? %^G\n  SCHEDULED: %^T\n  %u\n")
+	   "* TODO [#A] %? %^G\n  SCHEDULED: %^T\n  CREATED: %u\n")
 	  ("m" "scheduled mail" entry (file+headline "~/cloud/org/todo.org" "Tasks")
-	   "* TODO [#A] %? %^G\n  SCHEDULED: %^T\n  %u\n  %a\n")
+	   "* TODO [#A] %? %^G\n  SCHEDULED: %^T\n  CREATED: %u\n  %a\n")
 	  ("n" "Note" entry (file+headline "~/cloud/org/notes.org" "Notes")
-	   "* %? \n  %i\n  %u\n  %a\n")
+	   "* %? \n  %i\n  CREATED: %u\n  %a\n")
 	  ("p" "Project Idea" entry (file+headline "~/cloud/org/projects.org" "INBOX")
-	   "* TODO %? %^G\n  %i\n  %u\n")
+	   "* TODO %? %^G\n  %i\n  CREATED: %u\n")
 	  ("w" "Wiki Entry" entry (file+headline "~/cloud/org/wiki.org" "INBOX")
-	   "* %? \n  %u\n  %i\n")))
+	   "* %? \n  CREATED: %u\n  %i\n")))
 
   ;; set org refile targets
   (setq org-refile-targets '(("~/cloud/org/projects.org" :maxlevel . 3)))
