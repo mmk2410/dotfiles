@@ -392,6 +392,9 @@ script."
 ;; redshift
 (run-shell-command "redshift")
 
+;; orage
+(run-shell-command "orage")
+
 ;; last settings
 ;; (stumptray:stumptray)
 
