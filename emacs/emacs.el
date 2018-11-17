@@ -1379,18 +1379,6 @@ signature-file is the path to the file which contains the signature."
   :after spaceline
   :config (spaceline-all-the-icons-theme))
 
-;; Nord theme
-;; https://github.com/arcticicestudio/nord-emacs
-;; (use-package nord-theme
-;;   :config
-;;   ;; fixed shitty Emacs behavior
-;;   ;; fix for theme not loading in deamon mode
-;;   (if (daemonp)
-;;       (add-hook 'after-make-frame-functions
-;; 		(lambda (frame)
-;; 		  (with-selected-frame frame (load-theme 'nord t))))
-;;     (load-theme 'nord t)))
-
 ;; Doom theme
 ;; https://github.com/hlissner/emacs-doom-themes
 (use-package doom-themes
