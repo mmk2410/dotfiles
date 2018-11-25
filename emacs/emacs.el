@@ -177,6 +177,9 @@
 ;; set default web browser
 (setq browse-url-generic-program "x-www-browser")
 
+;; auto revert externally changed files
+(global-auto-revert-mode t)
+
 ;; set font
 (set-frame-font "Fira Mono 10" nil t)
 
