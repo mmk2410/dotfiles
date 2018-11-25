@@ -174,6 +174,9 @@
 (add-hook 'mail-mode-hook 'auto-fill-mode)
 (add-hook 'mail-mode-hook (lambda () (setq fill-column 72)))
 
+;; highlight matching parenthesis
+(show-paren-mode 1)
+
 ;; set default web browser
 (setq browse-url-generic-program "x-www-browser")
 
