@@ -471,7 +471,10 @@
 	   "* %? \n  CREATED: %u\n  %i\n")))
 
   ;; set org refile targets
-  (setq org-refile-targets '(("~/cloud/org/projects.org" :maxlevel . 3)))
+  (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+
+  ;; allow creating new targets on refile
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
 
   ;; warn of deadlines in the next seven days
   (setq org-deadline-warning-days 7)
