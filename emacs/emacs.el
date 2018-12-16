@@ -1389,7 +1389,7 @@ signature-file is the path to the file which contains the signature."
 ;; Fancy battery display
 (use-package fancy-battery
   :after spaceline
-  :config (fance-battery-mode))
+  :init (fancy-battery-mode))
 
 ;; spaceline-all-the-icons
 ;; A Spaceline Mode Line theme using All The Icons
