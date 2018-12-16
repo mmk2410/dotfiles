@@ -467,15 +467,15 @@
   ;; bind capture templates
   (setq org-capture-templates
 	'(("t" "todo" entry (file+headline "~/cloud/org/todo.org" "Tasks")
-	   "* TODO [#A] %? %^G\n  CREATED: %u")
+	   "* TODO %? %^G\n  CREATED: %u")
 	  ("s" "scheduled todo" entry (file+headline "~/cloud/org/todo.org" "Tasks")
-	   "* TODO [#A] %? %^G\n  SCHEDULED: %^T\n  CREATED: %u\n")
+	   "* TODO %?\n  SCHEDULED: %^T\n  CREATED: %u\n")
 	  ("m" "scheduled mail" entry (file+headline "~/cloud/org/todo.org" "Tasks")
-	   "* TODO [#A] %? %^G\n  SCHEDULED: %^T\n  CREATED: %u\n  %a\n")
+	   "* TODO %?\n  SCHEDULED: %^T\n  CREATED: %u\n  %a\n")
 	  ("n" "Note" entry (file+headline "~/cloud/org/notes.org" "Notes")
 	   "* %? \n  %i\n  CREATED: %u\n  %a\n")
 	  ("p" "Project Idea" entry (file+headline "~/cloud/org/projects.org" "INBOX")
-	   "* TODO %? %^G\n  %i\n  CREATED: %u\n")
+	   "* TODO %?\n  %i\n  CREATED: %u\n")
 	  ("w" "Wiki Entry" entry (file+headline "~/cloud/org/wiki.org" "INBOX")
 	   "* %? \n  CREATED: %u\n  %i\n")))
 
@@ -489,7 +489,7 @@
   (setq org-deadline-warning-days 7)
 
   ;; show tasks in the next 14 days
-  (setq org-agenda-span (quote fortnight))
+  (setq org-agenda-span (quote day))
 
   ;; org sorthing strategy
   (setq org-agenda-sorting-strategy '(time-up priority-down))
