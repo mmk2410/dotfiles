@@ -187,12 +187,12 @@
 (global-auto-revert-mode t)
 
 ;; set font
-(set-frame-font "Fira Mono 10" nil t)
+(set-frame-font "Hermit 9" nil t)
 
 ;; set the default font after the frame is created.
 ;; needed because of some issue with emacsclient.
 (add-hook 'after-make-frame-functions
-	  (lambda (frame) (set-frame-font "Fira Mono 10" nil t)))
+	  (lambda (frame) (set-frame-font "Hermit 9" nil t)))
 
 ;; -----------------------------------------------------------------------------
 
