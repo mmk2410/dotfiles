@@ -467,17 +467,17 @@
   ;; bind capture templates
   (setq org-capture-templates
 	'(("t" "todo" entry (file+headline "~/cloud/org/todo.org" "Tasks")
-	   "* TODO %? %^G\n  CREATED: %u")
+	   "* TODO %? %^G\n  :PROPERTIES:\n  :CREATED:%U\n  :END:")
 	  ("s" "scheduled todo" entry (file+headline "~/cloud/org/todo.org" "Tasks")
-	   "* TODO %?\n  SCHEDULED: %^T\n  CREATED: %u\n")
+	   "* TODO %?\n  SCHEDULED: %^T\n  :PROPERTIES:\n  :CREATED:%U\n  :END:\n")
 	  ("m" "scheduled mail" entry (file+headline "~/cloud/org/todo.org" "Tasks")
-	   "* TODO %?\n  SCHEDULED: %^T\n  CREATED: %u\n  %a\n")
+	   "* TODO %?\n  SCHEDULED: %^T\n  :PROPERTIES:\n  :CREATED:%U\n  :END:\n  %a\n")
 	  ("n" "Note" entry (file+headline "~/cloud/org/notes.org" "Notes")
-	   "* %? \n  %i\n  CREATED: %u\n  %a\n")
+	   "* %? \n  %i\n  :PROPERTIES:\n  :CREATED:%U\n  :END:\n  %a\n")
 	  ("p" "Project Idea" entry (file+headline "~/cloud/org/projects.org" "INBOX")
-	   "* TODO %?\n  %i\n  CREATED: %u\n")
+	   "* TODO %?\n  %i\n  :PROPERTIES:\n  :CREATED:%U\n  :END:\n")
 	  ("w" "Wiki Entry" entry (file+headline "~/cloud/org/wiki.org" "INBOX")
-	   "* %? \n  CREATED: %u\n  %i\n")))
+	   "* %? \n  :PROPERTIES:\n  :CREATED:%U\n  :END:\n  %i\n")))
 
   ;; set org refile targets
   (setq org-refile-targets '((org-agenda-files :maxlevel . 2)))
