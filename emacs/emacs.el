@@ -480,7 +480,7 @@
 	   "* %? \n  CREATED: %u\n  %i\n")))
 
   ;; set org refile targets
-  (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+  (setq org-refile-targets '((org-agenda-files :maxlevel . 2)))
 
   ;; allow creating new targets on refile
   (setq org-refile-allow-creating-parent-nodes 'confirm)
