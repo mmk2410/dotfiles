@@ -474,6 +474,13 @@
 	  ("p" "Project Idea" entry (file+headline "~/cloud/org/projects.org" "INBOX")
 	   "* TODO %?\n  %i\n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n")))
 
+  ;; change org-agenda category/file display
+  (setq org-agenda-prefix-format
+	'((agenda . " %i %-18:c%?-12t% s")
+	  (todo . " %i %-18:c")
+	  (tags . " %i %-18:c")
+	  (search . " %i %-18:c")))
+
   ;; set org refile targets
   (setq org-refile-targets '((org-agenda-files :maxlevel . 2)))
 
