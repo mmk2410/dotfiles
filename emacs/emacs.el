@@ -490,7 +490,7 @@
   ;; warn of deadlines in the next seven days
   (setq org-deadline-warning-days 7)
 
-  ;; show tasks in the next 14 days
+  ;; show tasks of the day
   (setq org-agenda-span (quote day))
 
   ;; org sorthing strategy
