@@ -450,11 +450,10 @@
 
   ;; set default agenda file
   (setq org-agenda-files (list "~/cloud/org/todo.org"
-			       "~/cloud/org/notes.org"
-			       "~/cloud/org/projects.org")
-	org-agenda-text-search-extra-files (list "~/cloud/org/finance.org"
-						 "~/cloud/org/emacs-magic.org"
-						 "~/cloud/org/wiki.org"))
+			       "~/cloud/org/projects.org"
+			       "~/cloud/org/projects/")
+	org-agenda-text-search-extra-files (list "~/cloud/org/archive/"
+						 "~/cloud/org/articles/"))
 
   ;; set priority range from A to C with A being the highest
   (setq org-priority-faces '((?A . (:foreground "#F0DFAF" :weight bold))
