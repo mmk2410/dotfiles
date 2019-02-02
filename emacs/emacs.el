@@ -471,12 +471,8 @@
 	   "* TODO %?\n  SCHEDULED: %^T\n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n")
 	  ("m" "scheduled mail" entry (file+headline "~/cloud/org/todo.org" "Tasks")
 	   "* TODO %?\n  SCHEDULED: %^T\n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n  %a\n")
-	  ("n" "Note" entry (file+headline "~/cloud/org/notes.org" "Notes")
-	   "* %? \n  %i\n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n  %a\n")
 	  ("p" "Project Idea" entry (file+headline "~/cloud/org/projects.org" "INBOX")
-	   "* TODO %?\n  %i\n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n")
-	  ("w" "Wiki Entry" entry (file+headline "~/cloud/org/wiki.org" "INBOX")
-	   "* %? \n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n  %i\n")))
+	   "* TODO %?\n  %i\n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n")))
 
   ;; set org refile targets
   (setq org-refile-targets '((org-agenda-files :maxlevel . 2)))
