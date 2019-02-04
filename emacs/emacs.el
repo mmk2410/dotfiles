@@ -1385,21 +1385,14 @@ signature-file is the path to the file which contains the signature."
 
 ;; spaceline
 ;; Powerline theme from Spacemacs
-(use-package spaceline)
+(use-package spaceline
+  :init (spaceline-emacs-theme))
 
 ;; fancy-battery
 ;; Fancy battery display
 (use-package fancy-battery
   :after spaceline
   :init (fancy-battery-mode))
-
-;; spaceline-all-the-icons
-;; A Spaceline Mode Line theme using All The Icons
-(use-package spaceline-all-the-icons
-  :after fancy-battery
-  :config
-  (spaceline-all-the-icons-theme)
-  (spaceline-toggle-all-the-icons-battery-status-on))
 
 ;; Doom theme
 ;; https://github.com/hlissner/emacs-doom-themes
