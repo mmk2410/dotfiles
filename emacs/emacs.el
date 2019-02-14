@@ -509,6 +509,10 @@
   ;; store link to message if in header view, not to header query
   (setq org-mu4e-link-query-in-headers-mode nil)
 
+  ;; Adjust fontification block length
+  (setcar (nthcdr 4 org-emphasis-regexp-components) 10)
+  (org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components)
+
   :bind
   (("C-c l" . org-store-link)
    ("C-c c" . org-capture)
