@@ -1,1 +1,0 @@
-/home/marcel/.config/fisherman/eco/functions/fish_prompt.fish

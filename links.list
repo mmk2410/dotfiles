@@ -12,7 +12,7 @@ redshift/redshift .config/redshift.conf
 screen/screenrc .screenrc
 shells/bashrc .bashrc
 shells/zshrc .zshrc
-shells/fish/config.fish .config/fish/
+shells/fish/conf.d .config/fish/
 shells/fish/functions .config/fish/
 stumpwm/stumpwmrc .stumpwmrc
 x/xinitrc .xinitrc

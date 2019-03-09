@@ -18,7 +18,20 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function cdl --wraps cd --description "Switch directory and show content"
-    cd $argv
-    l
+# Debian Packaging
+
+# quilt
+alias dquilt="quilt --quiltrc=$HOME/.quiltrc-dpkg"
+
+# Variables
+set -x DEBUILD_DPKG_BUILDPACKAGE_OPTS "-i -I -us -uc"
+set -x DEBUILD_LINTIAN_OPTS "-i -I --show-overrides"
+set -x DEBSIGN_KEYID "9FE01C39F74551D434116394CADE6F0C09F21B09"
+
+if test -z $DEBFULLNAME
+    set -Ux DEBFULLNAME "Marcel Kapfer"
+end
+
+if test -z $DEBEMAIL
+    set -Ux DEBEMAIL "opensource@mmk2410.org"
 end
