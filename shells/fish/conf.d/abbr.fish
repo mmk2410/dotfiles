@@ -28,4 +28,5 @@ if status --is-interactive
     abbr --add --global pingtest ping -c 3 mmk2410.org
     abbr --add --global e eval $EDITOR
     abbr --add --global g git
+    abbr --add --global s sudo
 end
