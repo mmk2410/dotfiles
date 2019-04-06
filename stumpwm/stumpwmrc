@@ -93,25 +93,25 @@
 ;;; emacs
 (defcommand emacs () ()
             "run emacs"
-            (run-or-raise "es" '(:class "Emacs")))
+            (run-or-raise *editor* '(:class "Emacs")))
 
 ;; root keybindings
 ;
 ;; browser
-(define-key *root-map* (kbd "W") "exec x-www-browser")
-(define-key *root-map* (kbd "P") "exec x-www-browser --private-window")
+(define-key *root-map* (kbd "W") (concatenate 'string "exec " *web-browser*))
+(define-key *root-map* (kbd "P") (concatenate 'string "exec " *web-browser* " --private-window"))
 
 ;;; terminal
-(define-key *root-map* (kbd "c") "exec x-terminal-emulator")
+(define-key *root-map* (kbd "c") (concatenate 'string "exec " *terminal*))
 
-;;; es as emacs
-(define-key *root-map* (kbd "e") "exec es")
+;;; (text) editor
+(define-key *root-map* (kbd "e") (concatenate 'string "exec " *editor*))
 
 ;;; ranger
-(define-key *root-map* (kbd "C-c") "exec nemo --no-desktop")
+(define-key *root-map* (kbd "C-c")  (concatenate 'string "exec " *file-manager*))
 
 ;;; spotify
-(define-key *root-map* (kbd "m") "exec spotify")
+(define-key *root-map* (kbd "m")  (concatenate 'string "exec " *music-player*))
 
 ;;; bind keys for changing workspace
 (define-key *root-map* (kbd "C-1") "change-workspace web")
