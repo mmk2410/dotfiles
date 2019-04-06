@@ -8,7 +8,9 @@
 
 (in-package :stumpwm)
 
-(defparameter *key-layout* "us -variant altgr-intl" "Stores the current key layout")
+;; Other parameters
+(defparameter *key-layout* "de" "Stores the current key layout")
+
 
 ;; creating or rename groups
 (setf (group-name (first (screen-groups (current-screen)))) "web")
