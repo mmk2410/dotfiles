@@ -177,7 +177,7 @@
 (run-shell-command "dunst")
 
 ;; nitrogen (wallpaper)
-(run-shell-command "nitrogen --restore")
+(run-shell-command "~/.fehbg")
 
 ;; start compton (compositor)
 (run-shell-command "compton --config ~/.config/compton.conf")
