@@ -1386,6 +1386,14 @@ signature-file is the path to the file which contains the signature."
 (use-package rust-mode
   :mode (("\\.rs\\'" . rust-mode)))
 
+;; nix-mode
+(use-package nix-mode
+  :mode (("\\.nix\\'" . nix-mode)))
+
+;; haskell-mode
+(use-package haskell-mode
+  :mode (("\\.hs\\'" . haskell-mode)))
+
 ;; all-the-icons
 ;; A utility package to collect various Icon Fonts and propertized them within Emacs
 (use-package all-the-icons)
