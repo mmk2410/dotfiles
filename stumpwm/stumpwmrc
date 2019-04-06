@@ -391,9 +391,6 @@ script."
 ;; owncloud
 (run-shell-command "nextcloud")
 
-;; bwSyncAndShare
-(run-shell-command "bwsyncandshare")
-
 ;; web browser
 (run-shell-command *web-browser*)
 
