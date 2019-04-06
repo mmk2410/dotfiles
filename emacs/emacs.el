@@ -519,7 +519,7 @@
   :bind
   (("C-c l" . org-store-link)
    ("C-c c" . org-capture)
-   ("C-c o" . org-iswitchb)
+   ("C-c o" . org-switchb)
    ("C-c a" . org-agenda))
 
   :hook (org-mode-hook . flyspell-mode))
