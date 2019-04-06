@@ -320,14 +320,14 @@
 (defmacro make-web-jump (name prefix)
   `(defcommand ,(intern name) (search) ((:rest ,(concatenate 'string name " search: ")))
     (substitute #\+ #\Space search)
-    (run-shell-command (concatenate 'string ,prefix search))))
+    (run-shell-command (concatenate 'string *www-browser* " " ,prefix search))))
 
-(make-web-jump "google" "x-www-browser http://www.google.com/search?q=")
-(make-web-jump "googlede" "x-www-browser http://www.google.de/search?q=")
-(make-web-jump "duckduckgo" "x-www-browser https://duckduckgo.com/?q=")
-(make-web-jump "packages" "x-www-browser https://packages.debian.org/")
-(make-web-jump "wikipedia" "x-www-browser https://en.wikipedia.org/w/index.php?search=")
-(make-web-jump "wikipediade" "x-www-browser https://de.wikipedia.org/w/index.php?search=")
+(make-web-jump "google" "http://www.google.com/search?q=")
+(make-web-jump "googlede" "http://www.google.de/search?q=")
+(make-web-jump "duckduckgo" "https://duckduckgo.com/?q=")
+(make-web-jump "packages" "https://packages.debian.org/")
+(make-web-jump "wikipedia" "https://en.wikipedia.org/w/index.php?search=")
+(make-web-jump "wikipediade" "https://de.wikipedia.org/w/index.php?search=")
 
 (defun list-screen-layouts ()
   "Return an alist of possible screen layouts. Those are the layouts saved in
