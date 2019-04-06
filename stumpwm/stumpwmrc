@@ -11,6 +11,13 @@
 ;; Other parameters
 (defparameter *key-layout* "de" "Stores the current key layout")
 
+;; Default applicatoins
+(defparameter *web-browser* "firefox" "Stores the web browser")
+(defparameter *editor* "emacsclient -c" "Stores the editor")
+(defparameter *terminal* "urxvt" "Stores the terminal emulator")
+(defparameter *file-manager* "dolphin" "Stores the terminal emulator")
+(defparameter *music-player* "spotify" "Stores the terminal emulator")
+
 
 ;; creating or rename groups
 (setf (group-name (first (screen-groups (current-screen)))) "web")
