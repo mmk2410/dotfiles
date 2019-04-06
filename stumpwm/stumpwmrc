@@ -18,6 +18,8 @@
 (defparameter *file-manager* "dolphin" "Stores the terminal emulator")
 (defparameter *music-player* "spotify" "Stores the terminal emulator")
 
+;; set correct module directory
+(set-module-dir "~/.stumpwm.d/contrib")
 
 ;; creating or rename groups
 (setf (group-name (first (screen-groups (current-screen)))) "web")
