@@ -152,10 +152,10 @@
 ;; computer power state keys
 (defvar *powerstate-frame-bindings*
   (let ((m (make-sparse-keymap)))
-    (define-key m (kbd "M-s") "system-suspend")
-    (define-key m (kbd "M-p") "system-poweroff")
-    (define-key m (kbd "M-r") "system-restart")
-    (define-key m (kbd "M-h") "system-hibernate")
+    (define-key m (kbd "M-s") "systemctl suspend")
+    (define-key m (kbd "M-p") "systemctl poweroff")
+    (define-key m (kbd "M-r") "systemctl reboot")
+    (define-key m (kbd "M-h") "systemctl hibernate")
     m))
 
 (define-key *root-map* (kbd "C-F12") '*powerstate-frame-bindings*)
