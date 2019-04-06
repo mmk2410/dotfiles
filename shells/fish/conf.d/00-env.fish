@@ -23,12 +23,11 @@ set -x ARCHFLAGS -arch_x86_64
 set -e GPG_TTY
 set -Ux GPG_TTY (tty)
 
-if test -z $EDITOR
-    set -Ux EDITOR es
-end
+set -e EDITOR
+set -Ux EDITOR "emacsclient -"t
 
 if test -z $VISUAL
-    set -Ux VISUAL es
+    set -Ux VISUAL emacsclient -t
 end
 
 if test -z $GIT_EDITOR

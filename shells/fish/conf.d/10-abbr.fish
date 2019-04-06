@@ -23,10 +23,10 @@
 # See: https://fishshell.com/docs/current/commands.html#abbr
 
 if status --is-interactive
-    abbr --add --global l ls
-    abbr --add --global ping ping -c 3 mmk2410.org
-    abbr --add --global pingtest ping -c 3 mmk2410.org
-    abbr --add --global e eval $EDITOR
-    abbr --add --global g git
-    abbr --add --global s sudo
+    abbr --add l ls
+    abbr --add ping ping -c 3 mmk2410.org
+    abbr --add pingtest ping -c 3 mmk2410.org
+    abbr --add e eval $EDITOR
+    abbr --add g git
+    abbr --add s sudo
 end
