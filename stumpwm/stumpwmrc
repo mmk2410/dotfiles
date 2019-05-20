@@ -3,12 +3,23 @@
 ;; StumpWM configuration file
 ;; <https://stumpwm.github.io/>
 ;;
-;; 2016 - 2018 (c) Marcel Kapfer <opensource@mmk2410.org>
+;; 2016 - 2019 (c) Marcel Kapfer <opensource@mmk2410.org>
 ;; MIT License
 
 (in-package :stumpwm)
 
-(defparameter *key-layout* "us -variant altgr-intl" "Stores the current key layout")
+;; Other parameters
+(defparameter *key-layout* "de" "Stores the current key layout")
+
+;; Default applicatoins
+(defparameter *web-browser* "firefox" "Stores the web browser")
+(defparameter *editor* "emacsclient -c" "Stores the editor")
+(defparameter *terminal* "urxvt" "Stores the terminal emulator")
+(defparameter *file-manager* "dolphin" "Stores the terminal emulator")
+(defparameter *music-player* "spotify" "Stores the terminal emulator")
+
+;; set correct module directory
+(set-module-dir "~/.stumpwm.d/contrib")
 
 ;; creating or rename groups
 (setf (group-name (first (screen-groups (current-screen)))) "web")
@@ -82,25 +93,25 @@
 ;;; emacs
 (defcommand emacs () ()
             "run emacs"
-            (run-or-raise "es" '(:class "Emacs")))
+            (run-or-raise *editor* '(:class "Emacs")))
 
 ;; root keybindings
 ;
 ;; browser
-(define-key *root-map* (kbd "W") "exec x-www-browser")
-(define-key *root-map* (kbd "P") "exec x-www-browser --private-window")
+(define-key *root-map* (kbd "W") (concatenate 'string "exec " *web-browser*))
+(define-key *root-map* (kbd "P") (concatenate 'string "exec " *web-browser* " --private-window"))
 
 ;;; terminal
-(define-key *root-map* (kbd "c") "exec x-terminal-emulator")
+(define-key *root-map* (kbd "c") (concatenate 'string "exec " *terminal*))
 
-;;; es as emacs
-(define-key *root-map* (kbd "e") "exec es")
+;;; (text) editor
+(define-key *root-map* (kbd "e") (concatenate 'string "exec " *editor*))
 
 ;;; ranger
-(define-key *root-map* (kbd "C-c") "exec nemo --no-desktop")
+(define-key *root-map* (kbd "C-c")  (concatenate 'string "exec " *file-manager*))
 
 ;;; spotify
-(define-key *root-map* (kbd "m") "exec spotify")
+(define-key *root-map* (kbd "m")  (concatenate 'string "exec " *music-player*))
 
 ;;; bind keys for changing workspace
 (define-key *root-map* (kbd "C-1") "change-workspace web")
@@ -141,10 +152,10 @@
 ;; computer power state keys
 (defvar *powerstate-frame-bindings*
   (let ((m (make-sparse-keymap)))
-    (define-key m (kbd "M-s") "system-suspend")
-    (define-key m (kbd "M-p") "system-poweroff")
-    (define-key m (kbd "M-r") "system-restart")
-    (define-key m (kbd "M-h") "system-hibernate")
+    (define-key m (kbd "M-s") "systemctl suspend")
+    (define-key m (kbd "M-p") "systemctl poweroff")
+    (define-key m (kbd "M-r") "systemctl reboot")
+    (define-key m (kbd "M-h") "systemctl hibernate")
     m))
 
 (define-key *root-map* (kbd "C-F12") '*powerstate-frame-bindings*)
@@ -166,7 +177,7 @@
 (run-shell-command "dunst")
 
 ;; nitrogen (wallpaper)
-(run-shell-command "nitrogen --restore")
+(run-shell-command "~/.fehbg")
 
 ;; start compton (compositor)
 (run-shell-command "compton --config ~/.config/compton.conf")
@@ -309,14 +320,14 @@
 (defmacro make-web-jump (name prefix)
   `(defcommand ,(intern name) (search) ((:rest ,(concatenate 'string name " search: ")))
     (substitute #\+ #\Space search)
-    (run-shell-command (concatenate 'string ,prefix search))))
+    (run-shell-command (concatenate 'string *www-browser* " " ,prefix search))))
 
-(make-web-jump "google" "x-www-browser http://www.google.com/search?q=")
-(make-web-jump "googlede" "x-www-browser http://www.google.de/search?q=")
-(make-web-jump "duckduckgo" "x-www-browser https://duckduckgo.com/?q=")
-(make-web-jump "packages" "x-www-browser https://packages.debian.org/")
-(make-web-jump "wikipedia" "x-www-browser https://en.wikipedia.org/w/index.php?search=")
-(make-web-jump "wikipediade" "x-www-browser https://de.wikipedia.org/w/index.php?search=")
+(make-web-jump "google" "http://www.google.com/search?q=")
+(make-web-jump "googlede" "http://www.google.de/search?q=")
+(make-web-jump "duckduckgo" "https://duckduckgo.com/?q=")
+(make-web-jump "packages" "https://packages.debian.org/")
+(make-web-jump "wikipedia" "https://en.wikipedia.org/w/index.php?search=")
+(make-web-jump "wikipediade" "https://de.wikipedia.org/w/index.php?search=")
 
 (defun list-screen-layouts ()
   "Return an alist of possible screen layouts. Those are the layouts saved in
@@ -380,20 +391,14 @@ script."
 ;; owncloud
 (run-shell-command "nextcloud")
 
-;; bwSyncAndShare
-(run-shell-command "bwsyncandshare")
-
-;; firefox
-(run-shell-command "x-www-browser")
+;; web browser
+(run-shell-command *web-browser*)
 
 ;; telegram
 (run-shell-command "telegram-desktop")
 
 ;; redshift
 (run-shell-command "redshift")
-
-;; orage
-(run-shell-command "orage")
 
 ;; last settings
 ;; (stumptray:stumptray)

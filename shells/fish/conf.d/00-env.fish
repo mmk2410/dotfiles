@@ -18,7 +18,30 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function cdl --wraps cd --description "Switch directory and show content"
-    cd $argv
-    l
+set -x ARCHFLAGS -arch_x86_64
+
+set -e GPG_TTY
+set -Ux GPG_TTY (tty)
+
+set -e EDITOR
+set -Ux EDITOR "emacsclient -"t
+
+if test -z $VISUAL
+    set -Ux VISUAL emacsclient -t
+end
+
+if test -z $GIT_EDITOR
+    set -Ux GIT_EDITOR es
+end
+
+if test -z $GOPATH
+    set -Ux GOPATH ~/.go
+end
+
+if test -z $XDG_CURRENT_DESKTOP
+    set -Ux XDG_CURRENT_DESKTOP GNOME
+end
+
+if test -z $QT_STYLE_OVERRIDE
+    set -Ux QT_STYLE_OVERRIDE kvantum
 end

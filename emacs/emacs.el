@@ -1,5 +1,5 @@
 ;; Emacs configuration
-;; Marcel Kapfer (C) 2016 - 2018
+;; Marcel Kapfer (C) 2016 - 2019
 ;; MIT License
 
 ;; -----------------------------------------------------------------------------
@@ -366,6 +366,9 @@
 (use-package org
   :mode "\\.org$"
   :config
+  ;; Add org modules
+  (require 'org-habit)
+  (add-to-list 'org-modules "org-habit")
   ;; add scrartcl LaTeX class to org
   (with-eval-after-load 'ox-latex
     (add-to-list 'org-latex-classes
@@ -508,6 +511,10 @@
 
   ;; store link to message if in header view, not to header query
   (setq org-mu4e-link-query-in-headers-mode nil)
+
+  ;; Adjust fontification block length
+  (setcar (nthcdr 4 org-emphasis-regexp-components) 10)
+  (org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components)
 
   :bind
   (("C-c l" . org-store-link)
@@ -1379,27 +1386,28 @@ signature-file is the path to the file which contains the signature."
 (use-package rust-mode
   :mode (("\\.rs\\'" . rust-mode)))
 
+;; nix-mode
+(use-package nix-mode
+  :mode (("\\.nix\\'" . nix-mode)))
+
+;; haskell-mode
+(use-package haskell-mode
+  :mode (("\\.hs\\'" . haskell-mode)))
+
 ;; all-the-icons
 ;; A utility package to collect various Icon Fonts and propertized them within Emacs
 (use-package all-the-icons)
 
 ;; spaceline
 ;; Powerline theme from Spacemacs
-(use-package spaceline)
+(use-package spaceline
+  :init (spaceline-emacs-theme))
 
 ;; fancy-battery
 ;; Fancy battery display
 (use-package fancy-battery
   :after spaceline
   :init (fancy-battery-mode))
-
-;; spaceline-all-the-icons
-;; A Spaceline Mode Line theme using All The Icons
-(use-package spaceline-all-the-icons
-  :after fancy-battery
-  :config
-  (spaceline-all-the-icons-theme)
-  (spaceline-toggle-all-the-icons-battery-status-on))
 
 ;; Doom theme
 ;; https://github.com/hlissner/emacs-doom-themes

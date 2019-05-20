@@ -18,7 +18,19 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function cdl --wraps cd --description "Switch directory and show content"
-    cd $argv
-    l
+if status --is-interactive
+    alias grep='grep --color=auto'
+    alias df='df -h'
+    alias du='du -c -h'
+    alias mkdir='mkdir -p -v'
+    alias ln='ln -i'
+    alias chown='chown --preserve-root'
+    alias chmod='chmod --preserve-root'
+    alias chgrp='chgrp --preserve-root'
+    alias ps='ps aux k%cpu'
+    alias q=' exit'
+    alias Q=' exit'
+    alias x=' exit'
+    alias o='xdg-open'
+    alias vim="nvim"
 end

@@ -18,7 +18,15 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-function cdl --wraps cd --description "Switch directory and show content"
-    cd $argv
-    l
+# Fish Abbrevations
+# Those are expanded before execution
+# See: https://fishshell.com/docs/current/commands.html#abbr
+
+if status --is-interactive
+    abbr --add l ls
+    abbr --add ping ping -c 3 mmk2410.org
+    abbr --add pingtest ping -c 3 mmk2410.org
+    abbr --add e eval $EDITOR
+    abbr --add g git
+    abbr --add s sudo
 end
