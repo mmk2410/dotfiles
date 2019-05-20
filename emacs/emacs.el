@@ -1275,10 +1275,8 @@ signature-file is the path to the file which contains the signature."
 	    #'TeX-revert-document-buffer)
   ;; hook for rainbox delimiters mode
   (add-hook 'TeX-mode-hook #'rainbow-delimiters-mode)
-  ;; start fci-mode
-  (add-hook 'TeX-mode-hook #'fci-mode)
   ;; start auto-fill mode
-  (add-hook 'TeX-mode-hook #'auto-fill-mode)
+  (add-hook 'TeX-mode-hook #'visual-line-mode)
 
   :bind (:map latex-mode-map
 	      ("<C-return>" . TeX-insert-comment-line)))
