@@ -35,3 +35,13 @@ end
 if test -z $DEBEMAIL
     set -Ux DEBEMAIL "opensource@mmk2410.org"
 end
+
+# pbuilder customization
+
+set -x PDEBUILD_PBUILDER cowbuild
+set -x HOOKDIR /var/cache/pbuilder/hooks
+set -x MIRRORSITE http://httpredir.debian.org/debian/
+set -x APTCACHE /var/cache/apt/archives
+set -x BUILDRESULT ../
+set -x EXTRAPACKAGES lintian
+set -x DEBBUILDOPTS -j4
