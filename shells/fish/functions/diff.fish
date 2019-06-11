@@ -20,8 +20,8 @@
 
 function diff --wraps diff --description "Use colordiff instead of diff, if available"
     if type -q colordiff
-	colordiff $argv
+	/usr/bin/colordiff $argv
     else
-	diff $argv
+	/usr/bin/diff $argv
     end
 end
