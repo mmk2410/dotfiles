@@ -88,9 +88,11 @@ alias vim='nvim'
 alias mmk2410='cat /home/mmk/.mmk2410'
 
 # If SSH Client is active, show text "ssh-session"
-if [ -n "$SSH_CLIENT" ]; then text=" ssh-session"
+if [ -n "$SSH_CLIENT" ]; then text="(ssh-session) "
+elif [ -n "$SCHROOT_CHROOT_NAME" ]; then text="($SCHROOT_CHROOT_NAME) "
+else text=""
 fi
-export PS1='\[\e[1;32m\]\u@\h:\w${text}$\[\e[m\] '
+# export PS1='\[\e[1;32m\]\u@\h:\w${text}$\[\e[m\] '
 
 # Enable bash completion
 if [ -f /etc/bash_completion ]; then
@@ -98,7 +100,7 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 # PS1='[\u@\h \W]\$ '
-PS1='\[\e[1;36m\]\h \[\e[1;31m\]\t \d \[\e[m\]\[\e[1;32m\]\w \[\e[m\]\n   \[\e[1;35m\]\u\[\e[1;33m\] >\[\e[m\] '
+PS1='${text}\[\e[1;36m\]\h \[\e[1;31m\]\t \d \[\e[m\]\[\e[1;32m\]\w \[\e[m\]\n   \[\e[1;35m\]\u\[\e[1;33m\] >\[\e[m\] '
 #powerline-daemon -q
 #POWERLINE_BASH_CONTINUATION=1
 #POWERLINE_BASH_SELECT=1
