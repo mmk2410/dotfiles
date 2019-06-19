@@ -1,5 +1,21 @@
-# Path to your oh-my-zsh installation.
-export ZSH=/home/mmk2410/.oh-my-zsh
+# ZSH Configuration
+# Marcel Kapfer (c) 2019
+# MIT License
+
+# Hide user- and hostname when on local machine
+# and set a variable to determine the machine
+if [[ $(hostname -d) == "rz.uni-ulm.de" ]]; then
+    DEFAULT_USER="ftu15"
+else
+    DEFAULT_USER="marcel"
+fi
+
+# Set path to oh-my-zsh installation.
+if [[ "$DEFAULT_USER" == "ftu15" ]]; then
+    export ZSH=/users/student1/ftu15/.oh-my-zsh
+else
+    export ZSH=/home/mmk2410/.oh-my-zsh
+fi
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -53,7 +69,11 @@ plugins=(git adb battery bower coffee command-not-found debian gitignore github 
 
 # User configuration
 
-export PATH="/home/mmk2410/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/mmk/.gem/ruby/2.2.0/bin:/usr/local/texlive/2015/bin/x86_64-linux"
+# If on kiz, add user path
+if [[ "$DEFAULT_USER" == "ftu15" ]]; then
+    export PATH="/users/student1/ftu15/bin:$PATH"
+fi
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
