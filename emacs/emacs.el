@@ -371,8 +371,7 @@
   :mode "\\.org$"
   :config
   ;; Add org modules
-  (require 'org-habit)
-  (add-to-list 'org-modules "org-habit")
+  (setq org-modules '(org-habit))
   ;; add scrartcl LaTeX class to org
   (with-eval-after-load 'ox-latex
     (add-to-list 'org-latex-classes
