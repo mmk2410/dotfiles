@@ -1329,8 +1329,6 @@ signature-file is the path to the file which contains the signature."
   (ad-activate 'term-sentinel)
 
   (add-hook 'term-mode-hook (lambda ()
-			      ;; disable nlinum in shell
-			      (nlinum-mode -1)
 			      ;; enable visual line mode
 			      (visual-line-mode 1)))
 
