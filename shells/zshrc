@@ -83,7 +83,6 @@ export ARCHFLAGS="-arch x86_64"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias zshrc="$EDITOR ~/.zshrc"
-eval "$(thefuck --alias)"
 alias l="ls"
 alias diff='colordiff'
 alias grep='grep --color=auto'
