@@ -114,5 +114,3 @@ alias q=' exit'
 alias Q=' exit'
 alias x=' exit'
 alias cd..='cd ..'
-alias mmk2410='cat /home/mmk/.mmk2410'
-mmk2410
