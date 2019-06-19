@@ -613,6 +613,7 @@
 ;; pdf-tools
 ;; Support library for PDF documents.
 (use-package pdf-tools
+  :unless (string= user-login-name "ftu15")
   :defer t
   :config
   (pdf-tools-install))
@@ -898,6 +899,7 @@
 ;; mu4e
 ;; emacs mail client
 (use-package mu4e
+  :unless (string= user-login-name "ftu15")
   :load-path "/usr/share/emacs/25.1/site-lisp/mu4e/"
   :commands mu4e
   :config
