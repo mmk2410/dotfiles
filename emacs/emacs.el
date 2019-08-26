@@ -309,11 +309,6 @@
 (use-package expand-region
   :bind (("C-=" . er/expand-region)))
 
-;; dired+
-;; Extensions to Dired
-(use-package dired+
-  :load-path "dired+/")
-
 ;; projectile
 ;; Manage and navigate projects in Emacs easily
 (use-package projectile
