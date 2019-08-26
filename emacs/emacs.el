@@ -318,7 +318,6 @@
   (projectile-global-mode)
   (setq projectile-completion-system 'ivy))
 
-
 ;; dumb-jump
 ;; jump to definition for multiple languages without configuration.
 (use-package dumb-jump
