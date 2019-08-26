@@ -119,9 +119,8 @@
 ;; Highlight the current line
 (global-hl-line-mode t)
 
-;; Show line numbers on Emacs 26 and later
-(when (version<= "26.0.50" emacs-version)
-  (global-display-line-numbers-mode))
+;; Show line numbers
+(global-display-line-numbers-mode)
 
 ;; replace selected text by typing
 (delete-selection-mode t)
