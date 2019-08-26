@@ -14,6 +14,10 @@
 (require 'package)
 (setq package-enable-on-startup nil)
 
+;; Fix for elpa. See:
+;; - https://old.reddit.com/r/emacs/comments/cdf48c/failed_to_download_gnu_archive/
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
