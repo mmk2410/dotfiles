@@ -506,10 +506,6 @@
   ;; if they are scheduled to be done
   (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
 
-  ;; mu4e connection
-  (unless (string= user-login-name "ftu15")
-    (require 'org-mu4e))
-
   ;; store link to message if in header view, not to header query
   (setq org-mu4e-link-query-in-headers-mode nil)
 
