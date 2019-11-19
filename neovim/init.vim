@@ -15,7 +15,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim")) || filereadable(expand("~/.c
     Plug 'rust-lang/rust.vim'
     Plug 'majutsushi/tagbar'
     Plug 'vim-scripts/taglist.vim'
-    Plug 'bling/vim-airline'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     Plug 'Townk/vim-autoclose'
     Plug 'kchmck/vim-coffee-script'
     Plug 'tpope/vim-fugitive'
@@ -210,7 +211,7 @@ set clipboard+=unnamedplus
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='base16_nord'
+let g:airline_theme='luna'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
