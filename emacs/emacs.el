@@ -1048,39 +1048,18 @@ signature-file is the path to the file which contains the signature."
    "~/dotfiles/dotdotfiles/sig/stuve-oeffentlichkeit")
 
   (mu4e-add-university-context
-   "C BECI-Fest"
-   nil
-   "becifest.kontakt@uni-ulm.de"
-   "BECI-Fest"
-   "~/dotfiles/dotdotfiles/sig/becifest")
-
-  (mu4e-add-university-context
-   "D SoNaFe"
-   nil
-   "kontakt@sonafe.de"
-   "Sommernachtsfest (SoNaFe)"
-   "~/dotfiles/dotdotfiles/sig/sonafe-kontakt")
-
-  (mu4e-add-university-context
-   "E FIN Vorstand"
-   nil
-   "vorstand.fin@uni-ulm.de"
-   "FIN Vorstand"
-   "~/dotfiles/dotdotfiles/sig/fin-vorstand")
-
-  (mu4e-add-university-context
-   "F FIN Oeff-Team"
+   "C FIN Oeff-Team"
    nil
    "oeffentlichkeit.fin@uni-ulm.de"
    "FIN Öffentlichkeits-Team"
    "~/dotfiles/dotdotfiles/sig/fin-oeffentlichkeit")
 
   (mu4e-add-university-context
-   "G StuPa Sitzungsleitung"
+   "D uulmhack"
    nil
-   "stuve.sitzungsleitung@uni-ulm.de"
-   "StuPa Sitzungsleitung"
-   "~/dotfiles/dotdotfiles/sig/stupa-sitzungsleitung")
+   "uulmhack@uni-ulm.de"
+   "uulmhack Orga Team"
+   "~/dotfiles/dotdotfiles/sig/uulmhack")
 
   ;; custom bookmarks
   (setq mu4e-bookmarks (delete '("flag:unread AND NOT flag:trashed" "Unread messages" 117) mu4e-bookmarks))
