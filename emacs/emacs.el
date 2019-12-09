@@ -1367,6 +1367,12 @@ signature-file is the path to the file which contains the signature."
 (use-package haskell-mode
   :mode (("\\.hs\\'" . haskell-mode)))
 
+;; editorconfig plugin
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
 ;; all-the-icons
 ;; A utility package to collect various Icon Fonts and propertized them within Emacs
 (use-package all-the-icons)
