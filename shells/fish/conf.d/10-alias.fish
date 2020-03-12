@@ -19,19 +19,19 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 if status --is-interactive
-    alias grep='grep --color=auto'
-    alias df='df -h'
-    alias du='du -c -h'
-    alias mkdir='mkdir -p -v'
-    alias ln='ln -i'
-    alias chown='chown --preserve-root'
-    alias chmod='chmod --preserve-root'
-    alias chgrp='chgrp --preserve-root'
-    alias ps='ps aux k%cpu'
-    alias q=' exit'
-    alias Q=' exit'
-    alias x=' exit'
-    alias o='xdg-open'
+    alias grep="grep --color=auto"
+    alias df="df -h"
+    alias du="du -c -h"
+    alias mkdir="mkdir -p -v"
+    alias ln="ln -i"
+    alias chown="chown --preserve-root"
+    alias chmod="chmod --preserve-root"
+    alias chgrp="chgrp --preserve-root"
+    alias ps="ps aux k%cpu"
+    alias q="exit"
+    alias Q="exit"
+    alias x="exit"
+    alias o="xdg-open"
     alias vim="nvim"
     alias e="es"
 end
