@@ -32,3 +32,5 @@ pwd_is_home.fish
 _*
 fish_prompt.fish
 fish_title.fish
+agnoster.fish
+bobthefish_display_colors.fish
