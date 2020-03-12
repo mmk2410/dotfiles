@@ -35,3 +35,11 @@ if status --is-interactive
     alias vim="nvim"
     alias e="es"
 end
+
+function ls --wraps exa --description "alias ls=exa --git, if installed"
+    if type -q exa
+        exa --git $argv
+    else
+        ls $argv
+    end
+end
