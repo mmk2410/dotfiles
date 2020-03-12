@@ -24,7 +24,7 @@
 
 if status --is-interactive
     abbr --add l ls
-    abbr --add ping ping -c 3 mmk2410.org
+    abbr --add ping ping -c 3
     abbr --add pingtest ping -c 3 mmk2410.org
     abbr --add e eval $EDITOR
     abbr --add g git
