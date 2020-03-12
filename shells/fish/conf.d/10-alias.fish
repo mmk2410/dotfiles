@@ -33,4 +33,5 @@ if status --is-interactive
     alias x=' exit'
     alias o='xdg-open'
     alias vim="nvim"
+    alias e="es"
 end
