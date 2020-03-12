@@ -1,12 +1,5 @@
 dotdotfiles/git/gitconfig .gitconfig
-dotdotfiles/khal/config .config/khal/config
-dotdotfiles/khard/khard.conf .config/khard/khard.conf
-dotdotfiles/offlineimap/offlineimap.py .offlineimap.py
-dotdotfiles/offlineimap/offlineimaprc .offlineimaprc
-dotdotfiles/vdirsyncer/config .vdirsyncer/config
-dotdotfiles/vdirsyncer/password.gpg .vdirsyncer/password.gpg
 dotdotfiles/mbsync/mbsyncrc .mbsyncrc
-emacs/emacs.el .emacs.d/init.el
 neovim/init.vim .config/nvim/init.vim
 redshift/redshift .config/redshift.conf
 screen/screenrc .screenrc
@@ -22,4 +15,3 @@ debian/dquilt .quiltrc-dpkg
 debian/pbuilder .pbuilderrc
 debian/git-buildpackage.conf .gbp.conf
 debian/sbuild .sbuildrc
-compton/compton.conf .config/compton.conf

@@ -1,7 +1,3 @@
-.config/khal
-.config/khard
-.vdirsyncer
-.emacs.d
 .config/nvim
 .config/redshift
 .config/fish
