@@ -24,24 +24,24 @@ set -e GPG_TTY
 set -Ux GPG_TTY (tty)
 
 set -e EDITOR
-set -Ux EDITOR "emacsclient -"t
+set -Ux EDITOR "emacsclient -t"
 
-if test -z $VISUAL
-    set -Ux VISUAL emacsclient -t
+if test -z "$VISUAL"
+    set -Ux VISUAL "emacsclient -t"
 end
 
-if test -z $GIT_EDITOR
+if test -z "$GIT_EDITOR"
     set -Ux GIT_EDITOR es
 end
 
-if test -z $GOPATH
+if test -z "$GOPATH"
     set -Ux GOPATH ~/.go
 end
 
-if test -z $XDG_CURRENT_DESKTOP
+if test -z "$XDG_CURRENT_DESKTOP"
     set -Ux XDG_CURRENT_DESKTOP GNOME
 end
 
-if test -z $QT_STYLE_OVERRIDE
+if test -z "$QT_STYLE_OVERRIDE"
     set -Ux QT_STYLE_OVERRIDE kvantum
 end
