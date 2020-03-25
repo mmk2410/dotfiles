@@ -40,6 +40,6 @@ function ls --wraps exa --description "alias ls=exa --git, if installed"
     if type -q exa
         exa --git $argv
     else
-        ls $argv
+        command ls $argv
     end
 end
