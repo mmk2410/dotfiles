@@ -1,6 +1,7 @@
 dotdotfiles/git/gitconfig .gitconfig
 dotdotfiles/mbsync/mbsyncrc .mbsyncrc
 dotdotfiles/msmtp/msmtprc .msmtprc
+alacritty/alacritty.yml .config/alacritty/alacritty.yml
 neovim/init.vim .config/nvim/init.vim
 redshift/redshift .config/redshift.conf
 screen/screenrc .screenrc
