@@ -1,5 +1,0 @@
-'atom-text-editor[data-grammar~=lisp]':
-  'tab': 'lisp-paredit:indent'
-
-'atom-text-editor':
-  'n m' : 'vim-mode:reset-normal-mode'
