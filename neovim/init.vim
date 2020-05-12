@@ -20,13 +20,11 @@ if filereadable(expand("~/.vim/autoload/plug.vim")) || filereadable(expand("~/.c
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
     Plug 'vim-latex/vim-latex'
-    " Plug 'morhetz/gruvbox'
+    Plug 'morhetz/gruvbox'
     Plug 'dag/vim-fish'
     Plug 'KabbAmine/gulp-vim'
     Plug 'kovisoft/slimv'
     Plug 'vim-php/vim-phpunit'
-    " Plug 'dracula/vim', {'as': 'dracula'}
-    Plug 'arcticicestudio/nord-vim'
     call plug#end()
 
 else
@@ -84,8 +82,8 @@ set tm=500
 
 syntax on
 " color dracula
-colorscheme nord
-" set background=light
+colorscheme gruvbox
+set background=light
 " set termguicolors
 set cursorline
 if has("gui_running")
