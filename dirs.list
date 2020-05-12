@@ -1,3 +1,5 @@
+.config/alacritty
 .config/nvim
 .config/redshift
 .config/fish
+.config/qutebrowser
