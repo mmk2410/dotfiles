@@ -12,7 +12,7 @@
 (defparameter *key-layout* "de" "Stores the current key layout")
 
 ;; Default applicatoins
-(defparameter *web-browser* "firefox" "Stores the web browser")
+(defparameter *web-browser* "qutebrowser" "Stores the web browser")
 (defparameter *editor* "emacs" "Stores the editor")
 (defparameter *terminal* "alacritty" "Stores the terminal emulator")
 (defparameter *file-manager* "dolphin" "Stores the terminal emulator")
