@@ -14,7 +14,7 @@
 ;; Default applicatoins
 (defparameter *web-browser* "firefox" "Stores the web browser")
 (defparameter *editor* "emacsclient -c" "Stores the editor")
-(defparameter *terminal* "urxvt" "Stores the terminal emulator")
+(defparameter *terminal* "alacritty" "Stores the terminal emulator")
 (defparameter *file-manager* "dolphin" "Stores the terminal emulator")
 (defparameter *music-player* "spotify" "Stores the terminal emulator")
 
