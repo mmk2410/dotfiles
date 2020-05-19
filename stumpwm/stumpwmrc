@@ -167,8 +167,8 @@
 (run-shell-command "compton --config ~/.config/compton.conf")
 
 ;; start mode line
-;; (if (not (head-mode-line (current-head)))
-;;     (toggle-mode-line (current-screen) (current-head)))
+(if (not (head-mode-line (current-head)))
+    (toggle-mode-line (current-screen) (current-head)))
 
 (defparameter *backlight-sysfs* "/sys/class/backlight/intel_backlight/")
 
@@ -367,7 +367,7 @@ script."
 (run-shell-command "redshift")
 
 ;; last settings
-;; (stumptray:stumptray)
+(stumptray:stumptray)
 
 (switch-layout-to *key-layout*)
 
