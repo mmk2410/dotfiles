@@ -13,7 +13,7 @@
 
 ;; Default applicatoins
 (defparameter *web-browser* "firefox" "Stores the web browser")
-(defparameter *editor* "emacsclient -c" "Stores the editor")
+(defparameter *editor* "emacs" "Stores the editor")
 (defparameter *terminal* "alacritty" "Stores the terminal emulator")
 (defparameter *file-manager* "dolphin" "Stores the terminal emulator")
 (defparameter *music-player* "spotify" "Stores the terminal emulator")
@@ -87,13 +87,6 @@
 ;; customize texts
 (setf *window-format* "^B %n ^b %20t "
       *group-format* "%t")
-
-;; program runners
-
-;;; emacs
-(defcommand emacs () ()
-            "run emacs"
-            (run-or-raise *editor* '(:class "Emacs")))
 
 ;; root keybindings
 ;
@@ -301,21 +294,6 @@
 ;; key for keeping window always on top
 (define-key *root-map* (kbd "C-T") "toggle-always-on-top")
 
-;; working with emacsclient
-(defvar *es-win* nil
-  "to hold the window called emacsclient")
-(defun save-es-called-win ()
-  (setf *es-win* (current-window)))
-
-(defun return-es-called-window (win)
-  (let* ((group (window-group win))
-	 (frame (window-frame win))
-	 (old-frame (tile-group-current-frame group)))
-    (frame-raise-window group frame win)
-    (focus-all win)
-    (unless (eq frame old-frame)
-      (show-frame-indicator group))))
-
 ;; webjumps
 (defmacro make-web-jump (name prefix)
   `(defcommand ,(intern name) (search) ((:rest ,(concatenate 'string name " search: ")))
@@ -383,7 +361,7 @@ script."
 ;; autostart programs
 
 ;; emacs
-(run-commands "emacs")
+(run-shell-command "emacs")
 
 ;; keepassxc
 (run-shell-command "keepassxc-wrapper")
