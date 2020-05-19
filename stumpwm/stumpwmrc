@@ -111,7 +111,7 @@
 (define-key *root-map* (kbd "C-2") "change-workspace work")
 (define-key *root-map* (kbd "C-3") "change-workspace misc")
 (define-key *root-map* (kbd "C-4") "change-workspace music")
-(define-key *root-map* (kbd "C-s") "change-workspace winkel")
+(define-key *root-map* (kbd "C-5") "change-workspace winkel")
 
 ;; bind keys for moving the current window to another workspace
 (define-key *root-map* (kbd "M-1") "gmove web")
