@@ -89,21 +89,12 @@
       *group-format* "%t")
 
 ;; root keybindings
-;
-;; browser
+
+;; Application keybindings
 (define-key *root-map* (kbd "W") (concatenate 'string "exec " *web-browser*))
-(define-key *root-map* (kbd "P") (concatenate 'string "exec " *web-browser* " --private-window"))
-
-;;; terminal
 (define-key *root-map* (kbd "c") (concatenate 'string "exec " *terminal*))
-
-;;; (text) editor
 (define-key *root-map* (kbd "e") (concatenate 'string "exec " *editor*))
-
-;;; ranger
 (define-key *root-map* (kbd "C-c")  (concatenate 'string "exec " *file-manager*))
-
-;;; spotify
 (define-key *root-map* (kbd "m")  (concatenate 'string "exec " *music-player*))
 
 ;;; bind keys for changing workspace
