@@ -372,7 +372,6 @@ script."
 (define-frame-preference "winkel"
   (0 nil t :class "keepassxc")
   (0 nil t :class "Nextcloud")
-  (0 nil t :class "de-dal33t-Start") ;; bwSyncAndShare
   (0 nil t :class "TelegramDesktop"))
 
 (define-frame-preference "web"
