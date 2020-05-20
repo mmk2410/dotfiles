@@ -4,6 +4,7 @@ dotdotfiles/msmtp/msmtprc .msmtprc
 alacritty/alacritty.yml .config/alacritty/alacritty.yml
 neovim/init.vim .config/nvim/init.vim
 qutebrowser/config.py .config/qutebrowser/config.py
+polybar/config .config/polybar/config
 redshift/redshift .config/redshift.conf
 screen/screenrc .screenrc
 shells/bashrc .bashrc
