@@ -84,7 +84,7 @@ syntax on
 " color dracula
 colorscheme gruvbox
 set background=light
-" set termguicolors
+set termguicolors
 set cursorline
 if has("gui_running")
         set guioptions-=T
