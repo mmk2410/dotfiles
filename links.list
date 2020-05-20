@@ -2,6 +2,8 @@ dotdotfiles/git/gitconfig .gitconfig
 dotdotfiles/mbsync/mbsyncrc .mbsyncrc
 dotdotfiles/msmtp/msmtprc .msmtprc
 alacritty/alacritty.yml .config/alacritty/alacritty.yml
+bspwm/bspwmrc .config/bspwm/bspwmrc
+bspwm/sxhkdrc .config/sxhkd/sxhkdrc
 neovim/init.vim .config/nvim/init.vim
 qutebrowser/config.py .config/qutebrowser/config.py
 polybar/config .config/polybar/config
