@@ -20,6 +20,11 @@
 
 set -x ARCHFLAGS -arch_x86_64
 
+set -e LANG
+set -e LC_CTYPE
+set -Ux LANG "en_DK.UTF-8"
+set -Ux LC_TYPE "en_DK.UTF-8"
+
 set -e GPG_TTY
 set -Ux GPG_TTY (tty)
 
