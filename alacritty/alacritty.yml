@@ -11,6 +11,9 @@ env:
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
   TERM: xterm-256color
+  # Workaroung for too large fonts.
+  # See https://github.com/alacritty/alacritty/issues/1501
+  WINIT_X11_SCALE_FACTOR: "1.0"
 
 #window:
   # Window dimensions (changes require restart)
