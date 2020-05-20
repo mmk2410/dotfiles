@@ -21,12 +21,12 @@
 # Automatically start X at login
 # source: https://wiki.archlinux.org/index.php/Fish#Start_X_at_login
 # This must be at the bottom of this file
-if status --is-login
-    if test -z "$DISPLAY" -a $XDG_VTNR = 1
-	# Unlock GPG keyring befor starting X.
-	# This makes some things easier.
-	echo "gpg unlock" | gpg -se -r me@mmk2410.org > /dev/null
-	pulseaudio -D # start pulseaudio before X is started
-	exec startx -- -keeptty
-    end
-end
+#if status --is-login
+#    if test -z "$DISPLAY" -a $XDG_VTNR = 1
+#	# Unlock GPG keyring befor starting X.
+#	# This makes some things easier.
+#	echo "gpg unlock" | gpg -se -r me@mmk2410.org > /dev/null
+#	pulseaudio -D # start pulseaudio before X is started
+#	exec startx -- -keeptty
+#    end
+#end
