@@ -3,6 +3,7 @@
 .config/nvim
 .config/redshift
 .config/fish
+.config/qtile
 .config/qutebrowser
 .config/polybar
 .config/sxhkd
