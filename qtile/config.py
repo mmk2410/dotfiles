@@ -62,6 +62,7 @@ keys = [
     Key([mod], "t", lazy.spawn("alacritty -e /usr/bin/fish")),
     Key([mod, "shift"], "t", lazy.spawn("alacritty")),
     Key([mod], "b", lazy.spawn("nyxt")),
+    Key([mod, "shift"], "b", lazy.spawn("firefox-developer-edition")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
