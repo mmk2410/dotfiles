@@ -231,6 +231,8 @@ wmname = "LG3D"
 @hook.subscribe.startup_once
 def start_once():
     """Run after qtile is started"""
+    import os
     import subprocess
 
-    subprocess.Popen('~/.config/qtile/startup.sh')
+    autostart_file = os.path.expanduser('~/.config/qtile/startup.sh')
+    subprocess.call([autostart_file])
