@@ -59,7 +59,8 @@ keys = [
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
     Key([mod], "Return", lazy.spawn("es")), # es = emacsclient
-    Key([mod], "t", lazy.spawn("alacritty")),
+    Key([mod], "t", lazy.spawn("alacritty -e /usr/bin/fish")),
+    Key([mod, "shift"], "t", lazy.spawn("alacritty")),
     Key([mod], "b", lazy.spawn("nyxt")),
 
     # Toggle between different layouts as defined below
