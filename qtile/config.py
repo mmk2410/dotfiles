@@ -68,7 +68,8 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
-    Key([mod], "r", lazy.spawncmd()),
+    Key([mod], "r", lazy.spawn("rofi -show run")),
+    Key([mod, "shift"], "r", lazy.spawncmd()),
 ]
 
 groups = [Group(i) for i in "1234567890"]
