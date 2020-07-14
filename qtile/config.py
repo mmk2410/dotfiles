@@ -96,15 +96,14 @@ layout_defaults = dict(
 )
 
 layouts = [
-    layout.Max(),
     # layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
     # layout.Columns(,)
-    layout.Matrix(),
-    layout.MonadTall(),
-    layout.MonadWide(),
-    # layout.RatioTile(),
+    layout.MonadTall(**layout_defaults),
+    layout.MonadWide(**layout_defaults),
+    layout.RatioTile(**layout_defaults),
+    layout.Max(),
     # layout.Tile(),
     # layout.TreeTab(),
     # layout.VerticalTile(),
