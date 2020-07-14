@@ -88,6 +88,13 @@ for i in groups:
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
     ])
 
+layout_defaults = dict(
+    margin=10,
+    border_width=3,
+    border_focus="#d65d0e",
+    border_normal="#928374",
+)
+
 layouts = [
     layout.Max(),
     # layout.Stack(num_stacks=2),
