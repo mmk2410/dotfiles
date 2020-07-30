@@ -186,6 +186,13 @@ screens = [
                     format='%Y-%m-%d %H:%M',
                     background="98971a",
                 ),
+                widget.TextBox(
+                    text='🞀',
+                    fontsize="35",
+                    foreground="fbf1c7",
+                    background="98971a",
+                    padding=-2,
+                ),
                 widget.Systray(),
             ],
             24,
