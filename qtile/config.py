@@ -65,7 +65,7 @@ keys = [
     Key([mod], "b", lazy.spawn("nyxt")),
     Key([mod, "shift"], "b", lazy.spawn("firefox-developer-edition")),
     Key([mod, "control"], "m", lazy.spawn("es -e '(mu4e)'")),
-    Key([mod, "control"], "e", lazy.spawn("es -e '(bjm/elfeed-load-db-and-open)'")),
+    Key([mod, "control"], "e", lazy.spawn("es -e '(elfeed)'")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
