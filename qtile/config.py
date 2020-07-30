@@ -71,6 +71,14 @@ keys = [
     Key([mod], "Tab", lazy.next_layout()),
     Key([mod], "w", lazy.window.kill()),
 
+    # Volume and Backlight keys
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%- unmute")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 5%+ unmute")),
+    Key([], "XF86AudioMute", lazy.spawn("amixer set Master togglemute")),
+    Key([], "XF86AudioMicMute", lazy.spawn("amixer set Capture togglemute")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -5")),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight +5")),
+
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawn("rofi -show run")),
