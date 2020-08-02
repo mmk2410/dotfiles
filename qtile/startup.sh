@@ -9,5 +9,6 @@ xmodmap ~/.Xmodmap
 picom -b
 /usr/lib/kdeconnectd &
 redshift &
-exec --no-startup-id /usr/lib/pam_kwallet_initett
-nextcloud &
+/usr/lib/pam_kwallet_init &
+# wait for kwallet to unlock before launching nextcloud
+sleep 60 && nextcloud &
