@@ -15,6 +15,7 @@ qtile/config.py .config/qtile/config.py
 qtile/startup.sh .config/qtile/startup.sh
 qutebrowser/config.py .config/qutebrowser/config.py
 redshift/redshift .config/redshift.conf
+rofi/config.rasi .config/rofi/config.rasi
 screen/screenrc .screenrc
 shells/bashrc .bashrc
 shells/fish/conf.d .config/fish/

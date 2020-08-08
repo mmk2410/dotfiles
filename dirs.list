@@ -6,4 +6,5 @@
 .config/qtile
 .config/qutebrowser
 .config/redshift
+.config/rofi
 .config/sxhkd
