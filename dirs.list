@@ -1,9 +1,9 @@
 .config/alacritty
 .config/bspwm
-.config/nvim
-.config/redshift
 .config/fish
+.config/nvim
+.config/polybar
 .config/qtile
 .config/qutebrowser
-.config/polybar
+.config/redshift
 .config/sxhkd
