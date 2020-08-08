@@ -9,6 +9,7 @@ dotdotfiles/git/gitconfig .gitconfig
 dotdotfiles/mbsync/mbsyncrc .mbsyncrc
 dotdotfiles/msmtp/msmtprc .msmtprc
 neovim/init.vim .config/nvim/init.vim
+picom/picom.conf .config/picom.conf
 polybar/config .config/polybar/config
 qtile/config.py .config/qtile/config.py
 qtile/startup.sh .config/qtile/startup.sh
