@@ -44,8 +44,9 @@ keys = [
     Key([mod, "control"], "k", lazy.layout.shuffle_up()),
 
     # Increase and decrease window size
-    Key([mod, "control"], "l", lazy.layout.increase_ratio()),
-    Key([mod, "control"], "h", lazy.layout.decrease_ratio()),
+    Key([mod, "control"], "l", lazy.layout.grow()),
+    Key([mod, "control"], "h", lazy.layout.shrink()),
+    Key([mod, "control"], "n", lazy.layout.normalize()),
 
     # Switch window focus to other pane(s) of stack
     Key([mod], "space", lazy.layout.next()),
