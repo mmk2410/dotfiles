@@ -8,6 +8,6 @@ syncthing &
 xmodmap ~/.Xmodmap
 picom -b
 /usr/lib/kdeconnectd &
-redshift &
+redshift-gtk &
 /usr/lib/pam_kwallet_init &
 ~/dotfiles/scripts/nextcloud-kwallet.sh &
