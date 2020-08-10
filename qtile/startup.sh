@@ -10,5 +10,6 @@ picom -b
 /usr/lib/kdeconnectd &
 /usr/bin/kdeconnect-indicator &
 redshift-gtk &
+nm-applet &
 /usr/lib/pam_kwallet_init &
 ~/dotfiles/scripts/nextcloud-kwallet.sh &
