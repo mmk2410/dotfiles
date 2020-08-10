@@ -84,6 +84,9 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawn("rofi -show run")),
     Key([mod, "shift"], "r", lazy.spawncmd()),
+
+    # Take screenshot
+    Key([], "Print", lazy.spawn("scrot /home/mmk2410/Pictures/screenshots/")),
 ]
 
 groups = [Group(i) for i in "1234567890"]
