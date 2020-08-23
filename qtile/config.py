@@ -59,6 +59,7 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
+    Key([mod], "f", lazy.window.toggle_floating()),
     Key([mod], "Return", lazy.spawn("es")), # es = emacsclient
     Key([mod], "t", lazy.spawn("alacritty -e /usr/bin/fish")),
     Key([mod, "shift"], "t", lazy.spawn("alacritty")),
