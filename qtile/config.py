@@ -124,8 +124,8 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='Hermit',
-    fontsize=12,
+    font='Iosevka Semibold',
+    fontsize=14,
     padding=3,
     foreground="3c3836",
 )
