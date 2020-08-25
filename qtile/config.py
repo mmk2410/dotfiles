@@ -60,7 +60,7 @@ keys = [
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
     Key([mod], "f", lazy.window.toggle_floating()),
-    Key([mod], "Return", lazy.spawn("es")), # es = emacsclient
+    Key([mod], "Return", lazy.spawn("es")),  # es = emacsclient
     Key([mod], "t", lazy.spawn("alacritty -e /usr/bin/fish")),
     Key([mod, "shift"], "t", lazy.spawn("alacritty")),
     Key([mod, "control"], "t", lazy.spawn("es -e '(eshell)'")),
@@ -74,8 +74,10 @@ keys = [
     Key([mod], "w", lazy.window.kill()),
 
     # Volume and Backlight keys
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%- unmute")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 5%+ unmute")),
+    Key([], "XF86AudioLowerVolume",
+        lazy.spawn("amixer set Master 5%- unmute")),
+    Key([], "XF86AudioRaiseVolume",
+        lazy.spawn("amixer set Master 5%+ unmute")),
     Key([], "XF86AudioMute", lazy.spawn("amixer set Master togglemute")),
     Key([], "XF86AudioMicMute", lazy.spawn("amixer set Capture togglemute")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -5")),
@@ -94,13 +96,7 @@ groups = [Group(i) for i in "1234567890"]
 
 for i in groups:
     keys.extend([
-        # mod1 + letter of group = switch to group
         Key([mod], i.name, lazy.group[i.name].toscreen()),
-
-        # mod1 + shift + letter of group = switch to & move focused window to group
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True)),
-        # Or, use below if you prefer not to switch to that group.
-        # # mod1 + shift + letter of group = move focused window to group
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
     ])
 
