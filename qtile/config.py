@@ -67,6 +67,7 @@ keys = [
     Key([mod], "b", lazy.spawn("brave")),
     Key([mod], "s", lazy.spawn("spotify")),
     Key([mod, "shift"], "b", lazy.spawn("firefox-developer-edition")),
+    Key([mod, "shift"], "u", lazy.spawn("pavucontrol-qt")),
     Key([mod, "control"], "m", lazy.spawn("es -e '(mu4e)'")),
     Key([mod, "control"], "e", lazy.spawn("es -e '(elfeed)'")),
 
