@@ -11,9 +11,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim")) || filereadable(expand("~/.c
     Plug 'vim-scripts/gitignore.vim'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'StanAngeloff/php.vim'
     Plug 'majutsushi/tagbar'
-    Plug 'vim-scripts/taglist.vim'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'Townk/vim-autoclose'
@@ -22,9 +20,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim")) || filereadable(expand("~/.c
     Plug 'vim-latex/vim-latex'
     Plug 'morhetz/gruvbox'
     Plug 'dag/vim-fish'
-    Plug 'KabbAmine/gulp-vim'
-    Plug 'kovisoft/slimv'
-    Plug 'vim-php/vim-phpunit'
     call plug#end()
 
 else
