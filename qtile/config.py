@@ -272,3 +272,9 @@ def start_once():
 
     autostart_file = os.path.expanduser('~/.config/qtile/startup.sh')
     subprocess.call([autostart_file])
+
+
+@hook.subscribe.client_new
+def auto_togroup(window):
+    if window.match(wmclass="keepassxc"):
+        window.togroup("0")
