@@ -76,9 +76,8 @@ set tm=500
 " Color
 
 syntax on
-" color dracula
 colorscheme gruvbox
-set background=light
+set background=dark
 set termguicolors
 set cursorline
 if has("gui_running")
