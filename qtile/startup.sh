@@ -12,5 +12,5 @@ picom -b
 redshift-gtk &
 nm-applet &
 gnome-keyring-daemon --start
-~/dotfiles/scripts/nextcloud-kwallet.sh &
+nextcloud &
 keepassxc &
