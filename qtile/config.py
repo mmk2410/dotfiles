@@ -127,7 +127,7 @@ widget_defaults = dict(
     font='Iosevka Semibold',
     fontsize=14,
     padding=3,
-    foreground="3c3836",
+    foreground="ebdbb2",
 )
 extension_defaults = widget_defaults.copy()
 
@@ -136,7 +136,7 @@ screens = [
         top=bar.Bar(
             [
                 widget.GroupBox(
-                    active="3c3836",
+                    active="ebdbb2",
                     inactive="928374",
                     this_screen_border="458588",
                     urgent_border="cc241d",
@@ -153,6 +153,7 @@ screens = [
                 ),
                 widget.CurrentLayout(
                     background="689d6a",
+                    foreground="282828",
                 ),
                 widget.TextBox(
                     text='🞀',
@@ -162,7 +163,8 @@ screens = [
                     padding=-2,
                 ),
                 widget.Volume(
-                    background="b16268"
+                    background="b16268",
+                    foreground="282828",
                 ),
                 widget.TextBox(
                     text='🞀',
@@ -173,6 +175,7 @@ screens = [
                 ),
                 widget.Battery(
                     background="458588",
+                    foreground="282828",
                     format='{char} {percent:2.0%} {hour:d}:{min:02d}',
                 ),
                 widget.TextBox(
@@ -184,7 +187,8 @@ screens = [
                 ),
                 widget.Backlight(
                     backlight_name="intel_backlight",
-                    background="d79921"
+                    background="d79921",
+                    foreground="282828",
                 ),
                 widget.TextBox(
                     text='🞀',
@@ -196,18 +200,19 @@ screens = [
                 widget.Clock(
                     format='%Y-%m-%d %H:%M',
                     background="98971a",
+                    foreground="282828",
                 ),
                 widget.TextBox(
                     text='🞀',
                     fontsize="35",
-                    foreground="fbf1c7",
+                    foreground="282828",
                     background="98971a",
                     padding=-2,
                 ),
                 widget.Systray(),
             ],
             24,
-            background="#fbf1c7",
+            background="#282828",
         ),
     ),
 ]
