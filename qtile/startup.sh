@@ -11,5 +11,6 @@ picom -b
 /usr/bin/kdeconnect-indicator &
 redshift-gtk &
 nm-applet &
-/usr/lib/pam_kwallet_init &
+gnome-keyring-daemon --start
 ~/dotfiles/scripts/nextcloud-kwallet.sh &
+keepassxc &
