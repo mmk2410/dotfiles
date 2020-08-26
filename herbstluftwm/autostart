@@ -23,8 +23,8 @@ if hc silent new_attr bool my_not_first_autostart; then
     nm-applet &
     gnome-keyring-daemon --start
     nextcloud &
-    /usr/share/doc/herbstluftwm/examples/exec_on_tag.sh 10 keepassxc &
     dunst &
+    # /usr/share/doc/herbstluftwm/examples/exec_on_tag.sh 10 keepassxc &
 fi
 
 # remove all existing keybindings
@@ -187,3 +187,8 @@ hc set_monitors 2560x1418+0+22 1920x1080+2560+0
 panel=~/.config/herbstluftwm/panel.sh
 [ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
 "$panel"
+
+# autostart programs that require existing tags
+if hc silent new_attr bool my_not_first_autostart_end; then
+    /usr/share/doc/herbstluftwm/examples/exec_on_tag.sh 10 keepassxc &
+fi
