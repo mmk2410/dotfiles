@@ -8,6 +8,7 @@ debian/sbuild .sbuildrc
 dotdotfiles/git/gitconfig .gitconfig
 dotdotfiles/mbsync/mbsyncrc .mbsyncrc
 dotdotfiles/msmtp/msmtprc .msmtprc
+dunst/dunstrc .config/dunst/dunstrc
 herbstluftwm .config/herbstluftwm
 neovim/init.vim .config/nvim/init.vim
 picom/picom.conf .config/picom.conf
