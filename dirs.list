@@ -2,6 +2,7 @@
 .config/bspwm
 .config/dunst
 .config/fish
+.config/kitty
 .config/nvim
 .config/polybar
 .config/qtile
