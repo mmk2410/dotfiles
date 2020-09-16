@@ -10,3 +10,4 @@
 .config/redshift
 .config/rofi
 .config/sxhkd
+.confi/systemd/user

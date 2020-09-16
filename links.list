@@ -25,6 +25,7 @@ shells/fish/conf.d .config/fish/
 shells/fish/functions .config/fish/
 shells/zshrc .zshrc
 stumpwm/stumpwmrc .stumpwmrc
+systemd/* .config/systemd/user/
 x/Xmodmap .Xmodmap
 x/Xresources .Xresources
 x/xinitrc .xinitrc
