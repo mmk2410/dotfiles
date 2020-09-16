@@ -12,9 +12,6 @@ hc emit_hook reload
 if hc silent new_attr bool my_not_first_autostart; then
     xsetroot -solid '#5A8E3A'
     ~/.fehbg &
-    pulseaudio -D &
-    emacs --daemon &
-    syncthing &
     xmodmap ~/.Xmodmap
     picom -b
     /usr/lib/kdeconnectd &
