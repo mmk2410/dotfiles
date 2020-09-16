@@ -180,6 +180,8 @@ hc unlock
 # or simply:
 hc detect_monitors
 
+# make room for the panel
+hc pad 0 22
 
 # find the panel
 panel=~/.config/herbstluftwm/panel.sh
