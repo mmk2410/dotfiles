@@ -45,6 +45,7 @@ hc keybind $Mod-Control-b   spawn firefox-developer-edition
 hc keybind $Mod-Control-t   spawn es -e '(eshell)'
 hc keybind $Mod-Control-m   spawn es -e '(mu4e)'
 hc keybind $Mod-Control-e   spawn es -e '(elfeed)'
+hc keybind $Mod-x              spawn rofi -show run
 hc keybind $Mod-Tab            spawn rofi -show combi
 
 # audio, brightness, and screenshots
