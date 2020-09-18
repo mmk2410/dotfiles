@@ -37,7 +37,6 @@ hc keybind $Mod-Shift-r   reload
 hc keybind $Mod-w         close
 
 # programms
-hc keybind $Mod-x           spawn rofi -show combi
 hc keybind $Mod-Return      spawn es
 hc keybind $Mod-t           spawn alacritty
 hc keybind $Mod-b           spawn brave
@@ -46,6 +45,7 @@ hc keybind $Mod-Control-b   spawn firefox-developer-edition
 hc keybind $Mod-Control-t   spawn es -e '(eshell)'
 hc keybind $Mod-Control-m   spawn es -e '(mu4e)'
 hc keybind $Mod-Control-e   spawn es -e '(elfeed)'
+hc keybind $Mod-Tab            spawn rofi -show combi
 
 # audio, brightness, and screenshots
 hc keybind XF86AudioLowerVolume    spawn amixer set Master 5%- unmute
