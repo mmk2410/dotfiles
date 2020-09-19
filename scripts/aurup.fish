@@ -9,6 +9,7 @@
 for pkg in (auracle outdated | cut -d' ' -f1)
 set -l pwd $PWG
 
+auracle outdated
     cd ~/aur/
     echo "Updating $pkg"
     cd $pkg
