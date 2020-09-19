@@ -7,6 +7,8 @@
 # License: GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 for pkg in (auracle outdated | cut -d' ' -f1)
+set -l pwd $PWG
+
     cd ~/aur/
     echo "Updating $pkg"
     cd $pkg
@@ -27,3 +29,4 @@ for pkg in (auracle outdated | cut -d' ' -f1)
     makepkg -Ccsir
     cd ..
 end
+cd $pwd
