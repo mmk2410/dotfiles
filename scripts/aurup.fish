@@ -10,8 +10,16 @@ for pkg in (auracle outdated | cut -d' ' -f1)
 set -l pwd $PWG
 
 auracle outdated
+if test $status -ne 0
+    echo "No updates available."
+    echo "Exiting now..."
+    exit 1
+else
+    echo "Updating existing repositories..."
     cd ~/aur/
     echo "Updating $pkg"
+    auracle update
+end
     cd $pkg
     cat PKGBUILD
     read -P 'PKGBUILD OK? (y/N) > ' pkgbuild_ok
