@@ -183,8 +183,17 @@ hc unlock
 # or simply:
 hc detect_monitors
 
-# make room for the panel
-hc pad 0 22
+# make room for the panel, depending on how many monitors are configured
+monitor_amount=$(hc list_monitors | wc -l)
+
+case "$monitor_amount" in
+    [2-3])
+	hc pad 1 22
+	;;
+    *)
+	hc pad 0 22
+	;;
+esac
 
 # find the panel
 panel=~/.config/herbstluftwm/panel.sh
