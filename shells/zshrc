@@ -11,10 +11,10 @@ else
 fi
 
 # Set path to oh-my-zsh installation.
-if [[ "$DEFAULT_USER" == "ftu15" ]]; then
+if [[ "$USER" == "ftu15" ]]; then
     export ZSH=/users/student1/ftu15/.oh-my-zsh
 else
-    export ZSH=/home/mmk2410/.oh-my-zsh
+    export ZSH=/home/$USER/.oh-my-zsh
 fi
 
 # Set name of the theme to load.
@@ -65,12 +65,12 @@ HIST_STAMPS="dd/mm/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git adb battery bower coffee command-not-found debian gitignore github git-prompt gnu-utils node npm python terminator web-search)
+plugins=(git adb battery bower coffee command-not-found debian gitignore github git-prompt gnu-utils node npm python web-search)
 
 # User configuration
 
 # If on kiz, add user path
-if [[ "$DEFAULT_USER" == "ftu15" ]]; then
+if [[ "$USER" == "ftu15" ]]; then
     export PATH="/users/student1/ftu15/bin:$PATH"
 fi
 
@@ -83,7 +83,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='vim'
+export EDITOR='es'
+export VISUAL='es'
 # else
 #   export EDITOR='mvim'
 # fi
