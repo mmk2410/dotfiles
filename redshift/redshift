@@ -1,6 +1,15 @@
 [redshift]
 location-provider=manual
+temp-day=5700
+temp-night=3500
+
+transition=1
+
+gamma-day=1.0
+gamma-night=0.8:0.8:0.7
+
+adjustment-method=randr
 
 [manual]
-lat=48
-lon=010
+lat=48.39
+lon=9.99
