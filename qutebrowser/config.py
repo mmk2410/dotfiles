@@ -523,3 +523,8 @@ c.fonts.default_family = 'JetBrains Mono'
 # "px" suffix.
 # Type: String
 c.fonts.default_size = '12pt'
+
+# Setup for KeePassXC connection.
+config.bind('<Alt-Shift-u>', 'spawn --userscript qute-keepassxc --key 9FE01C39F74551D434116394CADE6F0C09F21B09', mode='insert')
+config.bind('pw', 'spawn --userscript qute-keepassxc --key 9FE01C39F74551D434116394CADE6F0C09F21B09', mode='normal')
+
