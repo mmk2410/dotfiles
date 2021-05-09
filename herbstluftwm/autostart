@@ -13,7 +13,6 @@ if hc silent new_attr bool my_not_first_autostart; then
     ~/.xprofile
     xsetroot -solid '#5A8E3A'
     ~/.fehbg &
-    xmodmap ~/.Xmodmap
     picom -b
     # 2021-05-01T22:53:48 CEST: The path for kdeconnectd was adjusted
     # for Fedora, where the binary lives in /usr/libexec and not in
@@ -207,4 +206,6 @@ panel=~/.config/herbstluftwm/panel.sh
 # autostart programs that require existing tags
 if hc silent new_attr bool my_not_first_autostart_end; then
     /usr/share/doc/herbstluftwm/examples/exec_on_tag.sh 10 keepassxc &
+    # Test: start xmodmap at the end. Maybe then it gets loaded.
+    xmodmap ~/.Xmodmap
 fi
