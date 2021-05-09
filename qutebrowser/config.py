@@ -35,7 +35,7 @@ c.content.geolocation = False
 # Value to send in the `Accept-Language` header. Note that the value
 # read from JavaScript is always the global value.
 # Type: String
-c.content.headers.accept_language = 'en-US,en;q=0.9'
+c.content.headers.accept_language = 'en-US,en,de,de-DE;q=0.9'
 
 # User agent to send.  The following placeholders are defined:  *
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
