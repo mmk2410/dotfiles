@@ -522,4 +522,4 @@ c.fonts.default_family = 'JetBrains Mono'
 # either a float value with a "pt" suffix, or an integer value with a
 # "px" suffix.
 # Type: String
-c.fonts.default_size = '10pt'
+c.fonts.default_size = '12pt'
