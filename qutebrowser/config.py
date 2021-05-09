@@ -153,7 +153,7 @@ c.tabs.position = 'left'
 # Width (in pixels or as percentage of the window) of the tab bar if
 # it's vertical.
 # Type: PercOrInt
-c.tabs.width = '12%'
+c.tabs.width = '14%'
 
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
