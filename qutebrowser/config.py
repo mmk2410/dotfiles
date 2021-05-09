@@ -528,3 +528,5 @@ c.fonts.default_size = '12pt'
 config.bind('<Alt-Shift-u>', 'spawn --userscript qute-keepassxc --key 9FE01C39F74551D434116394CADE6F0C09F21B09', mode='insert')
 config.bind('pw', 'spawn --userscript qute-keepassxc --key 9FE01C39F74551D434116394CADE6F0C09F21B09', mode='normal')
 
+# Set Emacs as editor
+c.editor.command = ["es", "+{line}:{column0}", "{file}"]
