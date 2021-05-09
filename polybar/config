@@ -47,6 +47,7 @@ yellow = ${colors/gruvbox-dark.yellow}
 blue = ${colors/gruvbox-dark.blue}
 green = ${colors/gruvbox-dark.green}
 purple = ${colors/gruvbox-dark.purple}
+aqua = ${colors/gruvbox-dark.aqua}
 
 ; #########################################################
 ; ##########              Main Bar               ##########
