@@ -46,3 +46,7 @@ end
 if test -z "$XDG_CURRENT_DESKTOP"
     set -Ux XDG_CURRENT_DESKTOP GNOME
 end
+
+if test -z "$QT_QPA_PLATFORMTHEME"
+   set -Ux QT_QPA_PLATFORMTHEME qt5ct
+end
