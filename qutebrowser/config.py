@@ -121,7 +121,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # still be downloaded by clicking the download button in the pdf.js
 # viewer.
 # Type: Bool
-c.content.pdfjs = True
+c.content.pdfjs = False
 
 # Height (in pixels or as percentage of the window) of the completion.
 # Type: PercOrInt
