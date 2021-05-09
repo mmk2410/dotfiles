@@ -10,6 +10,7 @@ hc emit_hook reload
 
 # Startup
 if hc silent new_attr bool my_not_first_autostart; then
+    ~/.xprofile
     xsetroot -solid '#5A8E3A'
     ~/.fehbg &
     xmodmap ~/.Xmodmap
