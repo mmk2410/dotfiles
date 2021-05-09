@@ -24,7 +24,16 @@ if hc silent new_attr bool my_not_first_autostart; then
     gnome-keyring-daemon --start
     nextcloud --background &
     dunst &
-    # /usr/share/doc/herbstluftwm/examples/exec_on_tag.sh 10 keepassxc &
+    # 2021-05-01T22:51:27 CEST: The first time I tried hlwm on Fedora
+    # 34, PipeWire was not automatically started I don't want to
+    # enable it, since it should be triggerd with pipewire.socket and
+    # I do not want to break anything and also on GNOME this was not a
+    # problem. This is therefore also an short-term solutions
+    # (although we all know whats happens to them...) and should be
+    # investiged more into the issue.
+    systemctl --user start pipewire &
+    # TODO: trigger this in ~/.xprofile?
+    xmodmap ~/.Xmodmap
 fi
 
 # remove all existing keybindings
