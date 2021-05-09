@@ -14,7 +14,10 @@ if hc silent new_attr bool my_not_first_autostart; then
     ~/.fehbg &
     xmodmap ~/.Xmodmap
     picom -b
-    /usr/lib/kdeconnectd &
+    # 2021-05-01T22:53:48 CEST: The path for kdeconnectd was adjusted
+    # for Fedora, where the binary lives in /usr/libexec and not in
+    # /usr/lib like in Arch Linux or Debian.
+    /usr/libexec/kdeconnectd &
     /usr/bin/kdeconnect-indicator &
     redshift-gtk &
     nm-applet &
