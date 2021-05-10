@@ -173,35 +173,67 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
+# Gruvbox Dark
+# colors:
+#   # Default colors
+#   primary:
+#     # hard contrast: background = '#1d2021'
+#     background: '#282828'
+#     # soft contrast: background = '#32302f'
+#     foreground: '#ebdbb2'
+#
+#   # Normal colors
+#   normal:
+#     black:   '#282828'
+#     red:     '#cc241d'
+#     green:   '#98971a'
+#     yellow:  '#d79921'
+#     blue:    '#458588'
+#     magenta: '#b16286'
+#     cyan:    '#689d6a'
+#     white:   '#a89984'
+#
+#   # Bright colors
+#   bright:
+#     black:   '#928374'
+#     red:     '#fb4934'
+#     green:   '#b8bb26'
+#     yellow:  '#fabd2f'
+#     blue:    '#83a598'
+#     magenta: '#d3869b'
+#     cyan:    '#8ec07c'
+#     white:   '#ebdbb2'
+
+# Modus Operandi
 colors:
   # Default colors
   primary:
     # hard contrast: background = '#1d2021'
-    background: '#282828'
+    background: '#ffffff'
     # soft contrast: background = '#32302f'
-    foreground: '#ebdbb2'
+    foreground: '#000000'
 
   # Normal colors
   normal:
-    black:   '#282828'
-    red:     '#cc241d'
-    green:   '#98971a'
-    yellow:  '#d79921'
-    blue:    '#458588'
-    magenta: '#b16286'
-    cyan:    '#689d6a'
-    white:   '#a89984'
+    black:   '#000000'
+    red:     '#a60000'
+    green:   '#005e00'
+    yellow:  '#813e00'
+    blue:    '#0031a9'
+    magenta: '#721045'
+    cyan:    '#00538b'
+    white:   '#ffffff'
 
   # Bright colors
   bright:
-    black:   '#928374'
-    red:     '#fb4934'
-    green:   '#b8bb26'
-    yellow:  '#fabd2f'
-    blue:    '#83a598'
-    magenta: '#d3869b'
-    cyan:    '#8ec07c'
-    white:   '#ebdbb2'
+    black:   '#282828'
+    red:     '#7f1010'
+    green:   '#104410'
+    yellow:  '#5f4400'
+    blue:    '#003497'
+    magenta: '#752f50'
+    cyan:    '#005007'
+    white:   '#f8f8f8'
 
 # Visual Bell
 #
