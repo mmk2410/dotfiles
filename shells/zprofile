@@ -1,0 +1,10 @@
+#
+# /etc/zprofile and ~/.zprofile are run for login shells
+#
+
+# Add ~/.local/bin to path
+PATH="$PATH:$HOME/.local/bin"
+# Add ~/.npm-global/bin/ to path
+PATH="$PATH:$HOME/.npm-global/bin"
+export PATH
+
