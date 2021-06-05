@@ -139,6 +139,12 @@ alias Q=' exit'
 alias x=' exit'
 alias cd..='cd ..'
 
+#####################
+### GO LANG STUFF ###
+#####################
+
+export GOPATH=$HOME/projects/go
+
 ######################
 ### GNU GUIX STUFF ###
 ######################
