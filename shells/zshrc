@@ -76,6 +76,9 @@ fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# Add user binaries path to PATH
+export PATH="/home/$USER/.local/bin/:$PATH"
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
