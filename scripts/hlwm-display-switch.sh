@@ -1,8 +1,8 @@
 #!/bin/sh
 
-extern_1="HDMI1"
-extern_2="DP1"
-intern="eDP1"
+extern_1="HDMI-1"
+extern_2="DP-1"
+intern="eDP-1"
 polybar_top_padding=22
 
 switch_internal() {
