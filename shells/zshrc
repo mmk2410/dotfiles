@@ -11,11 +11,7 @@ else
 fi
 
 # Set path to oh-my-zsh installation.
-if [[ "$USER" == "ftu15" ]]; then
-    export ZSH=/users/student1/ftu15/.oh-my-zsh
-else
-    export ZSH=/home/$USER/.oh-my-zsh
-fi
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
