@@ -56,8 +56,8 @@ hc keybind $Mod-Control-Return spawn ~/.emacs_anywhere/bin/run
 hc keybind $Mod-t              spawn es -e '(vterm)'
 hc keybind $Mod-Shift-t        spawn alacritty
 hc keybind $Mod-b              spawn qutebrowser
-hc keybind $Mod-Control-b      spawn firefox-developer-edition
 hc keybind $Mod-v              spawn pavucontrol
+hc keybind $Mod-Control-b      spawn firefox
 hc keybind $Mod-Control-t      spawn es -e '(eshell)'
 hc keybind $Mod-Control-m      spawn es -e '(mu4e)'
 hc keybind $Mod-Control-e      spawn es -e '(elfeed)'
