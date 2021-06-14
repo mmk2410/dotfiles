@@ -54,6 +54,7 @@ hc keybind $Mod-Tab            spawn rofi -show combi
 hc keybind $Mod-Return         spawn es
 hc keybind $Mod-Control-Return spawn ~/.emacs_anywhere/bin/run
 hc keybind $Mod-t              spawn es -e '(vterm)'
+hc keybind $Mod-Shift-t        spawn alacritty
 hc keybind $Mod-b              spawn qutebrowser
 hc keybind $Mod-v              spawn pavucontrol-qt
 hc keybind $Mod-Control-b      spawn firefox-developer-edition
