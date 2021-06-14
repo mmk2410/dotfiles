@@ -131,6 +131,9 @@ hc keybind $Mod-space                                                           
             or , and . compare tags.focus.curframe_wcount = 2                   \
                      . cycle_layout +1 vertical horizontal max vertical grid    \
                , cycle_layout +1
+# Adjust display output
+hc keybind $Mod-d        spawn ~/dotfiles/scripts/hlwm-display-switch.sh i
+hc keybind $Mod-Shift-d  spawn ~/dotfiles/scripts/hlwm-display-switch.sh e
 
 # mouse
 hc mouseunbind --all
