@@ -175,7 +175,10 @@ hc attr theme.background_color '#141414'
 hc set window_gap 0
 hc set frame_padding 0
 hc set smart_window_surroundings off
-hc set smart_frame_surroundings on
+# When set to "off" hlwm will also display the 10px frame_gap when
+# only one window is displayed. Otherwise the frame gap will be
+# disabled.
+hc set smart_frame_surroundings off
 hc set mouse_recenter_gap 0
 
 # rules
