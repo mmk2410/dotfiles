@@ -147,6 +147,25 @@ export GOPATH=$HOME/projects/go
 
 GUIX_PROFILE="$HOME/.guix-profile/"
 GUIX_LOCPATH="$GUIX_PROFILE/lib/locale/"
-. "$GUIX_PROFILE/etc/profile"
+
+if [[ -d $GUIX_PROFILE ]];
+then
+    . "$GUIX_PROFILE/etc/profile"
+fi
+
 GUIX_PROFILE="$HOME/.config/guix/current"
-. "$GUIX_PROFILE/etc/profile"
+
+if [[ -d $GUIX_PROFILE ]];
+then
+    . "$GUIX_PROFILE/etc/profile"
+fi
+
+#################
+### WSL STUFF ###
+#################
+
+if [[ -n $WSL_DISTRO_NAME ]];
+then
+    export DISPLAY=$(ip route | awk '{print $3; exit}'):0
+    export LIBGL_ALWAYS_INDIRECT=1
+fi
