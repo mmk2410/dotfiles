@@ -11,15 +11,31 @@ if filereadable(expand("~/.vim/autoload/plug.vim")) || filereadable(expand("~/.c
     Plug 'vim-scripts/gitignore.vim'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'majutsushi/tagbar'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+    " Plug 'majutsushi/tagbar'
+    " Plug 'vim-scripts/taglist.vim'
     Plug 'Townk/vim-autoclose'
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
+
+    """ Markdown editing
+    Plug 'godlygeek/tabular'
+    Plug 'plasticboy/vim-markdown'
+
+    """ Themes
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'rakr/vim-one'
+    " Plug 'morhetz/gruvbox'
+
+    """ Languages
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'vim-latex/vim-latex'
-    Plug 'morhetz/gruvbox'
-    Plug 'dag/vim-fish'
+    " Plug 'dag/vim-fish'
+    " Plug 'KabbAmine/gulp-vim'
+    " Plug 'kovisoft/slimv'
+    " Plug 'vim-php/vim-phpunit'
+    " Plug 'StanAngeloff/php.vim'
+
     call plug#end()
 
 else
@@ -76,8 +92,9 @@ set tm=500
 " Color
 
 syntax on
-colorscheme gruvbox
-set background=dark
+" colorscheme gruvbox
+colorscheme one
+set background=light
 set termguicolors
 set cursorline
 if has("gui_running")
@@ -92,8 +109,8 @@ endif
 set t_Co=256
 set encoding=utf-8
 set ffs=unix,dos,mac
-set textwidth=80
-set colorcolumn=+1
+" set textwidth=80
+" set colorcolumn=+1
 hi ColorColumn guibg=#2d2d2d ctermbg=238
 
 " Files, Backups and undo
@@ -195,7 +212,8 @@ set clipboard+=unnamedplus
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='base16_gruvbox_dark_hard'
+" let g:airline_theme='base16_gruvbox_dark_hard'
+let g:airline_theme='one'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
