@@ -160,3 +160,12 @@ then
     . "$GUIX_PROFILE/etc/profile"
 fi
 
+#################
+### WSL STUFF ###
+#################
+
+if [[ -n $WSL_DISTRO_NAME ]];
+then
+    export DISPLAY=$(ip route | awk '{print $3; exit}'):0
+    export LIBGL_ALWAYS_INDIRECT=1
+fi
