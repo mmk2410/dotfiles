@@ -147,6 +147,16 @@ export GOPATH=$HOME/projects/go
 
 GUIX_PROFILE="$HOME/.guix-profile/"
 GUIX_LOCPATH="$GUIX_PROFILE/lib/locale/"
-. "$GUIX_PROFILE/etc/profile"
+
+if [[ -d $GUIX_PROFILE ]];
+then
+    . "$GUIX_PROFILE/etc/profile"
+fi
+
 GUIX_PROFILE="$HOME/.config/guix/current"
-. "$GUIX_PROFILE/etc/profile"
+
+if [[ -d $GUIX_PROFILE ]];
+then
+    . "$GUIX_PROFILE/etc/profile"
+fi
+
