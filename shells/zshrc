@@ -169,3 +169,18 @@ then
     export DISPLAY=$(ip route | awk '{print $3; exit}'):0
     export LIBGL_ALWAYS_INDIRECT=1
 fi
+
+################
+### GO STUFF ###
+################
+
+if [[ -d "/usr/local/go/bin" ]]
+then
+    export PATH="/usr/local/go/bin:$PATH"
+fi
+
+if [[ -d "/home/$USER/projects/go/bin" ]]
+then
+    export PATH="/home/$USER/projects/go/bin:$PATH"
+fi
+
