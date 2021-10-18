@@ -1,3 +1,4 @@
+# -*- mode: shell-script; -*-
 # ZSH Configuration
 # Marcel Kapfer (c) 2019-2021
 # MIT License
@@ -183,4 +184,3 @@ if [[ -d "/home/$USER/projects/go/bin" ]]
 then
     export PATH="/home/$USER/projects/go/bin:$PATH"
 fi
-
