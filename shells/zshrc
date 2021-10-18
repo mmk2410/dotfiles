@@ -169,6 +169,9 @@ if [[ -n $WSL_DISTRO_NAME ]];
 then
     export DISPLAY=$(ip route | awk '{print $3; exit}'):0
     export LIBGL_ALWAYS_INDIRECT=1
+
+    alias mariadb-start='sudo /etc/init.d/mariadb start'
+    alias mariadb-stop='sudo /etc/init.d/mariadb stop'
 fi
 
 ################
