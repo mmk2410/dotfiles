@@ -165,7 +165,7 @@ fi
 ### WSL STUFF ###
 #################
 
-if [[ -n $WSL_DISTRO_NAME ]];
+if [[ -n $WSL_DISTRO_NAME ]] && [[ ! -d /mnt/wslg ]];
 then
     export DISPLAY=$(ip route | awk '{print $3; exit}'):0
     export LIBGL_ALWAYS_INDIRECT=1
