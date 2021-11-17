@@ -333,9 +333,8 @@ script."
 (define-key *root-map* (kbd "l") "switch-screen-layout")
 
 ;; font configuration
-;; Currently disabled since the ttf-fonts module no longer works
-;; (load-module "ttf-fonts")
-;; (set-font (make-instance 'xft:font :family "Hack" :subfamily "Regular" :size 10))
+(load-module "ttf-fonts")
+(set-font (make-instance 'xft:font :family "JetBrains Mono" :subfamily "Regular" :size 12))
 
 ;; window placement rules
 (define-frame-preference "winkel"
