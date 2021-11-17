@@ -164,7 +164,7 @@
 (run-shell-command "~/.fehbg")
 
 ;; start compton (compositor)
-(run-shell-command "compton --config ~/.config/compton.conf")
+(run-shell-command "picom -b")
 
 ;; start mode line
 (if (not (head-mode-line (current-head)))
