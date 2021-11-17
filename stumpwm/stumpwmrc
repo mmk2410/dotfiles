@@ -89,6 +89,7 @@
       *group-format* "%t")
 
 ;; root keybindings
+(set-prefix-key (kbd "C-q"))
 
 ;; Application keybindings
 (define-key *root-map* (kbd "W") (concatenate 'string "exec " *web-browser*))
