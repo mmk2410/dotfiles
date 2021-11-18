@@ -77,11 +77,12 @@
 ;; mode-line style
 (setf *mode-line-background-color* "#333333"
       *mode-line-foreground-color* "#cccccc"
+      *time-modeline-string* "%a %b %e %k:%M"
       *mode-line-timeout* 5
       *mode-line-border-width* 0
       *mode-line-pad-x* 3
       *mode-line-pad-y* 3
-      *screen-mode-line-format* (list " [%g] %w ^> [%B] [" '(:eval (RUN-SHELL-COMMAND "date '+%F %H:%M'|tr -d [:cntrl:]" T)) "] %T"))
+      *screen-mode-line-format* (list " [%g] %w ^> [%B] [ %d ] %T"))
 
 ;; Gaps
 (load-module "swm-gaps")
