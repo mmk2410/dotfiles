@@ -312,7 +312,7 @@
 (defmacro make-web-jump (name prefix)
   `(defcommand ,(intern name) (search) ((:rest ,(concatenate 'string name " search: ")))
     (substitute #\+ #\Space search)
-    (run-shell-command (concatenate 'string *www-browser* " " ,prefix search))))
+    (run-shell-command (concatenate 'string *web-browser* " " ,prefix search))))
 
 (make-web-jump "google" "http://www.google.com/search?q=")
 (make-web-jump "googlede" "http://www.google.de/search?q=")
