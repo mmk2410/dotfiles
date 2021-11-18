@@ -49,10 +49,10 @@
 (gravity :center)
 
 ;; input bar position
-(setf *input-window-gravity* :bottom)
+(setf *input-window-gravity* :center)
 
 ;; message bar position
-(setf *message-window-gravity* :bottom)
+(setf *message-window-gravity* :center)
 
 ;; message timeout
 (setf *timeout-wait* 3)
