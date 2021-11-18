@@ -30,11 +30,6 @@
   (gnewbg "music")
   (gnewbg "winkel"))
 
-;; border width
-(setf *maxsize-border-width* 3)
-(setf *transient-border-width* 3)
-(setf *normal-border-width* 3)
-
 ;; border style
 (setf *window-border-style* :tight)
 (set-focus-color "#b00045")
