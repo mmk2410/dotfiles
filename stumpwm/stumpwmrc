@@ -72,7 +72,6 @@
 
 ;; loading modeline modules
 (load-module "battery-portable")
-(load-module "hostname")
 (load-module "stumptray")
 
 ;; mode-line style
@@ -82,7 +81,7 @@
       *mode-line-border-width* 0
       *mode-line-pad-x* 3
       *mode-line-pad-y* 3
-      *screen-mode-line-format* (list "[" '(:eval (RUN-SHELL-COMMAND "date '+%F %H:%M'|tr -d [:cntrl:]" T)) "] [%n]  %w ^> [%B] [marcel@%h] %T"))
+      *screen-mode-line-format* (list " [%g] %w ^> [%B] [" '(:eval (RUN-SHELL-COMMAND "date '+%F %H:%M'|tr -d [:cntrl:]" T)) "] %T"))
 
 ;; Gaps
 (load-module "swm-gaps")
