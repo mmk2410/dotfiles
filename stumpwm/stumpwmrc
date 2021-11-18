@@ -22,12 +22,13 @@
 (set-module-dir "~/.stumpwm.d/modules")
 
 ;; creating or rename groups
-(setf (group-name (first (screen-groups (current-screen)))) "web")
-(gnewbg "emacs")
-(gnewbg "work")
-(gnewbg "misc")
-(gnewbg "music")
-(gnewbg "winkel")
+(when *initializing*
+  (grename "web")
+  (gnewbg "emacs")
+  (gnewbg "work")
+  (gnewbg "misc")
+  (gnewbg "music")
+  (gnewbg "winkel"))
 
 ;; border width
 (setf *maxsize-border-width* 3)
