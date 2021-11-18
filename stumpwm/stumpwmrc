@@ -103,12 +103,13 @@
 (define-key *root-map* (kbd "m")  (concatenate 'string "exec " *music-player*))
 
 ;;; bind keys for changing workspace
-(define-key *top-map* (kbd "s-1") "change-workspace web")
-(define-key *top-map* (kbd "s-2") "change-workspace emacs")
-(define-key *top-map* (kbd "s-3") "change-workspace work")
-(define-key *top-map* (kbd "s-4") "change-workspace misc")
-(define-key *top-map* (kbd "s-9") "change-workspace music")
-(define-key *top-map* (kbd "s-0") "change-workspace winkel")
+(define-key *top-map* (kbd "s-1") "gselect web")
+(define-key *top-map* (kbd "s-2") "gselect emacs")
+(define-key *top-map* (kbd "s-3") "gselect work")
+(define-key *top-map* (kbd "s-4") "gselect misc")
+(define-key *top-map* (kbd "s-9") "gselect music")
+(define-key *top-map* (kbd "s-0") "gselect winkel")
+(define-key *top-map* (kbd "s-p") "gother")
 
 ;; bind keys for moving the current window to another workspace
 (define-key *top-map* (kbd "s-C-1") "gmove web")
