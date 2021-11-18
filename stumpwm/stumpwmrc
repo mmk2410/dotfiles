@@ -128,6 +128,12 @@
 (define-key *top-map* (kbd "s-k") "move-focus up")
 (define-key *top-map* (kbd "s-l") "move-focus right")
 
+;; bind keys for window moving
+(define-key *top-map* (kbd "s-C-h") "move-window left")
+(define-key *top-map* (kbd "s-C-j") "move-window down")
+(define-key *top-map* (kbd "s-C-k") "move-window up")
+(define-key *top-map* (kbd "s-C-l") "move-window right")
+
 ;;; mode-line key
 (define-key *root-map* (kbd "Menu") "mode-line")
 
