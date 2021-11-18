@@ -78,12 +78,19 @@
 ;; mode-line style
 (setf *mode-line-background-color* "#333333"
       *mode-line-foreground-color* "#cccccc"
-      *mode-line-border-color* "#b00045"
       *mode-line-timeout* 5
-      *mode-line-border-width* 3
+      *mode-line-border-width* 0
       *mode-line-pad-x* 3
       *mode-line-pad-y* 3
       *screen-mode-line-format* (list "[" '(:eval (RUN-SHELL-COMMAND "date '+%F %H:%M'|tr -d [:cntrl:]" T)) "] [%n]  %w ^> [%B] [marcel@%h] %T"))
+
+;; Gaps
+(load-module "swm-gaps")
+(setf swm-gaps:*inner-gaps-size* 5
+      swm-gaps:*outer-gaps-size* 5
+      swm-gaps:*head-gaps-size* 0)
+(when *initializing*
+  (swm-gaps:toggle-gaps))
 
 ;; customize texts
 (setf *window-format* "^B %n ^b %20t "
