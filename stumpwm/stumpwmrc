@@ -373,22 +373,8 @@ script."
 (define-frame-preference "music"
   (0 nil t :class "Spotify"))
 
-;; autostart programs
-
-;; emacs
-(run-shell-command "emacs")
-
-;; keepassxc
-(run-shell-command "keepassxc-wrapper")
-
-;; owncloud
-(run-shell-command "nextcloud")
-
-;; web browser
-(run-shell-command *web-browser*)
-
-;; redshift
-(run-shell-command "redshift")
+;; Start NetworkManager systray applet
+(run-shell-command "nm-applet")
 
 ;; last settings
 (stumptray:stumptray)
