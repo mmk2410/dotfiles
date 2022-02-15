@@ -3,20 +3,33 @@
 ;; StumpWM configuration file
 ;; <https://stumpwm.github.io/>
 ;;
-;; 2016 - 2021 (c) Marcel Kapfer <opensource@mmk2410.org>
+;; 2016 - 2022 (c) Marcel Kapfer <opensource@mmk2410.org>
 ;; MIT License
 
 (in-package :stumpwm)
 
+(defun mmk2410/work ()
+  "Returns T if running my work machine"
+  (string-equal (getenv "HOSTNAME") "knuth"))
+
 ;; Other parameters
 (defparameter *key-layout* "de" "Stores the current key layout")
 
-;; Default applicatoins
-(defparameter *web-browser* "firefox-dev" "Stores the web browser")
-(defparameter *editor* "es" "Stores the editor")
-(defparameter *terminal* "gnome-terminal" "Stores the terminal emulator")
-(defparameter *file-manager* "nautilus" "Stores the terminal emulator")
-(defparameter *music-player* "spotify" "Stores the terminal emulator")
+;; Default applications
+(defparameter *app-web-browser* "firefox" "Stores the web browser")
+(defparameter *app-snd-web-browser* "qutebrowser" "Stores the 2nd web browser")
+(defparameter *app-terminal* "alacritty" "Stores the terminal emulator")
+(defparameter *app-editor* "es" "Stores the editor")
+(defparameter *app-db-browser* "beekeeper" "Stores the DB browser")
+(defparameter *app-password* "keepassxc" "Stores the password manager")
+(defparameter *app-file-manager* "nautilus" "Stores the terminal emulator")
+(defparameter *app-music-player* "spotify" "Stores the terminal emulator")
+
+;; Host-specific default applications
+(when (mmk2410/work)
+  (defparameter *app-ide* "phpstorm" "Stores the IDE")
+  (defparameter *app-api-builder* "postman" "Stores the API builder")
+  (defparameter *app-communication* "teams" "Stores the chat application"))
 
 ;; set correct module directory
 (set-module-dir "~/.stumpwm.d/modules")
@@ -99,11 +112,24 @@
 (set-prefix-key (kbd "C-q"))
 
 ;; Application keybindings
-(define-key *root-map* (kbd "W") (concatenate 'string "exec " *web-browser*))
-(define-key *root-map* (kbd "c") (concatenate 'string "exec " *terminal*))
-(define-key *root-map* (kbd "e") (concatenate 'string "exec " *editor*))
-(define-key *root-map* (kbd "C-c")  (concatenate 'string "exec " *file-manager*))
-(define-key *root-map* (kbd "m")  (concatenate 'string "exec " *music-player*))
+(define-key *root-map* (kbd "W") (concatenate 'string "exec " *app-web-browser*))
+(define-key *root-map* (kbd "c") (concatenate 'string "exec " *app-terminal*))
+(define-key *root-map* (kbd "e") (concatenate 'string "exec " *app-editor*))
+
+(defvar *application-run-bindings*
+  (let ((m (make-sparse-keymap)))
+    (define-key m (kbd "m") (concatenate 'string "exec " *app-music-player*))
+    (define-key m (kbd "e") (concatenate 'string "exec " *app-file-manager*))
+    (define-key m (kbd "d") (concatenate 'string "exec " *app-db-browser*))
+    (define-key m (kbd "w") (concatenate 'string "exec " *app-snd-web-browser*))
+    (define-key m (kbd "p") (concatenate 'string "exec " *app-password*))
+    (when (mmk2410/work)
+      (define-key m (kbd "i") (concatenate 'string "exec " *app-ide*))
+      (define-key m (kbd "a") (concatenate 'string "exec " *app-api-builder*))
+      (define-key m (kbd "c") (concatenate 'string "exec " *app-communication*)))
+    m))
+
+(define-key *root-map* (kbd "RET") '*application-run-bindings*)
 
 ;;; bind keys for changing workspace
 (define-key *top-map* (kbd "s-1") "gselect web")
