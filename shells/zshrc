@@ -187,3 +187,9 @@ if [[ -d "/home/$USER/projects/go/bin" ]]
 then
     export PATH="/home/$USER/projects/go/bin:$PATH"
 fi
+
+####################
+### LEDGER STUFF ###
+####################
+
+export LEDGER_FILE="/home/$USER/hledger/2022.journal"
