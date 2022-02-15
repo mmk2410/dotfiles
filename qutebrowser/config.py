@@ -148,7 +148,7 @@ c.tabs.padding = {'bottom': 3, 'left': 5, 'right': 5, 'top': 3}
 #   - bottom
 #   - left
 #   - right
-c.tabs.position = 'left'
+c.tabs.position = 'top'
 
 # Width (in pixels or as percentage of the window) of the tab bar if
 # it's vertical.
