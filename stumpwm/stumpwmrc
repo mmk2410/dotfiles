@@ -367,6 +367,7 @@ script."
   (0 nil t :class "Microsoft Teams - Preview"))
 
 (define-frame-preference "web"
+  (0 nil t :class "qutebrowser")
   (0 nil t :class "Firefox"))
 
 (define-frame-preference "music"
