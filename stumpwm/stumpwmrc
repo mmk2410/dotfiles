@@ -376,7 +376,9 @@ script."
 	     ((null selection)
 	      nil)
 	     (t (stringp (second selection))
-		(run-shell-command (second selection)))))))
+		(run-shell-command (second selection))
+                (refresh-heads)
+                (refresh-heads))))))
     (pick (list-screen-layouts))))
 
 (define-key *root-map* (kbd "l") "switch-screen-layout")
