@@ -527,7 +527,7 @@ c.fonts.default_family = 'JetBrains Mono'
 c.fonts.default_size = '12pt'
 
 # Setup for KeePassXC connection.
-if os.getenv('HOST') == 'knuth':
+if os.getenv('HOSTNAME') == 'knuth':
     config.bind('<Alt-Shift-u>', 'spawn --userscript qute-keepassxc --key CBE2FD999353DFA90822A2FAD61E7E81C796B99E', mode='insert')
     config.bind('pw', 'spawn --userscript qute-keepassxc --key CBE2FD999353DFA90822A2FAD61E7E81C796B99E', mode='normal')
 else:
