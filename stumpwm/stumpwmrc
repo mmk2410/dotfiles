@@ -10,7 +10,11 @@
 
 (defun mmk2410/work ()
   "Returns T if running my work machine"
-  (string-equal (getenv "HOSTNAME") "knuth"))
+  (string-equal
+   (string-trim
+    '(#\Space #\Newline #\Linefeed #\Return)
+    (run-shell-command "hostname" t))
+   "knuth"))
 
 ;; Other parameters
 (defparameter *key-layout* "de" "Stores the current key layout")
