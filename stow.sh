@@ -19,11 +19,11 @@ function success {
 DEFAULT_STOW_PKGS="alacritty systemd picom bash fish zsh stumpwm qutebrowser redshift neovim dunst x"
 STOW_PKGS=${STOW_PKGS:=$DEFAULT_STOW_PKGS}
 
-WORK_DOTFILES="${WORK_DOTFILES:=$HOME/.dotfiles/dot-work}"
+WORK_DOTFILES="${WORK_DOTFILES:=$(pwd)/dot-work}"
 DEFAULT_WORK_STOW_PKGS="mbsync msmtp ssh passwords"
 WORK_STOW_PKGS="${WORK_STOW_PKGS:=$DEFAULT_WORK_STOW_PKGS}"
 
-PRIVATE_DOTFILES="${PRIVATE_DOTFILES:=$HOME/.dotfiles/dot-private}"
+PRIVATE_DOTFILES="${PRIVATE_DOTFILES:=$(pwd)/dot-private}"
 DEFAULT_PRIVATE_STOW_PKGS="mbsync msmtp ssh git"
 PRIVATE_STOW_PKGS="${PRIVATE_STOW_PKGS:=$DEFAULT_PRIVATE_STOW_PKGS}"
 
