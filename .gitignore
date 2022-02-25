@@ -1,7 +1,3 @@
-/fish/fishd.*
 *~
-dotdotfiles/
+dot-private/
 dot-work/
-/shells/fish/functions/tide/
-/shells/fish/functions/tide.fish
-/shells/fish/conf.d/_tide_init.fish
