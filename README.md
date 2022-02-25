@@ -1,20 +1,11 @@
 # dotfiles
 
-My configuration files for various programs.
+**My configuration files for various programs.**
 
-## Installing
-
-To link the files to the correct places run
+After using a more-or-less broken script for many years I finally decided to use [GNU/Stow](https://www.gnu.org/software/stow/) instead. A small wrapper script around it helps me now to deploy the files I need.
 
 ```
-./install.fish
+./stow.sh
 ```
 
-Make sure you have [fish](https://fishshell.com) installed.
-
-## How it works
-
-The script takes the directories in `dirs.list` and creats them (if they don't
-exist). After that it runs over `links.list` and takes the first path as source
-(appending ~/dotfiles) and the path after the space as the target (appending
-only `~/`).
+Additionally to this repositories I keep two other around---one for work and one for personal machines---that contain more sensitive information and are therefore not publicly available.
