@@ -16,7 +16,7 @@ function success {
     echo -e "${PRIMARY}${BRAND} ${SUCCESS}$1${NC}"
 }
 
-DEFAULT_STOW_PKGS="alacritty systemd picom bash fish zsh stumpwm qutebrowser redshift neovim dunst x"
+DEFAULT_STOW_PKGS="alacritty flatpak-sync systemd picom bash fish zsh stumpwm qutebrowser redshift neovim dunst x"
 STOW_PKGS=${STOW_PKGS:=$DEFAULT_STOW_PKGS}
 
 WORK_DOTFILES="${WORK_DOTFILES:=$(pwd)/dot-work}"

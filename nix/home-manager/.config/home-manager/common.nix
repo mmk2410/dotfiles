@@ -38,6 +38,7 @@
   # plain files is through 'home.file'.
   home.file = {
     ".config/nvim/init.vim".source = ~/.dotfiles/neovim/.config/nvim/init.vim;
+    ".config/flatpak-sync/apps.list".source = ~/.dotfiles/flatpak-sync/.config/flatpak-sync/apps.list;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
