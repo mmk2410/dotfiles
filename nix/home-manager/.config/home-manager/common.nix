@@ -64,6 +64,7 @@
     extraPackages = epkgs: [
       epkgs.nix-mode
       epkgs.vterm
+      epkgs.org-roam
     ];
   };
 
