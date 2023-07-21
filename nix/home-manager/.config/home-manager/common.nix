@@ -56,6 +56,30 @@
 
   accounts.email.maildirBasePath = ".mbsync";
 
+  #########
+  # DCONF #
+  #########
+
+  dconf.settings = {
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      "home" = ["<Super>f"];
+      "custom-keybindings" = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      "binding" = "<Super>Return";
+      "command" = "emacsclient";
+      "name" = "Emacs (Client)";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      "binding" = "<Super>t";
+      "command" = "emacsclient -c -e '(progn (set-frame-size nil 80 24) (vterm t))'";
+      "name" = "Terminal (Emacs Vterm)";
+    };
+  };
+
   ############
   # PROGRAMS #
   ############
