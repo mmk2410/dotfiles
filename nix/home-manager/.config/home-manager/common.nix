@@ -14,6 +14,8 @@
   # environment.
   home.packages = with pkgs; [
     colordiff
+    duplicity
+    deja-dup
     firefox
     jetbrains-mono
     keepassxc
