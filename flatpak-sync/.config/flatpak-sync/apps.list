@@ -11,3 +11,6 @@ org.signal.Signal
 
 # Multimedia
 com.spotify.Client
+
+# Miscellanious
+com.github.tchx84.Flatseal
