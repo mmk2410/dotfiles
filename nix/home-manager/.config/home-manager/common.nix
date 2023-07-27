@@ -70,7 +70,7 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       "binding" = "<Super>Return";
-      "command" = "emacsclient";
+      "command" = "emacsclient -c";
       "name" = "Emacs (Client)";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
