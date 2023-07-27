@@ -66,6 +66,7 @@
       "custom-keybindings" = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
       ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -77,6 +78,11 @@
       "binding" = "<Super>t";
       "command" = "emacsclient -c -e '(progn (set-frame-size nil 80 24) (vterm t))'";
       "name" = "Terminal (Emacs Vterm)";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+      "binding" = "<Shift><Super>t";
+      "command" = "kgx";
+      "name" = "Terminal (Console)";
     };
   };
 
