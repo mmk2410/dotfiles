@@ -20,6 +20,7 @@
     jetbrains-mono
     keepassxc
     rlwrap
+    texlive.combined.scheme-full
     open-sans
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
