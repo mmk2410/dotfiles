@@ -5,6 +5,10 @@ org.inkscape.Inkscape
 org.kde.digikam
 org.kde.krita
 
+# Development
+io.beekeeperstudio.Studio
+rest.insomnia.Insomnia
+
 # Messaging
 com.github.eneshecan.WhatsAppForLinux
 org.signal.Signal
