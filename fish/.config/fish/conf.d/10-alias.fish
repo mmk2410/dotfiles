@@ -36,9 +36,9 @@ if status --is-interactive
     alias e="es"
 end
 
-function ls --wraps exa --description "alias ls=exa --git, if installed"
-    if type -q exa
-        exa --git $argv
+function ls --wraps eza --description "alias ls=eza --git, if installed"
+    if type -q eza
+        eza --git $argv
     else
         command ls $argv
     end
