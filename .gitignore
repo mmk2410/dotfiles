@@ -1,3 +1,6 @@
 *~
 dot-private/
 dot-work/
+
+fish/.config/fish/config.fish
+fish/.config/fish/fish_variables
