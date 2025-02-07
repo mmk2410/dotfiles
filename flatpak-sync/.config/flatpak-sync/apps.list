@@ -3,7 +3,9 @@ org.darktable.Darktable
 org.gimp.GIMP
 org.inkscape.Inkscape
 org.kde.digikam
+org.kde.kdenlive
 org.kde.krita
+net.scribus.Scribus
 
 # Development
 io.beekeeperstudio.Studio
@@ -15,6 +17,8 @@ org.signal.Signal
 
 # Multimedia
 com.spotify.Client
+com.valvesoftware.Steam
+net.minetest.Minetest
 
 # Miscellanious
 com.github.tchx84.Flatseal
