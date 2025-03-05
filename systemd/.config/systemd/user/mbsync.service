@@ -7,7 +7,7 @@ After=network-online.target
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/mbsync -q -a
-ExecStartPost=/usr/bin/emacsclient -equ '(mu4e-update-index)'
+ExecStartPost=/usr/local/bin/emacsclient -equ '(mu4e-update-index)'
 Restart=on-failure
 
 [Install]
