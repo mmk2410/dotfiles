@@ -4,3 +4,4 @@ dot-work/
 
 fish/.config/fish/config.fish
 fish/.config/fish/fish_variables
+/systemd/.config/systemd/user/default.target.wants/
