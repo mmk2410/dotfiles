@@ -7,12 +7,7 @@ org.kde.kdenlive
 org.kde.krita
 net.scribus.Scribus
 
-# Development
-io.beekeeperstudio.Studio
-rest.insomnia.Insomnia
-
 # Messaging
-com.github.eneshecan.WhatsAppForLinux
 org.signal.Signal
 
 # Multimedia
@@ -22,6 +17,7 @@ net.minetest.Minetest
 
 # Miscellanious
 com.github.tchx84.Flatseal
+com.mattjakeman.ExtensionManager
 
 # Office
 org.libreoffice.LibreOffice
