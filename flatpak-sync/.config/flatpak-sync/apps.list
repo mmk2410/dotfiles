@@ -6,18 +6,20 @@ org.kde.digikam
 org.kde.kdenlive
 org.kde.krita
 net.scribus.Scribus
+com.rawtherapee.RawTherapee
 
 # Messaging
 org.signal.Signal
 
 # Multimedia
 com.spotify.Client
-com.valvesoftware.Steam
-net.minetest.Minetest
+# com.valvesoftware.Steam
+# net.minetest.Minetest
 
 # Miscellanious
 com.github.tchx84.Flatseal
-com.mattjakeman.ExtensionManager
+# com.mattjakeman.ExtensionManager
+org.keepassxc.KeePassXC
 
 # Office
-org.libreoffice.LibreOffice
+# org.libreoffice.LibreOffice
